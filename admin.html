@@ -197,6 +197,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       <div class="sb-group">
         <div class="sb-glabel">Content</div>
         <button class="sb-item" id="nav-pages" onclick="showView('pages')"><i class="ti ti-files"></i>Pagina's <span class="badge" id="pageCountBadge">0</span></button>
+        <button class="sb-item" id="nav-pricing" onclick="showView('pricing')"><i class="ti ti-receipt"></i>Prijzen</button>
+        <button class="sb-item" id="nav-seo" onclick="showView('seo')"><i class="ti ti-search"></i>SEO</button>
         <button class="sb-item" id="nav-global" onclick="showView('global')"><i class="ti ti-settings"></i>Globaal</button>
       </div>
       <div class="sb-group">
@@ -289,6 +291,65 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
           <div class="fg"><label>Tagline</label><input type="text" id="footerTag"></div>
         </div>
       </div>
+    </div>
+
+
+    <!-- PRICING -->
+    <div id="view-pricing" style="display:none">
+      <div class="ph">
+        <div class="ph-left"><h1>Prijzen</h1><p>Bewerk de prijskaarten die op de homepage staan</p></div>
+        <button class="btn btn-primary btn-sm" onclick="savePricing()"><i class="ti ti-cloud-upload"></i>Opslaan & publiceren</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-title"><i class="ti ti-receipt"></i>Kaart 1 — Opzet</div>
+          <div class="fg"><label>Titel</label><input type="text" id="pr-c1-title"></div>
+          <div class="fg"><label>Omschrijving</label><input type="text" id="pr-c1-desc"></div>
+          <div class="fg-row">
+            <div class="fg"><label>Prijs</label><input type="text" id="pr-c1-amount" placeholder="Op maat"></div>
+            <div class="fg"><label>Per</label><input type="text" id="pr-c1-sub" placeholder="eenmalig"></div>
+          </div>
+          <div class="fg"><label>CTA knoptekst</label><input type="text" id="pr-c1-cta"></div>
+          <div class="fg"><label>Voordelen</label>
+            <div class="dyn-list" id="pr-c1-feats-list"></div>
+            <button class="btn-add-item" onclick="prAddFeat(1)"><i class="ti ti-plus"></i>Voordeel toevoegen</button>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-title"><i class="ti ti-star"></i>Kaart 2 — Abonnement</div>
+          <div class="fg"><label>Badge label</label><input type="text" id="pr-c2-badge" placeholder="Populair"></div>
+          <div class="fg"><label>Titel</label><input type="text" id="pr-c2-title"></div>
+          <div class="fg"><label>Omschrijving</label><input type="text" id="pr-c2-desc"></div>
+          <div class="fg-row">
+            <div class="fg"><label>Prijs</label><input type="text" id="pr-c2-amount" placeholder="Op maat"></div>
+            <div class="fg"><label>Per</label><input type="text" id="pr-c2-sub" placeholder="maand"></div>
+          </div>
+          <div class="fg"><label>CTA knoptekst</label><input type="text" id="pr-c2-cta"></div>
+          <div class="fg"><label>Voordelen</label>
+            <div class="dyn-list" id="pr-c2-feats-list"></div>
+            <button class="btn-add-item" onclick="prAddFeat(2)"><i class="ti ti-plus"></i>Voordeel toevoegen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div id="view-seo" style="display:none">
+      <div class="ph">
+        <div class="ph-left"><h1>SEO</h1><p>Zoekmachine-instellingen per pagina</p></div>
+        <button class="btn btn-primary btn-sm" onclick="saveSeoAll()"><i class="ti ti-cloud-upload"></i>Alle pagina's opslaan</button>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title"><i class="ti ti-info-circle"></i>Tips voor goede SEO</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7">
+          <strong>Titel:</strong> 50–60 tekens · bevat je primaire zoekterm · eindigt met "— Briqo"<br>
+          <strong>Omschrijving:</strong> 150–160 tekens · prikkelend en informatief · bevat zoekterm<br>
+          <strong>OG Image:</strong> Gebruik een afbeelding van 1200×630px voor social sharing
+        </div>
+      </div>
+      <div id="seo-pages-list"></div>
     </div>
 
     <!-- HISTORY -->
@@ -468,16 +529,18 @@ async function loadDashCommits() {
 
 // ── VIEWS ─────────────────────────────────────────────────────────
 function showView(name) {
-  ['dashboard','pages','editor','global','history'].forEach(v => {
+  ['dashboard','pages','editor','global','history','pricing','seo'].forEach(v => {
     document.getElementById('view-' + v).style.display = v === name ? '' : 'none';
   });
   document.querySelectorAll('.sb-item').forEach(el => el.classList.remove('active'));
-  const navMap = { dashboard: 'nav-dashboard', pages: 'nav-pages', editor: 'nav-pages', global: 'nav-global', history: 'nav-history' };
+  const navMap = { dashboard: 'nav-dashboard', pages: 'nav-pages', editor: 'nav-pages', global: 'nav-global', history: 'nav-history', pricing: 'nav-pricing', seo: 'nav-seo' };
   const navEl = document.getElementById(navMap[name]);
   if (navEl) navEl.classList.add('active');
   if (name === 'pages') renderPagesList();
   if (name === 'history') loadHistory();
   if (name === 'global') renderGlobal();
+  if (name === 'pricing') loadPricingView();
+  if (name === 'seo') loadSeoView();
 }
 
 // ── PAGES LIST ────────────────────────────────────────────────────
@@ -949,6 +1012,149 @@ function showToast(msg, type) {
 
 // ── UTILS ─────────────────────────────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+
+// ── PRICING VIEW ──────────────────────────────────────────────────
+let pricingHomeData = null;
+
+async function loadPricingView() {
+  try {
+    if (!pricingHomeData) {
+      pricingHomeData = await ghRead(CONTENT_PATH + '/home.json');
+    }
+    const pricing = (pricingHomeData.blocks || []).find(b => b.type === 'pricing');
+    if (!pricing) { showToast('Geen pricing blok op homepagina gevonden', 'err'); return; }
+    const c1 = pricing.data.card1 || {};
+    const c2 = pricing.data.card2 || {};
+    document.getElementById('pr-c1-title').value = c1.title || '';
+    document.getElementById('pr-c1-desc').value = c1.desc || '';
+    document.getElementById('pr-c1-amount').value = c1.amount || '';
+    document.getElementById('pr-c1-sub').value = c1.amountSub || '';
+    document.getElementById('pr-c1-cta').value = c1.cta || '';
+    renderPrFeats(1, c1.features || []);
+    document.getElementById('pr-c2-badge').value = c2.badge || '';
+    document.getElementById('pr-c2-title').value = c2.title || '';
+    document.getElementById('pr-c2-desc').value = c2.desc || '';
+    document.getElementById('pr-c2-amount').value = c2.amount || '';
+    document.getElementById('pr-c2-sub').value = c2.amountSub || '';
+    document.getElementById('pr-c2-cta').value = c2.cta || '';
+    renderPrFeats(2, c2.features || []);
+  } catch(e) { showToast('Laden mislukt: ' + e.message, 'err'); }
+}
+
+function renderPrFeats(card, feats) {
+  const list = document.getElementById('pr-c' + card + '-feats-list');
+  list.innerHTML = feats.map((f, i) =>
+    '<div class="dyn-item" style="padding:8px"><div style="display:flex;gap:6px;align-items:center"><input type="text" value="' + esc(f) + '" oninput="prUpdateFeat(' + card + ',' + i + ',this.value)" style="flex:1;padding:6px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:13px"><button class="btn-del-item" onclick="prDelFeat(' + card + ',' + i + ')"><i class="ti ti-x"></i></button></div></div>'
+  ).join('');
+}
+
+function prGetFeats(card) {
+  return Array.from(document.getElementById('pr-c' + card + '-feats-list').querySelectorAll('input')).map(i => i.value);
+}
+function prAddFeat(card) {
+  const list = document.getElementById('pr-c' + card + '-feats-list');
+  const feats = prGetFeats(card);
+  feats.push('');
+  renderPrFeats(card, feats);
+  list.lastElementChild && list.lastElementChild.querySelector('input').focus();
+}
+function prUpdateFeat(card, idx, val) { /* live — read on save */ }
+function prDelFeat(card, idx) {
+  const feats = prGetFeats(card); feats.splice(idx, 1); renderPrFeats(card, feats);
+}
+
+async function savePricing() {
+  if (!pricingHomeData) return;
+  const pricing = pricingHomeData.blocks.find(b => b.type === 'pricing');
+  if (!pricing) return;
+  pricing.data.card1 = {
+    title: document.getElementById('pr-c1-title').value,
+    desc: document.getElementById('pr-c1-desc').value,
+    amount: document.getElementById('pr-c1-amount').value,
+    amountSub: document.getElementById('pr-c1-sub').value,
+    cta: document.getElementById('pr-c1-cta').value,
+    features: prGetFeats(1)
+  };
+  pricing.data.card2 = {
+    badge: document.getElementById('pr-c2-badge').value,
+    title: document.getElementById('pr-c2-title').value,
+    desc: document.getElementById('pr-c2-desc').value,
+    amount: document.getElementById('pr-c2-amount').value,
+    amountSub: document.getElementById('pr-c2-sub').value,
+    cta: document.getElementById('pr-c2-cta').value,
+    features: prGetFeats(2)
+  };
+  try {
+    await ghWrite(CONTENT_PATH + '/home.json', pricingHomeData, 'CMS: Prijzen bijgewerkt');
+    showToast('Prijzen opgeslagen!', 'ok'); startDeploy();
+  } catch(e) { showToast('Fout: ' + e.message, 'err'); }
+}
+
+// ── SEO VIEW ───────────────────────────────────────────────────────
+let seoPageCache = {};
+
+async function loadSeoView() {
+  const container = document.getElementById('seo-pages-list');
+  container.innerHTML = '<div style="color:var(--muted);padding:20px">Laden...</div>';
+  const rows = [];
+  for (const page of pagesRegistry.pages) {
+    const slug = page.slug || 'home';
+    try {
+      if (!seoPageCache[slug]) {
+        seoPageCache[slug] = await ghRead(CONTENT_PATH + '/' + slug + '.json');
+      }
+    } catch(e) { seoPageCache[slug] = { seo: {} }; }
+    const seo = seoPageCache[slug].seo || {};
+    rows.push('<div class="card" style="margin-bottom:14px"><div class="card-title"><i class="ti ti-file"></i>' + esc(page.title) + ' <span style="font-weight:400;color:var(--muted);font-size:12px">/' + esc(page.slug||'') + '</span></div>' +
+      '<div class="fg"><label>Paginatitel <span style="color:var(--muted)">(50–60 tekens aanbevolen)</span></label>' +
+      '<input type="text" id="seo-title-' + slug + '" value="' + esc(seo.title||'') + '" maxlength="70" oninput="seoCountChars(this,'seo-cnt-t-' + slug + '')"/>' +
+      '<div class="fg-hint" id="seo-cnt-t-' + slug + '" style="text-align:right">' + (seo.title||'').length + '/60</div></div>' +
+      '<div class="fg"><label>Meta omschrijving <span style="color:var(--muted)">(150–160 tekens)</span></label>' +
+      '<textarea id="seo-desc-' + slug + '" maxlength="180" oninput="seoCountChars(this,'seo-cnt-d-' + slug + '')">' + esc(seo.description||'') + '</textarea>' +
+      '<div class="fg-hint" id="seo-cnt-d-' + slug + '" style="text-align:right">' + (seo.description||'').length + '/160</div></div>' +
+      '<div class="fg-row">' +
+        '<div class="fg"><label>OG Image URL (1200×630px)</label><input type="text" id="seo-og-' + slug + '" value="' + esc(seo.ogImage||'') + '" placeholder="https://..."></div>' +
+        '<div class="fg"><label>Canonical URL</label><input type="text" id="seo-canon-' + slug + '" value="' + esc(seo.canonical||'') + '" placeholder="https://briqo.nl/' + (page.slug||'') + '"></div>' +
+      '</div>' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">' +
+        '<div style="font-size:12px;color:var(--muted)">Google-voorbeeld: <em>' + esc(seo.title||page.title) + '</em></div>' +
+        '<button class="btn btn-primary btn-sm" onclick="saveSeoPage('' + slug + '')"><i class="ti ti-device-floppy"></i>Opslaan</button>' +
+      '</div></div>');
+  }
+  container.innerHTML = rows.join('') || '<div style="color:var(--muted);padding:20px">Geen pagina's gevonden.</div>';
+}
+
+function seoCountChars(el, counterId) {
+  const limit = el.tagName === 'TEXTAREA' ? 160 : 60;
+  const len = el.value.length;
+  const counter = document.getElementById(counterId);
+  if (!counter) return;
+  counter.textContent = len + '/' + limit;
+  counter.style.color = len > limit ? 'var(--red)' : len > limit * 0.9 ? 'var(--amber)' : 'var(--muted)';
+}
+
+async function saveSeoPage(slug) {
+  if (!seoPageCache[slug]) return;
+  seoPageCache[slug].seo = {
+    title: document.getElementById('seo-title-' + slug).value,
+    description: document.getElementById('seo-desc-' + slug).value,
+    ogImage: document.getElementById('seo-og-' + slug).value,
+    canonical: document.getElementById('seo-canon-' + slug).value
+  };
+  try {
+    await ghWrite(CONTENT_PATH + '/' + slug + '.json', seoPageCache[slug], 'CMS: SEO bijgewerkt — ' + slug);
+    showToast('SEO voor ' + slug + ' opgeslagen!', 'ok'); startDeploy();
+  } catch(e) { showToast('Fout: ' + e.message, 'err'); }
+}
+
+async function saveSeoAll() {
+  for (const page of pagesRegistry.pages) {
+    const slug = page.slug || 'home';
+    if (document.getElementById('seo-title-' + slug)) await saveSeoPage(slug);
+  }
+  showToast('Alle SEO instellingen opgeslagen!', 'ok');
+}
 
 // ── BOOT ─────────────────────────────────────────────────────────
 document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key==='Enter') login(); });
