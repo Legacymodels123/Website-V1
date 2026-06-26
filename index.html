@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO — beheerd via /admin of seo-config.js -->
+  <title>Briqo — Slimme AI-tools voor slim MKB</title>
+  <meta name="description" content="Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1–15 medewerkers. Van offertecalculatoren tot lead-capture tools — in dagen live, niet maanden.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0F172A">
+  <link rel="canonical" href="https://briqo.nl">
+
+  <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
+  <meta property="og:title" content="Briqo — Slimme AI-tools voor slim MKB">
+  <meta property="og:description" content="Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1–15 medewerkers. Van offertecalculatoren tot lead-capture tools — in dagen live, niet maanden.">
+  <meta property="og:image" content="https://briqo.nl/og-image.png">
+  <meta property="og:url" content="https://briqo.nl">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Briqo">
+  <meta property="og:locale" content="nl_NL">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Briqo — Slimme AI-tools voor slim MKB">
+  <meta name="twitter:description" content="Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1–15 medewerkers. Van offertecalculatoren tot lead-capture tools — in dagen live, niet maanden.">
+  <meta name="twitter:image" content="https://briqo.nl/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230F172A'/><rect x='38' y='38' width='42' height='42' rx='8' fill='%2314B8A6'/><rect x='100' y='38' width='42' height='42' rx='8' fill='%2314B8A6' opacity='.55'/><rect x='38' y='100' width='42' height='42' rx='8' fill='%2314B8A6' opacity='.55'/><rect x='100' y='100' width='42' height='42' rx='8' fill='%2314B8A6'/></svg>">
+
+  <!-- SEO config — overschrijft bovenstaande waarden als je ze aanpast via /admin -->
+  <script src="seo-config.js"></script>
+  <!-- Content config — beheert alle teksten via /admin.html -->
+  <script src="content-config.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #F8FAFC; color: #0F172A; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .section { padding: 100px 0; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logomark {
+      width: 34px; height: 34px; background: #0F172A; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logomark svg { width: 18px; height: 18px; fill: none; stroke: #14B8A6; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-name { font-size: 18px; font-weight: 700; color: #0F172A; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-link { font-size: 14px; font-weight: 500; color: #64748B; transition: color 0.15s; }
+    .nav-link:hover { color: #0F172A; }
+    .nav-cta {
+      background: #0F172A; color: white; font-size: 14px; font-weight: 600;
+      padding: 10px 20px; border-radius: 10px; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #1E293B; }
+
+    /* HERO */
+    .hero {
+      background: #0F172A;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-bg-photo {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.12; object-position: center;
+    }
+    .hero-bg-grad {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F172A 55%, rgba(15,23,42,0.85) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: end;
+      padding: 96px 0 0;
+    }
+    .hero-content { padding-bottom: 96px; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(20,184,166,0.12);
+      border: 1px solid rgba(20,184,166,0.25);
+      color: #5EEAD4; border-radius: 100px;
+      padding: 6px 16px; font-size: 13px; font-weight: 500;
+      margin-bottom: 32px;
+    }
+    .pill-dot { width: 6px; height: 6px; background: #14B8A6; border-radius: 50%; }
+    .hero h1 {
+      font-size: clamp(42px, 5.5vw, 66px);
+      font-weight: 700; line-height: 1.06;
+      letter-spacing: -0.035em; color: white;
+      margin-bottom: 22px;
+    }
+    .hero h1 em { font-style: normal; color: #14B8A6; }
+    .hero-sub {
+      font-size: 17px; color: rgba(255,255,255,0.48);
+      line-height: 1.78; margin-bottom: 40px; max-width: 440px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; padding: 12px 22px;
+      border-radius: 10px; cursor: pointer; transition: all 0.2s;
+      border: none;
+    }
+    .btn-teal { background: #14B8A6; color: white; }
+    .btn-teal:hover { background: #0F9488; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(20,184,166,0.3); }
+    .btn-ghost-white {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.8);
+    }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.14); }
+    .btn-lg { font-size: 16px; padding: 14px 28px; border-radius: 12px; }
+    .btn-outline {
+      background: white; color: #0F172A;
+      border: 1.5px solid #E2E8F0;
+    }
+    .btn-outline:hover { border-color: #0F172A; }
+    .hero-proof { display: flex; align-items: center; gap: 12px; }
+    .proof-avatars { display: flex; }
+    .pavatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 2px solid #0F172A; overflow: hidden; margin-right: -9px;
+      background: #1E293B;
+    }
+    .pavatar img { width: 100%; height: 100%; object-fit: cover; }
+    .proof-text { margin-left: 16px; font-size: 13px; color: rgba(255,255,255,0.35); }
+    .proof-text strong { color: rgba(255,255,255,0.65); font-weight: 500; }
+
+    /* Hero browser mockup */
+    .hero-visual { position: relative; align-self: end; }
+    .browser {
+      background: #1a2535;
+      border-radius: 14px 14px 0 0;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-bottom: none;
+      box-shadow: 0 -28px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+    .browser-bar {
+      background: #141e2d; border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 18px; display: flex; align-items: center; gap: 14px;
+    }
+    .b-dots { display: flex; gap: 7px; }
+    .b-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .bd1 { background: #FF5F57; } .bd2 { background: #FFBD2E; } .bd3 { background: #28C941; }
+    .b-url {
+      flex: 1; background: rgba(255,255,255,0.06); border-radius: 7px;
+      padding: 5px 14px; font-size: 12px; color: rgba(255,255,255,0.28);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+    .browser-body { padding: 28px; }
+    .tool-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .tool-logo-badge {
+      width: 40px; height: 40px; background: #14B8A6; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800; color: white; letter-spacing: -0.5px;
+    }
+    .tool-hname { font-size: 14px; font-weight: 600; color: white; }
+    .tool-hsub { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+    .live-badge {
+      margin-left: auto; display: flex; align-items: center; gap: 5px;
+      background: rgba(20,184,166,0.14); border: 1px solid rgba(20,184,166,0.28);
+      border-radius: 100px; padding: 3px 10px; font-size: 11px; color: #5EEAD4; font-weight: 600;
+    }
+    .ld { width: 5px; height: 5px; border-radius: 50%; background: #14B8A6; }
+    .tool-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 16px; }
+    .tfield {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 9px; padding: 11px 14px;
+    }
+    .tf-label { font-size: 10px; color: rgba(255,255,255,0.28); font-weight: 500; margin-bottom: 4px; }
+    .tf-value { font-size: 14px; color: white; font-weight: 500; }
+    .tool-result {
+      background: rgba(20,184,166,0.1); border: 1px solid rgba(20,184,166,0.22);
+      border-radius: 11px; padding: 16px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .tr-label { font-size: 13px; color: #5EEAD4; font-weight: 500; }
+    .tr-value { font-size: 22px; font-weight: 700; color: white; }
+
+    /* LOGOS */
+    .logos { background: white; border-bottom: 1px solid #F1F5F9; padding: 28px 0; }
+    .logos-row { display: flex; align-items: center; gap: 0; }
+    .logos-label { font-size: 12px; color: #94A3B8; font-weight: 500; padding-right: 40px; border-right: 1px solid #E2E8F0; white-space: nowrap; }
+    .logos-items { display: flex; align-items: center; gap: 48px; padding-left: 40px; }
+    .logo-entry { display: flex; align-items: center; gap: 9px; opacity: 0.55; transition: opacity 0.2s; }
+    .logo-entry:hover { opacity: 1; }
+    .logo-entry-icon { width: 32px; height: 32px; background: #0F172A; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #14B8A6; font-size: 11px; font-weight: 800; }
+    .logo-entry-name { font-size: 14px; font-weight: 600; color: #0F172A; }
+
+    /* PROBLEM SECTION */
+    .problem { background: #F8FAFC; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #14B8A6; }
+    .section-h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; line-height: 1.14; letter-spacing: -0.025em; margin-top: 14px; }
+    .section-sub { font-size: 17px; color: #64748B; line-height: 1.72; margin-top: 14px; max-width: 520px; }
+    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .p-card { background: white; border: 1px solid #E8EEF5; border-radius: 20px; overflow: hidden; transition: box-shadow 0.25s; }
+    .p-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .p-card-img { height: 210px; overflow: hidden; }
+    .p-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .p-card:hover .p-card-img img { transform: scale(1.05); }
+    .p-card-body { padding: 26px; }
+    .p-num { font-size: 11px; font-weight: 700; color: #14B8A6; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .p-title { font-size: 17px; font-weight: 600; color: #0F172A; line-height: 1.32; margin-bottom: 10px; }
+    .p-desc { font-size: 14px; color: #64748B; line-height: 1.68; }
+
+    /* WHAT WE BUILD */
+    .build-section { background: #0F172A; }
+    .build-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(255,255,255,0.06);
+      border-radius: 22px; overflow: hidden; margin-top: 56px;
+    }
+    .build-tile { background: #0F172A; padding: 34px; transition: background 0.2s; }
+    .build-tile:hover { background: #162032; }
+    .build-icon {
+      width: 50px; height: 50px; border-radius: 14px;
+      background: rgba(20,184,166,0.1); border: 1px solid rgba(20,184,166,0.18);
+      display: flex; align-items: center; justify-content: center;
+      color: #14B8A6; font-size: 24px; margin-bottom: 20px;
+    }
+    .build-title { font-size: 16px; font-weight: 600; color: white; margin-bottom: 9px; }
+    .build-desc { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.65; margin-bottom: 16px; }
+    .build-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .b-tag { font-size: 11px; color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.06); padding: 3px 10px; border-radius: 100px; }
+
+    /* CASE STUDY */
+    .case-section { background: white; }
+    .case-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .case-photo { border-radius: 24px; overflow: hidden; height: 520px; position: relative; }
+    .case-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .case-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.82) 0%, rgba(15,23,42,0.15) 55%, transparent 100%); }
+    .case-photo-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+      border-radius: 14px; padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .cpb-icon { width: 36px; height: 36px; background: #0F172A; border-radius: 9px; display: flex; align-items: center; justify-content: center; color: #14B8A6; font-size: 11px; font-weight: 800; }
+    .cpb-name { font-size: 13px; font-weight: 700; color: #0F172A; }
+    .cpb-type { font-size: 12px; color: #64748B; margin-top: 1px; }
+    .case-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 32px 0; }
+    .cs-stat { background: #F8FAFC; border: 1px solid #E8EEF5; border-radius: 16px; padding: 22px; text-align: center; }
+    .cs-val { font-size: 28px; font-weight: 700; color: #14B8A6; }
+    .cs-lbl { font-size: 12px; color: #64748B; margin-top: 5px; line-height: 1.45; }
+    .case-quote {
+      border-left: 3px solid #14B8A6; border-radius: 0 14px 14px 0;
+      background: #F8FAFC; padding: 20px 22px;
+    }
+    .q-text { font-size: 14px; color: #475569; line-height: 1.75; font-style: italic; margin-bottom: 12px; }
+    .q-author { font-size: 13px; font-weight: 600; color: #0F172A; }
+
+    /* BRANCHES */
+    .branches-section { background: #F8FAFC; }
+    .branches-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+    .branch-card { border-radius: 20px; overflow: hidden; position: relative; aspect-ratio: 3/4; cursor: pointer; }
+    .branch-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
+    .branch-card:hover img { transform: scale(1.07); }
+    .branch-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.25) 55%, transparent 100%); }
+    .branch-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px; }
+    .branch-name { font-size: 14px; font-weight: 600; color: white; margin-bottom: 4px; }
+    .branch-count { font-size: 12px; color: rgba(255,255,255,0.45); }
+    .branch-live { position: absolute; top: 14px; right: 14px; background: #14B8A6; color: white; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 100px; }
+    .branch-plus {
+      background: white; border: 2px dashed #CBD5E1; border-radius: 20px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; aspect-ratio: 3/4; cursor: pointer; transition: border-color 0.2s;
+    }
+    .branch-plus:hover { border-color: #14B8A6; }
+    .branch-plus-icon { font-size: 28px; color: #94A3B8; }
+    .branch-plus-text { font-size: 14px; font-weight: 600; color: #64748B; }
+    .branch-plus-sub { font-size: 12px; color: #94A3B8; }
+
+    /* HOW IT WORKS */
+    .process-section { background: white; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 60px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 26px; left: 70px; right: 70px; height: 1px; background: #E2E8F0; z-index: 0; }
+    .p-step { text-align: center; position: relative; z-index: 1; }
+    .p-step-circle {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #0F172A; border: 4px solid #F8FAFC;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; box-shadow: 0 0 0 1px #E2E8F0;
+    }
+    .p-step-circle.active { background: #14B8A6; box-shadow: 0 0 0 1px #14B8A6, 0 0 20px rgba(20,184,166,0.3); }
+    .p-step-num { font-size: 16px; font-weight: 700; color: white; }
+    .p-step-title { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 8px; }
+    .p-step-desc { font-size: 13px; color: #64748B; line-height: 1.65; }
+    .p-step-tag { display: inline-block; margin-top: 12px; font-size: 11px; background: #F1F5F9; color: #64748B; padding: 4px 12px; border-radius: 100px; }
+
+    /* PRICING */
+    .pricing-section { background: #F8FAFC; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 760px; margin: 56px auto 0; }
+    .price-card { background: white; border: 1px solid #E2E8F0; border-radius: 24px; padding: 36px; }
+    .price-card.featured { border-color: #14B8A6; box-shadow: 0 0 0 1px #14B8A6, 0 16px 48px rgba(20,184,166,0.1); }
+    .price-badge { display: inline-block; background: #CCFBF1; color: #0F766E; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 18px; }
+    .price-title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 8px; }
+    .price-desc { font-size: 14px; color: #64748B; line-height: 1.65; margin-bottom: 26px; }
+    .price-amount { font-size: 38px; font-weight: 700; color: #0F172A; }
+    .price-amount sub { font-size: 15px; font-weight: 400; color: #94A3B8; }
+    .price-hr { border: none; border-top: 1px solid #F1F5F9; margin: 26px 0; }
+    .price-feats { display: flex; flex-direction: column; gap: 13px; }
+    .pf { display: flex; align-items: flex-start; gap: 11px; font-size: 14px; color: #475569; }
+    .pf-check { color: #14B8A6; font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+    .price-btn { display: block; text-align: center; margin-top: 28px; width: 100%; }
+
+    /* ABOUT */
+    .about-section { background: white; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; }
+    .about-photo { border-radius: 24px; overflow: hidden; height: 560px; position: relative; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .about-photo-tag {
+      position: absolute; bottom: 24px; right: 24px;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+      border-radius: 14px; padding: 14px 20px;
+    }
+    .apt-name { font-size: 15px; font-weight: 700; color: #0F172A; }
+    .apt-role { font-size: 12px; color: #64748B; margin-top: 3px; }
+    .about-content p { font-size: 16px; color: #64748B; line-height: 1.78; margin-bottom: 16px; }
+    .about-vals { display: flex; flex-direction: column; gap: 18px; margin-top: 36px; }
+    .av { display: flex; gap: 18px; align-items: flex-start; }
+    .av-icon { width: 46px; height: 46px; border-radius: 13px; background: #F8FAFC; border: 1px solid #E8EEF5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #14B8A6; font-size: 22px; }
+    .av-title { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 4px; }
+    .av-desc { font-size: 13px; color: #64748B; line-height: 1.62; }
+
+    /* CTA */
+    .cta-section { background: #0F172A; position: relative; overflow: hidden; }
+    .cta-bg-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.13; }
+    .cta-bg-grad { position: absolute; inset: 0; background: linear-gradient(to right, #0F172A 40%, rgba(15,23,42,0.6) 100%); }
+    .cta-inner { position: relative; z-index: 1; text-align: center; max-width: 660px; margin: 0 auto; }
+    .cta-section h2 { font-size: clamp(32px, 4.5vw, 54px); font-weight: 700; color: white; margin-bottom: 18px; letter-spacing: -0.03em; }
+    .cta-section p { font-size: 17px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 40px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-note { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.2); }
+    .cta-stats-row { display: flex; justify-content: center; gap: 56px; margin-top: 60px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .cs-stat2 { text-align: center; }
+    .cs-stat2-v { font-size: 34px; font-weight: 700; color: white; letter-spacing: -0.02em; }
+    .cs-stat2-l { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 5px; }
+
+    /* FOOTER */
+    footer { background: #020617; padding: 60px 0 36px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
+    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+    .footer-lm { width: 32px; height: 32px; background: #1E293B; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+    .footer-lm svg { width: 16px; height: 16px; fill: none; stroke: #14B8A6; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .footer-ln { font-size: 16px; font-weight: 700; color: white; }
+    .footer-desc { font-size: 14px; color: #334155; line-height: 1.7; }
+    .footer-col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 11px; }
+    .footer-link { font-size: 14px; color: #334155; transition: color 0.2s; }
+    .footer-link:hover { color: rgba(255,255,255,0.65); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.04); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 13px; color: #1E293B; }
+    .footer-tag { font-size: 13px; color: #1E293B; }
+
+    /* =====================
+       DEMO MODAL
+    ===================== */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(2,6,23,0.75); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: white; border-radius: 24px; width: 100%; max-width: 560px;
+      padding: 40px; position: relative; max-height: 90vh; overflow-y: auto;
+      transform: translateY(16px); transition: transform 0.25s ease;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #F1F5F9; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: #64748B; font-size: 18px; transition: background 0.2s;
+    }
+    .modal-close:hover { background: #E2E8F0; }
+    .modal-label { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #14B8A6; margin-bottom: 8px; }
+    .modal h2 { font-size: 26px; font-weight: 700; color: #0F172A; letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1.2; }
+    .modal-sub { font-size: 14px; color: #64748B; margin-bottom: 28px; line-height: 1.6; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: #0F172A; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 11px 14px; font-size: 14px; font-family: inherit;
+      border: 1.5px solid #E2E8F0; border-radius: 10px; color: #0F172A;
+      background: #F8FAFC; transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none; appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: #14B8A6; background: white;
+      box-shadow: 0 0 0 3px rgba(20,184,166,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group select { cursor: pointer; }
+    .form-submit {
+      width: 100%; padding: 14px; background: #14B8A6; color: white;
+      font-size: 15px; font-weight: 600; border: none; border-radius: 12px;
+      cursor: pointer; transition: all 0.2s; margin-top: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .form-submit:hover { background: #0F9488; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(20,184,166,0.3); }
+    .form-submit:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
+    .form-note { font-size: 12px; color: #94A3B8; text-align: center; margin-top: 12px; }
+    .form-success { text-align: center; padding: 20px 0; }
+    .form-success-icon { width: 64px; height: 64px; background: #CCFBF1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; color: #14B8A6; }
+    .form-success h3 { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 10px; }
+    .form-success p { font-size: 15px; color: #64748B; line-height: 1.65; }
+
+    /* =====================
+       RESPONSIVE — MOBILE
+    ===================== */
+    @media (max-width: 768px) {
+
+      .container { padding: 0 20px; }
+      .section { padding: 64px 0; }
+
+      /* NAV */
+      .nav-links { display: none; }
+      .nav-inner { height: 60px; }
+      .nav-name { font-size: 16px; }
+
+      /* HERO */
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 64px 0 0; }
+      .hero-content { padding-bottom: 0; }
+      .hero h1 { font-size: 36px; }
+      .hero-sub { font-size: 15px; max-width: 100%; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+      .hero-visual { padding-bottom: 0; }
+      .browser-body { padding: 20px; }
+      .tool-fields { grid-template-columns: 1fr 1fr; gap: 7px; }
+      .tf-value { font-size: 13px; }
+
+      /* LOGOS */
+      .logos-row { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .logos-label { border-right: none; padding-right: 0; }
+      .logos-items { padding-left: 0; gap: 24px; flex-wrap: wrap; }
+
+      /* PROBLEM */
+      .problem-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* BUILD / TOOLS */
+      .build-grid { grid-template-columns: 1fr; }
+      .build-tile { padding: 24px; }
+
+      /* CASE STUDY */
+      .case-inner { grid-template-columns: 1fr; gap: 36px; }
+      .case-photo { height: 280px; }
+      .case-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .cs-val { font-size: 22px; }
+      .cs-lbl { font-size: 11px; }
+
+      /* BRANCHES */
+      .branches-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .branch-card { aspect-ratio: 4/5; }
+      .branch-name { font-size: 13px; }
+      .branch-plus { aspect-ratio: 4/5; }
+
+      /* PROCESS */
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .process-steps::before { display: none; }
+
+      /* PRICING */
+      .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+
+      /* ABOUT */
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo { height: 320px; }
+
+      /* CTA */
+      .cta-section h2 { font-size: 30px; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .cta-btns .btn { width: 100%; justify-content: center; max-width: 360px; }
+      .cta-stats-row { gap: 28px; flex-wrap: wrap; }
+      .cs-stat2-v { font-size: 26px; }
+
+      /* FOOTER */
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+
+      /* SECTION HEADINGS */
+      .section-h2 { font-size: 28px; }
+      .section-sub { font-size: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 30px; }
+      .branches-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .case-stats { grid-template-columns: repeat(3, 1fr); }
+      .process-steps { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .tool-fields { grid-template-columns: 1fr 1fr; }
+      .cta-stats-row { gap: 20px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logomark">
+          <svg viewBox="0 0 20 20">
+            <rect x="2" y="2" width="7" height="7" rx="1.5"/>
+            <rect x="11" y="2" width="7" height="7" rx="1.5"/>
+            <rect x="2" y="11" width="7" height="7" rx="1.5"/>
+            <rect x="11" y="11" width="7" height="7" rx="1.5"/>
+          </svg>
+        </div>
+        <span class="nav-name">Briqo</span>
+      </div>
+      <div class="nav-links">
+        <a href="#branches" class="nav-link">Branches</a>
+        <a href="#werkwijze" class="nav-link">Werkwijze</a>
+        <a href="#cases" class="nav-link">Cases</a>
+        <a href="#prijzen" class="nav-link">Prijzen</a>
+        <a href="#over-ons" class="nav-link">Over ons</a>
+      </div>
+      <a href="#" onclick="openModal();return false;" class="nav-cta">Demo aanvragen</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-bg-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=60" alt="">
+  <div class="hero-bg-grad"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-pill">
+          <div class="pill-dot"></div>
+          <span id="cc-hero-pill">Eerste live tool: SSPW Prijscalculator</span>
+        </div>
+        <h1 id="cc-hero-h1">Wij bouwen de<br>tool die jouw<br>bedrijf <em>mist</em></h1>
+        <p class="hero-sub" id="cc-hero-sub">Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan — live op jouw website in minder dan twee weken.</p>
+        <div class="hero-btns">
+          <a href="#" onclick="openModal();return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Demo aanvragen</span> <i class="ti ti-arrow-right"></i></a>
+          <a href="#cases" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk cases</a>
+        </div>
+        <div class="hero-proof">
+          <div class="proof-avatars">
+            <div class="pavatar">
+              <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=60&q=80" alt="">
+            </div>
+          </div>
+          <span class="proof-text" style="margin-left:16px;" id="cc-hero-proof"><strong>Sun Sauna &amp; Poolworld</strong> werkt al met Briqo</span>
+        </div>
+      </div>
+
+      <!-- BROWSER MOCKUP -->
+      <div class="hero-visual">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dots"><div class="b-dot bd1"></div><div class="b-dot bd2"></div><div class="b-dot bd3"></div></div>
+            <div class="b-url">sspw-offerte-calc.vercel.app</div>
+          </div>
+          <div class="browser-body">
+            <div class="tool-header">
+              <div class="tool-logo-badge">SSPW</div>
+              <div>
+                <div class="tool-hname">Zwembad Prijscalculator</div>
+                <div class="tool-hsub">Sun Sauna &amp; Poolworld</div>
+              </div>
+              <div class="live-badge"><div class="ld"></div> Live</div>
+            </div>
+            <div class="tool-fields">
+              <div class="tfield"><div class="tf-label">Type zwembad</div><div class="tf-value">Inbouw liner</div></div>
+              <div class="tfield"><div class="tf-label">Afmeting</div><div class="tf-value">8 × 4 meter</div></div>
+              <div class="tfield"><div class="tf-label">Verwarming</div><div class="tf-value">Warmtepomp</div></div>
+              <div class="tfield"><div class="tf-label">Extra's</div><div class="tf-value">LED + robot</div></div>
+            </div>
+            <div class="tool-result">
+              <div class="tr-label">Geschatte investering</div>
+              <div class="tr-value">€ 24.500 – 28.000</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <div class="container">
+    <div class="logos-row">
+      <div class="logos-label">Vertrouwd door</div>
+      <div class="logos-items">
+        <div class="logo-entry">
+          <div class="logo-entry-icon">SSPW</div>
+          <span class="logo-entry-name">Sun Sauna &amp; Poolworld</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section problem">
+  <div class="container">
+    <div class="section-label">Herken je dit?</div>
+    <h2 class="section-h2" style="max-width:560px;">Jouw klant wil nu een antwoord.<br>Jij kan dat nog niet geven.</h2>
+    <div class="problem-grid">
+      <div class="p-card">
+        <div class="p-card-img">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Klant aan de balie">
+        </div>
+        <div class="p-card-body">
+          <div class="p-num">01</div>
+          <div class="p-title">Klanten bellen voor iets wat online kan</div>
+          <div class="p-desc">Offerteaanvragen, prijsindicaties, productconfiguraties — ze kosten jou en je klant onnodig tijd aan de telefoon.</div>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Laptop op bureau">
+        </div>
+        <div class="p-card-body">
+          <div class="p-num">02</div>
+          <div class="p-title">Leads verdwijnen zonder actie</div>
+          <div class="p-desc">Bezoekers landen op jouw website, zien geen interactieve tool en vertrekken — naar een concurrent die wél direct antwoord geeft.</div>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-card-img">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="Zakelijke bespreking">
+        </div>
+        <div class="p-card-body">
+          <div class="p-num">03</div>
+          <div class="p-title">Maatwerk voelt te duur en te complex</div>
+          <div class="p-desc">Een bureau vraagt €15.000 en 3 maanden. Een standaard plugin past nooit precies. Dus blijft het erbij.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="section build-section">
+  <div class="container">
+    <div class="section-label" style="color:#5EEAD4;">Wat we bouwen</div>
+    <h2 class="section-h2" style="color:white;max-width:500px;">6 soorten tools,<br>voor elke situatie</h2>
+    <div class="build-grid">
+      <div class="build-tile">
+        <div class="build-icon"><i class="ti ti-calculator"></i></div>
+        <div class="build-title">Prijscalculator</div>
+        <div class="build-desc">Klant configureert zelf en krijgt direct een prijsindicatie. Minder telefoontjes, meer gekwalificeerde leads.</div>
+        <div class="build-tags"><span class="b-tag">Zwembad</span><span class="b-tag">Installatie</span><span class="b-tag">Lease</span></div>
+      </div>
+      <div class="build-tile">
+        <div class="build-icon"><i class="ti ti-adjustments-horizontal"></i></div>
+        <div class="build-title">Productconfigurator</div>
+        <div class="build-desc">Klant stelt stap voor stap zijn product samen, ziet de prijs live updaten.</div>
+        <div class="build-tags"><span class="b-tag">Automotive</span><span class="b-tag">Retail</span><span class="b-tag">Beauty</span></div>
+      </div>
+      <div class="build-tile">
+        <div class="build-icon"><i class="ti ti-sparkles"></i></div>
+        <div class="build-title">AI Quick-Win Scan</div>
+        <div class="build-desc">8 vragen, 3 concrete AI-kansen. Klant ziet direct wat mogelijk is — warm lead voor jou.</div>
+        <div class="build-tags"><span class="b-tag">Zakelijke dienstverlening</span><span class="b-tag">Advies</span></div>
+      </div>
+      <div class="build-tile">
+        <div class="build-icon"><i class="ti ti-file-invoice"></i></div>
+        <div class="build-title">Offertevoorbereider</div>
+        <div class="build-desc">Klant vult intake in, jij ontvangt een gestructureerde offertevoorbereiding klaar om te versturen.</div>
+        <div class="build-tags"><span class="b-tag">Bouw</span><span class="b-tag">Events</span><span class="b-tag">Zorg</span></div>
+      </div>
+      <div class="build-tile">
+        <div class="build-icon"><i class="ti ti-users"></i></div>
+        <div class="build-title">Lead capture tool</div>
+        <div class="build-desc">Slimme formulieren die kwalificeren terwijl ze invullen. Jij ontvangt alleen leads die er klaar voor zijn.</div>
+        <div class="build-tags"><span class="b-tag">Horeca</span><span class="b-tag">Coaching</span><span class="b-tag">Retail</span></div>
+      </div>
+      <div class="build-tile">
+        <div class="build-icon"><i class="ti ti-brain"></i></div>
+        <div class="build-title">AI-adviesmodule</div>
+        <div class="build-desc">Klant beschrijft situatie, tool genereert een gepersonaliseerd advies of rapport.</div>
+        <div class="build-tags"><span class="b-tag">Zorg</span><span class="b-tag">Finance</span><span class="b-tag">HR</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="section case-section" id="cases">
+  <div class="container">
+    <div class="case-inner">
+      <div class="case-photo">
+        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=900&q=85" alt="Sun Sauna & Poolworld zwembad">
+        <div class="case-photo-overlay"></div>
+        <div class="case-photo-badge">
+          <div class="cpb-icon">SSPW</div>
+          <div>
+            <div class="cpb-name">Sun Sauna &amp; Poolworld</div>
+            <div class="cpb-type">Zwembad &amp; Buitenleven</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Live case</div>
+        <h2 class="section-h2" style="margin-bottom:18px;">Hoe SSPW meer leads vangt<br>met minder telefoontjes</h2>
+        <p style="font-size:16px;color:#64748B;line-height:1.75;">Sun Sauna &amp; Poolworld had een herkenbaar probleem: klanten belden voor prijsindicaties die ook online gegeven konden worden. We bouwden een interactieve calculator — in 10 dagen live.</p>
+        <div class="case-stats">
+          <div class="cs-stat"><div class="cs-val">10</div><div class="cs-lbl">Dagen van brief naar live</div></div>
+          <div class="cs-stat"><div class="cs-val">24/7</div><div class="cs-lbl">Zelfservice voor klanten</div></div>
+          <div class="cs-stat"><div class="cs-val">↓</div><div class="cs-lbl">Minder onnodige telefoontjes</div></div>
+        </div>
+        <div class="case-quote">
+          <p class="q-text">"Klanten snappen nu zelf wat een zwembad kost voordat ze contact opnemen. De gesprekken die we nog voeren zijn meteen veel concreter."</p>
+          <div class="q-author">— Sun Sauna &amp; Poolworld</div>
+        </div>
+        <a href="https://sspw-offerte-calc.vercel.app/" target="_blank" class="btn btn-outline" style="margin-top:28px;font-size:15px;padding:12px 22px;">Bekijk live tool <i class="ti ti-external-link"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section class="section branches-section" id="branches">
+  <div class="container">
+    <div class="section-label">Branches</div>
+    <h2 class="section-h2">Voor welke sector werk jij?</h2>
+    <p class="section-sub">Klik op jouw branche en zie welke tools beschikbaar zijn — of laat ons iets nieuws bouwen.</p>
+    <div class="branches-grid" id="cc-branches-grid">
+      <div class="branch-card">
+        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80" alt="Zwembad">
+        <div class="branch-overlay"></div>
+        <div class="branch-live">Live</div>
+        <div class="branch-content">
+          <div class="branch-name">Zwembad &amp; Buitenleven</div>
+          <div class="branch-count">1 tool beschikbaar</div>
+        </div>
+      </div>
+      <div class="branch-card">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80" alt="Automotive">
+        <div class="branch-overlay"></div>
+        <div class="branch-content">
+          <div class="branch-name">Automotive</div>
+          <div class="branch-count">3 tools beschikbaar</div>
+        </div>
+      </div>
+      <div class="branch-card">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80" alt="Installatie Bouw">
+        <div class="branch-overlay"></div>
+        <div class="branch-content">
+          <div class="branch-name">Installatie &amp; Bouw</div>
+          <div class="branch-count">2 tools beschikbaar</div>
+        </div>
+      </div>
+      <div class="branch-card">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80" alt="Beauty Wellness">
+        <div class="branch-overlay"></div>
+        <div class="branch-content">
+          <div class="branch-name">Beauty &amp; Wellness</div>
+          <div class="branch-count">2 tools beschikbaar</div>
+        </div>
+      </div>
+      <div class="branch-card">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80" alt="Retail">
+        <div class="branch-overlay"></div>
+        <div class="branch-content">
+          <div class="branch-name">Retail</div>
+          <div class="branch-count">2 tools beschikbaar</div>
+        </div>
+      </div>
+      <div class="branch-card">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Zakelijke Dienstverlening">
+        <div class="branch-overlay"></div>
+        <div class="branch-content">
+          <div class="branch-name">Zakelijke Dienstverlening</div>
+          <div class="branch-count">2 tools beschikbaar</div>
+        </div>
+      </div>
+      <div class="branch-card">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Horeca Recreatie">
+        <div class="branch-overlay"></div>
+        <div class="branch-content">
+          <div class="branch-name">Horeca &amp; Recreatie</div>
+          <div class="branch-count">2 tools beschikbaar</div>
+        </div>
+      </div>
+      <div class="branch-plus">
+        <div class="branch-plus-icon"><i class="ti ti-plus"></i></div>
+        <div class="branch-plus-text">Jouw branche</div>
+        <div class="branch-plus-sub">Neem contact op</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section process-section" id="werkwijze">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Werkwijze</div>
+    <h2 class="section-h2" style="text-align:center;">Van idee naar live in twee weken</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Geen lange trajecten, geen onduidelijke offertes. Elke stap is concreet en transparant.</p>
+    <div class="process-steps">
+      <div class="p-step">
+        <div class="p-step-circle"><div class="p-step-num">1</div></div>
+        <div class="p-step-title">Intakegesprek</div>
+        <div class="p-step-desc">We bespreken jouw probleem en klant. Wat moet de tool doen, en voor wie?</div>
+        <div class="p-step-tag">Gratis · 30 min</div>
+      </div>
+      <div class="p-step">
+        <div class="p-step-circle"><div class="p-step-num">2</div></div>
+        <div class="p-step-title">Voorstel &amp; scope</div>
+        <div class="p-step-desc">Je ontvangt een heldere scope: wat we bouwen, wat het kost en wanneer het live gaat.</div>
+        <div class="p-step-tag">Binnen 2 werkdagen</div>
+      </div>
+      <div class="p-step">
+        <div class="p-step-circle active"><div class="p-step-num">3</div></div>
+        <div class="p-step-title">Bouw (2 weken)</div>
+        <div class="p-step-desc">We bouwen de MVP. Jij geeft feedback op een tussentijdse versie, wij passen aan.</div>
+        <div class="p-step-tag">Next.js · Supabase · Vercel</div>
+      </div>
+      <div class="p-step">
+        <div class="p-step-circle"><div class="p-step-num">4</div></div>
+        <div class="p-step-title">Live &amp; doorontwikkeling</div>
+        <div class="p-step-desc">De tool gaat live op jouw domein. We bouwen door op basis van echte data.</div>
+        <div class="p-step-tag">Maandabonnement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing-section" id="prijzen">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Investering</div>
+    <h2 class="section-h2" style="text-align:center;">Transparante prijzen,<br>geen verrassingen</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Eenmalige opzet + maandabonnement. Jij betaalt alleen als de tool live is.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-title" id="cc-p1-title">Opzet</div>
+        <div class="price-desc" id="cc-p1-desc">Eenmalig — van brief tot live MVP op jouw eigen domein.</div>
+        <div class="price-amount"><span id="cc-p1-amount">Op maat</span><sub> / <span id="cc-p1-sub">eenmalig</span></sub></div>
+        <hr class="price-hr">
+        <div class="price-feats" id="cc-p1-feats">
+          <div class="pf"><i class="ti ti-check pf-check"></i>Intakegesprek &amp; scope</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Ontwerp &amp; volledige bouw</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Live op Vercel + eigen domein</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Admin dashboard voor leads</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Supabase database</div>
+        </div>
+        <a href="#" onclick="openModal();return false;" class="btn btn-outline price-btn" style="font-size:15px;padding:13px 22px;" id="cc-p1-cta">Vraag offerte aan</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge" id="cc-p2-badge">Maandelijks opzegbaar</div>
+        <div class="price-title" id="cc-p2-title">Abonnement</div>
+        <div class="price-desc" id="cc-p2-desc">Maandelijks — wij houden het draaiend en bouwen door.</div>
+        <div class="price-amount"><span id="cc-p2-amount">Op maat</span><sub> / <span id="cc-p2-sub">maand</span></sub></div>
+        <hr class="price-hr">
+        <div class="price-feats" id="cc-p2-feats">
+          <div class="pf"><i class="ti ti-check pf-check"></i>Hosting &amp; technisch onderhoud</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Updates &amp; bugfixes</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Doorontwikkeling op aanvraag</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Lead-dashboardtoegang</div>
+          <div class="pf"><i class="ti ti-check pf-check"></i>Prioriteits-support</div>
+        </div>
+        <a href="#" onclick="openModal();return false;" class="btn btn-teal price-btn" style="font-size:15px;padding:13px 22px;"><span id="cc-p2-cta">Start met demo</span> <i class="ti ti-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about-section" id="over-ons">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-photo">
+        <img id="cc-about-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85" alt="Oprichter Briqo">
+        <div class="about-photo-tag">
+          <div class="apt-name" id="cc-about-name">Levi</div>
+          <div class="apt-role" id="cc-about-role">Oprichter, Briqo</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">Over ons</div>
+        <h2 class="section-h2" style="margin-bottom:22px;">Wij zijn Briqo</h2>
+        <p id="cc-about-bio1">Praktische AI-tools voor het Nederlandse MKB. Geen grote consultancyprojecten of vaag strategisch advies — gewoon een werkende tool die live gaat en resultaat oplevert.</p>
+        <p id="cc-about-bio2">We begrijpen dat MKB-bedrijven geen IT-afdeling hebben. Alles wat we bouwen is direct bruikbaar, makkelijk aanpasbaar en schaalbaar als je groeit.</p>
+        <div class="about-vals">
+          <div class="av">
+            <div class="av-icon"><i class="ti ti-bolt"></i></div>
+            <div>
+              <div class="av-title">Snel live</div>
+              <div class="av-desc">Van idee naar live tool in minder dan twee weken. Geen maandenlange trajecten.</div>
+            </div>
+          </div>
+          <div class="av">
+            <div class="av-icon"><i class="ti ti-tool"></i></div>
+            <div>
+              <div class="av-title">Altijd aanpasbaar</div>
+              <div class="av-desc">Teksten, vragen en logica zijn bewerkbaar zonder dat je een developer nodig hebt.</div>
+            </div>
+          </div>
+          <div class="av">
+            <div class="av-icon"><i class="ti ti-chart-bar"></i></div>
+            <div>
+              <div class="av-title">Data in jouw hand</div>
+              <div class="av-desc">Alle leads en inzendingen in een helder admin dashboard. Altijd exporteerbaar.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section" id="contact">
+  <img class="cta-bg-photo" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=60" alt="">
+  <div class="cta-bg-grad"></div>
+  <div class="container">
+    <div class="cta-inner">
+      <div class="section-label" style="color:#5EEAD4;margin-bottom:18px;">Klaar om te starten?</div>
+      <h2 id="cc-cta-h2">Vertel ons wat jouw<br>bedrijf mist</h2>
+      <p id="cc-cta-sub">In een gesprek van 30 minuten bepalen we samen of en hoe we kunnen helpen. Geen verplichtingen, geen verkooppraatje.</p>
+      <div class="cta-btns">
+        <a href="#" onclick="openModal();return false;" class="btn btn-teal btn-lg"><span id="cc-cta-cta1">Vraag een gratis gesprek aan</span> <i class="ti ti-arrow-right"></i></a>
+        <a href="#cases" class="btn btn-ghost-white btn-lg" id="cc-cta-cta2">Bekijk cases</a>
+      </div>
+      <div class="cta-note" id="cc-cta-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</div>
+      <div class="cta-stats-row" id="cc-cta-stats">
+        <div class="cs-stat2"><div class="cs-stat2-v">1</div><div class="cs-stat2-l">Live tool</div></div>
+        <div class="cs-stat2"><div class="cs-stat2-v">&lt; 2 wkn</div><div class="cs-stat2-l">Gemiddelde bouwtijd</div></div>
+        <div class="cs-stat2"><div class="cs-stat2-v">NL MKB</div><div class="cs-stat2-l">Onze focus</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO MODAL -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" onclick="closeModal()" aria-label="Sluiten"><i class="ti ti-x"></i></button>
+    <div id="modalForm">
+      <div class="modal-label">Gratis gesprek aanvragen</div>
+      <h2 id="modalTitle">Vertel ons wat jouw bedrijf mist</h2>
+      <p class="modal-sub">We nemen binnen 1 werkdag contact op. Geen verplichtingen, geen verkooppraatje.</p>
+      <form id="contactForm" action="https://formspree.io/kempenlevi@gmail.com" method="POST">
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="naam">Naam *</label>
+            <input type="text" id="naam" name="naam" placeholder="Jan de Vries" required>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="bedrijf">Bedrijf *</label>
+            <input type="text" id="bedrijf" name="bedrijf" placeholder="Jouw BV" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">E-mailadres *</label>
+          <input type="email" id="email" name="email" placeholder="jan@jouwbedrijf.nl" required>
+        </div>
+        <div class="form-group">
+          <label for="branche">Branche</label>
+          <select id="branche" name="branche">
+            <option value="">Selecteer jouw branche...</option>
+            <option value="zwembad-buitenleven">Zwembad &amp; Buitenleven</option>
+            <option value="automotive">Automotive</option>
+            <option value="installatie-bouw">Installatie &amp; Bouw</option>
+            <option value="beauty-wellness">Beauty &amp; Wellness</option>
+            <option value="retail">Retail</option>
+            <option value="zakelijke-dienstverlening">Zakelijke Dienstverlening</option>
+            <option value="horeca-recreatie">Horeca &amp; Recreatie</option>
+            <option value="anders">Anders</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="vraag">Wat wil je automatiseren of verbeteren?</label>
+          <textarea id="vraag" name="vraag" placeholder="Bijv: klanten bellen voor prijzen die we ook online kunnen geven..."></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">
+          Verstuur aanvraag <i class="ti ti-arrow-right"></i>
+        </button>
+        <p class="form-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</p>
+      </form>
+    </div>
+    <div id="modalSuccess" class="form-success" style="display:none;">
+      <div class="form-success-icon"><i class="ti ti-check"></i></div>
+      <h3>Aanvraag ontvangen!</h3>
+      <p>Bedankt voor je bericht. We nemen binnen 1 werkdag contact met je op om een gesprek in te plannen.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+   

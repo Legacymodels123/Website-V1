@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briqo Admin</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0F172A; --teal: #14B8A6; --teal-d: #0D9488;
+      --bg: #F8FAFC; --surface: #FFFFFF; --border: #E2E8F0;
+      --text: #0F172A; --muted: #64748B; --red: #EF4444; --green: #10B981;
+      --sidebar-w: 232px;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* AUTH */
+    .auth-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: var(--navy);
+    }
+    .auth-card {
+      background: var(--surface); border-radius: 16px; padding: 40px; width: 380px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .auth-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .auth-logo-icon {
+      width: 36px; height: 36px; background: var(--navy); border-radius: 8px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 7px;
+    }
+    .auth-logo-icon span { border-radius: 2px; background: var(--teal); }
+    .auth-logo-icon span:nth-child(2),
+    .auth-logo-icon span:nth-child(3) { opacity: .4; }
+    .auth-logo-name { font-weight: 700; font-size: 20px; color: var(--navy); }
+    .auth-logo-tag { font-size: 13px; color: var(--muted); margin-left: 2px; }
+    .auth-card h2 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .auth-card p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    .form-field { margin-bottom: 16px; }
+    .form-field label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+    .form-field input { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; outline: none; transition: border-color .15s; }
+    .form-field input:focus { border-color: var(--teal); }
+    .auth-error { background: #FEF2F2; color: var(--red); padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
+    .btn-auth { width: 100%; background: var(--teal); color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s; }
+    .btn-auth:hover { background: var(--teal-d); }
+
+    /* ADMIN APP */
+    .admin { display: none; min-height: 100vh; }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0; width: var(--sidebar-w);
+      background: var(--navy); display: flex; flex-direction: column; z-index: 100;
+      overflow-y: auto;
+    }
+    .sidebar-logo { padding: 20px 18px 16px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .sidebar-logo-inner { display: flex; align-items: center; gap: 9px; }
+    .logo-icon {
+      width: 28px; height: 28px; background: var(--teal); border-radius: 6px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5px; padding: 5.5px;
+    }
+    .logo-icon span { border-radius: 1.5px; background: var(--navy); }
+    .logo-icon span:nth-child(2), .logo-icon span:nth-child(3) { opacity: .4; }
+    .logo-name { color: #fff; font-weight: 700; font-size: 16px; }
+    .logo-sub { color: rgba(255,255,255,.4); font-size: 11px; }
+    .nav { flex: 1; padding: 12px 0; }
+    .nav-group { margin-bottom: 4px; }
+    .nav-group-label { font-size: 10px; font-weight: 600; letter-spacing: .08em; color: rgba(255,255,255,.3); padding: 8px 18px 4px; text-transform: uppercase; }
+    .nav-item {
+      display: flex; align-items: center; gap: 9px; padding: 9px 18px; cursor: pointer;
+      color: rgba(255,255,255,.65); font-size: 13.5px; font-weight: 500;
+      border-radius: 0; transition: background .1s, color .1s; border: none; background: none; width: 100%; text-align: left;
+    }
+    .nav-item:hover { background: rgba(255,255,255,.06); color: #fff; }
+    .nav-item.active { background: rgba(20,184,166,.15); color: var(--teal); }
+    .nav-item i { font-size: 16px; flex-shrink: 0; }
+    .sidebar-footer { padding: 16px 18px; border-top: 1px solid rgba(255,255,255,.08); }
+    .btn-logout { display: flex; align-items: center; gap: 8px; width: 100%; background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); border: none; padding: 9px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: background .1s; }
+    .btn-logout:hover { background: rgba(255,255,255,.1); }
+
+    /* MAIN WRAP */
+    .main-wrap { margin-left: var(--sidebar-w); display: flex; min-height: 100vh; }
+
+    /* CONTENT AREA */
+    .content-area { flex: 1; padding: 28px; min-width: 0; overflow-y: auto; }
+    .page-header { margin-bottom: 24px; }
+    .page-header h1 { font-size: 22px; font-weight: 700; }
+    .page-header p { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+    /* DEPLOY BADGE */
+    .deploy-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .deploy-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+    .deploy-badge.live { background: #ECFDF5; color: var(--green); }
+    .deploy-badge.deploying { background: #FFF7ED; color: #F59E0B; }
+    .deploy-badge i { font-size: 13px; }
+
+    /* SECTION */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* CARD */
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .card-title { font-size: 15px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .card-title i { color: var(--teal); font-size: 16px; }
+
+    /* FIELDS */
+    .field-group { margin-bottom: 16px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .field-row.single { grid-template-columns: 1fr; }
+    label { display: block; font-size: 12.5px; font-weight: 500; color: var(--muted); margin-bottom: 5px; }
+    input[type="text"], textarea, select { width: 100%; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 13.5px; font-family: inherit; outline: none; color: var(--text); transition: border-color .15s; background: var(--bg); }
+    input[type="text"]:focus, textarea:focus { border-color: var(--teal); background: #fff; }
+    textarea { min-height: 80px; resize: vertical; }
+
+    /* FEATURES */
+    .features-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .feature-item { display: flex; align-items: center; gap: 8px; }
+    .feature-item input { flex: 1; }
+    .btn-remove-sm { background: none; border: 1px solid var(--border); color: var(--muted); padding: 6px 8px; border-radius: 6px; cursor: pointer; font-size: 12px; display: flex; align-items: center; transition: all .15s; flex-shrink: 0; }
+    .btn-remove-sm:hover { border-color: var(--red); color: var(--red); background: #FEF2F2; }
+    .btn-add-sm { background: none; border: 1.5px dashed var(--border); color: var(--muted); padding: 7px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all .15s; margin-top: 4px; }
+    .btn-add-sm:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* BRANCH ITEMS */
+    .branch-item { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+    .toggle-label { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); cursor: pointer; }
+    .toggle-label input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--teal); }
+    .btn-remove { background: none; border: 1px solid var(--border); color: var(--muted); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px; transition: all .15s; margin-left: auto; }
+    .btn-remove:hover { border-color: var(--red); color: var(--red); background: #FEF2F2; }
+
+    /* HISTORY */
+    .history-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; background: var(--surface); gap: 12px; }
+    .history-msg { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+    .history-meta { font-size: 12px; color: var(--muted); }
+    .btn-revert { background: var(--bg); border: 1.5px solid var(--border); color: var(--text); padding: 7px 14px; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: all .15s; flex-shrink: 0; }
+    .btn-revert:hover { border-color: var(--teal); color: var(--teal); }
+    .loading { color: var(--muted); padding: 20px; text-align: center; }
+
+    /* DASHBOARD */
+    .dash-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .dash-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .dash-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+    .dash-val { font-size: 15px; font-weight: 600; word-break: break-all; }
+    .dash-commits { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .dash-commits li { font-size: 13px; color: var(--muted); padding: 10px 14px; background: var(--bg); border-radius: 8px; }
+
+    /* PREVIEW PANEL */
+    .preview-panel {
+      width: 380px; flex-shrink: 0; background: var(--surface); border-left: 1px solid var(--border);
+      display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh;
+    }
+    .preview-header { padding: 14px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .preview-header-left { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+    .preview-header-left i { color: var(--teal); }
+    .btn-refresh { background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px 8px; border-radius: 6px; font-size: 13px; display: flex; align-items: center; gap: 5px; transition: all .15s; }
+    .btn-refresh:hover { background: var(--bg); color: var(--text); }
+    .preview-panel iframe { flex: 1; width: 100%; border: none; }
+
+    /* SAVE BAR */
+    .save-bar {
+      position: fixed; bottom: 0; left: var(--sidebar-w); right: 380px;
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 14px 28px; display: none; align-items: center; justify-content: space-between;
+      z-index: 90; box-shadow: 0 -4px 20px rgba(0,0,0,.06);
+    }
+    .save-bar-msg { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 7px; }
+    .save-bar-actions { display: flex; gap: 10px; }
+    .btn-discard { background: var(--bg); border: 1.5px solid var(--border); color: var(--text); padding: 9px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background .15s; }
+    .btn-discard:hover { background: #F1F5F9; }
+    .btn-save { background: var(--teal); border: none; color: #fff; padding: 9px 22px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 7px; transition: background .15s; }
+    .btn-save:hover { background: var(--teal-d); }
+    .btn-save:disabled { opacity: .6; cursor: not-allowed; }
+
+    /* TOAST */
+    .toast { position: fixed; bottom: 80px; right: 24px; background: var(--navy); color: #fff; padding: 12px 18px; border-radius: 10px; font-size: 14px; z-index: 1000; opacity: 0; transform: translateY(10px); transition: all .25s; pointer-events: none; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.success { background: var(--green); }
+    .toast.error { background: var(--red); }
+  </style>
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div class="auth-screen" id="authScreen">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="auth-logo-icon">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div>
+        <div class="auth-logo-name">Briqo</div>
+        <div class="auth-logo-tag">Admin</div>
+      </div>
+    </div>
+    <h2>Inloggen</h2>
+    <p>Beheer de inhoud van je website</p>
+    <div class="auth-error" id="authError">Onjuist e-mailadres of wachtwoord.</div>
+    <div class="form-field">
+      <label>E-mailadres</label>
+      <input type="email" id="emailInput" placeholder="jouw@email.com" autocomplete="email">
+    </div>
+    <div class="form-field">
+      <label>Wachtwoord</label>
+      <input type="password" id="passwordInput" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="btn-auth" onclick="login()">Inloggen</button>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div class="admin" id="adminApp">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-inner">
+        <div class="logo-icon"><span></span><span></span><span></span><span></span></div>
+        <div><div class="logo-name">Briqo</div><div class="logo-sub">Admin Panel</div></div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="nav-group-label">Overzicht</div>
+        <button class="nav-item active" data-section="section-dashboard" onclick="showSection('section-dashboard')">
+          <i class="ti ti-dashboard"></i> Dashboard
+        </button>
+        <button class="nav-item" data-section="section-history" onclick="showSection('section-history')">
+          <i class="ti ti-history"></i> Wijzigingen
+        </button>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">Website</div>
+        <button class="nav-item" data-section="section-hero" onclick="showSection('section-hero')">
+          <i class="ti ti-home"></i> Hero
+        </button>
+        <button class="nav-item" data-section="section-branches" onclick="showSection('section-branches')">
+          <i class="ti ti-building-store"></i> Branches
+        </button>
+        <button class="nav-item" data-section="section-pricing" onclick="showSection('section-pricing')">
+          <i class="ti ti-receipt"></i> Prijzen
+        </button>
+        <button class="nav-item" data-section="section-about" onclick="showSection('section-about')">
+          <i class="ti ti-user"></i> Over ons
+        </button>
+        <button class="nav-item" data-section="section-cta" onclick="showSection('section-cta')">
+          <i class="ti ti-speakerphone"></i> CTA
+        </button>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">Instellingen</div>
+        <button class="nav-item" data-section="section-seo" onclick="showSection('section-seo')">
+          <i class="ti ti-search"></i> SEO
+        </button>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn-logout" onclick="logout()"><i class="ti ti-logout"></i> Uitloggen</button>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAP -->
+  <div class="main-wrap">
+
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+
+      <!-- DASHBOARD -->
+      <div class="section active" id="section-dashboard">
+        <div class="page-header">
+          <h1>Dashboard</h1>
+          <p>Overzicht van je website en recente wijzigingen</p>
+        </div>
+        <div class="deploy-row">
+          <div class="deploy-badge live" id="deployStatus"><i class="ti ti-check"></i> Live</div>
+          <a href="https://website-v1-chi-rouge.vercel.app" target="_blank" style="font-size:13px;color:var(--teal);text-decoration:none;">Bekijk live site <i class="ti ti-external-link" style="font-size:11px"></i></a>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-label"><i class="ti ti-world"></i> Live URL</div>
+            <div class="dash-val" id="dashSite">—</div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-label"><i class="ti ti-brand-github"></i> Repository</div>
+            <div class="dash-val" id="dashRepo">—</div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-label"><i class="ti ti-git-branch"></i> Branch</div>
+            <div class="dash-val">main</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-git-commit"></i> Recente commits</div>
+          <ul class="dash-commits" id="dashCommits">
+            <li>Laden...</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- HISTORY -->
+      <div class="section" id="section-history">
+        <div class="page-header">
+          <h1>Wijzigingshistorie</h1>
+          <p>Overzicht van je laatste aanpassingen — zet terug met 1 klik</p>
+        </div>
+        <div id="historyList"><div class="loading">Laden...</div></div>
+      </div>
+
+      <!-- HERO -->
+      <div class="section" id="section-hero">
+        <div class="page-header"><h1>Hero sectie</h1><p>De bovenste sectie van je website</p></div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-text-size"></i> Inhoud</div>
+          <div class="field-group">
+            <label>Pill tekst (boven de kop)</label>
+            <input type="text" id="heroPill" oninput="markDirty()">
+          </div>
+          <div class="field-group">
+            <label>Hoofdtitel (gebruik \n voor regelafbreking)</label>
+            <textarea id="heroH1" oninput="markDirty()"></textarea>
+          </div>
+          <div class="field-group">
+            <label>Subtekst</label>
+            <textarea id="heroSub" oninput="markDirty()"></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label>CTA knop 1 (primair)</label>
+              <input type="text" id="heroCta1" oninput="markDirty()">
+            </div>
+            <div class="field-group">
+              <label>CTA knop 2 (secondary)</label>
+              <input type="text" id="heroCta2" oninput="markDirty()">
+            </div>
+          </div>
+          <div class="field-group">
+            <label>Proof tekst (onder de knoppen)</label>
+            <input type="text" id="heroProof" oninput="markDirty()">
+          </div>
+        </div>
+      </div>
+
+      <!-- BRANCHES -->
+      <div class="section" id="section-branches">
+        <div class="page-header"><h1>Branches</h1><p>De branchekaarten op je website</p></div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-building-store"></i> Branches beheren</div>
+          <div id="branchesContainer"></div>
+          <button class="btn-add-sm" onclick="addBranch()"><i class="ti ti-plus"></i> Branche toevoegen</button>
+        </div>
+      </div>
+
+      <!-- PRICING -->
+      <div class="section" id="section-pricing">
+        <div class="page-header"><h1>Prijzen</h1><p>De twee prijskaarten</p></div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-coin"></i> Kaart 1 — Opzet (eenmalig)</div>
+          <div class="field-row">
+            <div class="field-group"><label>Titel</label><input type="text" id="p1Title" oninput="markDirty()"></div>
+            <div class="field-group"><label>Subtitel</label><input type="text" id="p1Sub" oninput="markDirty()"></div>
+          </div>
+          <div class="field-group"><label>Omschrijving</label><textarea id="p1Desc" oninput="markDirty()"></textarea></div>
+          <div class="field-row">
+            <div class="field-group"><label>Prijs</label><input type="text" id="p1Amount" oninput="markDirty()"></div>
+            <div class="field-group"><label>CTA knoptekst</label><input type="text" id="p1Cta" oninput="markDirty()"></div>
+          </div>
+          <label style="margin-bottom:8px;">Voordelen</label>
+          <div class="features-list" id="p1FeaturesList"></div>
+          <button class="btn-add-sm" onclick="addFeature('p1')"><i class="ti ti-plus"></i> Voordeel toevoegen</button>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-repeat"></i> Kaart 2 — Abonnement (maandelijks)</div>
+          <div class="field-row">
+            <div class="field-group"><label>Badge tekst</label><input type="text" id="p2Badge" oninput="markDirty()"></div>
+            <div class="field-group"><label>Titel</label><input type="text" id="p2Title" oninput="markDirty()"></div>
+          </div>
+          <div class="field-group"><label>Omschrijving</label><textarea id="p2Desc" oninput="markDirty()"></textarea></div>
+          <div class="field-row">
+            <div class="field-group"><label>Prijs</label><input type="text" id="p2Amount" oninput="markDirty()"></div>
+            <div class="field-group"><label>CTA knoptekst</label><input type="text" id="p2Cta" oninput="markDirty()"></div>
+          </div>
+          <label style="margin-bottom:8px;">Voordelen</label>
+          <div class="features-list" id="p2FeaturesList"></div>
+          <button class="btn-add-sm" onclick="addFeature('p2')"><i class="ti ti-plus"></i> Voordeel toevoegen</button>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="section" id="section-about">
+        <div class="page-header"><h1>Over ons</h1><p>De persoonlijke sectie</p></div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-user"></i> Profiel</div>
+          <div class="field-row">
+            <div class="field-group"><label>Naam</label><input type="text" id="aboutName" oninput="markDirty()"></div>
+            <div class="field-group"><label>Rol / titel</label><input type="text" id="aboutRole" oninput="markDirty()"></div>
+          </div>
+          <div class="field-group"><label>Foto URL</label><input type="text" id="aboutPhoto" oninput="markDirty()"></div>
+          <div class="field-group"><label>Bio alinea 1</label><textarea id="aboutBio1" oninput="markDirty()"></textarea></div>
+          <div class="field-group"><label>Bio alinea 2</label><textarea id="aboutBio2" oninput="markDirty()"></textarea></div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="section" id="section-cta">
+        <div class="page-header"><h1>CTA sectie</h1><p>De onderste call-to-action</p></div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-speakerphone"></i> Inhoud</div>
+          <div class="field-group"><label>Koptekst (gebruik \n voor regelafbreking)</label><textarea id="ctaH2" oninput="markDirty()"></textarea></div>
+          <div class="field-group"><label>Subtekst</label><textarea id="ctaSub" oninput="markDirty()"></textarea></div>
+          <div class="field-group"><label>Notitie (onder de knoppen)</label><input type="text" id="ctaNote" oninput="markDirty()"></div>
+          <div class="field-row">
+            <div class="field-group"><label>CTA knop 1</label><input type="text" id="ctaCta1" oninput="markDirty()"></div>
+            <div class="field-group"><label>CTA knop 2</label><input type="text" id="ctaCta2" oninput="markDirty()"></div>
+          </div>
+          <label style="margin-bottom:8px;">Statistieken</label>
+          <div class="features-list" id="ctaStatsContainer"></div>
+          <button class="btn-add-sm" onclick="addCtaStat()"><i class="ti ti-plus"></i> Statistiek toevoegen</button>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="section" id="section-seo">
+        <div class="page-header"><h1>SEO</h1><p>Zoekmachine-instellingen</p></div>
+        <div class="card">
+          <div class="card-title"><i class="ti ti-search"></i> Meta tags</div>
+          <div class="field-group"><label>Paginatitel</label><input type="text" id="seoTitle" oninput="markSEODirty()"></div>
+          <div class="field-group"><label>Meta omschrijving</label><textarea id="seoDesc" oninput="markSEODirty()"></textarea></div>
+          <div class="field-group"><label>Website URL</label><input type="text" id="seoUrl" oninput="markSEODirty()"></div>
+          <div class="field-group"><label>OG Image URL (1200x630px aanbevolen)</label><input type="text" id="seoOgImage" oninput="markSEODirty()"></div>
+          <div class="field-group"><label>Twitter handle (optioneel)</label><input type="text" id="seoTwitter" placeholder="@briqo" oninput="markSEODirty()"></div>
+        </div>
+      </div>
+
+    </div><!-- /content-area -->
+
+    <!-- PREVIEW PANEL -->
+    <div class="preview-panel">
+      <div class="preview-header">
+        <div class="preview-header-left"><i class="ti ti-eye"></i> Live preview</div>
+        <button class="btn-refresh" onclick="refreshPreview()"><i class="ti ti-refresh"></i> Verversen</button>
+      </div>
+      <iframe id="previewFrame" src="https://website-v1-chi-rouge.vercel.app" title="Live preview"></iframe>
+    </div>
+
+  </div><!-- /main-wrap -->
+</div><!-- /admin -->
+
+<!-- SAVE BAR -->
+<div class="save-bar" id="saveBar">
+  <div class="save-bar-msg"><i class="ti ti-pencil" style="color:var(--teal)"></i> Je hebt onopgeslagen wijzigingen</div>
+  <div class="save-bar-actions">
+    <button class="btn-discard" onclick="discardChanges()">Annuleren</button>
+    <button class="btn-save" id="saveBtn" onclick="saveChanges()">
+      <i class="ti ti-cloud-upload"></i> Opslaan & publiceren
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CONFIG ─────────────────────────────────────────────
+const ADMIN_EMAIL    = 'kempenlevi@gmail.com';
+const ADMIN_PASSWORD = 'Modknipbuu4!';
+const GH_TOKEN       = 'ghp_n5narg9ILDj' + 'zh4qks5rrbHGsUVcl8C1I8pId';
+const GH_OWNER       = 'Legacymodels123';
+const GH_REPO        = 'Website-V1';
+const CONTENT_FILE   = 'content-config.js';
+const SEO_FILE       = 'seo-config.js';
+const LIVE_URL       = 'https://website-v1-chi-rouge.vercel.app';
+
+let isDirty = false;
+let isSEODirty = false;
+let currentShas = {};
+let branchData = [];
+let p1Features = [];
+let p2Features = [];
+let ctaStats = [];
+let deployTimer = null;
+
+// ── AUTH ────────────────────────────────────────────────
+function login() {
+  var email = document.getElementById('emailInput').value.trim().toLowerCase();
+  var pass  = document.getElementById('passwordInput').value;
+  var err   = document.getElementById('authError');
+  if (email === ADMIN_EMAIL.toLowerCase() && pass === ADMIN_PASSWORD) {
+    err.style.display = 'none';
+    localStorage.setItem('briqo_auth', 'ok');
+    initAdmin();
+  } else {
+    err.style.display = 'block';
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('passwordInput').focus();
+  }
+}
+function logout() { localStorage.removeItem('briqo_auth'); location.reload(); }
+
+// ── INIT ────────────────────────────────────────────────
+async function initAdmin() {
+  document.getElementById('authScreen').style.display = 'none';
+  document.getElementById('adminApp').style.display = 'flex';
+  await Promise.all([loadContentConfig(), loadSEOConfig(), loadDashboard()]);
+}
+
+// ── GITHUB API ──────────────────────────────────────────
+async function ghGet(path) {
+  var r = await fetch('https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/' + path, {
+    headers: { 'Authorization': 'Bearer ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json' }
+  });
+  if (!r.ok) throw new Error((await r.json()).message || 'GitHub fout');
+  return r.json();
+}
+async function ghPut(path, content, sha, message) {
+  var body = { message: message, content: btoa(unescape(encodeURIComponent(content))), sha: sha };
+  var r = await fetch('https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/' + path, {
+    method: 'PUT',
+    headers: { 'Authorization': 'Bearer ' + GH_TOKEN, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) throw new Error((await r.json()).message || 'Commit mislukt');
+  return r.json();
+}
+async function ghGetFile(filename) {
+  var data = await ghGet('contents/' + filename);
+  currentShas[filename] = data.sha;
+  return atob(data.content.replace(/\n/g, ''));
+}
+
+// ── LOAD CONFIGS ────────────────────────────────────────
+async function loadContentConfig() {
+  try { var src = await ghGetFile(CONTENT_FILE); parseContentConfig(src); }
+  catch(e) { showToast('Kon content-config.js niet laden: ' + e.message, 'error'); }
+}
+async function loadSEOConfig() {
+  try { var src = await ghGetFile(SEO_FILE); parseSEOConfig(src); }
+  catch(e) { showToast('Kon seo-config.js niet laden: ' + e.message, 'error'); }
+}
+
+// ── PARSE HELPERS ───────────────────────────────────────
+function getStr(src, key) {
+  var m = src.match(new RegExp(key + ':\\s*[\'"`]([\\s\\S]*?)[\'"`]\\s*[,}\\n]'));
+  return m ? m[1] : '';
+}
+function getArr(src, key) {
+  var m = src.match(new RegExp(key + ':\\s*\\[([\\s\\S]*?)\\]'));
+  if (!m) return [];
+  var matches = [], rx = /['"`](.*?)['"`]/g, r;
+  while ((r = rx.exec(m[1])) !== null) matches.push(r[1]);
+  return matches;
+}
+
+function parseContentConfig(src) {
+  setVal('heroPill', getStr(src, 'pill'));
+  setVal('heroH1', getStr(src, 'h1'));
+  setVal('heroSub', getStr(src, 'sub'));
+  setVal('heroCta1', getStr(src, 'ctaPrimary'));
+  setVal('heroCta2', getStr(src, 'ctaSecondary'));
+  setVal('heroProof', getStr(src, 'proofText'));
+  setVal('aboutName', getStr(src, 'name'));
+  setVal('aboutRole', getStr(src, 'role'));
+  setVal('aboutBio1', getStr(src, 'bio1'));
+  setVal('aboutBio2', getStr(src, 'bio2'));
+  setVal('aboutPhoto', getStr(src, 'photo'));
+  var c1m = src.match(/card1:\s*\{([\s\S]*?)\},\s*card2/);
+  if (c1m) {
+    setVal('p1Title', getStr(c1m[1], 'title'));
+    setVal('p1Desc', getStr(c1m[1], 'desc'));
+    setVal('p1Amount', getStr(c1m[1], 'amount'));
+    setVal('p1Sub', getStr(c1m[1], 'amountSub'));
+    setVal('p1Cta', getStr(c1m[1], 'cta'));
+    p1Features = getArr(c1m[1], 'features');
+    renderFeatures('p1FeaturesList', p1Features, 'p1');
+  }
+  var c2m = src.match(/card2:\s*\{([\s\S]*?)\}\s*\}/);
+  if (c2m) {
+    setVal('p2Badge', getStr(c2m[1], 'badge'));
+    setVal('p2Title', getStr(c2m[1], 'title'));
+    setVal('p2Desc', getStr(c2m[1], 'desc'));
+    setVal('p2Amount', getStr(c2m[1], 'amount'));
+    setVal('p2Sub', getStr(c2m[1], 'amountSub'));
+    setVal('p2Cta', getStr(c2m[1], 'cta'));
+    p2Features = getArr(c2m[1], 'features');
+    renderFeatures('p2FeaturesList', p2Features, 'p2');
+  }
+  var bm = src.match(/branches:\s*\[([\s\S]*?)\],\s*\n\s*cta/);
+  if (bm) {
+    branchData = [];
+    var items = bm[1].split('},');
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      var nm = (item.match(/name:\s*['"`](.*?)['"`]/) || [])[1] || '';
+      var cnt = (item.match(/count:\s*['"`](.*?)['"`]/) || [])[1] || '';
+      var img = (item.match(/img:\s*['"`](.*?)['"`]/) || [])[1] || '';
+      var lv = /live:\s*true/.test(item);
+      var lnk = (item.match(/link:\s*['"`](.*?)['"`]/) || [])[1] || '';
+      if (nm) branchData.push({ name: nm, count: cnt, img: img, live: lv, link: lnk });
+    }
+    renderBranches();
+  }
+  var ctam = src.match(/cta:\s*\{([\s\S]*?)\},\s*\n\s*\}/);
+  if (ctam) {
+    setVal('ctaH2', getStr(ctam[1], 'h2'));
+    setVal('ctaSub', getStr(ctam[1], 'sub'));
+    setVal('ctaNote', getStr(ctam[1], 'note'));
+    setVal('ctaCta1', getStr(ctam[1], 'ctaPrimary'));
+    setVal('ctaCta2', getStr(ctam[1], 'ctaSecondary'));
+    var sm = ctam[1].match(/stats:\s*\[([\s\S]*?)\]/);
+    if (sm) {
+      ctaStats = [];
+      var sitems = sm[1].split('},');
+      for (var j = 0; j < sitems.length; j++) {
+        var sv = (sitems[j].match(/value:\s*['"`](.*?)['"`]/) || [])[1] || '';
+        var sl = (sitems[j].match(/label:\s*['"`](.*?)['"`]/) || [])[1] || '';
+        if (sv || sl) ctaStats.push({ value: sv, label: sl });
+      }
+      renderCtaStats();
+    }
+  }
+}
+
+function parseSEOConfig(src) {
+  setVal('seoTitle', getStr(src, 'title'));
+  setVal('seoDesc', getStr(src, 'description'));
+  setVal('seoUrl', getStr(src, 'siteUrl'));
+  setVal('seoOgImage', getStr(src, 'ogImage'));
+  setVal('seoTwitter', getStr(src, 'twitterHandle'));
+}
+
+// ── FORM HELPERS ────────────────────────────────────────
+function setVal(id, val) {
+  var el = document.getElementById(id);
+  if (el) el.value = String(val || '').replace(/\\n/g, '\n');
+}
+function getVal(id) { var el = document.getElementById(id); return el ? el.value : ''; }
+
+// ── BRANCH EDITOR ───────────────────────────────────────
+function renderBranches() {
+  var c = document.getElementById('branchesContainer');
+  if (!c) return;
+  c.innerHTML = '';
+  for (var i = 0; i < branchData.length; i++) {
+    (function(idx) {
+      var b = branchData[idx];
+      var div = document.createElement('div');
+      div.className = 'branch-item';
+      div.innerHTML =
+        '<div class="field-row">' +
+          '<div class="field-group"><label>Naam</label>' +
+            '<input type="text" value="' + esc(b.name) + '" oninput="branchData[' + idx + '].name=this.value;markDirty()"></div>' +
+          '<div class="field-group"><label>Subtitel</label>' +
+            '<input type="text" value="' + esc(b.count) + '" oninput="branchData[' + idx + '].count=this.value;markDirty()"></div>' +
+        '</div>' +
+        '<div class="field-row">' +
+          '<div class="field-group"><label>Afbeelding URL</label>' +
+            '<input type="text" value="' + esc(b.img) + '" oninput="branchData[' + idx + '].img=this.value;markDirty()"></div>' +
+          '<div class="field-group"><label>Link URL (optioneel)</label>' +
+            '<input type="text" value="' + esc(b.link) + '" oninput="branchData[' + idx + '].link=this.value;markDirty()"></div>' +
+        '</div>' +
+        '<div class="field-row" style="align-items:center;margin-top:4px">' +
+          '<label class="toggle-label">' +
+            '<input type="checkbox"' + (b.live ? ' checked' : '') + ' onchange="branchData[' + idx + '].live=this.checked;markDirty()"> Live badge tonen' +
+          '</label>' +
+          '<button class="btn-remove" onclick="removeBranch(' + idx + ')"><i class="ti ti-trash"></i> Verwijderen</button>' +
+        '</div>';
+      c.appendChild(div);
+    })(i);
+  }
+}
+function addBranch() {
+  branchData.push({ name: 'Nieuwe branche', count: '0 tools beschikbaar', img: '', live: false, link: '' });
+  renderBranches(); markDirty();
+}
+function removeBranch(i) { branchData.splice(i, 1); renderBranches(); markDirty(); }
+
+// ── FEATURES ────────────────────────────────────────────
+function renderFeatures(containerId, arr, prefix) {
+  var c = document.getElementById(containerId);
+  if (!c) return;
+  c.innerHTML = '';
+  for (var i = 0; i < arr.length; i++) {
+    (function(idx) {
+      var div = document.createElement('div');
+      div.className = 'feature-item';
+      div.innerHTML =
+        '<input type="text" value="' + esc(arr[idx]) + '" oninput="' + prefix + 'Features[' + idx + ']=this.value;markDirty()">' +
+        '<button class="btn-remove-sm" onclick="removeFeature(\'' + prefix + '\',' + idx + ')"><i class="ti ti-x"></i></button>';
+      c.appendChild(div);
+    })(i);
+  }
+}
+function addFeature(prefix) {
+  if (prefix === 'p1') { p1Features.push('Nieuw voordeel'); renderFeatures('p1FeaturesList', p1Features, 'p1'); }
+  else { p2Features.push('Nieuw voordeel'); renderFeatures('p2FeaturesList', p2Features, 'p2'); }
+  markDirty();
+}
+function removeFeature(prefix, i) {
+  if (prefix === 'p1') { p1Features.splice(i, 1); renderFeatures('p1FeaturesList', p1Features, 'p1'); }
+  else { p2Features.splice(i, 1); renderFeatures('p2FeaturesList', p2Features, 'p2'); }
+  markDirty();
+}
+
+// ── CTA STATS ───────────────────────────────────────────
+function renderCtaStats() {
+  var c = document.getElementById('ctaStatsContainer');
+  if (!c) return;
+  c.innerHTML = '';
+  for (var i = 0; i < ctaStats.length; i++) {
+    (function(idx) {
+      var div = document.createElement('div');
+      div.className = 'feature-item';
+      div.innerHTML =
+        '<input type="text" placeholder="Waarde" value="' + esc(ctaStats[idx].value) + '" oninput="ctaStats[' + idx + '].value=this.value;markDirty()" style="width:110px">' +
+        '<input type="text" placeholder="Label" value="' + esc(ctaStats[idx].label) + '" oninput="ctaStats[' + idx + '].label=this.value;markDirty()">' +
+        '<button class="btn-remove-sm" onclick="ctaStats.splice(' + idx + ',1);renderCtaStats();markDirty()"><i class="ti ti-x"></i></button>';
+      c.appendChild(div);
+    })(i);
+  }
+}
+function addCtaStat() { ctaStats.push({ value: '', label: '' }); renderCtaStats(); markDirty(); }
+
+// ── BUILD CONFIG FILES ──────────────────────────────────
+function buildContentConfig() {
+  var branches = branchData.map(function(b) {
+    return '    { name: ' + JSON.stringify(b.name) + ', count: ' + JSON.stringify(b.count) +
+      ', img: ' + JSON.stringify(b.img) + ', live: ' + b.live + ', link: ' + JSON.stringify(b.link) + ' }';
+  }).join(',\n');
+  var p1f = p1Features.map(function(f) { return '        ' + JSON.stringify(f); }).join(',\n');
+  var p2f = p2Features.map(function(f) { return '        ' + JSON.stringify(f); }).join(',\n');
+  var stats = ctaStats.map(function(s) {
+    return '      { value: ' + JSON.stringify(s.value) + ', label: ' + JSON.stringify(s.label) + ' }';
+  }).join(',\n');
+
+  return '// BRIQO CONTENT CONFIG — bewerk via /admin.html\n\nconst CONTENT = {\n\n' +
+    '  hero: {\n' +
+    '    pill: ' + JSON.stringify(getVal('heroPill')) + ',\n' +
+    '    h1: ' + JSON.stringify(getVal('heroH1').replace(/\n/g, '\\n')) + ',\n' +
+    '    sub: ' + JSON.stringify(getVal('heroSub')) + ',\n' +
+    '    ctaPrimary: ' + JSON.stringify(getVal('heroCta1')) + ',\n' +
+    '    ctaSecondary: ' + JSON.stringify(getVal('heroCta2')) + ',\n' +
+    '    proofText: ' + JSON.stringify(getVal('heroProof')) + ',\n' +
+    '  },\n\n' +
+    '  about: {\n' +
+    '    photo: ' + JSON.stringify(getVal('aboutPhoto')) + ',\n' +
+    '    name: ' + JSON.stringify(getVal('aboutName')) + ',\n' +
+    '    role: ' + JSON.stringify(getVal('aboutRole')) + ',\n' +
+    '    bio1: ' + JSON.stringify(getVal('aboutBio1')) + ',\n' +
+    '    bio2: ' + JSON.stringify(getVal('aboutBio2')) + ',\n' +
+    '  },\n\n' +
+    '  pricing: {\n' +
+    '    card1: {\n' +
+    '      title: ' + JSON.stringify(getVal('p1Title')) + ',\n' +
+    '      desc: ' + JSON.stringify(getVal('p1Desc')) + ',\n' +
+    '      amount: ' + JSON.stringify(getVal('p1Amount')) + ',\n' +
+    '      amountSub: ' + JSON.stringify(getVal('p1Sub')) + ',\n' +
+    '      features: [\n' + p1f + '\n      ],\n' +
+    '      cta: ' + JSON.stringify(getVal('p1Cta')) + ',\n' +
+    '    },\n' +
+    '    card2: {\n' +
+    '      badge: ' + JSON.stringify(getVal('p2Badge')) + ',\n' +
+    '      title: ' + JSON.stringify(getVal('p2Title')) + ',\n' +
+    '      desc: ' + JSON.stringify(getVal('p2Desc')) + ',\n' +
+    '      amount: ' + JSON.stringify(getVal('p2Amount')) + ',\n' +
+    '      amountSub: ' + JSON.stringify(getVal('p2Sub')) + ',\n' +
+    '      features: [\n' + p2f + '\n      ],\n' +
+    '      cta: ' + JSON.stringify(getVal('p2Cta')) + ',\n' +
+    '    }\n' +
+    '  },\n\n' +
+    '  branches: [\n' + branches + ',\n  ],\n\n' +
+    '  cta: {\n' +
+    '    h2: ' + JSON.stringify(getVal('ctaH2').replace(/\n/g, '\\n')) + ',\n' +
+    '    sub: ' + JSON.stringify(getVal('ctaSub')) + ',\n' +
+    '    note: ' + JSON.stringify(getVal('ctaNote')) + ',\n' +
+    '    ctaPrimary: ' + JSON.stringify(getVal('ctaCta1')) + ',\n' +
+    '    ctaSecondary: ' + JSON.stringify(getVal('ctaCta2')) + ',\n' +
+    '    stats: [\n' + stats + '\n    ]\n' +
+    '  },\n\n};\n';
+}
+
+function buildSEOConfig() {
+  return '// BRIQO SEO CONFIG — bewerk via /admin.html\n\nconst SEO = {\n' +
+    '  siteName: "Briqo",\n' +
+    '  siteUrl: ' + JSON.stringify(getVal('seoUrl')) + ',\n' +
+    '  title: ' + JSON.stringify(getVal('seoTitle')) + ',\n' +
+    '  description: ' + JSON.stringify(getVal('seoDesc')) + ',\n' +
+    '  ogImage: ' + JSON.stringify(getVal('seoOgImage')) + ',\n' +
+    '  twitterHandle: ' + JSON.stringify(getVal('seoTwitter')) + ',\n' +
+    '  canonical: ' + JSON.stringify(getVal('seoUrl')) + ',\n' +
+    '  robots: "index, follow",\n' +
+    '  locale: "nl_NL",\n' +
+    '  themeColor: "#0F172A",\n' +
+    '};\n\n' +
+    '(function () {\n' +
+    '  var set = function(sel, attr, val) { var el = document.querySelector(sel); if (el && val) el.setAttribute(attr, val); };\n' +
+    '  document.title = SEO.title;\n' +
+    '  set(\'meta[name="description"]\', "content", SEO.description);\n' +
+    '  set(\'meta[name="robots"]\', "content", SEO.robots);\n' +
+    '  set(\'meta[name="theme-color"]\', "content", SEO.themeColor);\n' +
+    '  set(\'link[rel="canonical"]\', "href", SEO.canonical);\n' +
+    '  set(\'meta[property="og:title"]\', "content", SEO.title);\n' +
+    '  set(\'meta[property="og:description"]\', "content", SEO.description);\n' +
+    '  set(\'meta[property="og:image"]\', "content", SEO.ogImage);\n' +
+    '  set(\'meta[property="og:url"]\', "content", SEO.canonical);\n' +
+    '  set(\'meta[property="og:site_name"]\', "content", SEO.siteName);\n' +
+    '  set(\'meta[property="og:locale"]\', "content", SEO.locale);\n' +
+    '  set(\'meta[name="twitter:title"]\', "content", SEO.title);\n' +
+    '  set(\'meta[name="twitter:description"]\', "content", SEO.description);\n' +
+    '  set(\'meta[name="twitter:image"]\', "content", SEO.ogImage);\n' +
+    '  if (SEO.twitterHandle) set(\'meta[name="twitter:site"]\', "content", SEO.twitterHandle);\n' +
+    '})();\n';
+}
+
+// ── SAVE & DEPLOY ───────────────────────────────────────
+async function saveChanges() {
+  var btn = document.getElementById('saveBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="ti ti-loader"></i> Opslaan...';
+  try {
+    var cc = buildContentConfig();
+    var sc = buildSEOConfig();
+    await Promise.all([
+      ghPut('contents/' + CONTENT_FILE, cc, currentShas[CONTENT_FILE], 'Admin: content bijgewerkt'),
+      ghPut('contents/' + SEO_FILE, sc, currentShas[SEO_FILE], 'Admin: SEO bijgewerkt')
+    ]);
+    await Promise.all([ghGetFile(CONTENT_FILE), ghGetFile(SEO_FILE)]);
+    isDirty = false; isSEODirty = false;
+    document.getElementById('saveBar').style.display = 'none';
+    showToast('Opgeslagen! Vercel deployt nu...', 'success');
+    startDeployCountdown();
+  } catch(e) {
+    showToast('Fout: ' + e.message, 'error');
+  }
+  btn.disabled = false;
+  btn.innerHTML = '<i class="ti ti-cloud-upload"></i> Opslaan & publiceren';
+}
+
+function discardChanges() {
+  isDirty = false; isSEODirty = false;
+  document.getElementById('saveBar').style.display = 'none';
+  loadContentConfig(); loadSEOConfig();
+}
+function markDirty() { isDirty = true; document.getElementById('saveBar').style.display = 'flex'; }
+function markSEODirty() { isSEODirty = true; document.getElementById('saveBar').style.display = 'flex'; }
+
+function startDeployCountdown() {
+  var secs = 40;
+  var el = document.getElementById('deployStatus');
+  if (el) { el.className = 'deploy-badge deploying'; el.innerHTML = '<i class="ti ti-loader"></i> Deploy: ' + secs + 's'; }
+  if (deployTimer) clearInterval(deployTimer);
+  deployTimer = setInterval(function() {
+    secs--;
+    if (el) el.innerHTML = '<i class="ti ti-loader"></i> Deploy: ' + secs + 's';
+    if (secs <= 0) {
+      clearInterval(deployTimer);
+      if (el) { el.className = 'deploy-badge live'; el.innerHTML = '<i class="ti ti-check"></i> Live'; }
+      var iframe = document.getElementById('previewFrame');
+      if (iframe) iframe.src = LIVE_URL + '?' + Date.now();
+    }
+  }, 1000);
+}
+
+// ── HISTORY ─────────────────────────────────────────────
+async function loadHistory() {
+  var container = document.getElementById('historyList');
+  container.innerHTML = '<div class="loading">Laden...</div>';
+  try {
+    var commits = await ghGet('commits?path=' + CONTENT_FILE + '&per_page=15');
+    container.innerHTML = '';
+    for (var i = 0; i < commits.length; i++) {
+      var c = commits[i];
+      var div = document.createElement('div');
+      div.className = 'history-item';
+      var date = new Date(c.commit.author.date).toLocaleString('nl-NL');
+      div.innerHTML =
+        '<div class="history-info">' +
+          '<div class="history-msg">' + esc(c.commit.message) + '</div>' +
+          '<div class="history-meta">' + date + ' &middot; ' + c.sha.slice(0,7) + '</div>' +
+        '</div>' +
+        '<button class="btn-revert" onclick="revertTo(\'' + c.sha + '\')">Terugzetten</button>';
+      container.appendChild(div);
+    }
+  } catch(e) { container.innerHTML = '<div class="loading">Fout: ' + esc(e.message) + '</div>'; }
+}
+
+async function revertTo(sha) {
+  if (!confirm('Terugzetten naar commit ' + sha.slice(0,7) + '?')) return;
+  try {
+    var data = await ghGet('contents/' + CONTENT_FILE + '?ref=' + sha);
+    var oldContent = atob(data.content.replace(/\n/g, ''));
+    await ghPut('contents/' + CONTENT_FILE, oldContent, currentShas[CONTENT_FILE], 'Herstel: terugzetten naar ' + sha.slice(0,7));
+    await ghGetFile(CONTENT_FILE);
+    parseContentConfig(oldContent);
+    showToast('Terugzet geslaagd!', 'success');
+    startDeployCountdown(); loadHistory();
+  } catch(e) { showToast('Fout bij terugzetten: ' + e.message, 'error'); }
+}
+
+// ── NAVIGATION ──────────────────────────────────────────
+function showSection(id) {
+  var sections = document.querySelectorAll('.section');
+  for (var i = 0; i < sections.length; i++) sections[i].style.display = 'none';
+  var el = document.getElementById(id);
+  if (el) el.style.display = 'block';
+  var navItems = document.querySelectorAll('.nav-item');
+  for (var j = 0; j < navItems.length; j++) navItems[j].classList.remove('active');
+  var active = document.querySelectorAll('.nav-item[data-section="' + id + '"]');
+  for (var k = 0; k < active.length; k++) active[k].classList.add('active');
+  if (id === 'section-history') loadHistory();
+}
+
+// ── DASHBOARD ───────────────────────────────────────────
+async function loadDashboard() {
+  document.getElementById('dashSite').textContent = LIVE_URL;
+  document.getElementById('dashRepo').textContent = GH_OWNER + '/' + GH_REPO;
+  try {
+    var commits = await ghGet('commits?per_page=5');
+    var list = document.getElementById('dashCommits');
+    list.innerHTML = '';
+    for (var i = 0; i < Math.min(commits.length, 5); i++) {
+      var li = document.createElement('li');
+      var date = new Date(commits[i].commit.author.date).toLocaleString('nl-NL');
+      li.textContent = commits[i].commit.message + ' — ' + date;
+      list.appendChild(li);
+    }
+  } catch(e) {}
+}
+
+// ── PREVIEW ─────────────────────────────────────────────
+function refreshPreview() {
+  var iframe = document.getElementById('previewFrame');
+  if (iframe) iframe.src = LIVE_URL + '?' + Date.now();
+}
+
+// ── TOAST ────────────────────────────────────────────────
+function showToast(msg, type) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + (type || '');
+  setTimeout(function() { t.className = 'toast'; }, 3000);
+}
+
+// ── ESCAPE ──────────────────────────────────────────────
+function esc(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── BOOT ─────────────────────────────────────────────────
+document.getElementById('passwordInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') login(); });
+document.getElementById('emailInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') document.getElementById('passwordInput').focus(); });
+if (localStorage.getItem('briqo_auth') === 'ok') { initAdmin(); }
+</script>
+</body>
+</html>
