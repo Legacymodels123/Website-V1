@@ -1,0 +1,21 @@
+{
+  "id": "cases",
+  "slug": "cases",
+  "title": "Cases & Portfolio",
+  "seo": { "title": "Cases — Briqo", "description": "Bekijk welke tools Briqo heeft gebouwd voor het Nederlandse MKB.", "ogImage": "" },
+  "headScripts": "",
+  "blocks": [
+    {
+      "id": "c1", "type": "hero_simple",
+      "data": { "h1": "Cases & Portfolio", "sub": "Bekijk welke tools we hebben gebouwd voor het Nederlandse MKB." }
+    },
+    {
+      "id": "c2", "type": "cases_grid",
+      "data": {
+        "items": [
+          { "client": "Sun Sauna & Poolworld", "tool": "Prijscalculator", "desc": "Klanten configureren zelf hun zwembad en ontvangen direct een prijsindicatie.", "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=600&q=80", "link": "https://sspw-offerte-calc.vercel.app/", "tags": ["Calculator", "Zwembad"] }
+        ]
+      }
+    }
+  ]
+}

@@ -31,8 +31,6 @@
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2020/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230F172A'/><rect x='38' y='38' width='42' height='42' rx='8' fill='%2314B8A6'/><rect x='100' y='38' width='42' height='42' rx='8' fill='%2314B8A6' opacity='.55'/><rect x='38' y='100' width='42' height='42' rx='8' fill='%2314B8A6' opacity='.55'/><rect x='100' y='100' width='42' height='42' rx='8' fill='%2314B8A6'/></svg>">
 
   <!-- Configs — beheerd via /admin.html -->
-  <script src="seo-config.js"></script>
-  <script src="content-config.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1104,62 +1102,121 @@
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  if (typeof CONTENT === 'undefined') return;
+(async function() {
+  // Load content from JSON (CMS-managed)
+  let data;
+  try {
+    const res = await fetch('/content/home.json?v=' + Date.now());
+    data = await res.json();
+  } catch(e) {
+    console.warn('Briqo: content/home.json not found, using hardcoded content');
+    return;
+  }
+
+  const blocks = data.blocks || [];
+  function getBlock(type) { return blocks.find(b => b.type === type); }
+
   function setText(id, val, isHTML) {
     var el = document.getElementById(id); if (!el) return;
     var v = val ? String(val) : '';
     if (isHTML) el.innerHTML = v; else el.textContent = v;
   }
   function setAttr(id, attr, val) { var el = document.getElementById(id); if (el && val) el.setAttribute(attr, val); }
-  setText('cc-hero-pill', CONTENT.hero.pill);
-  setText('cc-hero-h1', CONTENT.hero.h1.replace(/\n/g, '<br>'), true);
-  setText('cc-hero-sub', CONTENT.hero.sub);
-  var e;
-  e = document.getElementById('cc-hero-cta1'); if (e) e.textContent = CONTENT.hero.ctaPrimary;
-  e = document.getElementById('cc-hero-cta2'); if (e) e.textContent = CONTENT.hero.ctaSecondary;
-  setText('cc-hero-proof', CONTENT.hero.proofText);
-  setAttr('cc-about-img', 'src', CONTENT.about.photo);
-  setText('cc-about-name', CONTENT.about.name);
-  setText('cc-about-role', CONTENT.about.role);
-  setText('cc-about-bio1', CONTENT.about.bio1);
-  setText('cc-about-bio2', CONTENT.about.bio2);
-  var c1 = CONTENT.pricing.card1;
-  setText('cc-p1-title', c1.title); setText('cc-p1-desc', c1.desc);
-  setText('cc-p1-amount', c1.amount); setText('cc-p1-sub', c1.amountSub);
-  e = document.getElementById('cc-p1-feats');
-  if (e) e.innerHTML = c1.features.map(function(f){return '<div class="pf"><i class="ti ti-check pf-check"></i>'+f+'</div>';}).join('');
-  e = document.getElementById('cc-p1-cta'); if (e) e.textContent = c1.cta;
-  var c2 = CONTENT.pricing.card2;
-  setText('cc-p2-badge', c2.badge); setText('cc-p2-title', c2.title);
-  setText('cc-p2-desc', c2.desc); setText('cc-p2-amount', c2.amount); setText('cc-p2-sub', c2.amountSub);
-  e = document.getElementById('cc-p2-feats');
-  if (e) e.innerHTML = c2.features.map(function(f){return '<div class="pf"><i class="ti ti-check pf-check"></i>'+f+'</div>';}).join('');
-  e = document.getElementById('cc-p2-cta'); if (e) e.textContent = c2.cta;
-  var grid = document.getElementById('cc-branches-grid');
-  if (grid) {
-    grid.innerHTML = CONTENT.branches.map(function(b) {
-      return '<div class="branch-card"' +
-        (b.link ? ' onclick="window.open(\'' + b.link + '\',\'_blank\')" style="cursor:pointer"' : '') + '>' +
-        (b.live ? '<div class="branch-live">Live</div>' : '') +
-        '<img src="' + b.img + '" alt="' + b.name + '" loading="lazy">' +
-        '<div class="branch-overlay"></div>' +
-        '<div class="branch-content"><div class="branch-name">' + b.name + '</div><div class="branch-tools">' + b.count + '</div></div>' +
-        '</div>';
-    }).join('');
+
+  // SEO
+  if (data.seo) {
+    if (data.seo.title) document.title = data.seo.title;
+    ['description','og:title','og:description','twitter:title','twitter:description'].forEach(function(name) {
+      var key = name.startsWith('og:') || name.startsWith('twitter:') ? 'property' : 'name';
+      var tag = document.querySelector('meta['+key+'="'+name+'"]');
+      if (tag && data.seo.description) tag.setAttribute('content', data.seo.description);
+    });
+    if (data.seo.title) {
+      ['og:title','twitter:title'].forEach(function(p){ var t=document.querySelector('meta[property="'+p+'"]'); if(t) t.setAttribute('content',data.seo.title); });
+    }
   }
-  var cta = CONTENT.cta;
-  setText('cc-cta-h2', cta.h2.replace(/\n/g, '<br>'), true);
-  setText('cc-cta-sub', cta.sub); setText('cc-cta-note', cta.note);
-  e = document.getElementById('cc-cta-cta1'); if (e) e.textContent = cta.ctaPrimary;
-  e = document.getElementById('cc-cta-cta2'); if (e) e.textContent = cta.ctaSecondary;
-  var statsEl = document.getElementById('cc-cta-stats');
-  if (statsEl && cta.stats) {
-    statsEl.innerHTML = cta.stats.map(function(s) {
-      return '<div class="cs-stat2"><div class="cs-stat2-v">' + s.value + '</div><div class="cs-stat2-l">' + s.label + '</div></div>';
-    }).join('');
+
+  // Head scripts (per-page)
+  if (data.headScripts) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = data.headScripts;
+    Array.from(tmp.children).forEach(function(el) { document.head.appendChild(el.cloneNode(true)); });
   }
-});
+
+  // Hero block
+  var hero = getBlock('hero');
+  if (hero) {
+    var d = hero.data;
+    setText('cc-hero-pill', d.pill);
+    setText('cc-hero-h1', (d.h1||'').replace(/\n/g,'<br>'), true);
+    setText('cc-hero-sub', d.sub);
+    var e = document.getElementById('cc-hero-cta1'); if (e) e.textContent = d.ctaPrimary;
+    e = document.getElementById('cc-hero-cta2'); if (e) e.textContent = d.ctaSecondary;
+    setText('cc-hero-proof', d.proofText);
+  }
+
+  // About block
+  var about = getBlock('about');
+  if (about) {
+    var d = about.data;
+    setAttr('cc-about-img', 'src', d.photo);
+    setText('cc-about-name', d.name);
+    setText('cc-about-role', d.role);
+    setText('cc-about-bio1', d.bio1);
+    setText('cc-about-bio2', d.bio2);
+  }
+
+  // Pricing block
+  var pricing = getBlock('pricing');
+  if (pricing) {
+    var c1 = pricing.data.card1 || {};
+    var c2 = pricing.data.card2 || {};
+    setText('cc-p1-title', c1.title); setText('cc-p1-desc', c1.desc);
+    setText('cc-p1-amount', c1.amount); setText('cc-p1-sub', c1.amountSub);
+    var e = document.getElementById('cc-p1-feats');
+    if (e && c1.features) e.innerHTML = c1.features.map(function(f){return '<div class="pf"><i class="ti ti-check pf-check"></i>'+f+'</div>';}).join('');
+    e = document.getElementById('cc-p1-cta'); if (e) e.textContent = c1.cta;
+    setText('cc-p2-badge', c2.badge); setText('cc-p2-title', c2.title);
+    setText('cc-p2-desc', c2.desc); setText('cc-p2-amount', c2.amount); setText('cc-p2-sub', c2.amountSub);
+    e = document.getElementById('cc-p2-feats');
+    if (e && c2.features) e.innerHTML = c2.features.map(function(f){return '<div class="pf"><i class="ti ti-check pf-check"></i>'+f+'</div>';}).join('');
+    e = document.getElementById('cc-p2-cta'); if (e) e.textContent = c2.cta;
+  }
+
+  // Branches block
+  var branches = getBlock('branches');
+  if (branches) {
+    var grid = document.getElementById('cc-branches-grid');
+    if (grid && branches.data.items) {
+      grid.innerHTML = branches.data.items.map(function(b) {
+        return '<div class="branch-card"' +
+          (b.link ? ' onclick="window.open(''+b.link+'','_blank')" style="cursor:pointer"' : '') + '>' +
+          (b.live ? '<div class="branch-live">Live</div>' : '') +
+          '<img src="'+b.img+'" alt="'+b.name+'" loading="lazy">' +
+          '<div class="branch-overlay"></div>' +
+          '<div class="branch-content"><div class="branch-name">'+b.name+'</div><div class="branch-tools">'+b.count+'</div></div>' +
+          '</div>';
+      }).join('');
+    }
+  }
+
+  // CTA block
+  var cta = getBlock('cta');
+  if (cta) {
+    var d = cta.data;
+    setText('cc-cta-h2', (d.h2||'').replace(/\n/g,'<br>'), true);
+    setText('cc-cta-sub', d.sub);
+    setText('cc-cta-note', d.note);
+    var e = document.getElementById('cc-cta-cta1'); if (e) e.textContent = d.ctaPrimary;
+    e = document.getElementById('cc-cta-cta2'); if (e) e.textContent = d.ctaSecondary;
+    var statsEl = document.getElementById('cc-cta-stats');
+    if (statsEl && d.stats) {
+      statsEl.innerHTML = d.stats.map(function(s) {
+        return '<div class="cs-stat2"><div class="cs-stat2-v">'+s.value+'</div><div class="cs-stat2-l">'+s.label+'</div></div>';
+      }).join('');
+    }
+  }
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,7 @@
+{
+  "pages": [
+    { "id": "home", "slug": "", "title": "Home", "icon": "ti-home" },
+    { "id": "cases", "slug": "cases", "title": "Cases & Portfolio", "icon": "ti-briefcase" },
+    { "id": "blog", "slug": "blog", "title": "Blog", "icon": "ti-article" }
+  ]
+}

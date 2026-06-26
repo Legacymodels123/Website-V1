@@ -1,0 +1,67 @@
+{
+  "id": "home",
+  "slug": "",
+  "title": "Home",
+  "seo": {
+    "title": "Briqo — Slimme AI-tools voor slim MKB",
+    "description": "Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1–15 medewerkers. Van offertecalculatoren tot lead-capture tools — in dagen live, niet maanden.",
+    "ogImage": "https://briqo.nl/og-image.png"
+  },
+  "headScripts": "",
+  "blocks": [
+    {
+      "id": "b1", "type": "hero",
+      "data": {
+        "pill": "Eerste live tool: SSPW Prijscalculator",
+        "h1": "Wij bouwen de\ntool die jouw\nbedrijf <em>mist</em>",
+        "sub": "Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan — live op jouw website in minder dan twee weken.",
+        "ctaPrimary": "Demo aanvragen",
+        "ctaSecondary": "Bekijk cases",
+        "proofText": "Sun Sauna & Poolworld werkt al met Briqo"
+      }
+    },
+    {
+      "id": "b2", "type": "branches",
+      "data": {
+        "title": "Voor welke sector werk jij?",
+        "sub": "Klik op jouw branche en zie welke tools beschikbaar zijn — of laat ons iets nieuws bouwen.",
+        "items": [
+          { "name": "Zwembad & Buitenleven", "count": "1 tool beschikbaar", "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80", "live": true, "link": "https://sspw-offerte-calc.vercel.app/" },
+          { "name": "Automotive", "count": "3 tools beschikbaar", "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80", "live": false, "link": "" },
+          { "name": "Installatie & Bouw", "count": "2 tools beschikbaar", "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80", "live": false, "link": "" },
+          { "name": "Beauty & Wellness", "count": "2 tools beschikbaar", "img": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80", "live": false, "link": "" },
+          { "name": "Retail", "count": "2 tools beschikbaar", "img": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80", "live": false, "link": "" },
+          { "name": "Zakelijke Dienstverlening", "count": "2 tools beschikbaar", "img": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80", "live": false, "link": "" },
+          { "name": "Horeca & Recreatie", "count": "2 tools beschikbaar", "img": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80", "live": false, "link": "" }
+        ]
+      }
+    },
+    {
+      "id": "b3", "type": "pricing",
+      "data": {
+        "card1": { "title": "Opzet", "desc": "Eenmalig — van brief tot live MVP op jouw eigen domein.", "amount": "Op maat", "amountSub": "eenmalig", "features": ["Intakegesprek & scope", "Ontwerp & volledige bouw", "Live op Vercel + eigen domein", "Admin dashboard voor leads", "Supabase database"], "cta": "Vraag offerte aan" },
+        "card2": { "badge": "Maandelijks opzegbaar", "title": "Abonnement", "desc": "Maandelijks — wij houden het draaiend en bouwen door.", "amount": "Op maat", "amountSub": "maand", "features": ["Hosting & technisch onderhoud", "Updates & bugfixes", "Doorontwikkeling op aanvraag", "Lead-dashboardtoegang", "Prioriteits-support"], "cta": "Start met demo" }
+      }
+    },
+    {
+      "id": "b4", "type": "about",
+      "data": {
+        "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+        "name": "Levi", "role": "Oprichter, Briqo",
+        "bio1": "Praktische AI-tools voor het Nederlandse MKB. Geen grote consultancyprojecten of vaag strategisch advies — gewoon een werkende tool die live gaat en resultaat oplevert.",
+        "bio2": "We begrijpen dat MKB-bedrijven geen IT-afdeling hebben. Alles wat we bouwen is direct bruikbaar, makkelijk aanpasbaar en schaalbaar als je groeit."
+      }
+    },
+    {
+      "id": "b5", "type": "cta",
+      "data": {
+        "h2": "Vertel ons wat jouw\nbedrijf mist",
+        "sub": "In een gesprek van 30 minuten bepalen we samen of en hoe we kunnen helpen. Geen verplichtingen, geen verkooppraatje.",
+        "note": "Binnen 1 werkdag reactie · Geen verplichtingen",
+        "ctaPrimary": "Vraag een gratis gesprek aan",
+        "ctaSecondary": "Bekijk cases",
+        "stats": [{ "value": "1", "label": "Live tool" }, { "value": "< 2 wkn", "label": "Gemiddelde bouwtijd" }, { "value": "NL MKB", "label": "Onze focus" }]
+      }
+    }
+  ]
+}
