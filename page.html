@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briqo</title>
+<meta name="description" content="">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Briqo">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://briqo.nl/og-image.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0F172A;--teal:#14B8A6;--teal-d:#0D9488;--bg:#F8FAFC;--border:#E2E8F0;--text:#0F172A;--muted:#64748B}
+body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.container{max-width:1140px;margin:0 auto;padding:0 28px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logomark{width:34px;height:34px;background:var(--navy);border-radius:9px;display:flex;align-items:center;justify-content:center}
+.nav-logomark svg{width:18px;height:18px;fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.nav-name{font-size:18px;font-weight:700;color:var(--navy);letter-spacing:-.02em}
+.nav-links{display:flex;gap:32px}
+.nav-link{font-size:14px;font-weight:500;color:var(--muted);transition:color .15s}
+.nav-link:hover,.nav-link.active{color:var(--navy)}
+.nav-cta{background:var(--navy);color:#fff;font-size:14px;font-weight:600;padding:10px 20px;border-radius:10px;transition:background .2s;cursor:pointer;border:none}
+.nav-cta:hover{background:#1E293B}
+
+/* HERO SIMPLE */
+.page-hero{background:var(--navy);padding:80px 0 70px;overflow:hidden;position:relative}
+.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(20,184,166,.12),transparent);pointer-events:none}
+.page-hero-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.page-hero h1{font-size:clamp(36px,5vw,54px);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:18px}
+.page-hero p{font-size:18px;color:rgba(255,255,255,.65);line-height:1.7;max-width:560px}
+
+/* SECTIONS */
+.section{padding:80px 0}
+.section-alt{background:var(--bg)}
+.section-label{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.section-h2{font-size:clamp(28px,3.5vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.15;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--muted);line-height:1.75;max-width:580px;margin-bottom:40px}
+.section-center{text-align:center}
+.section-center .section-sub{margin-left:auto;margin-right:auto}
+
+/* TEXT BLOCK */
+.text-content{max-width:720px}
+.text-content h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.025em;margin-bottom:18px}
+.text-content p,.text-content .body-text{font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.text-content.center{margin:0 auto;text-align:center}
+
+/* IMAGE + TEXT */
+.img-text{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.img-text.flip{direction:rtl}.img-text.flip>*{direction:ltr}
+.img-text-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--bg)}
+.img-text-img img{width:100%;height:100%;object-fit:cover}
+.img-text-cta{display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-weight:600;color:var(--teal);font-size:15px}
+.img-text-cta:hover{color:var(--teal-d)}
+
+/* CASES GRID */
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:40px}
+.case-card{border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s;background:#fff}
+.case-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+.case-card-img{aspect-ratio:16/9;overflow:hidden;background:var(--bg)}
+.case-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.case-card:hover .case-card-img img{transform:scale(1.04)}
+.case-card-body{padding:20px}
+.case-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.case-tag{background:var(--bg);border:1px solid var(--border);font-size:11.5px;font-weight:500;color:var(--muted);padding:2px 9px;border-radius:20px}
+.case-card-client{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:5px}
+.case-card-title{font-size:18px;font-weight:700;margin-bottom:8px}
+.case-card-desc{font-size:14px;color:var(--muted);line-height:1.65}
+.case-card-link{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--teal)}
+.case-card-link:hover{color:var(--teal-d)}
+
+/* EMBED */
+.embed-block{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
+.embed-title{font-size:13px;font-weight:600;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--border);background:var(--bg)}
+.embed-content{padding:20px}
+
+/* RAW HTML */
+.raw-block{margin:0}
+
+/* CTA SECTION */
+.cta-sect{background:var(--navy);padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.cta-sect::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 100% at 50% 50%,rgba(20,184,166,.1),transparent);pointer-events:none}
+.cta-sect h2{font-size:clamp(32px,4vw,48px);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;position:relative}
+.cta-sect p{font-size:18px;color:rgba(255,255,255,.65);margin-bottom:32px;line-height:1.7;position:relative}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-note{font-size:13px;color:rgba(255,255,255,.4);margin-top:16px;position:relative}
+.cta-stats-row{display:flex;gap:40px;justify-content:center;margin-top:40px;position:relative}
+.cs-stat2{text-align:center}
+.cs-stat2-v{font-size:28px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.cs-stat2-l{font-size:12px;color:rgba(255,255,255,.5);margin-top:3px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:13px 24px;border-radius:11px;font-size:15px;font-weight:600;transition:all .2s;cursor:pointer;border:none;font-family:inherit}
+.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-d)}
+.btn-outline-white{background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.2)}.btn-outline-white:hover{background:rgba(255,255,255,.08);color:#fff}
+
+/* SPACER */
+.block-spacer{display:block}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-lm{width:32px;height:32px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.footer-lm svg{width:16px;height:16px;fill:none;stroke:var(--teal);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.footer-ln{font-size:16px;font-weight:700;color:#fff}
+.footer-desc{font-size:14px;line-height:1.7;max-width:260px}
+.footer-col-title{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:9px}
+.footer-link{font-size:14px;color:rgba(255,255,255,.55);transition:color .15s}
+.footer-link:hover{color:#fff}
+.footer-bottom{padding:20px 0;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,.3)}
+
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-backdrop.open{display:flex}
+.modal-box{background:#fff;border-radius:20px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.25)}
+.modal-header{padding:24px 28px 0;display:flex;justify-content:space-between;align-items:flex-start}
+.modal-header h2{font-size:20px;font-weight:700}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;padding:2px}
+.modal-body{padding:22px 28px 28px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;font-weight:500;margin-bottom:5px;color:var(--muted)}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:9px;font-size:14.5px;font-family:inherit;outline:none;transition:border-color .15s}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{min-height:90px;resize:vertical}
+.form-submit{width:100%;background:var(--navy);color:#fff;border:none;padding:13px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;margin-top:6px}
+.form-submit:hover{background:#1E293B}
+.form-note{text-align:center;font-size:12px;color:var(--muted);margin-top:9px}
+.form-success{text-align:center;padding:20px 0}
+.form-success-icon{width:52px;height:52px;background:#ECFDF5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:#10B981;font-size:22px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .img-text{grid-template-columns:1fr;gap:24px}
+  .img-text.flip{direction:ltr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .cta-stats-row{gap:24px}
+}
+@media(max-width:480px){
+  .footer-top{grid-template-columns:1fr}
+  .cases-grid{grid-template-columns:1fr}
+  .cta-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logomark">
+          <svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+        </div>
+        <span class="nav-name">Briqo</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="/branches" class="nav-link" data-navkey="branches">Branches</a>
+        <a href="/werkwijze" class="nav-link" data-navkey="werkwijze">Werkwijze</a>
+        <a href="/cases" class="nav-link" data-navkey="cases">Cases</a>
+        <a href="/prijzen" class="nav-link" data-navkey="prijzen">Prijzen</a>
+        <a href="/over-ons" class="nav-link" data-navkey="over-ons">Over ons</a>
+      </div>
+      <button class="nav-cta" onclick="openModal()">Demo aanvragen</button>
+    </div>
+  </div>
+</nav>
+
+<div id="pageContent">
+  <div style="min-height:60vh;display:flex;align-items:center;justify-content:center">
+    <div style="text-align:center;color:#64748B">
+      <div style="font-size:32px;margin-bottom:12px">⏳</div>
+      <div>Laden...</div>
+    </div>
+  </div>
+</div>
+
+<footer id="siteFooter">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-lm"><svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg></div>
+          <span class="footer-ln">Briqo</span>
+        </div>
+        <p class="footer-desc">Slimme AI-tools voor het Nederlandse MKB. Van idee naar live tool in minder dan twee weken.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigatie</div>
+        <div class="footer-links">
+          <a href="/cases" class="footer-link">Cases</a>
+          <a href="/blog" class="footer-link">Blog</a>
+          <a href="/#prijzen" class="footer-link">Prijzen</a>
+          <a href="/#branches" class="footer-link">Branches</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Bedrijf</div>
+        <div class="footer-links">
+          <a href="/#over-ons" class="footer-link">Over ons</a>
+          <a href="/#contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:kempenlevi@gmail.com" class="footer-link">kempenlevi@gmail.com</a>
+          <span class="footer-link">Nederland</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span id="footerCopy">&copy; 2026 Briqo. Alle rechten voorbehouden.</span>
+      <span id="footerTag">Gebouwd voor het Nederlandse MKB</span>
+    </div>
+  </div>
+</footer>
+
+<!-- DEMO MODAL -->
+<div class="modal-backdrop" id="demoModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h2>Demo aanvragen</h2>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="modalForm">
+        <form action="https://formspree.io/f/xgejwvoe" method="POST" id="contactForm">
+          <div class="form-group"><label>Naam</label><input type="text" name="naam" required placeholder="Jouw naam"></div>
+          <div class="form-group"><label>E-mailadres</label><input type="email" name="email" required placeholder="jouw@email.nl"></div>
+          <div class="form-group"><label>Bedrijf</label><input type="text" name="bedrijf" placeholder="Bedrijfsnaam"></div>
+          <div class="form-group"><label>Wat wil je automatiseren of verbeteren?</label><textarea name="bericht" placeholder="Korte omschrijving..."></textarea></div>
+          <button type="submit" class="form-submit" id="submitBtn">Verstuur aanvraag <i class="ti ti-arrow-right"></i></button>
+          <p class="form-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</p>
+        </form>
+      </div>
+      <div id="modalSuccess" style="display:none">
+        <div class="form-success">
+          <div class="form-success-icon"><i class="ti ti-check"></i></div>
+          <h3>Aanvraag ontvangen!</h3>
+          <p style="color:#64748B;margin-top:8px">We nemen binnen 1 werkdag contact op.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const LIVE_URL = 'https://website-v1-chi-rouge.vercel.app';
+
+// ── ROUTING ────────────────────────────────────────────────────────
+const slug = new URLSearchParams(location.search).get('p') || location.pathname.replace(/^\//, '') || 'home';
+
+// Mark active nav link
+document.querySelectorAll('[data-navkey]').forEach(a => {
+  if (a.dataset.navkey === slug) a.classList.add('active');
+});
+
+// ── BLOCK RENDERERS ────────────────────────────────────────────────
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+const renderers = {
+  hero_simple(d) {
+    return `<section class="page-hero">
+      <div class="container">
+        ${d.label ? `<div class="page-hero-label">${esc(d.label)}</div>` : ''}
+        <h1>${(d.h1||'').replace(/\n/g,'<br>')}</h1>
+        ${d.sub ? `<p>${esc(d.sub)}</p>` : ''}
+      </div>
+    </section>`;
+  },
+  text_block(d) {
+    const cls = d.align === 'center' ? 'text-content center' : 'text-content';
+    return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
+      <div class="container">
+        <div class="${cls}">
+          ${d.h2 ? `<h2>${esc(d.h2)}</h2>` : ''}
+          ${(d.content||'').split('\n\n').filter(Boolean).map(p => `<p class="body-text">${esc(p)}</p>`).join('')}
+        </div>
+      </div>
+    </section>`;
+  },
+  image_text(d) {
+    return `<section class="section">
+      <div class="container">
+        <div class="img-text ${d.imagePosition === 'left' ? 'flip' : ''}">
+          <div class="img-text-img">
+            ${d.imageUrl ? `<img src="${esc(d.imageUrl)}" alt="${esc(d.imageAlt||'')}">` : ''}
+          </div>
+          <div>
+            ${d.h2 ? `<h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.025em;margin-bottom:16px">${esc(d.h2)}</h2>` : ''}
+            ${(d.content||'').split('\n\n').filter(Boolean).map(p => `<p style="color:#64748B;line-height:1.8;margin-bottom:12px">${esc(p)}</p>`).join('')}
+            ${d.ctaText ? `<a href="${esc(d.ctaLink||'#')}" class="img-text-cta">${esc(d.ctaText)} <i class="ti ti-arrow-right"></i></a>` : ''}
+          </div>
+        </div>
+      </div>
+    </section>`;
+  },
+  cases_grid(d) {
+    const items = d.items || [];
+    return `<section class="section">
+      <div class="container">
+        <div class="cases-grid">
+          ${items.map(c => `
+            <div class="case-card" ${c.link ? `onclick="window.open('${esc(c.link)}','_blank')" style="cursor:pointer"` : ''}>
+              ${c.img ? `<div class="case-card-img"><img src="${esc(c.img)}" alt="${esc(c.client||'')}"></div>` : ''}
+              <div class="case-card-body">
+                ${(c.tags||[]).length ? `<div class="case-card-tags">${c.tags.map(t=>`<span class="case-tag">${esc(t)}</span>`).join('')}</div>` : ''}
+                <div class="case-card-client">${esc(c.client||'')}</div>
+                <div class="case-card-title">${esc(c.tool||'')}</div>
+                <div class="case-card-desc">${esc(c.desc||'')}</div>
+                ${c.link ? `<div class="case-card-link">Bekijk tool <i class="ti ti-external-link"></i></div>` : ''}
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+  },
+  cta(d) {
+    return `<section class="cta-sect">
+      <div class="container">
+        <h2>${(d.h2||'').replace(/\n/g,'<br>')}</h2>
+        ${d.sub ? `<p>${esc(d.sub)}</p>` : ''}
+        <div class="cta-btns">
+          ${d.ctaPrimary ? `<button class="btn btn-teal" onclick="openModal()">${esc(d.ctaPrimary)} <i class="ti ti-arrow-right"></i></button>` : ''}
+          ${d.ctaSecondary ? `<a href="/cases" class="btn btn-outline-white">${esc(d.ctaSecondary)}</a>` : ''}
+        </div>
+        ${d.note ? `<div class="cta-note">${esc(d.note)}</div>` : ''}
+        ${(d.stats||[]).length ? `<div class="cta-stats-row">${d.stats.map(s=>`<div class="cs-stat2"><div class="cs-stat2-v">${esc(s.value)}</div><div class="cs-stat2-l">${esc(s.label)}</div></div>`).join('')}</div>` : ''}
+      </div>
+    </section>`;
+  },
+  embed(d) {
+    return `<section class="section">
+      <div class="container">
+        <div class="embed-block">
+          ${d.title ? `<div class="embed-title">${esc(d.title)}</div>` : ''}
+          <div class="embed-content">${d.embedHtml||''}</div>
+        </div>
+      </div>
+    </section>`;
+  },
+  raw_html(d) {
+    return `<div class="raw-block">${d.html||''}</div>`;
+  },
+  spacer(d) {
+    return `<div class="block-spacer" style="height:${d.height||60}px"></div>`;
+  }
+};
+
+// ── LOAD + RENDER ──────────────────────────────────────────────────
+async function loadPage() {
+  let data;
+  try {
+    const r = await fetch(`/content/${slug}.json`);
+    if (!r.ok) throw new Error('404');
+    data = await r.json();
+  } catch {
+    document.getElementById('pageContent').innerHTML = `
+      <section class="page-hero"><div class="container">
+        <h1>Pagina niet gevonden</h1>
+        <p>Deze pagina bestaat niet (nog niet). <a href="/" style="color:var(--teal)">Terug naar home</a></p>
+      </div></section>`;
+    return;
+  }
+
+  // SEO
+  if (data.seo?.title) document.title = data.seo.title;
+  if (data.seo?.description) {
+    document.querySelector('meta[name="description"]').content = data.seo.description;
+    document.querySelector('meta[property="og:description"]').content = data.seo.description;
+  }
+  if (data.seo?.title) document.querySelector('meta[property="og:title"]').content = data.seo.title;
+
+  // Head scripts
+  if (data.headScripts) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = data.headScripts;
+    tmp.childNodes.forEach(n => document.head.appendChild(n.cloneNode(true)));
+  }
+
+  // Render blocks
+  const html = (data.blocks || []).map(block => {
+    const r = renderers[block.type];
+    return r ? r(block.data) : '';
+  }).join('');
+
+  document.getElementById('pageContent').innerHTML = html || `
+    <section class="page-hero"><div class="container">
+      <h1>${esc(data.title||slug)}</h1>
+      <p>Deze pagina is leeg. Voeg blokken toe via de admin.</p>
+    </div></section>`;
+}
+
+loadPage();
+
+// ── MODAL ─────────────────────────────────────────────────────────
+function openModal() { document.getElementById('demoModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal() { document.getElementById('demoModal').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('demoModal').addEventListener('click', e => { if (e.target===document.getElementById('demoModal')) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Versturen...';
+  try {
+    const r = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{'Accept':'application/json'} });
+    if (r.ok) { document.getElementById('modalForm').style.display='none'; document.getElementById('modalSuccess').style.display='block'; }
+    else { btn.disabled=false; btn.innerHTML='Verstuur aanvraag <i class="ti ti-arrow-right"></i>'; }
+  } catch { btn.disabled=false; btn.innerHTML='Verstuur aanvraag <i class="ti ti-arrow-right"></i>'; }
+});
+</script>
+</body>
+</html>

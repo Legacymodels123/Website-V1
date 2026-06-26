@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/cases",     "destination": "/page.html?p=cases"     },
+    { "source": "/blog",      "destination": "/page.html?p=blog"      },
+    { "source": "/over-ons",  "destination": "/page.html?p=over-ons"  },
+    { "source": "/werkwijze", "destination": "/page.html?p=werkwijze"  },
+    { "source": "/branches",  "destination": "/page.html?p=branches"  },
+    { "source": "/prijzen",   "destination": "/page.html?p=prijzen"   }
+  ]
+}
