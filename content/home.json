@@ -32,7 +32,7 @@
             "name": "Zwembad & Buitenleven",
             "count": "1 tool beschikbaar",
             "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80",
-            "live": false,
+            "live": true,
             "link": "https://sspw-offerte-calc.vercel.app/"
           },
           {
