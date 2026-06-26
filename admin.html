@@ -162,6 +162,25 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);margin-bottom:18px}
 .breadcrumb a{color:var(--muted);text-decoration:none;cursor:pointer}.breadcrumb a:hover{color:var(--teal)}
 .breadcrumb i{font-size:12px}
+
+/* PREVIEW PANEL */
+.editor-wrap{display:flex;gap:0;height:calc(100vh - 80px);overflow:hidden;margin:-28px;padding:28px 28px 0}
+.editor-pane{flex:1;overflow-y:auto;padding-right:16px;min-width:0}
+.preview-pane{width:0;overflow:hidden;transition:width .3s ease;flex-shrink:0;display:flex;flex-direction:column}
+.preview-pane.open{width:480px}
+.preview-bar{background:var(--navy);color:#fff;padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-radius:10px 10px 0 0;flex-shrink:0}
+.preview-bar-title{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:7px}
+.preview-bar-actions{display:flex;gap:6px}
+.preview-btn{background:rgba(255,255,255,.12);border:none;color:#fff;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:4px}
+.preview-btn:hover{background:rgba(255,255,255,.22)}
+.preview-iframe-wrap{flex:1;background:#fff;border:1.5px solid var(--border);border-top:none;border-radius:0 0 10px 10px;overflow:hidden;position:relative}
+.preview-iframe-wrap iframe{width:100%;height:100%;border:none;transform-origin:top left}
+.preview-overlay{position:absolute;inset:0;background:rgba(15,23,42,.7);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;gap:10px;opacity:0;pointer-events:none;transition:opacity .2s}
+.preview-overlay.show{opacity:1;pointer-events:all}
+.preview-countdown{font-size:36px;font-weight:700;font-variant-numeric:tabular-nums}
+.preview-cnt-label{font-size:13px;opacity:.7}
+.btn-preview-toggle{display:flex;align-items:center;gap:6px}
+.btn-preview-toggle.active{background:var(--teal);color:#fff;border-color:var(--teal)}
 </style>
 </head>
 <body>
@@ -240,6 +259,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 
     <!-- PAGE EDITOR -->
     <div id="view-editor" style="display:none">
+      <div class="editor-wrap">
+      <div class="editor-pane" id="editorPane">
       <div class="breadcrumb">
         <a onclick="showView('pages')"><i class="ti ti-files"></i>Pagina's</a>
         <i class="ti ti-chevron-right"></i>
@@ -249,6 +270,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         <div class="ph-left"><h1 id="editorH1">Pagina bewerken</h1><p id="editorSub">Voeg blokken toe, bewerk ze en sla op</p></div>
         <div style="display:flex;gap:8px">
           <button class="btn btn-secondary btn-sm" onclick="openAddBlockModal()"><i class="ti ti-plus"></i>Blok toevoegen</button>
+          <button class="btn btn-secondary btn-sm btn-preview-toggle" id="previewToggleBtn" onclick="togglePreview()"><i class="ti ti-eye"></i>Preview</button>
           <button class="btn btn-primary btn-sm" id="savePageBtn" onclick="savePage()"><i class="ti ti-cloud-upload"></i>Opslaan</button>
         </div>
       </div>
@@ -880,6 +902,7 @@ async function savePage() {
     document.getElementById('saveBar').classList.remove('visible');
     showToast('Opgeslagen! Site deployt over ~40 seconden', 'ok');
     startDeploy();
+    startPreviewDeploy();
   } catch(e) {
     showToast('Fout: ' + e.message, 'err');
   }
@@ -1013,6 +1036,63 @@ function showToast(msg, type) {
 // ── UTILS ─────────────────────────────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+
+
+// ── PREVIEW ───────────────────────────────────────────────────────
+let previewOpen = false;
+let previewTimer = null;
+
+function togglePreview() {
+  previewOpen = !previewOpen;
+  const pane = document.getElementById('previewPane');
+  const btn  = document.getElementById('previewToggleBtn');
+  pane.classList.toggle('open', previewOpen);
+  btn.classList.toggle('active', previewOpen);
+  if (previewOpen) {
+    const iframe = document.getElementById('previewIframe');
+    if (iframe.src === 'about:blank') {
+      loadPreviewUrl();
+    }
+  }
+}
+
+function getPreviewUrl() {
+  const slug = currentSlug || '';
+  return LIVE_URL + (slug ? '?p=' + slug : '') + '?_t=' + Date.now();
+}
+
+function loadPreviewUrl() {
+  const iframe = document.getElementById('previewIframe');
+  iframe.src = LIVE_URL + (currentSlug ? '?p=' + currentSlug : '');
+}
+
+function refreshPreview() {
+  const iframe = document.getElementById('previewIframe');
+  iframe.src = iframe.src.split('?')[0] + '?_t=' + Date.now();
+}
+
+function openLiveTab() {
+  window.open(LIVE_URL + (currentSlug ? '?p=' + currentSlug : ''), '_blank');
+}
+
+function startPreviewDeploy() {
+  if (!previewOpen) return;
+  let s = 42;
+  const overlay = document.getElementById('previewOverlay');
+  const countdown = document.getElementById('previewCountdown');
+  overlay.classList.add('show');
+  countdown.textContent = s;
+  if (previewTimer) clearInterval(previewTimer);
+  previewTimer = setInterval(() => {
+    s--;
+    countdown.textContent = s;
+    if (s <= 0) {
+      clearInterval(previewTimer);
+      overlay.classList.remove('show');
+      refreshPreview();
+    }
+  }, 1000);
+}
 
 // ── PRICING VIEW ──────────────────────────────────────────────────
 let pricingHomeData = null;
