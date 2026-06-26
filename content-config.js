@@ -1,14 +1,11 @@
-// ╔══════════════════════════════════════════════════════════════════╗
-// ║  BRIQO CONTENT CONFIG                                           ║
-// ║  Bewerk dit bestand via /admin.html — niet handmatig aanpassen  ║
-// ╚══════════════════════════════════════════════════════════════════╝
+// BRIQO CONTENT CONFIG — bewerk via /admin.html
 
 const CONTENT = {
 
   hero: {
     pill: "Eerste live tool: SSPW Prijscalculator",
-    h1: "Wij bouwen de\ntool die jouw\nbedrijf <em>mist</em>",
-    sub: "Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan — live op jouw website in minder dan twee weken.",
+    h1: "Wij bouwen de\\ntool die jouw\\nbedrijf <em>mist</em>",
+    sub: "Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan â live op jouw website in minder dan twee weken.",
     ctaPrimary: "Demo aanvragen",
     ctaSecondary: "Bekijk cases",
     proofText: "Sun Sauna & Poolworld werkt al met Briqo",
@@ -18,14 +15,14 @@ const CONTENT = {
     photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
     name: "Levi",
     role: "Oprichter, Briqo",
-    bio1: "Praktische AI-tools voor het Nederlandse MKB. Geen grote consultancyprojecten of vaag strategisch advies — gewoon een werkende tool die live gaat en resultaat oplevert.",
+    bio1: "Praktische AI-tools voor het Nederlandse MKB. Geen grote consultancyprojecten of vaag strategisch advies â gewoon een werkende tool die live gaat en resultaat oplevert.",
     bio2: "We begrijpen dat MKB-bedrijven geen IT-afdeling hebben. Alles wat we bouwen is direct bruikbaar, makkelijk aanpasbaar en schaalbaar als je groeit.",
   },
 
   pricing: {
     card1: {
       title: "Opzet",
-      desc: "Eenmalig — van brief tot live MVP op jouw eigen domein.",
+      desc: "Eenmalig â van brief tot live MVP op jouw eigen domein.",
       amount: "Op maat",
       amountSub: "eenmalig",
       features: [
@@ -40,9 +37,9 @@ const CONTENT = {
     card2: {
       badge: "Maandelijks opzegbaar",
       title: "Abonnement",
-      desc: "Maandelijks — wij houden het draaiend en bouwen door.",
+      desc: "Maandelijks â wij houden het draaiend en bouwen door.",
       amount: "Op maat",
-      amountSub: "maand",
+      amountSub: "",
       features: [
         "Hosting & technisch onderhoud",
         "Updates & bugfixes",
@@ -65,15 +62,15 @@ const CONTENT = {
   ],
 
   cta: {
-    h2: "Vertel ons wat jouw\nbedrijf mist",
+    h2: "Vertel ons wat jouw\\nbedrijf mist",
     sub: "In een gesprek van 30 minuten bepalen we samen of en hoe we kunnen helpen. Geen verplichtingen, geen verkooppraatje.",
-    note: "Binnen 1 werkdag reactie · Geen verplichtingen",
+    note: "Binnen 1 werkdag reactie Â· Geen verplichtingen",
     ctaPrimary: "Vraag een gratis gesprek aan",
     ctaSecondary: "Bekijk cases",
     stats: [
       { value: "1", label: "Live tool" },
       { value: "< 2 wkn", label: "Gemiddelde bouwtijd" },
-      { value: "NL MKB", label: "Onze focus" },
+      { value: "NL MKB", label: "Onze focus" }
     ]
   },
 
