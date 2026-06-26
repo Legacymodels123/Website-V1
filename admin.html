@@ -1106,23 +1106,35 @@ async function loadSeoView() {
       }
     } catch(e) { seoPageCache[slug] = { seo: {} }; }
     const seo = seoPageCache[slug].seo || {};
-    rows.push('<div class="card" style="margin-bottom:14px"><div class="card-title"><i class="ti ti-file"></i>' + esc(page.title) + ' <span style="font-weight:400;color:var(--muted);font-size:12px">/' + esc(page.slug||'') + '</span></div>' +
-      '<div class="fg"><label>Paginatitel <span style="color:var(--muted)">(50–60 tekens aanbevolen)</span></label>' +
-      '<input type="text" id="seo-title-' + slug + '" value="' + esc(seo.title||'') + '" maxlength="70" oninput="seoCountChars(this,'seo-cnt-t-' + slug + '')"/>' +
-      '<div class="fg-hint" id="seo-cnt-t-' + slug + '" style="text-align:right">' + (seo.title||'').length + '/60</div></div>' +
-      '<div class="fg"><label>Meta omschrijving <span style="color:var(--muted)">(150–160 tekens)</span></label>' +
-      '<textarea id="seo-desc-' + slug + '" maxlength="180" oninput="seoCountChars(this,'seo-cnt-d-' + slug + '')">' + esc(seo.description||'') + '</textarea>' +
-      '<div class="fg-hint" id="seo-cnt-d-' + slug + '" style="text-align:right">' + (seo.description||'').length + '/160</div></div>' +
-      '<div class="fg-row">' +
-        '<div class="fg"><label>OG Image URL (1200×630px)</label><input type="text" id="seo-og-' + slug + '" value="' + esc(seo.ogImage||'') + '" placeholder="https://..."></div>' +
-        '<div class="fg"><label>Canonical URL</label><input type="text" id="seo-canon-' + slug + '" value="' + esc(seo.canonical||'') + '" placeholder="https://briqo.nl/' + (page.slug||'') + '"></div>' +
-      '</div>' +
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">' +
-        '<div style="font-size:12px;color:var(--muted)">Google-voorbeeld: <em>' + esc(seo.title||page.title) + '</em></div>' +
-        '<button class="btn btn-primary btn-sm" onclick="saveSeoPage('' + slug + '')"><i class="ti ti-device-floppy"></i>Opslaan</button>' +
-      '</div></div>');
+    const tId = "seo-title-" + slug;
+    const dId = "seo-desc-" + slug;
+    const ogId = "seo-og-" + slug;
+    const cId = "seo-canon-" + slug;
+    const tCnt = "seo-cnt-t-" + slug;
+    const dCnt = "seo-cnt-d-" + slug;
+    const tLen = (seo.title||'').length;
+    const dLen = (seo.description||'').length;
+    rows.push(
+      `<div class="card" style="margin-bottom:14px">
+        <div class="card-title"><i class="ti ti-file"></i>${esc(page.title)} <span style="font-weight:400;color:var(--muted);font-size:12px">/${esc(page.slug||'')}</span></div>
+        <div class="fg"><label>Paginatitel <span style="color:var(--muted)">(50–60 tekens)</span></label>
+          <input type="text" id="${tId}" value="${esc(seo.title||'')}" maxlength="70" oninput="seoCountChars(this,'${tCnt}')">
+          <div class="fg-hint" id="${tCnt}" style="text-align:right">${tLen}/60</div></div>
+        <div class="fg"><label>Meta omschrijving <span style="color:var(--muted)">(150–160 tekens)</span></label>
+          <textarea id="${dId}" maxlength="180" oninput="seoCountChars(this,'${dCnt}')">${esc(seo.description||'')}</textarea>
+          <div class="fg-hint" id="${dCnt}" style="text-align:right">${dLen}/160</div></div>
+        <div class="fg-row">
+          <div class="fg"><label>OG Image URL (1200×630px)</label><input type="text" id="${ogId}" value="${esc(seo.ogImage||'')}" placeholder="https://..."></div>
+          <div class="fg"><label>Canonical URL</label><input type="text" id="${cId}" value="${esc(seo.canonical||'')}" placeholder="https://briqo.nl/${page.slug||''}"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+          <div style="font-size:12px;color:var(--muted)">Google-voorbeeld: <em>${esc(seo.title||page.title)}</em></div>
+          <button class="btn btn-primary btn-sm" onclick="saveSeoPage('${slug}')"><i class="ti ti-device-floppy"></i>Opslaan</button>
+        </div>
+      </div>`
+    );
   }
-  container.innerHTML = rows.join('') || '<div style="color:var(--muted);padding:20px">Geen pagina's gevonden.</div>';
+  container.innerHTML = rows.join('') || '<div style="color:var(--muted);padding:20px">Geen pagina\'s gevonden.</div>';
 }
 
 function seoCountChars(el, counterId) {
