@@ -17,11 +17,11 @@
         "label": "Werkwijze",
         "h1": "Van idee naar live tool\\nzonder lang traject",
         "sub": "We houden het compact: eerst scherp krijgen welk probleem je wilt oplossen, daarna snel naar een werkende eerste versie.",
-        "primaryCta": "Plan een intake",
-        "primaryLink": "#contact",
-        "secondaryCta": "Bekijk prijzen",
-        "secondaryLink": "/prijzen",
-        "proof": "<strong>Snel en concreet</strong> zonder zwaar softwaretraject"
+        "relatedLink": { "text": "Bekijk prijzen", "url": "/prijzen" },
+        "chips": [
+          { "text": "Snel en concreet" },
+          { "text": "Geen zwaar traject" }
+        ]
       }
     },
     {

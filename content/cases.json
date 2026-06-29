@@ -17,11 +17,11 @@
         "label": "Cases",
         "h1": "Tools die je kunt openen,\\nniet alleen bekijken",
         "sub": "Geen abstract AI-verhaal, maar concrete tools die sneller antwoord geven, leads beter kwalificeren en werk uit handen nemen.",
-        "primaryCta": "Bespreek jouw idee",
-        "primaryLink": "#contact",
-        "secondaryCta": "Bekijk branches",
-        "secondaryLink": "/branches",
-        "proof": "<strong>Echte toepassingen</strong> — geen loze beloftes"
+        "relatedLink": { "text": "Bekijk per branche", "url": "/branches" },
+        "chips": [
+          { "text": "Echte toepassingen" },
+          { "text": "Geen loze beloftes" }
+        ]
       }
     },
     {
@@ -29,7 +29,7 @@
       "type": "text_block",
       "data": {
         "h2": "Wat je hier ziet",
-        "content": "Elke case laat zien welk probleem er speelde, welk type tool daarbij past en wat het in de praktijk oplevert.\\n\\nIs er nog geen live klant? Dan zeggen we dat eerlijk en tonen we een concept — zodat je wél ziet wat mogelijk is.",
+        "content": "Elke case laat zien welk probleem er speelde, welk type tool daarbij past en wat het in de praktijk oplevert.\\n\\nIs er nog geen live klant? Dan zeggen we dat eerlijk en tonen we een concept. Zo zie je wél wat mogelijk is.",
         "card": true
       }
     },
@@ -47,7 +47,7 @@
             "tags": ["Calculator", "Zwembad", "Leads"]
           },
           {
-            "client": "Concept — Automotive",
+            "client": "Concept: Automotive",
             "tool": "Lease- en inruilscan",
             "desc": "Zo kan een online scan gesprekken sneller naar een serieuze offerte leiden. Nog geen live case.",
             "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80",
@@ -55,7 +55,7 @@
             "tags": ["Automotive", "Intake", "Scan"]
           },
           {
-            "client": "Concept — Installatie",
+            "client": "Concept: Installatie",
             "tool": "Offertevoorbereider",
             "desc": "Een intakeflow die projectinfo vooraf verzamelt. Zo zie je wat een eerste versie kan doen.",
             "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
@@ -70,7 +70,7 @@
       "type": "cta",
       "data": {
         "h2": "Welke tool past\\nbij jouw bedrijf?",
-        "sub": "In een kort gesprek kijken we welk probleem je nu het meeste tijd of omzet kost — en of daar een snelle eerste versie voor past.",
+        "sub": "In een kort gesprek kijken we welk probleem je nu het meeste tijd of omzet kost. En of daar een snelle eerste versie voor past.",
         "note": "Binnen 1 werkdag reactie · Vrijblijvend",
         "ctaPrimary": "Plan een gratis gesprek",
         "ctaSecondary": "Bekijk branches",

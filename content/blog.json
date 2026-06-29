@@ -16,12 +16,12 @@
       "data": {
         "label": "Inzichten",
         "h1": "Wat we leren\\nterwijl we bouwen",
-        "sub": "Artikelen en whitepapers over wat wél werkt op een MKB-website: calculators, scans, intakeflows en slimme leadkwalificatie. Geen hype — wel praktijk.",
-        "primaryCta": "Plan een gesprek",
-        "primaryLink": "#contact",
-        "secondaryCta": "Bekijk cases",
-        "secondaryLink": "/cases",
-        "proof": "<strong>Whitepapers & artikelen</strong> — binnenkort meer"
+        "sub": "Artikelen en whitepapers over wat wél werkt op een MKB-website: calculators, scans, intakeflows en slimme leadkwalificatie. Geen hype. Wel praktijk.",
+        "relatedLink": { "text": "Bekijk cases", "url": "/cases" },
+        "chips": [
+          { "text": "Whitepapers & artikelen" },
+          { "text": "Binnenkort meer" }
+        ]
       }
     },
     {
@@ -29,7 +29,7 @@
       "type": "text_block",
       "data": {
         "h2": "Waarom we dit doen",
-        "content": "Veel bedrijven twijfelen of een online tool het waard is. Begrijpelijk — er wordt veel beloofd over AI en automatisering.\\n\\nDaarom delen we hier wat we in de praktijk zien: wanneer een calculator zinvol is, hoe je leads beter kwalificeert en wat een goede eerste versie moet kunnen. Kort, concreet, toepasbaar.",
+        "content": "Veel bedrijven twijfelen of een online tool het waard is. Begrijpelijk. Er wordt veel beloofd over AI en automatisering.\\n\\nDaarom delen we hier wat we in de praktijk zien: wanneer een calculator zinvol is, hoe je leads beter kwalificeert en wat een goede eerste versie moet kunnen. Kort, concreet, toepasbaar.",
         "card": true
       }
     },
@@ -44,7 +44,7 @@
           {
             "type": "whitepaper",
             "title": "Wanneer een prijscalculator meer oplevert dan een contactformulier",
-            "excerpt": "Wanneer het zinvol is om klanten online een prijsindicatie te geven — en wanneer je beter eerst kunt bellen.",
+            "excerpt": "Wanneer het zinvol is om klanten online een prijsindicatie te geven. En wanneer je beter eerst kunt bellen.",
             "date": "Binnenkort",
             "readTime": "12 min",
             "status": "coming_soon",
@@ -54,7 +54,7 @@
           {
             "type": "whitepaper",
             "title": "De eerste MVP: hoe klein mag een tool zijn?",
-            "excerpt": "Een praktisch kader om te bepalen wat in versie 1 moet zitten — en wat je bewust later doet.",
+            "excerpt": "Een praktisch kader om te bepalen wat in versie 1 moet zitten. En wat je bewust later doet.",
             "date": "Binnenkort",
             "readTime": "10 min",
             "status": "coming_soon",
@@ -64,7 +64,7 @@
           {
             "type": "blog",
             "title": "Wat Sun Sauna & Poolworld leerde van hun live calculator",
-            "excerpt": "Wat er veranderde toen klanten zelf een prijsindicatie konden opvragen — minder ruis, serieuzer contact.",
+            "excerpt": "Wat er veranderde toen klanten zelf een prijsindicatie konden opvragen. Minder ruis, serieuzer contact.",
             "date": "Binnenkort",
             "readTime": "6 min",
             "status": "coming_soon",
@@ -109,7 +109,7 @@
       "type": "cta",
       "data": {
         "h2": "Liever meteen sparren\\nover jouw situatie?",
-        "sub": "Je hoeft niet te wachten op een whitepaper. Vertel ons welk probleem je nu het meeste tijd kost — dan kijken we of een tool logisch is.",
+        "sub": "Je hoeft niet te wachten op een whitepaper. Vertel ons welk probleem je nu het meeste tijd kost. Dan kijken we of een tool logisch is.",
         "note": "Binnen 1 werkdag reactie · Vrijblijvend",
         "ctaPrimary": "Plan een gesprek",
         "ctaSecondary": "Bekijk werkwijze",

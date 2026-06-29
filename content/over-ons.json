@@ -16,12 +16,12 @@
       "data": {
         "label": "Over ons",
         "h1": "Drie ondernemers.\\nEén missie.",
-        "sub": "We bouwen de tool die jouw bedrijf mist — zonder maandenlang IT-traject en zonder vaag AI-verhaal. Gewoon iets dat werkt en snel live kan.",
-        "primaryCta": "Start een gesprek",
-        "primaryLink": "#contact",
-        "secondaryCta": "Lees onze inzichten",
-        "secondaryLink": "/blog",
-        "proof": "<strong>Levi, Shaquil & Gianni</strong> — Briqo"
+        "sub": "We bouwen de tool die jouw bedrijf mist. Zonder maandenlang IT-traject en zonder vaag AI-verhaal. Gewoon iets dat werkt en snel live kan.",
+        "relatedLink": { "text": "Lees onze inzichten", "url": "/blog" },
+        "chips": [
+          { "text": "Levi, Shaquil & Gianni" },
+          { "text": "Briqo team" }
+        ]
       }
     },
     {
@@ -39,7 +39,7 @@
       "data": {
         "label": "Het team",
         "title": "Wie we zijn",
-        "intro1": "Briqo is geen groot bureau. Wij zijn met z'n drieën — Levi, Shaquil en Gianni — en delen dezelfde insteek: liever iets werkends dan iets moois op papier.",
+        "intro1": "Briqo is geen groot bureau. Wij zijn met z'n drieën: Levi, Shaquil en Gianni. We delen dezelfde insteek: liever iets werkends dan iets moois op papier.",
         "members": [
           {
             "name": "Levi Kempen",
@@ -51,13 +51,13 @@
             "name": "Shaquil Reyes",
             "role": "Klant & commercie",
             "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
-            "bio": "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last — dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert en zorg dat die ook echt gebruikt wordt."
+            "bio": "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last. Dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert en zorg dat die ook echt gebruikt wordt."
           },
           {
             "name": "Gianni Geurtjens",
             "role": "Inhoud & ervaring",
             "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
-            "bio": "Tools falen zelden door de techniek. Meestal door onduidelijke vragen of teksten. Ik zorg dat flows logisch aanvoelen — helder, menselijk, zonder poespas."
+            "bio": "Tools falen zelden door de techniek. Meestal door onduidelijke vragen of teksten. Ik zorg dat flows logisch aanvoelen: helder, menselijk, zonder poespas."
           }
         ],
         "values": [
@@ -93,7 +93,7 @@
       "type": "cta",
       "data": {
         "h2": "Past dit bij\\njouw bedrijf?",
-        "sub": "Stuur een bericht of plan een gesprek. Een uitgewerkt plan is niet nodig — een concreet probleem is vaak genoeg om te starten.",
+        "sub": "Stuur een bericht of plan een gesprek. Een uitgewerkt plan is niet nodig. Een concreet probleem is vaak genoeg om te starten.",
         "note": "Laagdrempelig · Eerlijk advies",
         "ctaPrimary": "Start een gesprek",
         "ctaSecondary": "Lees onze inzichten",

@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <link rel="stylesheet" href="/interactions.css">
+<link rel="stylesheet" href="/hero-headers.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--navy:#0F172A;--teal:#14B8A6;--teal-d:#0D9488;--bg:#F8FAFC;--border:#E2E8F0;--text:#0F172A;--muted:#64748B}
@@ -398,20 +399,78 @@ function renderHeroMedia(d) {
   </div>`;
 }
 
+const PAGE_HERO_STATS = {
+  'over-ons': [
+    { value: '3', label: 'Oprichters' },
+    { value: 'MKB', label: 'Onze focus' },
+    { value: 'MVP', label: 'Klein beginnen' }
+  ],
+  'cases': [
+    { value: '< 2 wkn', label: 'Richting eerste versie' },
+    { value: 'Live', label: 'Echte tools' },
+    { value: 'MKB', label: 'Onze focus' }
+  ],
+  'werkwijze': [
+    { value: '4', label: 'Duidelijke stappen' },
+    { value: '30 min', label: 'Gratis intake' },
+    { value: '2 wkn', label: 'Richting live' }
+  ],
+  'prijzen': [
+    { value: 'Op maat', label: 'Eerste fase' },
+    { value: 'Compact', label: 'Afgebakend' },
+    { value: 'Groei', label: 'Door te bouwen' }
+  ],
+  'blog': [
+    { value: 'MKB', label: 'Praktische tips' },
+    { value: 'Kort', label: 'Toepasbaar' },
+    { value: 'Nuchter', label: 'Geen hype' }
+  ],
+  'branches': [
+    { value: '6+', label: 'Sectoren' },
+    { value: 'MKB', label: 'Onze focus' },
+    { value: 'Maatwerk', label: 'Per branche' }
+  ]
+};
+
+function renderHeroChips(d) {
+  const chips = d.chips || [];
+  if (chips.length) {
+    return `<div class="page-hero-chips">${chips.map(c =>
+      `<span class="hero-chip">${c.icon ? `<i class="ti ti-${esc(c.icon)}"></i>` : '<span class="hero-chip-dot"></span>'}<span>${c.html ? c.html : esc(c.text || '')}</span></span>`
+    ).join('')}</div>`;
+  }
+  if (d.proof) {
+    return `<div class="page-hero-chips"><span class="hero-chip"><span class="hero-chip-dot"></span><span>${d.proof}</span></span></div>`;
+  }
+  return '';
+}
+
 const renderers = {
-  hero_simple(d) {
-    return `<section class="page-hero">
-      ${renderHeroMedia(d)}
-      <div class="container">
-        <div class="page-hero-inner">
-        ${d.label ? `<div class="page-hero-label">${esc(d.label)}</div>` : ''}
-        <h1>${(d.h1||'').replace(/\n/g,'<br>')}</h1>
-        ${d.sub ? `<p>${esc(d.sub)}</p>` : ''}
-        ${(d.primaryCta || d.secondaryCta) ? `<div class="page-hero-actions">
+  hero_simple(d, slug) {
+    const stats = d.stats || PAGE_HERO_STATS[slug] || [];
+    const crumbs = `<nav class="page-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span class="page-crumb-sep">/</span><span>${esc(d.label || slug)}</span></nav>`;
+    const meta = [renderHeroChips(d), stats.length ? `<div class="page-intro-stats">${stats.map(s =>
+      `<span class="page-intro-stat"><strong>${esc(s.value)}</strong> ${esc(s.label)}</span>`
+    ).join('')}</div>` : ''].filter(Boolean).join('');
+    const link = d.relatedLink
+      ? `<a class="page-intro-link" href="${esc(d.relatedLink.url || '/')}">${esc(d.relatedLink.text || 'Meer lezen')} <i class="ti ti-arrow-right"></i></a>`
+      : '';
+    const ctas = d.showCta && (d.primaryCta || d.secondaryCta)
+      ? `<div class="page-intro-actions">
           ${d.primaryCta ? `<a ${resolveActionAttrs(d.primaryLink)} class="btn btn-teal">${esc(d.primaryCta)} <i class="ti ti-arrow-right"></i></a>` : ''}
-          ${d.secondaryCta ? `<a ${resolveActionAttrs(d.secondaryLink || '/cases')} class="btn btn-outline-white">${esc(d.secondaryCta)}</a>` : ''}
-        </div>` : ''}
-        ${d.proof ? `<div class="page-hero-proof"><div class="page-hero-proof-dots"><span></span><span></span><span></span></div><div>${d.proof}</div></div>` : ''}
+          ${d.secondaryCta ? `<a ${resolveActionAttrs(d.secondaryLink || '/cases')} class="btn btn-outline">${esc(d.secondaryCta)}</a>` : ''}
+        </div>`
+      : '';
+    return `<section class="page-intro">
+      <div class="container">
+        ${crumbs}
+        <div class="page-intro-body ix-reveal">
+          ${d.label ? `<div class="page-intro-label">${esc(d.label)}</div>` : ''}
+          <h1>${(d.h1||'').replace(/\n/g,'<br>')}</h1>
+          ${d.sub ? `<p class="page-intro-sub">${esc(d.sub)}</p>` : ''}
+          ${meta ? `<div class="page-intro-meta">${meta}</div>` : ''}
+          ${link}
+          ${ctas}
         </div>
       </div>
     </section>`;
@@ -674,7 +733,7 @@ async function loadPage() {
     const blockData = block.type === 'hero_simple'
       ? { ...heroMediaDefaults, ...block.data }
       : block.data;
-    return r(blockData);
+    return block.type === 'hero_simple' ? r(blockData, slug) : r(blockData);
   }).join('');
 
   document.getElementById('pageContent').innerHTML = html || `

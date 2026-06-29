@@ -17,11 +17,11 @@
         "label": "Prijzen",
         "h1": "Duidelijke investering,\\ngeen bureau-gedoe",
         "sub": "Je hoeft niet meteen een groot traject in. We werken liever toe naar een duidelijke eerste versie die echt gebruikt kan worden.",
-        "primaryCta": "Vraag een inschatting",
-        "primaryLink": "#contact",
-        "secondaryCta": "Bekijk werkwijze",
-        "secondaryLink": "/werkwijze",
-        "proof": "<strong>Compact starten</strong> en daarna gericht doorbouwen"
+        "relatedLink": { "text": "Zo werken we", "url": "/werkwijze" },
+        "chips": [
+          { "text": "Compact starten" },
+          { "text": "Gericht doorbouwen" }
+        ]
       }
     },
     {

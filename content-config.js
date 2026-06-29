@@ -5,7 +5,7 @@ const CONTENT = {
   hero: {
     pill: "Eerste live tool: SSPW Prijscalculator",
     h1: "Wij bouwen de\\ntool die jouw\\nbedrijf <em>mist</em>",
-    sub: "Geen dikke slides over AI. Wel een calculator, scan of configurator die binnen twee weken op jouw site staat — en morgen al iets oplevert.",
+    sub: "Geen dikke slides over AI. Wel een calculator, scan of configurator die binnen twee weken op jouw site staat. En morgen al iets oplevert.",
     ctaPrimary: "Demo aanvragen",
     ctaSecondary: "Bekijk cases",
     proofText: "Sun Sauna & Poolworld werkt al met Briqo",
@@ -30,13 +30,13 @@ const CONTENT = {
         name: "Shaquil Reyes",
         role: "Klant & commercie",
         photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
-        bio: "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last — dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert."
+        bio: "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last. Dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert."
       },
       {
         name: "Gianni Geurtjens",
         role: "Inhoud & ervaring",
         photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
-        bio: "Tools falen zelden door de techniek. Meestal door onduidelijke vragen. Ik zorg dat flows logisch aanvoelen — helder en menselijk."
+        bio: "Tools falen zelden door de techniek. Meestal door onduidelijke vragen. Ik zorg dat flows logisch aanvoelen: helder en menselijk."
       }
     ],
     values: [
@@ -49,7 +49,7 @@ const CONTENT = {
   pricing: {
     card1: {
       title: "Opzet",
-      desc: "Eenmalig - van brief tot live MVP op jouw eigen domein.",
+      desc: "Eenmalig: van brief tot live MVP op jouw eigen domein.",
       amount: "Op maat",
       amountSub: "eenmalig",
       features: [
@@ -64,7 +64,7 @@ const CONTENT = {
     card2: {
       badge: "Maandelijks opzegbaar",
       title: "Abonnement",
-      desc: "Maandelijks - wij houden het draaiend en bouwen door.",
+      desc: "Maandelijks: wij houden het draaiend en bouwen door.",
       amount: "Op maat",
       amountSub: "",
       features: [

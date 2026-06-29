@@ -17,11 +17,11 @@
         "label": "Branches",
         "h1": "Praktische tools\\nper branche",
         "sub": "Niet elk bedrijf heeft dezelfde tool nodig. We kijken eerst naar het soort vraag, intake of offerteproces dat bij jouw sector past.",
-        "primaryCta": "Plan een gratis gesprek",
-        "primaryLink": "#contact",
-        "secondaryCta": "Bekijk cases",
-        "secondaryLink": "/cases",
-        "proof": "<strong>Praktisch voor MKB</strong> met voorbeelden per sector"
+        "relatedLink": { "text": "Bekijk cases", "url": "/cases" },
+        "chips": [
+          { "text": "Praktisch voor MKB" },
+          { "text": "Voorbeelden per sector" }
+        ]
       }
     },
     {
