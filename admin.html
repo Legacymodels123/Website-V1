@@ -217,7 +217,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
       </div>
       <div class="sb-group">
         <div class="sb-glabel">Content</div>
+        <button class="sb-item" id="nav-home" onclick="openPageEditor('')"><i class="ti ti-home"></i>Homepage</button>
         <button class="sb-item" id="nav-pages" onclick="showView('pages')"><i class="ti ti-files"></i>Pagina's <span class="badge" id="pageCountBadge">0</span></button>
+        <button class="sb-item" id="nav-blog" onclick="openPageEditor('blog')"><i class="ti ti-article"></i>Inzichten / Blog</button>
+        <button class="sb-item" id="nav-hero-media" onclick="showView('hero-media')"><i class="ti ti-video"></i>Header sfeer</button>
         <button class="sb-item" id="nav-pricing" onclick="showView('pricing')"><i class="ti ti-receipt"></i>Prijzen</button>
         <button class="sb-item" id="nav-seo" onclick="showView('seo')"><i class="ti ti-search"></i>SEO</button>
         <button class="sb-item" id="nav-global" onclick="showView('global')"><i class="ti ti-settings"></i>Globaal</button>
@@ -318,6 +321,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
     </div>
 
 
+    <!-- HERO MEDIA -->
+    <div id="view-hero-media" style="display:none">
+      <div class="ph">
+        <div class="ph-left"><h1>Header sfeer</h1><p>Achtergrondvideo's en posters per pagina-header</p></div>
+        <button class="btn btn-primary btn-sm" onclick="saveHeroMedia()"><i class="ti ti-cloud-upload"></i>Opslaan & publiceren</button>
+      </div>
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title"><i class="ti ti-info-circle"></i>Hoe werkt dit?</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.7">
+          Elke subpagina-header gebruikt standaard de video hieronder. Je kunt per pagina ook een eigen video instellen in het <strong>Koptekst</strong>-blok (overschrijft dit).<br>
+          Tip: host eigen MP4's in <code>/assets/hero/</code> of gebruik een directe .mp4 URL.
+        </div>
+      </div>
+      <div id="heroMediaList"></div>
+    </div>
+
     <!-- PRICING -->
     <div id="view-pricing" style="display:none">
       <div class="ph">
@@ -407,6 +426,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
         <option value="blank">Lege pagina</option>
         <option value="landing">Landingspagina (hero + tekst + CTA)</option>
         <option value="content">Contentpagina (eenvoudige kop + tekst)</option>
+        <option value="blog">Inzichten / Blog (hero + artikelen + CTA)</option>
       </select>
     </div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:6px">
@@ -439,6 +459,7 @@ let currentSlug = null;
 let globalData = { navLinks: [], headScripts: '', footer: { copy: '© 2026 Briqo', tag: 'Gebouwd voor het Nederlandse MKB' } };
 let isDirty = false;
 let deployTimer = null;
+let heroMediaData = {};
 
 // ── BLOCK TYPE DEFINITIONS ────────────────────────────────────────
 const BLOCK_TYPES = [
@@ -450,6 +471,8 @@ const BLOCK_TYPES = [
   { type: 'branches',     label: 'Branches',        icon: 'ti-building-store',   desc: 'Sector-grid met kaarten' },
   { type: 'cases_grid',   label: 'Cases',           icon: 'ti-briefcase',        desc: 'Portfolio grid' },
   { type: 'about',        label: 'Over ons',        icon: 'ti-user',             desc: 'Foto + bio sectie' },
+  { type: 'team',         label: 'Team',            icon: 'ti-users',            desc: 'Teamleden met foto en bio' },
+  { type: 'articles_list',label: 'Artikelen',       icon: 'ti-article',          desc: 'Blog & whitepapers' },
   { type: 'cta',          label: 'CTA',             icon: 'ti-speakerphone',     desc: 'Call to action' },
   { type: 'embed',        label: 'Embed / iFrame',  icon: 'ti-code',             desc: 'Insluiten: Calendly, Typeform…' },
   { type: 'raw_html',     label: 'HTML Blok',       icon: 'ti-html',             desc: 'Vrije HTML/JS/CSS' },
@@ -465,6 +488,8 @@ const BLOCK_DEFAULTS = {
   branches:    { title: '', sub: '', items: [] },
   cases_grid:  { items: [] },
   about:       { photo: '', name: '', role: '', bio1: '', bio2: '' },
+  team:        { label: '', title: '', intro1: '', intro2: '', members: [], values: [] },
+  articles_list: { label: '', title: '', sub: '', items: [] },
   cta:         { h2: 'Klaar om te starten?', sub: '', note: '', ctaPrimary: 'Neem contact op', ctaSecondary: '', stats: [] },
   embed:       { title: '', embedHtml: '', note: '' },
   raw_html:    { title: '', html: '' },
@@ -534,6 +559,19 @@ async function ghWrite(filePath, data, msg) {
   shas[filePath] = result.content.sha;
   return result;
 }
+async function ghReadRaw(filePath) {
+  const data = await ghFetch('contents/' + filePath);
+  shas[filePath] = data.sha;
+  return decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+}
+async function ghWriteRaw(filePath, text, msg) {
+  const content = btoa(unescape(encodeURIComponent(text)));
+  const body = { message: msg, content };
+  if (shas[filePath]) body.sha = shas[filePath];
+  const result = await ghFetch('contents/' + filePath, { method: 'PUT', body: JSON.stringify(body) });
+  shas[filePath] = result.content.sha;
+  return result;
+}
 async function ghFileExists(filePath) {
   try { await ghFetch('contents/' + filePath); return true; } catch { return false; }
 }
@@ -563,6 +601,8 @@ async function loadPages() {
 async function loadGlobal() {
   try { globalData = await ghRead(CONTENT_PATH + '/global.json'); }
   catch { /* use defaults */ }
+  try { heroMediaData = await ghRead(CONTENT_PATH + '/hero-media.json'); }
+  catch { heroMediaData = {}; }
 }
 
 async function loadDashCommits() {
@@ -577,11 +617,12 @@ async function loadDashCommits() {
 
 // ── VIEWS ─────────────────────────────────────────────────────────
 function showView(name) {
-  ['dashboard','pages','editor','global','history','pricing','seo'].forEach(v => {
-    document.getElementById('view-' + v).style.display = v === name ? '' : 'none';
+  ['dashboard','pages','editor','global','history','pricing','seo','hero-media'].forEach(v => {
+    const el = document.getElementById('view-' + v);
+    if (el) el.style.display = v === name ? '' : 'none';
   });
   document.querySelectorAll('.sb-item').forEach(el => el.classList.remove('active'));
-  const navMap = { dashboard: 'nav-dashboard', pages: 'nav-pages', editor: 'nav-pages', global: 'nav-global', history: 'nav-history', pricing: 'nav-pricing', seo: 'nav-seo' };
+  const navMap = { dashboard: 'nav-dashboard', pages: 'nav-pages', editor: 'nav-pages', global: 'nav-global', history: 'nav-history', pricing: 'nav-pricing', seo: 'nav-seo', 'hero-media': 'nav-hero-media' };
   const navEl = document.getElementById(navMap[name]);
   if (navEl) navEl.classList.add('active');
   if (name === 'pages') renderPagesList();
@@ -589,6 +630,7 @@ function showView(name) {
   if (name === 'global') renderGlobal();
   if (name === 'pricing') loadPricingView();
   if (name === 'seo') loadSeoView();
+  if (name === 'hero-media') loadHeroMediaView();
 }
 
 // ── PAGES LIST ────────────────────────────────────────────────────
@@ -613,6 +655,10 @@ function renderPagesList() {
 async function openPageEditor(slug) {
   showView('editor');
   currentSlug = slug;
+  document.querySelectorAll('.sb-item').forEach(el => el.classList.remove('active'));
+  if (slug === '') document.getElementById('nav-home')?.classList.add('active');
+  else if (slug === 'blog') document.getElementById('nav-blog')?.classList.add('active');
+  else document.getElementById('nav-pages')?.classList.add('active');
   const page = pagesRegistry.pages.find(p => p.slug === slug);
   document.getElementById('editorPageTitle').textContent = page ? page.title : slug;
   document.getElementById('editorH1').textContent = (page ? page.title : slug) || 'Home';
@@ -673,6 +719,8 @@ function getBlockPreview(block) {
     case 'branches': return 'Branches (' + (d.items?.length||0) + ')';
     case 'cases_grid': return 'Cases (' + (d.items?.length||0) + ')';
     case 'about': return d.name ? 'Over ' + d.name : 'Over ons';
+    case 'team': return d.title || 'Team (' + (d.members?.length||0) + ')';
+    case 'articles_list': return (d.title || 'Artikelen') + ' (' + (d.items?.length||0) + ')';
     case 'cta': return d.h2 || 'CTA';
     case 'embed': return d.title || 'Embed blok';
     case 'raw_html': return d.title || 'HTML blok';
@@ -704,18 +752,26 @@ function getBlockEditorHTML(block) {
       <div class="fg-row"><div class="fg"><label>Pill tekst</label><input type="text" value="${esc(d.pill||'')}" onchange="bd('${id}','pill',this.value)"></div><div class="fg"><label>Proof tekst</label><input type="text" value="${esc(d.proofText||'')}" onchange="bd('${id}','proofText',this.value)"></div></div>
       <div class="fg"><label>Koptekst H1 (\\n = nieuwe regel)</label><textarea onchange="bd('${id}','h1',this.value)">${esc(d.h1||'')}</textarea></div>
       <div class="fg"><label>Subtekst</label><textarea onchange="bd('${id}','sub',this.value)">${esc(d.sub||'')}</textarea></div>
-      <div class="fg-row"><div class="fg"><label>CTA knop 1</label><input type="text" value="${esc(d.ctaPrimary||'')}" onchange="bd('${id}','ctaPrimary',this.value)"></div><div class="fg"><label>CTA knop 2</label><input type="text" value="${esc(d.ctaSecondary||'')}" onchange="bd('${id}','ctaSecondary',this.value)"></div></div>`;
+      <div class="fg-row"><div class="fg"><label>CTA knop 1</label><input type="text" value="${esc(d.ctaPrimary||'')}" onchange="bd('${id}','ctaPrimary',this.value)"></div><div class="fg"><label>CTA knop 2</label><input type="text" value="${esc(d.ctaSecondary||'')}" onchange="bd('${id}','ctaSecondary',this.value)"></div></div>
+      <div class="fg-row"><div class="fg"><label>Achtergrondvideo URL</label><input type="text" value="${esc(d.bgVideo||'')}" onchange="bd('${id}','bgVideo',this.value)" placeholder="https://...mp4"></div><div class="fg"><label>Poster URL</label><input type="text" value="${esc(d.bgPoster||'')}" onchange="bd('${id}','bgPoster',this.value)"></div></div>`;
 
     case 'hero_simple': return `
-      <div class="fg"><label>Koptekst</label><textarea onchange="bd('${id}','h1',this.value)">${esc(d.h1||'')}</textarea></div>
-      <div class="fg"><label>Subtekst</label><textarea onchange="bd('${id}','sub',this.value)">${esc(d.sub||'')}</textarea></div>`;
+      <div class="fg-row"><div class="fg"><label>Label (pill)</label><input type="text" value="${esc(d.label||'')}" onchange="bd('${id}','label',this.value)"></div></div>
+      <div class="fg"><label>Koptekst (\\n = nieuwe regel)</label><textarea onchange="bd('${id}','h1',this.value)">${esc(d.h1||'')}</textarea></div>
+      <div class="fg"><label>Subtekst</label><textarea onchange="bd('${id}','sub',this.value)">${esc(d.sub||'')}</textarea></div>
+      <div class="fg-row"><div class="fg"><label>CTA primair</label><input type="text" value="${esc(d.primaryCta||'')}" onchange="bd('${id}','primaryCta',this.value)"></div><div class="fg"><label>CTA link</label><input type="text" value="${esc(d.primaryLink||'#contact')}" onchange="bd('${id}','primaryLink',this.value)" placeholder="#contact of /pagina"></div></div>
+      <div class="fg-row"><div class="fg"><label>CTA secundair</label><input type="text" value="${esc(d.secondaryCta||'')}" onchange="bd('${id}','secondaryCta',this.value)"></div><div class="fg"><label>Secundair link</label><input type="text" value="${esc(d.secondaryLink||'')}" onchange="bd('${id}','secondaryLink',this.value)"></div></div>
+      <div class="fg"><label>Proof regel (HTML toegestaan)</label><input type="text" value="${esc(d.proof||'')}" onchange="bd('${id}','proof',this.value)"></div>
+      <div class="fg-row"><div class="fg"><label>Achtergrondvideo URL (mp4)</label><input type="text" value="${esc(d.bgVideo||'')}" onchange="bd('${id}','bgVideo',this.value)" placeholder="Leeg = hero-media.json"></div><div class="fg"><label>Poster afbeelding URL</label><input type="text" value="${esc(d.bgPoster||'')}" onchange="bd('${id}','bgPoster',this.value)"></div></div>
+      <div class="fg-hint" style="font-size:12px;color:var(--muted);margin-top:-6px">Video leeg laten = standaard uit <strong>Header sfeer</strong>. Zonder video blijft de geanimeerde vibe zichtbaar.</div>`;
 
     case 'text_block': return `
       <div class="fg-row">
         <div class="fg"><label>Koptekst H2</label><input type="text" value="${esc(d.h2||'')}" onchange="bd('${id}','h2',this.value)"></div>
         <div class="fg"><label>Uitlijning</label><select onchange="bd('${id}','align',this.value)"><option value="left" ${d.align==='left'?'selected':''}>Links</option><option value="center" ${d.align==='center'?'selected':''}>Gecentreerd</option></select></div>
       </div>
-      <div class="fg"><label>Inhoud</label><textarea style="min-height:120px" onchange="bd('${id}','content',this.value)">${esc(d.content||'')}</textarea></div>`;
+      <div class="fg"><label>Inhoud (\\n\\n = nieuwe alinea)</label><textarea style="min-height:120px" onchange="bd('${id}','content',this.value)">${esc(d.content||'')}</textarea></div>
+      <label class="toggle-wrap"><input type="checkbox" ${d.card?'checked':''} onchange="bd('${id}','card',this.checked)"> Toon als kaart</label>`;
 
     case 'image_text': return `
       <div class="fg-row"><div class="fg"><label>Koptekst</label><input type="text" value="${esc(d.h2||'')}" onchange="bd('${id}','h2',this.value)"></div><div class="fg"><label>Positie afbeelding</label><select onchange="bd('${id}','imagePosition',this.value)"><option value="right" ${d.imagePosition!=='left'?'selected':''}>Rechts</option><option value="left" ${d.imagePosition==='left'?'selected':''}>Links</option></select></div></div>
@@ -729,11 +785,51 @@ function getBlockEditorHTML(block) {
       <div class="fg"><label>Bio alinea 1</label><textarea onchange="bd('${id}','bio1',this.value)">${esc(d.bio1||'')}</textarea></div>
       <div class="fg"><label>Bio alinea 2</label><textarea onchange="bd('${id}','bio2',this.value)">${esc(d.bio2||'')}</textarea></div>`;
 
+    case 'team': return `
+      <div class="fg-row"><div class="fg"><label>Label</label><input type="text" value="${esc(d.label||'')}" onchange="bd('${id}','label',this.value)"></div><div class="fg"><label>Titel</label><input type="text" value="${esc(d.title||'')}" onchange="bd('${id}','title',this.value)"></div></div>
+      <div class="fg"><label>Intro 1</label><textarea onchange="bd('${id}','intro1',this.value)">${esc(d.intro1||'')}</textarea></div>
+      <div class="fg"><label>Intro 2</label><textarea onchange="bd('${id}','intro2',this.value)">${esc(d.intro2||'')}</textarea></div>
+      <div class="fg-row"><div class="fg"><label>Linktekst</label><input type="text" value="${esc(d.linkText||'')}" onchange="bd('${id}','linkText',this.value)"></div><div class="fg"><label>Link URL</label><input type="text" value="${esc(d.linkUrl||'/over-ons')}" onchange="bd('${id}','linkUrl',this.value)"></div></div>
+      <div class="fg"><label>Teamleden</label>
+        <div class="dyn-list">${(d.members||[]).map((m,i)=>`<div class="dyn-item">
+          <div class="dyn-item-header"><span class="dyn-item-label">${esc(m.name)||'Lid '+(i+1)}</span><button class="btn-del-item" onclick="bdaDel('${id}','members',${i})"><i class="ti ti-trash"></i></button></div>
+          <div class="fg-row"><div class="fg"><label>Naam</label><input type="text" value="${esc(m.name||'')}" onchange="bda('${id}','members',${i},'name',this.value)"></div><div class="fg"><label>Rol</label><input type="text" value="${esc(m.role||'')}" onchange="bda('${id}','members',${i},'role',this.value)"></div></div>
+          <div class="fg"><label>Foto URL</label><input type="text" value="${esc(m.photo||'')}" onchange="bda('${id}','members',${i},'photo',this.value)"></div>
+          <div class="fg"><label>Bio</label><textarea onchange="bda('${id}','members',${i},'bio',this.value)">${esc(m.bio||'')}</textarea></div>
+        </div>`).join('')}
+        <button class="btn-add-item" onclick="bdaAdd('${id}','members',{name:'',role:'',photo:'',bio:''})"><i class="ti ti-plus"></i>Teamlid toevoegen</button>
+      </div>
+      <div class="fg"><label>Kernwaarden</label>
+        <div class="dyn-list">${(d.values||[]).map((v,i)=>`<div class="dyn-item">
+          <div class="dyn-item-header"><span class="dyn-item-label">${esc(v.title)||'Waarde '+(i+1)}</span><button class="btn-del-item" onclick="bdaDel('${id}','values',${i})"><i class="ti ti-trash"></i></button></div>
+          <div class="fg-row"><div class="fg"><label>Icon (Tabler class)</label><input type="text" value="${esc(v.icon||'ti-bolt')}" onchange="bda('${id}','values',${i},'icon',this.value)" placeholder="ti-bolt"></div><div class="fg"><label>Titel</label><input type="text" value="${esc(v.title||'')}" onchange="bda('${id}','values',${i},'title',this.value)"></div></div>
+          <div class="fg"><label>Omschrijving</label><input type="text" value="${esc(v.desc||'')}" onchange="bda('${id}','values',${i},'desc',this.value)"></div>
+        </div>`).join('')}
+        <button class="btn-add-item" onclick="bdaAdd('${id}','values',{icon:'ti-bolt',title:'',desc:''})"><i class="ti ti-plus"></i>Waarde toevoegen</button>
+      </div>`;
+
+    case 'articles_list': return `
+      <div class="fg-row"><div class="fg"><label>Label</label><input type="text" value="${esc(d.label||'')}" onchange="bd('${id}','label',this.value)"></div><div class="fg"><label>Titel</label><input type="text" value="${esc(d.title||'')}" onchange="bd('${id}','title',this.value)"></div></div>
+      <div class="fg"><label>Subtekst</label><textarea onchange="bd('${id}','sub',this.value)">${esc(d.sub||'')}</textarea></div>
+      <div class="fg"><label>Artikelen</label>
+        <div class="dyn-list">${(d.items||[]).map((a,i)=>`<div class="dyn-item">
+          <div class="dyn-item-header"><span class="dyn-item-label">${esc(a.title)||'Artikel '+(i+1)}</span><button class="btn-del-item" onclick="bdaDel('${id}','items',${i})"><i class="ti ti-trash"></i></button></div>
+          <div class="fg-row"><div class="fg"><label>Type</label><select onchange="bda('${id}','items',${i},'type',this.value)"><option value="blog" ${a.type==='blog'?'selected':''}>Artikel</option><option value="whitepaper" ${a.type==='whitepaper'?'selected':''}>Whitepaper</option></select></div><div class="fg"><label>Status</label><select onchange="bda('${id}','items',${i},'status',this.value)"><option value="coming_soon" ${a.status==='coming_soon'?'selected':''}>Binnenkort</option><option value="published" ${a.status==='published'?'selected':''}>Gepubliceerd</option></select></div></div>
+          <div class="fg"><label>Titel</label><input type="text" value="${esc(a.title||'')}" onchange="bda('${id}','items',${i},'title',this.value)"></div>
+          <div class="fg"><label>Samenvatting</label><textarea onchange="bda('${id}','items',${i},'excerpt',this.value)">${esc(a.excerpt||'')}</textarea></div>
+          <div class="fg-row"><div class="fg"><label>Datum</label><input type="text" value="${esc(a.date||'')}" onchange="bda('${id}','items',${i},'date',this.value)"></div><div class="fg"><label>Leestijd</label><input type="text" value="${esc(a.readTime||'')}" onchange="bda('${id}','items',${i},'readTime',this.value)"></div></div>
+          <div class="fg"><label>Link URL (leeg = binnenkort)</label><input type="text" value="${esc(a.link||'')}" onchange="bda('${id}','items',${i},'link',this.value)"></div>
+          <div class="fg"><label>Tags (komma-gescheiden)</label><input type="text" value="${esc((a.tags||[]).join(', '))}" onchange="bda('${id}','items',${i},'tags',this.value.split(',').map(t=>t.trim()).filter(Boolean))"></div>
+        </div>`).join('')}
+        <button class="btn-add-item" onclick="bdaAdd('${id}','items',{type:'blog',title:'',excerpt:'',date:'',readTime:'',status:'coming_soon',link:'',tags:[]})"><i class="ti ti-plus"></i>Artikel toevoegen</button>
+      </div>`;
+
     case 'cta': return `
       <div class="fg"><label>Koptekst (\\n = nieuwe regel)</label><textarea onchange="bd('${id}','h2',this.value)">${esc(d.h2||'')}</textarea></div>
       <div class="fg"><label>Subtekst</label><textarea onchange="bd('${id}','sub',this.value)">${esc(d.sub||'')}</textarea></div>
       <div class="fg"><label>Notitie onder knoppen</label><input type="text" value="${esc(d.note||'')}" onchange="bd('${id}','note',this.value)"></div>
       <div class="fg-row"><div class="fg"><label>CTA knop 1</label><input type="text" value="${esc(d.ctaPrimary||'')}" onchange="bd('${id}','ctaPrimary',this.value)"></div><div class="fg"><label>CTA knop 2</label><input type="text" value="${esc(d.ctaSecondary||'')}" onchange="bd('${id}','ctaSecondary',this.value)"></div></div>
+      <div class="fg"><label>CTA knop 2 link</label><input type="text" value="${esc(d.ctaSecondaryLink||'/cases')}" onchange="bd('${id}','ctaSecondaryLink',this.value)" placeholder="/cases"></div>
       <div class="fg"><label>Statistieken</label>
         <div class="dyn-list">${(d.stats||[]).map((s,i)=>`<div class="dyn-item"><div class="fg-row"><div class="fg"><label>Waarde</label><input type="text" value="${esc(s.value)}" onchange="bda('${id}','stats',${i},'value',this.value)"></div><div class="fg"><label>Label</label><input type="text" value="${esc(s.label)}" onchange="bda('${id}','stats',${i},'label',this.value)"></div></div><button class="btn btn-danger btn-sm" onclick="bdaDel('${id}','stats',${i})"><i class="ti ti-x"></i></button></div>`).join('')}</div>
         <button class="btn-add-item" onclick="bdaAdd('${id}','stats',{value:'',label:''})"><i class="ti ti-plus"></i>Statistiek toevoegen</button>
@@ -901,6 +997,183 @@ function moveBlock(blockId, dir) {
   renderBlocksList();
 }
 
+// ── HERO MEDIA + HOMEPAGE SYNC ────────────────────────────────────
+const HERO_MEDIA_LABELS = {
+  'home': 'Homepage',
+  'over-ons': 'Over ons',
+  'cases': 'Cases',
+  'werkwijze': 'Werkwijze',
+  'prijzen': 'Prijzen',
+  'blog': 'Inzichten / Blog',
+  'branches': 'Branches'
+};
+
+function loadHeroMediaView() {
+  const list = document.getElementById('heroMediaList');
+  const slugs = Object.keys(HERO_MEDIA_LABELS);
+  list.innerHTML = slugs.map(slug => {
+    const m = heroMediaData[slug] || { bgVideo: '', bgPoster: '' };
+    return `<div class="card" style="margin-bottom:14px">
+      <div class="card-title"><i class="ti ti-video"></i>${esc(HERO_MEDIA_LABELS[slug])} <span style="font-weight:400;color:var(--muted);font-size:12px">/${slug || ''}</span></div>
+      <div class="fg"><label>Achtergrondvideo (mp4 URL)</label><input type="text" id="hm-video-${slug}" value="${esc(m.bgVideo||'')}" placeholder="https://...mp4"></div>
+      <div class="fg"><label>Poster afbeelding</label><input type="text" id="hm-poster-${slug}" value="${esc(m.bgPoster||'')}" placeholder="https://...jpg"></div>
+    </div>`;
+  }).join('');
+}
+
+async function saveHeroMedia() {
+  const slugs = Object.keys(HERO_MEDIA_LABELS);
+  slugs.forEach(slug => {
+    heroMediaData[slug] = {
+      bgVideo: document.getElementById('hm-video-' + slug)?.value.trim() || '',
+      bgPoster: document.getElementById('hm-poster-' + slug)?.value.trim() || ''
+    };
+  });
+  try {
+    await ghWrite(CONTENT_PATH + '/hero-media.json', heroMediaData, 'CMS: header sfeer bijgewerkt');
+    showToast('Header video\'s opgeslagen!', 'ok');
+    startDeploy();
+  } catch(e) { showToast('Fout: ' + e.message, 'err'); }
+}
+
+function nlForConfig(s) {
+  return s == null ? s : String(s).replace(/\r?\n/g, '\\n');
+}
+
+function buildContentConfigFromHome(homeData) {
+  const blocks = homeData.blocks || [];
+  const get = t => blocks.find(b => b.type === t)?.data;
+  const hm = heroMediaData.home || {};
+  const heroRaw = get('hero') || {};
+  const teamRaw = get('team') || {};
+  const ctaRaw = get('cta') || {};
+  const content = {
+    hero: {
+      pill: heroRaw.pill || '',
+      h1: nlForConfig(heroRaw.h1 || ''),
+      sub: heroRaw.sub || '',
+      ctaPrimary: heroRaw.ctaPrimary || '',
+      ctaSecondary: heroRaw.ctaSecondary || '',
+      proofText: heroRaw.proofText || '',
+      bgVideo: heroRaw.bgVideo || hm.bgVideo || '',
+      bgPoster: heroRaw.bgPoster || hm.bgPoster || ''
+    },
+    team: {
+      title: teamRaw.title || '',
+      intro1: teamRaw.intro1 || '',
+      intro2: teamRaw.intro2 || '',
+      linkText: teamRaw.linkText || 'Lees ons volledige verhaal',
+      linkUrl: teamRaw.linkUrl || '/over-ons',
+      members: teamRaw.members || [],
+      values: teamRaw.values || []
+    },
+    pricing: get('pricing') || { card1: {}, card2: {} },
+    branches: get('branches')?.items || [],
+    cta: {
+      h2: nlForConfig(ctaRaw.h2 || ''),
+      sub: ctaRaw.sub || '',
+      note: ctaRaw.note || '',
+      ctaPrimary: ctaRaw.ctaPrimary || '',
+      ctaSecondary: ctaRaw.ctaSecondary || '',
+      stats: ctaRaw.stats || []
+    }
+  };
+  return '// BRIQO CONTENT CONFIG — bewerk via /admin.html\n\nconst CONTENT = ' + JSON.stringify(content, null, 2) + ';\n\n' + CONTENT_CONFIG_APPLY;
+}
+
+const CONTENT_CONFIG_APPLY = `(function applyContent() {
+  if (typeof CONTENT === 'undefined') return;
+  function setText(id, val, isHTML) {
+    var el = document.getElementById(id);
+    if (!el || val == null) return;
+    if (isHTML) el.innerHTML = String(val);
+    else el.textContent = String(val);
+  }
+  var h = CONTENT.hero;
+  if (h) {
+    setText('cc-hero-pill', h.pill);
+    setText('cc-hero-h1', (h.h1 || '').replace(/\\\\n/g, '<br>'), true);
+    setText('cc-hero-sub', h.sub);
+    setText('cc-hero-cta1', h.ctaPrimary);
+    setText('cc-hero-cta2', h.ctaSecondary);
+    setText('cc-hero-proof', h.proofText);
+    var vid = document.getElementById('cc-hero-video');
+    var src = document.getElementById('cc-hero-video-src');
+    if (h.bgVideo && src) src.setAttribute('src', h.bgVideo);
+    if (h.bgPoster && vid) vid.setAttribute('poster', h.bgPoster);
+    if (vid) {
+      vid.addEventListener('error', function() {
+        var media = document.getElementById('cc-hero-media');
+        if (media) media.classList.add('no-video');
+      });
+      if (h.bgVideo) { try { vid.load(); } catch(e) {} }
+    }
+  }
+  var t = CONTENT.team;
+  if (t) {
+    setText('cc-team-title', t.title);
+    setText('cc-team-intro1', t.intro1);
+    setText('cc-team-intro2', t.intro2);
+    var link = document.getElementById('cc-team-link');
+    if (link) {
+      link.textContent = t.linkText || 'Lees meer';
+      link.href = t.linkUrl || '/over-ons';
+    }
+    var grid = document.getElementById('cc-team-grid');
+    if (grid && t.members) {
+      grid.innerHTML = t.members.map(function(m) {
+        return '<div class="team-card"><div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div><div class="team-body"><div class="team-name">' + m.name + '</div><div class="team-role">' + m.role + '</div><div class="team-bio">' + m.bio + '</div></div></div>';
+      }).join('');
+    }
+    var vals = document.getElementById('cc-team-values');
+    if (vals && t.values) {
+      vals.innerHTML = t.values.map(function(v) {
+        return '<div class="av"><div class="av-icon"><i class="ti ' + v.icon + '"></i></div><div><div class="av-title">' + v.title + '</div><div class="av-desc">' + v.desc + '</div></div></div>';
+      }).join('');
+    }
+  }
+  var p = CONTENT.pricing;
+  if (p) {
+    var c1 = p.card1 || {}, c2 = p.card2 || {};
+    setText('cc-p1-title', c1.title); setText('cc-p1-desc', c1.desc);
+    setText('cc-p1-amount', c1.amount); setText('cc-p1-sub', c1.amountSub);
+    var el = document.getElementById('cc-p1-feats');
+    if (el && c1.features) el.innerHTML = c1.features.map(function(f) { return '<div class="pf"><i class="ti ti-check pf-check"></i>' + f + '</div>'; }).join('');
+    setText('cc-p1-cta', c1.cta);
+    setText('cc-p2-badge', c2.badge); setText('cc-p2-title', c2.title);
+    setText('cc-p2-desc', c2.desc); setText('cc-p2-amount', c2.amount); setText('cc-p2-sub', c2.amountSub || 'maand');
+    el = document.getElementById('cc-p2-feats');
+    if (el && c2.features) el.innerHTML = c2.features.map(function(f) { return '<div class="pf"><i class="ti ti-check pf-check"></i>' + f + '</div>'; }).join('');
+    setText('cc-p2-cta', c2.cta);
+  }
+  var grid2 = document.getElementById('cc-branches-grid');
+  if (grid2 && CONTENT.branches) {
+    grid2.innerHTML = CONTENT.branches.map(function(b) {
+      var onclick = b.link ? ' onclick="window.open(\\'' + b.link + '\\',\\'_blank\\')" style="cursor:pointer"' : '';
+      return '<div class="branch-card"' + onclick + '>' + (b.live ? '<div class="branch-live">Live</div>' : '') + '<img src="' + b.img + '" alt="' + b.name + '" loading="lazy"><div class="branch-overlay"></div><div class="branch-content"><div class="branch-name">' + b.name + '</div><div class="branch-tools">' + b.count + '</div></div></div>';
+    }).join('');
+  }
+  var c = CONTENT.cta;
+  if (c) {
+    setText('cc-cta-h2', (c.h2 || '').replace(/\\\\n/g, '<br>'), true);
+    setText('cc-cta-sub', c.sub);
+    setText('cc-cta-cta1', c.ctaPrimary);
+    setText('cc-cta-cta2', c.ctaSecondary);
+    setText('cc-cta-note', c.note);
+    var stats = document.getElementById('cc-cta-stats');
+    if (stats && c.stats) {
+      stats.innerHTML = c.stats.map(function(s) {
+        return '<div class="cs-stat2"><div class="cs-stat2-v">' + s.value + '</div><div class="cs-stat2-l">' + s.label + '</div></div>';
+      }).join('');
+    }
+  }
+})();`;
+
+async function syncContentConfigFromHome(homeData) {
+  const js = buildContentConfigFromHome(homeData);
+  await ghWriteRaw('content-config.js', js, 'CMS: homepage content-config gesynchroniseerd');
+}
+
 // ── SAVE ──────────────────────────────────────────────────────────
 function markDirty() {
   isDirty = true;
@@ -924,6 +1197,10 @@ async function savePage() {
   const filePath = CONTENT_PATH + '/' + (currentSlug || 'home') + '.json';
   try {
     await ghWrite(filePath, currentPage, 'CMS: ' + (currentPage.title || currentSlug) + ' bijgewerkt');
+    if (!currentSlug) {
+      pricingHomeData = currentPage;
+      await syncContentConfigFromHome(currentPage);
+    }
     isDirty = false;
     document.getElementById('saveBar').classList.remove('visible');
     showToast('Opgeslagen! Site deployt over ~40 seconden', 'ok');
@@ -970,6 +1247,12 @@ async function createPage() {
     content: [
       { id: 'b'+Date.now(), type: 'hero_simple', data: { h1: title, sub: '' } },
       { id: 'b'+(Date.now()+1), type: 'text_block', data: { h2: '', content: '', align: 'left' } }
+    ],
+    blog: [
+      { id: 'b'+Date.now(), type: 'hero_simple', data: { label: 'Inzichten', h1: title, sub: 'Artikelen en whitepapers voor het mkb.', primaryCta: 'Plan een gesprek', primaryLink: '#contact', secondaryCta: 'Bekijk cases', secondaryLink: '/cases' } },
+      { id: 'b'+(Date.now()+1), type: 'text_block', data: { h2: 'Waarom we dit delen', content: '', card: true } },
+      { id: 'b'+(Date.now()+2), type: 'articles_list', data: { label: 'Publicaties', title: 'Whitepapers & artikelen', sub: '', items: [] } },
+      { id: 'b'+(Date.now()+3), type: 'cta', data: { h2: 'Vragen na het lezen?', sub: '', note: '', ctaPrimary: 'Plan een gesprek', ctaSecondary: 'Bekijk werkwijze', ctaSecondaryLink: '/werkwijze', stats: [] } }
     ]
   };
 
@@ -982,6 +1265,10 @@ async function createPage() {
       ghWrite(CONTENT_PATH + '/pages.json', pagesRegistry, 'CMS: pagina aangemaakt — ' + title),
       ghWrite(CONTENT_PATH + '/' + slug + '.json', pageData, 'CMS: content voor ' + title)
     ]);
+    if (!heroMediaData[slug]) {
+      heroMediaData[slug] = { bgVideo: '', bgPoster: '' };
+      await ghWrite(CONTENT_PATH + '/hero-media.json', heroMediaData, 'CMS: hero-media entry — ' + slug);
+    }
     closeNewPageModal();
     document.getElementById('pageCountBadge').textContent = pagesRegistry.pages.length;
     showToast('Pagina aangemaakt!', 'ok');
@@ -1193,6 +1480,7 @@ async function savePricing() {
   };
   try {
     await ghWrite(CONTENT_PATH + '/home.json', pricingHomeData, 'CMS: Prijzen bijgewerkt');
+    await syncContentConfigFromHome(pricingHomeData);
     showToast('Prijzen opgeslagen!', 'ok'); startDeploy();
   } catch(e) { showToast('Fout: ' + e.message, 'err'); }
 }

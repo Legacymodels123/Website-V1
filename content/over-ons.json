@@ -4,7 +4,7 @@
   "title": "Over ons",
   "seo": {
     "title": "Over ons - Briqo",
-    "description": "Lees waarom Briqo praktische tools bouwt voor het Nederlandse mkb en hoe de aanpak werkt.",
+    "description": "Levi Kempen, Shaquil Reyes en Gianni Geurtjens bouwen met Briqo nuchtere, werkende tools voor het Nederlandse mkb.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/over-ons"
   },
@@ -15,31 +15,56 @@
       "type": "hero_simple",
       "data": {
         "label": "Over ons",
-        "h1": "Waarom Briqo bestaat",
-        "sub": "Veel mkb-bedrijven hebben geen gebrek aan ideeën, maar wel aan tijd, focus en een praktische partij die iets werkends neerzet.",
+        "h1": "Drie ondernemers.\\nEén missie.",
+        "sub": "We bouwen de tool die jouw bedrijf mist — zonder groot IT-traject, zonder vaag AI-verhaal. Gewoon iets dat werkt en snel live kan.",
         "primaryCta": "Start een gesprek",
         "primaryLink": "#contact",
-        "secondaryCta": "Bekijk cases",
-        "secondaryLink": "/cases",
-        "proof": "<strong>Gebouwd voor ondernemers</strong> die iets werkends willen, niet alleen advies"
+        "secondaryCta": "Bekijk inzichten",
+        "secondaryLink": "/blog",
+        "proof": "<strong>Levi, Shaquil & Gianni</strong> — Briqo"
       }
     },
     {
       "id": "ov2",
-      "type": "about",
+      "type": "text_block",
       "data": {
-        "label": "Briqo",
-        "title": "Praktisch bouwen voor bedrijven die geen groot IT-traject willen",
-        "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
-        "name": "Levi",
-        "role": "Oprichter, Briqo",
-        "bio1": "Briqo is opgezet vanuit een simpele observatie: veel bedrijven hebben terugkerende klantvragen, handmatige intake of offertewerk dat slimmer kan, maar willen geen maandenlang softwaretraject.",
-        "bio2": "Daarom bouwen we liever compacte tools die snel live kunnen, direct bruikbaar zijn en later verder kunnen groeien als ze echt waarde bewijzen.",
+        "h2": "Waarom we Briqo zijn gestart",
+        "content": "We zagen steeds hetzelfde terugkomen: goede bedrijven met sterke diensten, maar zonder een simpele manier om online antwoord te geven op de vragen die ze elke week terugkrijgen.\\n\\nKlanten willen nu een prijsindicatie. Of willen weten of iets past. Of willen een aanvraag doen zonder te bellen. En ondernemers hebben daar simpelweg geen tijd voor om maandenlang een softwareproject op te tuigen.\\n\\nDaarom doen we het anders: klein beginnen, snel live, en alleen verder bouwen als het echt iets oplevert.",
+        "card": true
+      }
+    },
+    {
+      "id": "ov3",
+      "type": "team",
+      "data": {
+        "label": "Het team",
+        "title": "Wie we zijn en wat we doen",
+        "intro1": "Briqo is geen groot bureau. Het zijn wij drieën — elk met een eigen rol, maar met dezelfde insteek: nuchter aan de slag en liever iets werkends dan iets moois op papier.",
+        "members": [
+          {
+            "name": "Levi Kempen",
+            "role": "Bouw & product",
+            "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+            "bio": "Ik wil liever iets live zetten waar een klant morgen mee kan werken, dan weken praten over wat er allemaal mogelijk is. Bij Briqo bouw ik de tools en zorg ik dat ze stabiel draaien."
+          },
+          {
+            "name": "Shaquil Reyes",
+            "role": "Klant & commercie",
+            "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
+            "bio": "Als een klant dezelfde vraag voor de vijfde keer stelt, is dat geen klantprobleem — dat is een kans. Ik help bedrijven scherp krijgen welke tool het meeste oplevert en zorg dat het ook echt gebruikt wordt."
+          },
+          {
+            "name": "Gianni Geurtjens",
+            "role": "Inhoud & ervaring",
+            "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
+            "bio": "Een tool faalt zelden door de techniek. Meestal door onduidelijke vragen of teksten. Ik zorg dat flows logisch aanvoelen voor de gebruiker — zonder poespas."
+          }
+        ],
         "values": [
           {
             "icon": "ti-bolt",
             "title": "Snel live",
-            "desc": "We sturen op een eerste werkende versie in plaats van op een lang voortraject."
+            "desc": "We sturen op een eerste werkende versie, niet op een lang voortraject."
           },
           {
             "icon": "ti-tool",
@@ -55,28 +80,28 @@
       }
     },
     {
-      "id": "ov3",
+      "id": "ov4",
       "type": "text_block",
       "data": {
-        "h2": "Voor wie dit goed past",
-        "content": "Briqo past vooral bij mkb-bedrijven die vaak dezelfde klantvragen krijgen, handmatig intake doen of te veel tijd verliezen voordat een lead echt serieus wordt.\\n\\nDenk aan calculators, scans, configurators of intakeflows die net genoeg slimheid hebben om direct bruikbaar te zijn.",
+        "h2": "Wat we bewust niet doen",
+        "content": "Geen volledige website-redesigns. Geen maandenlange strategietrajecten. Geen beloftes over AI die alles automatisch oplost.\\n\\nWe bouwen één concreet stuk: een calculator, configurator, scan of intakeflow die direct waarde levert. Past dat? Dan kijken we samen wat de eerste versie moet kunnen.",
         "card": true
       }
     },
     {
-      "id": "ov4",
+      "id": "ov5",
       "type": "cta",
       "data": {
-        "h2": "Leg je idee aan ons voor",
-        "sub": "We hoeven niet meteen een volledig projectplan te hebben. Vaak is een concreet probleem al genoeg om de eerste richting te bepalen.",
-        "note": "Laagdrempelig gesprek · Praktische insteek",
+        "h2": "Wil je weten of dit\\nbij jouw bedrijf past?",
+        "sub": "Stuur een bericht of plan een gesprek. We hoeven geen uitgewerkt plan — een concreet probleem is vaak al genoeg om te starten.",
+        "note": "Laagdrempelig · Nuchter advies",
         "ctaPrimary": "Start een gesprek",
-        "ctaSecondary": "Bekijk cases",
-        "ctaSecondaryLink": "/cases",
+        "ctaSecondary": "Lees onze inzichten",
+        "ctaSecondaryLink": "/blog",
         "stats": [
-          { "value": "Praktisch", "label": "Geen vaag AI-verhaal" },
-          { "value": "Snel", "label": "Richting eerste MVP" },
-          { "value": "Samen", "label": "Korte lijnen" }
+          { "value": "3", "label": "Oprichters" },
+          { "value": "MKB", "label": "Onze focus" },
+          { "value": "MVP", "label": "Eerst klein en werkbaar" }
         ]
       }
     }

@@ -78,17 +78,46 @@
       background: #0F172A;
       overflow: hidden;
       position: relative;
+      isolation: isolate;
     }
+    .hero > .container { position: relative; z-index: 2; }
     .hero-bg-photo {
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; opacity: 0.12; object-position: center;
     }
+    .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .hero-vibe {
+      position: absolute; inset: -18%;
+      background:
+        radial-gradient(circle at 18% 28%, rgba(20,184,166,0.22), transparent 42%),
+        radial-gradient(circle at 78% 58%, rgba(56,189,248,0.12), transparent 40%),
+        radial-gradient(circle at 48% 82%, rgba(99,102,241,0.1), transparent 36%);
+      animation: heroVibeShift 16s ease-in-out infinite alternate;
+      filter: blur(1px);
+    }
+    .hero-bg-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.36; filter: saturate(0.9) contrast(1.05);
+    }
+    .hero-media.no-video .hero-bg-video { display: none; }
+    @keyframes heroVibeShift {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-2.5%, 1.5%) scale(1.05); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-vibe { animation: none; }
+      .hero-bg-video { display: none; }
+    }
     .hero-bg-grad {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #0F172A 55%, rgba(15,23,42,0.85) 100%);
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(15,23,42,0.88) 55%, rgba(15,23,42,0.78) 100%);
+    }
+    .hero-glow {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse 62% 78% at 72% 46%, rgba(20,184,166,0.14), transparent);
     }
     .hero-inner {
-      position: relative; z-index: 1;
+      position: relative; z-index: 2;
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 64px; align-items: end;
       padding: 96px 0 0;
@@ -324,20 +353,22 @@
     .pf-check { color: #14B8A6; font-size: 17px; flex-shrink: 0; margin-top: 1px; }
     .price-btn { display: block; text-align: center; margin-top: 28px; width: 100%; }
 
-    /* ABOUT */
+    /* ABOUT / TEAM */
     .about-section { background: white; }
-    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center; }
-    .about-photo { border-radius: 24px; overflow: hidden; height: 560px; position: relative; }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-    .about-photo-tag {
-      position: absolute; bottom: 24px; right: 24px;
-      background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
-      border-radius: 14px; padding: 14px 20px;
-    }
-    .apt-name { font-size: 15px; font-weight: 700; color: #0F172A; }
-    .apt-role { font-size: 12px; color: #64748B; margin-top: 3px; }
-    .about-content p { font-size: 16px; color: #64748B; line-height: 1.78; margin-bottom: 16px; }
-    .about-vals { display: flex; flex-direction: column; gap: 18px; margin-top: 36px; }
+    .about-header { max-width: 720px; margin-bottom: 48px; }
+    .about-header p { font-size: 16px; color: #64748B; line-height: 1.78; margin-bottom: 14px; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px; }
+    .team-card { background: #F8FAFC; border: 1.5px solid #E8EEF5; border-radius: 22px; overflow: hidden; }
+    .team-photo { aspect-ratio: 4/3; overflow: hidden; background: #E2E8F0; }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .team-body { padding: 22px; }
+    .team-name { font-size: 17px; font-weight: 700; color: #0F172A; margin-bottom: 4px; }
+    .team-role { font-size: 13px; font-weight: 600; color: #14B8A6; margin-bottom: 12px; }
+    .team-bio { font-size: 14px; color: #64748B; line-height: 1.72; }
+    .about-more { margin-bottom: 40px; }
+    .about-more a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #0F172A; }
+    .about-more a:hover { color: #14B8A6; }
+    .about-vals { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; max-width: 720px; }
     .av { display: flex; gap: 18px; align-items: flex-start; }
     .av-icon { width: 46px; height: 46px; border-radius: 13px; background: #F8FAFC; border: 1px solid #E8EEF5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #14B8A6; font-size: 22px; }
     .av-title { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 4px; }
@@ -489,7 +520,7 @@
       .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
 
       /* ABOUT */
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .team-grid { grid-template-columns: 1fr; gap: 20px; }
       .about-photo { height: 320px; }
 
       /* CTA */
@@ -542,6 +573,7 @@
         <a href="/werkwijze" class="nav-link">Werkwijze</a>
         <a href="/cases" class="nav-link">Cases</a>
         <a href="/prijzen" class="nav-link">Prijzen</a>
+        <a href="/blog" class="nav-link">Inzichten</a>
         <a href="/over-ons" class="nav-link">Over ons</a>
       </div>
       <a href="#" onclick="openModal();return false;" class="nav-cta">Demo aanvragen</a>
@@ -551,8 +583,15 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-bg-photo" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=60" alt="">
+  <div class="hero-media" id="cc-hero-media" aria-hidden="true">
+    <div class="hero-vibe"></div>
+    <video class="hero-bg-video" id="cc-hero-video" autoplay muted loop playsinline preload="metadata"
+      poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80">
+      <source id="cc-hero-video-src" src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-bg-grad"></div>
+  <div class="hero-glow"></div>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
@@ -895,41 +934,36 @@
 <!-- ABOUT -->
 <section class="section about-section" id="over-ons">
   <div class="container">
-    <div class="about-inner">
-      <div class="about-photo">
-        <img id="cc-about-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85" alt="Oprichter Briqo">
-        <div class="about-photo-tag">
-          <div class="apt-name" id="cc-about-name">Levi</div>
-          <div class="apt-role" id="cc-about-role">Oprichter, Briqo</div>
+    <div class="about-header">
+      <div class="section-label">Over ons</div>
+      <h2 class="section-h2" style="margin-bottom:18px;" id="cc-team-title">Drie ondernemers, één missie</h2>
+      <p id="cc-team-intro1">Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op de vragen die ze elke week terugkrijgen.</p>
+      <p id="cc-team-intro2">Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.</p>
+    </div>
+    <div class="team-grid" id="cc-team-grid"></div>
+    <div class="about-more">
+      <a href="/over-ons" id="cc-team-link">Lees ons volledige verhaal <i class="ti ti-arrow-right"></i></a>
+    </div>
+    <div class="about-vals" id="cc-team-values">
+      <div class="av">
+        <div class="av-icon"><i class="ti ti-bolt"></i></div>
+        <div>
+          <div class="av-title">Snel live</div>
+          <div class="av-desc">Van idee naar werkende tool in minder dan twee weken.</div>
         </div>
       </div>
-      <div class="about-content">
-        <div class="section-label">Over ons</div>
-        <h2 class="section-h2" style="margin-bottom:22px;">Wij zijn Briqo</h2>
-        <p id="cc-about-bio1">Praktische AI-tools voor het Nederlandse MKB. Geen grote consultancyprojecten of vaag strategisch advies — gewoon een werkende tool die live gaat en resultaat oplevert.</p>
-        <p id="cc-about-bio2">We begrijpen dat MKB-bedrijven geen IT-afdeling hebben. Alles wat we bouwen is direct bruikbaar, makkelijk aanpasbaar en schaalbaar als je groeit.</p>
-        <div class="about-vals">
-          <div class="av">
-            <div class="av-icon"><i class="ti ti-bolt"></i></div>
-            <div>
-              <div class="av-title">Snel live</div>
-              <div class="av-desc">Van idee naar live tool in minder dan twee weken. Geen maandenlange trajecten.</div>
-            </div>
-          </div>
-          <div class="av">
-            <div class="av-icon"><i class="ti ti-tool"></i></div>
-            <div>
-              <div class="av-title">Altijd aanpasbaar</div>
-              <div class="av-desc">Teksten, vragen en logica zijn bewerkbaar zonder dat je een developer nodig hebt.</div>
-            </div>
-          </div>
-          <div class="av">
-            <div class="av-icon"><i class="ti ti-chart-bar"></i></div>
-            <div>
-              <div class="av-title">Data in jouw hand</div>
-              <div class="av-desc">Alle leads en inzendingen in een helder admin dashboard. Altijd exporteerbaar.</div>
-            </div>
-          </div>
+      <div class="av">
+        <div class="av-icon"><i class="ti ti-tool"></i></div>
+        <div>
+          <div class="av-title">Direct bruikbaar</div>
+          <div class="av-desc">Teksten en logica aanpasbaar zonder developer.</div>
+        </div>
+      </div>
+      <div class="av">
+        <div class="av-icon"><i class="ti ti-chart-bar"></i></div>
+        <div>
+          <div class="av-title">Data in jouw hand</div>
+          <div class="av-desc">Leads en inzendingen in een helder dashboard.</div>
         </div>
       </div>
     </div>
@@ -951,7 +985,7 @@
       </div>
       <div class="cta-note" id="cc-cta-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</div>
       <div class="cta-stats-row" id="cc-cta-stats">
-        <div class="cs-stat2"><div class="cs-stat2-v">1</div><div class="cs-stat2-l">Live tool</div></div>
+        <div class="cs-stat2"><div class="cs-stat2-v">3</div><div class="cs-stat2-l">Oprichters</div></div>
         <div class="cs-stat2"><div class="cs-stat2-v">&lt; 2 wkn</div><div class="cs-stat2-l">Gemiddelde bouwtijd</div></div>
         <div class="cs-stat2"><div class="cs-stat2-v">NL MKB</div><div class="cs-stat2-l">Onze focus</div></div>
       </div>
@@ -1017,4 +1051,91 @@
 <!-- FOOTER -->
 <footer>
   <div class="container">
-   
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-lm">
+            <svg viewBox="0 0 20 20" fill="none" stroke="#14B8A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="7" height="7" rx="1.5"/>
+              <rect x="11" y="2" width="7" height="7" rx="1.5"/>
+              <rect x="2" y="11" width="7" height="7" rx="1.5"/>
+              <rect x="11" y="11" width="7" height="7" rx="1.5"/>
+            </svg>
+          </div>
+          <span class="footer-ln">Briqo</span>
+        </div>
+        <p class="footer-desc">Praktische tools voor het Nederlandse MKB. Van idee naar live tool in minder dan twee weken.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigatie</div>
+        <div class="footer-links">
+          <a href="/branches" class="footer-link">Branches</a>
+          <a href="/werkwijze" class="footer-link">Werkwijze</a>
+          <a href="/cases" class="footer-link">Cases</a>
+          <a href="/blog" class="footer-link">Inzichten</a>
+          <a href="/prijzen" class="footer-link">Prijzen</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Bedrijf</div>
+        <div class="footer-links">
+          <a href="/over-ons" class="footer-link">Over ons</a>
+          <a href="#" onclick="openModal();return false;" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="mailto:kempenlevi@gmail.com" class="footer-link">kempenlevi@gmail.com</a>
+          <span class="footer-link">Nederland</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Briqo. Alle rechten voorbehouden.</span>
+      <span class="footer-tag">Levi Kempen · Shaquil Reyes · Gianni Geurtjens</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function openModal() {
+    document.getElementById('demoModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('demoModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('demoModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = 'Versturen...';
+    try {
+      var res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalSuccess').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Verstuur aanvraag <i class="ti ti-arrow-right"></i>';
+      }
+    } catch(err) {
+      btn.disabled = false;
+      btn.innerHTML = 'Verstuur aanvraag <i class="ti ti-arrow-right"></i>';
+    }
+  });
+</script>
+</body>
+</html>

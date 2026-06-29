@@ -29,7 +29,7 @@
       "type": "text_block",
       "data": {
         "h2": "Wat je hier ziet",
-        "content": "Elke case laat zien welk probleem er speelde, welk type tool past en wat het oplevert in de praktijk. Zo kun je sneller inschatten wat voor jouw bedrijf logisch is.\\n\\nWe focussen op tools die direct verkoop, intake of offertewerk ondersteunen.",
+        "content": "Elke case laat zien welk probleem er speelde, welk type tool past en wat het oplevert in de praktijk.\\n\\nWaar nog geen live klant is, labelen we dat eerlijk als concept — zodat je ziet wat wél mogelijk is.",
         "card": true
       }
     },
@@ -47,17 +47,17 @@
             "tags": ["Calculator", "Zwembad", "Leadkwalificatie"]
           },
           {
-            "client": "Voorbeeld Automotive",
+            "client": "Concept — Automotive",
             "tool": "Lease- en inruilscan",
-            "desc": "Bezoekers vullen online hun wensen en huidige auto in, zodat gesprekken sneller naar een serieuze offerte gaan.",
+            "desc": "Voorbeeld van hoe een online scan gesprekken sneller naar een serieuze offerte kan brengen. Nog geen live case.",
             "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80",
             "link": "",
             "tags": ["Automotive", "Intake", "Scan"]
           },
           {
-            "client": "Voorbeeld Installatiebedrijf",
+            "client": "Concept — Installatie",
             "tool": "Offertevoorbereider",
-            "desc": "Een slimme intake verzamelt projectinfo vooraf, waardoor minder heen-en-weer nodig is voor een eerste voorstel.",
+            "desc": "Voorbeeld van een intakeflow die projectinfo vooraf verzamelt. Zo zie je wat een eerste versie kan doen.",
             "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
             "link": "",
             "tags": ["Bouw", "Offerte", "Intake"]

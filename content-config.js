@@ -9,14 +9,41 @@ const CONTENT = {
     ctaPrimary: "Demo aanvragen",
     ctaSecondary: "Bekijk cases",
     proofText: "Sun Sauna & Poolworld werkt al met Briqo",
+    bgVideo: "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4",
+    bgPoster: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
   },
 
-  about: {
-    photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
-    name: "Levi",
-    role: "Oprichter, Briqo",
-    bio1: "Praktische AI-tools voor het Nederlandse MKB. Geen grote consultancyprojecten of vaag strategisch advies - gewoon een werkende tool die live gaat en resultaat oplevert.",
-    bio2: "We begrijpen dat MKB-bedrijven geen IT-afdeling hebben. Alles wat we bouwen is direct bruikbaar, makkelijk aanpasbaar en schaalbaar als je groeit.",
+  team: {
+    title: "Drie ondernemers, één missie",
+    intro1: "Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op de vragen die ze elke week terugkrijgen.",
+    intro2: "Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.",
+    linkText: "Lees ons volledige verhaal",
+    linkUrl: "/over-ons",
+    members: [
+      {
+        name: "Levi Kempen",
+        role: "Bouw & product",
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+        bio: "Liever iets live zetten waar een klant morgen mee kan werken, dan weken praten over mogelijkheden."
+      },
+      {
+        name: "Shaquil Reyes",
+        role: "Klant & commercie",
+        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
+        bio: "Helpt bedrijven scherp krijgen welke tool het meeste oplevert — en zorgt dat het ook echt gebruikt wordt."
+      },
+      {
+        name: "Gianni Geurtjens",
+        role: "Inhoud & ervaring",
+        photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
+        bio: "Zorgt dat flows en teksten logisch aanvoelen voor de gebruiker — zonder poespas."
+      }
+    ],
+    values: [
+      { icon: "ti-bolt", title: "Snel live", desc: "Van idee naar werkende tool in minder dan twee weken." },
+      { icon: "ti-tool", title: "Direct bruikbaar", desc: "Teksten en logica aanpasbaar zonder developer." },
+      { icon: "ti-chart-bar", title: "Data in jouw hand", desc: "Leads en inzendingen in een helder dashboard." }
+    ]
   },
 
   pricing: {
@@ -68,10 +95,117 @@ const CONTENT = {
     ctaPrimary: "Vraag een gratis gesprek aan",
     ctaSecondary: "Bekijk cases",
     stats: [
-      { value: "1", label: "Live tool" },
-      { value: "< 2 wkn", label: "Gemiddelde bouwtijd" },
+      { value: "3", label: "Oprichters" },
+      { value: "< 2 wkn", label: "Richting eerste MVP" },
       { value: "NL MKB", label: "Onze focus" }
     ]
   },
 
 };
+
+(function applyContent() {
+  if (typeof CONTENT === 'undefined') return;
+
+  function setText(id, val, isHTML) {
+    var el = document.getElementById(id);
+    if (!el || val == null) return;
+    if (isHTML) el.innerHTML = String(val);
+    else el.textContent = String(val);
+  }
+
+  var h = CONTENT.hero;
+  if (h) {
+    setText('cc-hero-pill', h.pill);
+    setText('cc-hero-h1', (h.h1 || '').replace(/\\n/g, '<br>'), true);
+    setText('cc-hero-sub', h.sub);
+    setText('cc-hero-cta1', h.ctaPrimary);
+    setText('cc-hero-cta2', h.ctaSecondary);
+    setText('cc-hero-proof', h.proofText);
+    var vid = document.getElementById('cc-hero-video');
+    var src = document.getElementById('cc-hero-video-src');
+    if (h.bgVideo && src) src.setAttribute('src', h.bgVideo);
+    if (h.bgPoster && vid) vid.setAttribute('poster', h.bgPoster);
+    if (vid) {
+      vid.addEventListener('error', function() {
+        var media = document.getElementById('cc-hero-media');
+        if (media) media.classList.add('no-video');
+      });
+      if (h.bgVideo) { try { vid.load(); } catch(e) {} }
+    }
+  }
+
+  var t = CONTENT.team;
+  if (t) {
+    setText('cc-team-title', t.title);
+    setText('cc-team-intro1', t.intro1);
+    setText('cc-team-intro2', t.intro2);
+    var link = document.getElementById('cc-team-link');
+    if (link) {
+      link.textContent = t.linkText || 'Lees meer';
+      link.href = t.linkUrl || '/over-ons';
+    }
+    var grid = document.getElementById('cc-team-grid');
+    if (grid && t.members) {
+      grid.innerHTML = t.members.map(function(m) {
+        return '<div class="team-card">' +
+          '<div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div>' +
+          '<div class="team-body">' +
+          '<div class="team-name">' + m.name + '</div>' +
+          '<div class="team-role">' + m.role + '</div>' +
+          '<div class="team-bio">' + m.bio + '</div>' +
+          '</div></div>';
+      }).join('');
+    }
+    var vals = document.getElementById('cc-team-values');
+    if (vals && t.values) {
+      vals.innerHTML = t.values.map(function(v) {
+        return '<div class="av"><div class="av-icon"><i class="ti ' + v.icon + '"></i></div><div>' +
+          '<div class="av-title">' + v.title + '</div>' +
+          '<div class="av-desc">' + v.desc + '</div></div></div>';
+      }).join('');
+    }
+  }
+
+  var p = CONTENT.pricing;
+  if (p) {
+    var c1 = p.card1 || {}, c2 = p.card2 || {};
+    setText('cc-p1-title', c1.title); setText('cc-p1-desc', c1.desc);
+    setText('cc-p1-amount', c1.amount); setText('cc-p1-sub', c1.amountSub);
+    var el = document.getElementById('cc-p1-feats');
+    if (el && c1.features) el.innerHTML = c1.features.map(function(f) { return '<div class="pf"><i class="ti ti-check pf-check"></i>' + f + '</div>'; }).join('');
+    setText('cc-p1-cta', c1.cta);
+    setText('cc-p2-badge', c2.badge); setText('cc-p2-title', c2.title);
+    setText('cc-p2-desc', c2.desc); setText('cc-p2-amount', c2.amount); setText('cc-p2-sub', c2.amountSub || 'maand');
+    el = document.getElementById('cc-p2-feats');
+    if (el && c2.features) el.innerHTML = c2.features.map(function(f) { return '<div class="pf"><i class="ti ti-check pf-check"></i>' + f + '</div>'; }).join('');
+    setText('cc-p2-cta', c2.cta);
+  }
+
+  var grid2 = document.getElementById('cc-branches-grid');
+  if (grid2 && CONTENT.branches) {
+    grid2.innerHTML = CONTENT.branches.map(function(b) {
+      var onclick = b.link ? ' onclick="window.open(\'' + b.link + '\',\'_blank\')" style="cursor:pointer"' : '';
+      return '<div class="branch-card"' + onclick + '>' +
+        (b.live ? '<div class="branch-live">Live</div>' : '') +
+        '<img src="' + b.img + '" alt="' + b.name + '" loading="lazy">' +
+        '<div class="branch-overlay"></div>' +
+        '<div class="branch-content"><div class="branch-name">' + b.name + '</div><div class="branch-tools">' + b.count + '</div></div>' +
+        '</div>';
+    }).join('');
+  }
+
+  var c = CONTENT.cta;
+  if (c) {
+    setText('cc-cta-h2', (c.h2 || '').replace(/\\n/g, '<br>'), true);
+    setText('cc-cta-sub', c.sub);
+    setText('cc-cta-cta1', c.ctaPrimary);
+    setText('cc-cta-cta2', c.ctaSecondary);
+    setText('cc-cta-note', c.note);
+    var stats = document.getElementById('cc-cta-stats');
+    if (stats && c.stats) {
+      stats.innerHTML = c.stats.map(function(s) {
+        return '<div class="cs-stat2"><div class="cs-stat2-v">' + s.value + '</div><div class="cs-stat2-l">' + s.label + '</div></div>';
+      }).join('');
+    }
+  }
+})();

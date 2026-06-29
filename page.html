@@ -34,10 +34,21 @@ a{text-decoration:none;color:inherit}
 .nav-cta:hover{background:#1E293B}
 
 /* HERO SIMPLE */
-.page-hero{background:var(--navy);padding:92px 0 82px;overflow:hidden;position:relative}
-.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#0F172A 56%,rgba(15,23,42,.88) 100%)}
-.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 72% 48%,rgba(20,184,166,.12),transparent);pointer-events:none}
+.page-hero{background:var(--navy);padding:92px 0 82px;overflow:hidden;position:relative;isolation:isolate}
+.page-hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.page-hero-vibe{position:absolute;inset:-18%;background:radial-gradient(circle at 18% 28%,rgba(20,184,166,.22),transparent 42%),radial-gradient(circle at 78% 58%,rgba(56,189,248,.12),transparent 40%),radial-gradient(circle at 48% 82%,rgba(99,102,241,.1),transparent 36%);animation:heroVibeShift 16s ease-in-out infinite alternate;filter:blur(1px)}
+.page-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;filter:saturate(.9) contrast(1.05)}
+.page-hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22}
+.page-hero-scrim{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.92) 0%,rgba(15,23,42,.72) 48%,rgba(15,23,42,.88) 100%)}
+.page-hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 62% 78% at 72% 46%,rgba(20,184,166,.14),transparent);pointer-events:none}
+.page-hero-media.no-video .page-hero-video{display:none}
+.page-hero .container{position:relative;z-index:2}
 .page-hero-inner{position:relative;z-index:1;max-width:760px}
+@keyframes heroVibeShift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-2.5%,1.5%) scale(1.05)}}
+@media (prefers-reduced-motion:reduce){
+  .page-hero-vibe{animation:none}
+  .page-hero-video{display:none}
+}
 .page-hero-label{display:inline-flex;align-items:center;gap:8px;background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.25);color:#5EEAD4;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
 .page-hero-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal)}
 .page-hero h1{font-size:clamp(40px,5.4vw,62px);font-weight:800;color:#fff;line-height:1.04;letter-spacing:-.04em;margin-bottom:18px}
@@ -128,6 +139,33 @@ a{text-decoration:none;color:inherit}
 .av-title{font-size:15px;font-weight:700;margin-bottom:4px}
 .av-desc{font-size:13px;color:var(--muted);line-height:1.65}
 
+/* TEAM */
+.team-intro{max-width:720px;margin-bottom:48px}
+.team-intro p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:14px}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-bottom:40px}
+.team-card{background:#fff;border:1.5px solid var(--border);border-radius:22px;overflow:hidden}
+.team-photo{aspect-ratio:4/3;background:var(--bg);overflow:hidden}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.team-body{padding:22px}
+.team-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.team-role{font-size:13px;color:var(--teal);font-weight:600;margin-bottom:12px}
+.team-bio{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ARTICLES */
+.articles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.article-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:100%;transition:border-color .15s,box-shadow .15s}
+.article-card.is-link{cursor:pointer}
+.article-card.is-link:hover{border-color:var(--teal);box-shadow:0 12px 32px rgba(15,23,42,.06)}
+.article-card.is-soon{opacity:.92}
+.article-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.article-type{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);background:#CCFBF1;border-radius:999px;padding:4px 10px}
+.article-status{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748B;background:var(--bg);border-radius:999px;padding:4px 10px}
+.article-title{font-size:18px;font-weight:700;line-height:1.35;margin-bottom:10px;letter-spacing:-.02em}
+.article-excerpt{font-size:14px;color:var(--muted);line-height:1.7;flex:1;margin-bottom:16px}
+.article-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#94A3B8}
+.article-tags{display:flex;gap:6px;flex-wrap:wrap}
+.article-tag{background:var(--bg);border-radius:999px;padding:3px 9px;font-size:11px;color:#64748B}
+
 /* EMBED */
 .embed-block{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
 .embed-title{font-size:13px;font-weight:600;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--border);background:var(--bg)}
@@ -201,6 +239,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
   .img-text.flip{direction:ltr}
   .pricing-grid{grid-template-columns:1fr}
   .about-inner{grid-template-columns:1fr;gap:32px}
+  .team-grid,.articles-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr 1fr}
   .cta-stats-row{gap:24px}
 }
@@ -228,6 +267,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
         <a href="/werkwijze" class="nav-link" data-navkey="werkwijze">Werkwijze</a>
         <a href="/cases" class="nav-link" data-navkey="cases">Cases</a>
         <a href="/prijzen" class="nav-link" data-navkey="prijzen">Prijzen</a>
+        <a href="/blog" class="nav-link" data-navkey="blog">Inzichten</a>
         <a href="/over-ons" class="nav-link" data-navkey="over-ons">Over ons</a>
       </div>
       <button class="nav-cta" onclick="openModal()">Demo aanvragen</button>
@@ -262,7 +302,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
           <a href="/branches" class="footer-link">Branches</a>
           <a href="/werkwijze" class="footer-link">Werkwijze</a>
           <a href="/prijzen" class="footer-link">Prijzen</a>
-          <a href="/blog" class="footer-link">Blog</a>
+          <a href="/blog" class="footer-link">Inzichten</a>
         </div>
       </div>
       <div>
@@ -337,10 +377,23 @@ function resolveActionAttrs(link) {
     ? 'href="#" onclick="openModal();return false;"'
     : `href="${esc(link)}"`;
 }
+function renderHeroMedia(d) {
+  const poster = d.bgPoster || '';
+  const video = d.bgVideo || '';
+  const image = !video && d.bgImage ? d.bgImage : '';
+  return `<div class="page-hero-media" aria-hidden="true">
+    <div class="page-hero-vibe"></div>
+    ${video ? `<video class="page-hero-video" autoplay muted loop playsinline preload="metadata"${poster ? ` poster="${esc(poster)}"` : ''}><source src="${esc(video)}" type="video/mp4"></video>` : ''}
+    ${image ? `<img class="page-hero-image" src="${esc(image)}" alt="">` : ''}
+    <div class="page-hero-scrim"></div>
+    <div class="page-hero-glow"></div>
+  </div>`;
+}
 
 const renderers = {
   hero_simple(d) {
     return `<section class="page-hero">
+      ${renderHeroMedia(d)}
       <div class="container">
         <div class="page-hero-inner">
         ${d.label ? `<div class="page-hero-label">${esc(d.label)}</div>` : ''}
@@ -473,6 +526,64 @@ const renderers = {
       </div>
     </section>`;
   },
+  team(d) {
+    const members = d.members || [];
+    const values = d.values || [];
+    return `<section class="section">
+      <div class="container">
+        ${d.label ? `<div class="section-label">${esc(d.label)}</div>` : ''}
+        ${d.title ? `<h2 class="section-h2" style="margin-bottom:18px;max-width:640px">${esc(d.title)}</h2>` : ''}
+        ${(d.intro1 || d.intro2) ? `<div class="team-intro">
+          ${d.intro1 ? `<p>${esc(d.intro1)}</p>` : ''}
+          ${d.intro2 ? `<p>${esc(d.intro2)}</p>` : ''}
+        </div>` : ''}
+        ${members.length ? `<div class="team-grid">
+          ${members.map(m => `<div class="team-card">
+            <div class="team-photo">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}">` : ''}</div>
+            <div class="team-body">
+              <div class="team-name">${esc(m.name)}</div>
+              ${m.role ? `<div class="team-role">${esc(m.role)}</div>` : ''}
+              ${m.bio ? `<div class="team-bio">${esc(m.bio)}</div>` : ''}
+            </div>
+          </div>`).join('')}
+        </div>` : ''}
+        ${(values || []).length ? `<div class="about-vals" style="max-width:720px">
+          ${values.map(v => `<div class="av"><div class="av-icon"><i class="ti ${esc(v.icon || 'ti-check')}"></i></div><div><div class="av-title">${esc(v.title || '')}</div><div class="av-desc">${esc(v.desc || '')}</div></div></div>`).join('')}
+        </div>` : ''}
+      </div>
+    </section>`;
+  },
+  articles_list(d) {
+    const items = d.items || [];
+    return `<section class="section section-alt">
+      <div class="container">
+        ${d.title || d.sub ? `<div class="section-center" style="margin-bottom:40px">
+          ${d.label ? `<div class="section-label">${esc(d.label)}</div>` : ''}
+          ${d.title ? `<h2 class="section-h2">${esc(d.title)}</h2>` : ''}
+          ${d.sub ? `<p class="section-sub">${esc(d.sub)}</p>` : ''}
+        </div>` : ''}
+        <div class="articles-grid">
+          ${items.map(item => {
+            const soon = item.status === 'coming_soon' || !item.link;
+            const typeLabel = item.type === 'whitepaper' ? 'Whitepaper' : 'Artikel';
+            const inner = `<div class="article-meta">
+              <span class="article-type">${esc(typeLabel)}</span>
+              ${soon ? '<span class="article-status">Binnenkort</span>' : ''}
+            </div>
+            <div class="article-title">${esc(item.title)}</div>
+            ${item.excerpt ? `<div class="article-excerpt">${esc(item.excerpt)}</div>` : ''}
+            <div class="article-foot">
+              <span>${esc(item.date || '')}${item.readTime ? ' · ' + esc(item.readTime) : ''}</span>
+              ${(item.tags || []).length ? `<div class="article-tags">${item.tags.map(t => `<span class="article-tag">${esc(t)}</span>`).join('')}</div>` : ''}
+            </div>`;
+            return soon
+              ? `<div class="article-card is-soon">${inner}</div>`
+              : `<a href="${esc(item.link)}" class="article-card is-link">${inner}</a>`;
+          }).join('')}
+        </div>
+      </div>
+    </section>`;
+  },
   cta(d) {
     return `<section class="cta-sect">
       <div class="container">
@@ -541,10 +652,20 @@ async function loadPage() {
     tmp.childNodes.forEach(n => document.head.appendChild(n.cloneNode(true)));
   }
 
+  let heroMediaDefaults = {};
+  try {
+    const hm = await fetch('/content/hero-media.json');
+    if (hm.ok) heroMediaDefaults = (await hm.json())[slug] || {};
+  } catch {}
+
   // Render blocks
   const html = (data.blocks || []).map(block => {
     const r = renderers[block.type];
-    return r ? r(block.data) : '';
+    if (!r) return '';
+    const blockData = block.type === 'hero_simple'
+      ? { ...heroMediaDefaults, ...block.data }
+      : block.data;
+    return r(blockData);
   }).join('');
 
   document.getElementById('pageContent').innerHTML = html || `
@@ -552,6 +673,10 @@ async function loadPage() {
       <h1>${esc(data.title||slug)}</h1>
       <p>Deze pagina is leeg. Voeg blokken toe via de admin.</p>
     </div></section>`;
+
+  document.querySelectorAll('.page-hero-video').forEach(v => {
+    v.addEventListener('error', () => v.closest('.page-hero-media')?.classList.add('no-video'));
+  });
 }
 
 loadPage();

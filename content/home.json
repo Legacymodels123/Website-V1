@@ -18,7 +18,9 @@
         "sub": "Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan - live op jouw website in minder dan twee weken.",
         "ctaPrimary": "Demo aanvragen",
         "ctaSecondary": "Bekijk cases",
-        "proofText": "Sun Sauna & Poolworld werkt al met Briqo"
+        "proofText": "Sun Sauna & Poolworld werkt al met Briqo",
+        "bgVideo": "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-99786-large.mp4",
+        "bgPoster": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80"
       }
     },
     {
@@ -117,13 +119,38 @@
     },
     {
       "id": "b4",
-      "type": "about",
+      "type": "team",
       "data": {
-        "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
-        "name": "Levi",
-        "role": "Oprichter, Briqo",
-        "bio1": "Praktische AI-tools voor het Nederlandse MKB. Geen grote consultancyprojecten of vaag strategisch advies - gewoon een werkende tool die live gaat en resultaat oplevert.",
-        "bio2": "We begrijpen dat MKB-bedrijven geen IT-afdeling hebben. Alles wat we bouwen is direct bruikbaar, makkelijk aanpasbaar en schaalbaar als je groeit."
+        "title": "Drie ondernemers, één missie",
+        "intro1": "Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op de vragen die ze elke week terugkrijgen.",
+        "intro2": "Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.",
+        "linkText": "Lees ons volledige verhaal",
+        "linkUrl": "/over-ons",
+        "members": [
+          {
+            "name": "Levi Kempen",
+            "role": "Bouw & product",
+            "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+            "bio": "Liever iets live zetten waar een klant morgen mee kan werken, dan weken praten over mogelijkheden."
+          },
+          {
+            "name": "Shaquil Reyes",
+            "role": "Klant & commercie",
+            "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
+            "bio": "Helpt bedrijven scherp krijgen welke tool het meeste oplevert — en zorgt dat het ook echt gebruikt wordt."
+          },
+          {
+            "name": "Gianni Geurtjens",
+            "role": "Inhoud & ervaring",
+            "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
+            "bio": "Zorgt dat flows en teksten logisch aanvoelen voor de gebruiker — zonder poespas."
+          }
+        ],
+        "values": [
+          { "icon": "ti-bolt", "title": "Snel live", "desc": "Van idee naar werkende tool in minder dan twee weken." },
+          { "icon": "ti-tool", "title": "Direct bruikbaar", "desc": "Teksten en logica aanpasbaar zonder developer." },
+          { "icon": "ti-chart-bar", "title": "Data in jouw hand", "desc": "Leads en inzendingen in een helder dashboard." }
+        ]
       }
     },
     {
@@ -138,8 +165,8 @@
         "ctaSecondaryLink": "/cases",
         "stats": [
           {
-            "value": "1",
-            "label": "Live tool"
+            "value": "3",
+            "label": "Oprichters"
           },
           {
             "value": "< 2 wkn",

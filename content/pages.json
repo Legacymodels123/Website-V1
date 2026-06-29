@@ -6,6 +6,6 @@
     { "id": "werkwijze", "slug": "werkwijze", "title": "Werkwijze", "icon": "ti-route" },
     { "id": "prijzen", "slug": "prijzen", "title": "Prijzen", "icon": "ti-receipt" },
     { "id": "over-ons", "slug": "over-ons", "title": "Over ons", "icon": "ti-user" },
-    { "id": "blog", "slug": "blog", "title": "Blog", "icon": "ti-article" }
+    { "id": "blog", "slug": "blog", "title": "Inzichten", "icon": "ti-article" }
   ]
 }
