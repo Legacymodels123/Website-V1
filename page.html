@@ -224,6 +224,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
 .form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:9px;font-size:14.5px;font-family:inherit;outline:none;transition:border-color .15s}
 .form-group input:focus,.form-group textarea:focus{border-color:var(--teal)}
 .form-group textarea{min-height:90px;resize:vertical}
+.form-group select{cursor:pointer}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.modal-label{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.modal-sub{font-size:14px;color:var(--muted);margin-bottom:22px;line-height:1.6}
 .form-submit{width:100%;background:var(--navy);color:#fff;border:none;padding:13px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;margin-top:6px}
 .form-submit:hover{background:#1E293B}
 .form-note{text-align:center;font-size:12px;color:var(--muted);margin-top:9px}
@@ -232,6 +236,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
 
 /* RESPONSIVE */
 @media(max-width:768px){
+  .form-row{grid-template-columns:1fr}
   .page-hero{padding:74px 0 64px}
   .page-hero h1{font-size:38px}
   .page-hero-actions{flex-direction:column}
@@ -270,10 +275,10 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
         <a href="/prijzen" class="nav-link" data-navkey="prijzen">Prijzen</a>
         <a href="/blog" class="nav-link" data-navkey="blog">Inzichten</a>
         <a href="/over-ons" class="nav-link" data-navkey="over-ons">Over ons</a>
-        <button type="button" class="nav-link nav-link-cta-mobile" onclick="openModal()">Demo aanvragen</button>
+        <button type="button" class="nav-link nav-link-cta-mobile" onclick="openModal('demo')">Demo aanvragen</button>
       </div>
       <div class="nav-actions">
-        <button class="nav-cta nav-cta-desktop" onclick="openModal()">Demo aanvragen</button>
+        <button class="nav-cta nav-cta-desktop" onclick="openModal('demo')">Demo aanvragen</button>
         <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
@@ -318,7 +323,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
         <div class="footer-col-title">Bedrijf</div>
         <div class="footer-links">
           <a href="/over-ons" class="footer-link">Over ons</a>
-          <a href="#" onclick="openModal();return false;" class="footer-link">Contact</a>
+          <a href="#" onclick="openModal('gesprek');return false;" class="footer-link">Contact</a>
         </div>
       </div>
       <div>
@@ -340,25 +345,28 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
 <div class="modal-backdrop" id="demoModal">
   <div class="modal-box">
     <div class="modal-header">
-      <h2>Demo aanvragen</h2>
+      <div>
+        <div class="modal-label" id="modalLabel">Demo aanvragen</div>
+        <h2 id="modalTitle">Zie wat er mogelijk is voor jouw bedrijf</h2>
+      </div>
       <button class="modal-close" onclick="closeModal()">&times;</button>
     </div>
     <div class="modal-body">
       <div id="modalForm">
-        <form action="https://formspree.io/f/xgejwvoe" method="POST" id="contactForm">
-          <div class="form-group"><label>Naam</label><input type="text" name="naam" required placeholder="Jouw naam"></div>
-          <div class="form-group"><label>E-mailadres</label><input type="email" name="email" required placeholder="jouw@email.nl"></div>
-          <div class="form-group"><label>Bedrijf</label><input type="text" name="bedrijf" placeholder="Bedrijfsnaam"></div>
-          <div class="form-group"><label>Wat wil je automatiseren of verbeteren?</label><textarea name="bericht" placeholder="Korte omschrijving..."></textarea></div>
-          <button type="submit" class="form-submit" id="submitBtn">Verstuur aanvraag <i class="ti ti-arrow-right"></i></button>
-          <p class="form-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</p>
+        <p class="modal-sub" id="modalSub">We laten zien welk type tool past bij jouw situatie. Geen verplichtingen.</p>
+        <form id="contactForm" method="POST">
+          <div id="modalFields"></div>
+          <input type="hidden" name="aanvraag_type" id="aanvraagType" value="demo">
+          <input type="hidden" name="pagina_bron" id="aanvraagBron" value="/">
+          <button type="submit" class="form-submit" id="submitBtn">Demo aanvragen <i class="ti ti-arrow-right"></i></button>
+          <p class="form-note" id="modalNote">Binnen 1 werkdag reactie · Vrijblijvende demo</p>
         </form>
       </div>
       <div id="modalSuccess" style="display:none">
         <div class="form-success">
           <div class="form-success-icon"><i class="ti ti-check"></i></div>
-          <h3>Aanvraag ontvangen!</h3>
-          <p style="color:#64748B;margin-top:8px">We nemen binnen 1 werkdag contact op.</p>
+          <h3 id="modalSuccessTitle">Demo-aanvraag ontvangen!</h3>
+          <p id="modalSuccessText" style="color:#64748B;margin-top:8px">We nemen binnen 1 werkdag contact op.</p>
         </div>
       </div>
     </div>
@@ -388,8 +396,15 @@ function resolveLink(link) {
 }
 function resolveActionAttrs(link) {
   return !link || link === '#contact'
-    ? 'href="#" onclick="openModal();return false;"'
+    ? 'href="#" onclick="openModal(\'gesprek\');return false;"'
     : `href="${esc(link)}"`;
+}
+function defaultCtaFormType(pageSlug) {
+  return (window.BriqoForms && window.BriqoForms.defaults[pageSlug]) || 'gesprek';
+}
+function modalOnclick(formType, source) {
+  const src = source ? `, { source: '${esc(source)}' }` : '';
+  return `openModal('${esc(formType || 'gesprek')}'${src})`;
 }
 function renderIntroMedia(d) {
   const poster = d.bgPoster || '';
@@ -516,7 +531,7 @@ const renderers = {
           <div>
             ${d.h2 ? `<h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.025em;margin-bottom:16px">${formatHeading(d.h2)}</h2>` : ''}
             ${splitParagraphs(d.content).map(p => `<p style="color:#64748B;line-height:1.8;margin-bottom:12px">${esc(p)}</p>`).join('')}
-            ${d.ctaText ? `<a ${resolveActionAttrs(d.ctaLink)} class="img-text-cta">${esc(d.ctaText)} <i class="ti ti-arrow-right"></i></a>` : ''}
+            ${d.ctaText ? `<a href="#" onclick="${modalOnclick(d.formType || (slug === 'branches' ? 'gesprek' : defaultCtaFormType(slug)), slug + '-image-text')};return false;" class="img-text-cta">${esc(d.ctaText)} <i class="ti ti-arrow-right"></i></a>` : ''}
           </div>
         </div>
       </div>
@@ -550,7 +565,7 @@ const renderers = {
       <div class="container">
         <div class="cases-grid">
           ${items.map((c, i) => `
-            <div class="case-card ix-card ix-tilt ix-reveal ix-stagger-${(i % 5) + 1}" ${c.link ? `onclick="window.open('${esc(c.link)}','_blank')" style="cursor:pointer"` : `onclick="openModal()" style="cursor:pointer"`}>
+            <div class="case-card ix-card ix-tilt ix-reveal ix-stagger-${(i % 5) + 1}" ${c.link ? `onclick="window.open('${esc(c.link)}','_blank')" style="cursor:pointer"` : `onclick="${modalOnclick(c.formType || 'idee', 'cases-card')}" style="cursor:pointer"`}>
               ${c.img ? `<div class="case-card-img"><img src="${esc(c.img)}" alt="${esc(c.client||'')}"></div>` : ''}
               <div class="case-card-body">
                 ${(c.tags||[]).length ? `<div class="case-card-tags">${c.tags.map(t=>`<span class="case-tag">${esc(t)}</span>`).join('')}</div>` : ''}
@@ -567,7 +582,11 @@ const renderers = {
   pricing(d) {
     const c1 = d.card1 || {};
     const c2 = d.card2 || {};
-    const renderCard = (card, featured) => `<div class="price-card ix-card ix-tilt ix-reveal ${featured ? 'featured' : ''}">
+    const renderCard = (card, featured) => {
+      const formType = card.formType || (slug === 'prijzen'
+        ? (featured ? 'gesprek' : 'inschatting')
+        : (featured ? 'demo' : 'gesprek'));
+      return `<div class="price-card ix-card ix-tilt ix-reveal ${featured ? 'featured' : ''}">
       ${card.badge ? `<div class="price-badge">${esc(card.badge)}</div>` : ''}
       <div class="price-title">${esc(card.title || '')}</div>
       ${card.desc ? `<div class="price-desc">${esc(card.desc)}</div>` : ''}
@@ -576,8 +595,9 @@ const renderers = {
       <div class="price-feats">
         ${(card.features || []).map(feat => `<div class="pf"><i class="ti ti-check pf-check"></i><span>${esc(feat)}</span></div>`).join('')}
       </div>
-      ${card.cta ? `<button class="btn ${featured ? 'btn-teal' : 'btn-outline'} price-btn" onclick="openModal()">${esc(card.cta)}${featured ? ' <i class="ti ti-arrow-right"></i>' : ''}</button>` : ''}
+      ${card.cta ? `<button class="btn ${featured ? 'btn-teal' : 'btn-outline'} price-btn" onclick="${modalOnclick(formType, slug + '-pricing')}">${esc(card.cta)}${featured ? ' <i class="ti ti-arrow-right"></i>' : ''}</button>` : ''}
     </div>`;
+    };
     return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
       <div class="container">
         ${d.label || d.title ? `<div class="section-center">${d.label ? `<div class="section-label">${esc(d.label)}</div>` : ''}${d.title ? `<h2 class="section-h2">${esc(d.title)}</h2>` : ''}${d.sub ? `<p class="section-sub">${esc(d.sub)}</p>` : ''}</div>` : ''}
@@ -672,13 +692,14 @@ const renderers = {
       </div>
     </section>`;
   },
-  cta(d) {
+  cta(d, pageSlug) {
+    const formType = d.formType || defaultCtaFormType(pageSlug);
     return `<section class="cta-sect">
       <div class="container">
         <h2>${formatHeading(d.h2)}</h2>
         ${d.sub ? `<p>${esc(d.sub)}</p>` : ''}
         <div class="cta-btns">
-          ${d.ctaPrimary ? `<button class="btn btn-teal" onclick="openModal()">${esc(d.ctaPrimary)} <i class="ti ti-arrow-right"></i></button>` : ''}
+          ${d.ctaPrimary ? `<button class="btn btn-teal" onclick="${modalOnclick(formType, pageSlug + '-cta')}">${esc(d.ctaPrimary)} <i class="ti ti-arrow-right"></i></button>` : ''}
           ${d.ctaSecondary ? `<a ${resolveActionAttrs(d.ctaSecondaryLink || '/cases')} class="btn btn-outline-white">${esc(d.ctaSecondary)}</a>` : ''}
         </div>
         ${d.note ? `<div class="cta-note">${esc(d.note)}</div>` : ''}
@@ -753,7 +774,7 @@ async function loadPage() {
     const blockData = block.type === 'hero_simple'
       ? { ...heroMediaDefaults, ...block.data }
       : block.data;
-    return block.type === 'hero_simple' ? r(blockData, slug) : r(blockData);
+    return block.type === 'hero_simple' ? r(blockData, slug) : (block.type === 'cta' ? r(blockData, slug) : r(blockData));
   }).join('');
 
   document.getElementById('pageContent').innerHTML = html || `
@@ -782,22 +803,8 @@ async function loadPage() {
 
 loadPage();
 
-// ── MODAL ─────────────────────────────────────────────────────────
-function openModal() { document.getElementById('demoModal').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeModal() { document.getElementById('demoModal').classList.remove('open'); document.body.style.overflow=''; }
-document.getElementById('demoModal').addEventListener('click', e => { if (e.target===document.getElementById('demoModal')) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true; btn.textContent = 'Versturen...';
-  try {
-    const r = await fetch(this.action, { method:'POST', body: new FormData(this), headers:{'Accept':'application/json'} });
-    if (r.ok) { document.getElementById('modalForm').style.display='none'; document.getElementById('modalSuccess').style.display='block'; }
-    else { btn.disabled=false; btn.innerHTML='Verstuur aanvraag <i class="ti ti-arrow-right"></i>'; }
-  } catch { btn.disabled=false; btn.innerHTML='Verstuur aanvraag <i class="ti ti-arrow-right"></i>'; }
-});
 </script>
+<script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
 </body>
 </html>

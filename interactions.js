@@ -13,6 +13,7 @@
     '.av',
     '.cs-stat',
     '.cs-stat2',
+    '.impact-card',
     '.img-text',
     '.logo-entry'
   ].join(',');
@@ -187,6 +188,69 @@
     });
   }
 
+  function bindImpactCards() {
+    document.querySelectorAll('.impact-card').forEach(function (card) {
+      if (card.dataset.ixImpact) return;
+      card.dataset.ixImpact = '1';
+      card.classList.add('ix-spotlight');
+
+      card.addEventListener('mousemove', function (e) {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--ix-spot-x', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        card.style.setProperty('--ix-spot-y', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+
+      if (isTouchUI()) {
+        card.addEventListener('click', function () {
+          const was = card.classList.contains('is-active');
+          document.querySelectorAll('.impact-card.is-active').forEach(function (c) {
+            c.classList.remove('is-active');
+          });
+          if (!was) card.classList.add('is-active');
+        });
+      }
+    });
+  }
+
+  function bindCountUp() {
+    if (prefersReduced()) {
+      document.querySelectorAll('[data-count-up]').forEach(function (el) {
+        el.textContent = (el.dataset.prefix || '') + el.dataset.countUp + (el.dataset.suffix || '');
+      });
+      return;
+    }
+
+    const counterObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || entry.target.dataset.countDone) return;
+        const el = entry.target;
+        el.dataset.countDone = '1';
+        const end = parseFloat(el.dataset.countUp);
+        if (isNaN(end)) return;
+        const duration = 1400;
+        const startTime = performance.now();
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+
+        function tick(now) {
+          const p = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + Math.round(end * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('[data-count-up]').forEach(function (el) {
+      if (!el.dataset.countBound) {
+        el.dataset.countBound = '1';
+        counterObs.observe(el);
+      }
+    });
+  }
+
   function observeReveal() {
     if (prefersReduced()) {
       document.querySelectorAll('.ix-reveal').forEach(function (el) {
@@ -236,18 +300,30 @@
     });
     bindTouchInteractions();
     bindMobileNav();
+    bindImpactCards();
+    bindCountUp();
   }
 
   function refresh() {
     bindCards();
     observeReveal();
+    bindImpactCards();
+    bindCountUp();
   }
 
-  window.BriqoInteractions = { refresh: refresh };
+  function initAfterContent() {
+    refresh();
+  }
+
+  window.BriqoInteractions = { refresh: refresh, initAfterContent: initAfterContent };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', refresh);
+    document.addEventListener('DOMContentLoaded', function () {
+      refresh();
+      document.addEventListener('briqo:content-ready', refresh);
+    });
   } else {
     refresh();
+    document.addEventListener('briqo:content-ready', refresh);
   }
 })();

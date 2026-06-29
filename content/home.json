@@ -98,7 +98,8 @@
             "Admin dashboard voor leads",
             "Supabase database"
           ],
-          "cta": "Vraag offerte aan"
+          "cta": "Bespreek eerste fase",
+          "formType": "gesprek"
         },
         "card2": {
           "badge": "Maandelijks opzegbaar",

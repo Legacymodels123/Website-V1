@@ -59,7 +59,7 @@ const CONTENT = {
         "Admin dashboard voor leads",
         "Supabase database"
       ],
-      cta: "Vraag offerte aan",
+      cta: "Bespreek eerste fase",
     },
     card2: {
       badge: "Maandelijks opzegbaar",
@@ -95,15 +95,27 @@ const CONTENT = {
     ctaPrimary: "Vraag een gratis gesprek aan",
     ctaSecondary: "Bekijk cases",
     stats: [
-      { value: "3", label: "Oprichters" },
-      { value: "< 2 wkn", label: "Richting eerste MVP" },
-      { value: "NL MKB", label: "Onze focus" }
+      { count: "3", label: "Oprichters" },
+      { prefix: "< ", count: "2", suffix: "", unit: "wkn", label: "Richting live" },
+      { static: "MKB", label: "Onze focus" }
     ]
   },
 
+  impact: [
+    { count: "10", unit: "dgn", label: "Van briefing naar live", detail: "Zo snel stond de calculator van Sun Sauna & Poolworld online." },
+    { prefix: "< ", count: "2", unit: "wkn", label: "Richting eerste MVP", detail: "Compact beginnen, snel testen met echte gebruikers." },
+    { static: "24/7", label: "Antwoord voor klanten", detail: "Tools die draaien wanneer jij gesloten bent." },
+    { count: "3", label: "Oprichters die bouwen", detail: "Wie je spreekt, bouwt ook mee. Geen doorverwijzing." }
+  ],
+
+  caseStats: [
+    { count: "10", unit: "dgn", label: "Van brief naar live", detail: "SSPW prijscalculator" },
+    { static: "24/7", label: "Zelfservice voor klanten", detail: "Altijd bereikbaar online" },
+    { static: "↓", label: "Minder losse prijsvragen", detail: "Concretere gesprekken" }
+  ]
 };
 
-(function applyContent() {
+(function () {
   if (typeof CONTENT === 'undefined') return;
 
   function setText(id, val, isHTML) {
@@ -113,6 +125,26 @@ const CONTENT = {
     else el.textContent = String(val);
   }
 
+  function renderImpactVal(s) {
+    if (s.static) return '<span>' + s.static + '</span>';
+    var prefix = s.prefix ? '<span class="impact-prefix">' + s.prefix + '</span>' : '';
+    var count = '<span data-count-up="' + s.count + '" data-prefix="" data-suffix="' + (s.suffix || '') + '">0</span>';
+    return prefix + count;
+  }
+
+  function renderImpactCard(s, i) {
+    var unit = s.unit ? '<span class="impact-unit">' + s.unit + '</span>' : '';
+    var detail = s.detail ? '<p class="impact-detail">' + s.detail + '</p>' : '';
+    return '<article class="impact-card ix-reveal ix-stagger-' + ((i % 5) + 1) + '">' +
+      '<div class="impact-val">' + renderImpactVal(s) + unit + '</div>' +
+      '<div class="impact-lbl">' + s.label + '</div>' + detail + '</article>';
+  }
+
+  function renderImpactGrid(items) {
+    return (items || []).map(function (s, i) { return renderImpactCard(s, i); }).join('');
+  }
+
+  function runApplyContent() {
   var h = CONTENT.hero;
   if (h) {
     setText('cc-hero-pill', h.pill);
@@ -208,9 +240,29 @@ const CONTENT = {
     setText('cc-cta-note', c.note);
     var stats = document.getElementById('cc-cta-stats');
     if (stats && c.stats) {
-      stats.innerHTML = c.stats.map(function(s) {
-        return '<div class="cs-stat2"><div class="cs-stat2-v">' + s.value + '</div><div class="cs-stat2-l">' + s.label + '</div></div>';
-      }).join('');
+      stats.innerHTML = renderImpactGrid(c.stats);
     }
+  }
+
+  var impactGrid = document.getElementById('cc-impact-stats');
+  if (impactGrid && CONTENT.impact) {
+    impactGrid.innerHTML = renderImpactGrid(CONTENT.impact);
+  }
+
+  var caseStats = document.getElementById('cc-case-stats');
+  if (caseStats && CONTENT.caseStats) {
+    caseStats.innerHTML = renderImpactGrid(CONTENT.caseStats);
+  }
+
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      runApplyContent();
+      document.dispatchEvent(new Event('briqo:content-ready'));
+    });
+  } else {
+    runApplyContent();
+    document.dispatchEvent(new Event('briqo:content-ready'));
   }
 })();

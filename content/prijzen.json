@@ -44,7 +44,8 @@
             "Live op jouw domein of losse tool-URL",
             "Ruimte voor een feedbackronde"
           ],
-          "cta": "Vraag een inschatting"
+          "cta": "Vraag een inschatting",
+          "formType": "inschatting"
         },
         "card2": {
           "badge": "Voor doorontwikkeling",
@@ -59,7 +60,8 @@
             "Meedenken over volgende iteraties",
             "Prioriteit op supportvragen"
           ],
-          "cta": "Bespreek onderhoud"
+          "cta": "Bespreek onderhoud",
+          "formType": "gesprek"
         }
       }
     },
@@ -89,6 +91,7 @@
         "sub": "Laat kort weten welk type tool je voor ogen hebt. Dan kunnen we aangeven wat logisch is voor een eerste fase.",
         "note": "Snel antwoord · Geen uitgebreide offerte nodig",
         "ctaPrimary": "Vraag een inschatting",
+        "formType": "inschatting",
         "ctaSecondary": "Bekijk werkwijze",
         "ctaSecondaryLink": "/werkwijze",
         "stats": [

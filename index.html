@@ -41,6 +41,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="/interactions.css">
   <link rel="stylesheet" href="/hero-headers.css">
+  <link rel="stylesheet" href="/impact-stats.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -484,6 +485,7 @@
       .hero-sub { font-size: 15px; max-width: 100%; }
       .hero-btns { flex-direction: column; }
       .hero-btns .btn { width: 100%; justify-content: center; }
+      .form-row { grid-template-columns: 1fr; }
       .hero-visual { padding-bottom: 0; }
 
       /* LOGOS */
@@ -574,10 +576,10 @@
         <a href="/prijzen" class="nav-link">Prijzen</a>
         <a href="/blog" class="nav-link">Inzichten</a>
         <a href="/over-ons" class="nav-link">Over ons</a>
-        <a href="#" onclick="openModal();return false;" class="nav-link nav-link-cta-mobile">Demo aanvragen</a>
+        <a href="#" onclick="openModal('demo');return false;" class="nav-link nav-link-cta-mobile">Demo aanvragen</a>
       </div>
       <div class="nav-actions">
-        <a href="#" onclick="openModal();return false;" class="nav-cta nav-cta-desktop">Demo aanvragen</a>
+        <a href="#" onclick="openModal('demo');return false;" class="nav-cta nav-cta-desktop">Demo aanvragen</a>
         <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
           <span class="nav-toggle-bar"></span>
           <span class="nav-toggle-bar"></span>
@@ -604,7 +606,7 @@
         <h1 id="cc-hero-h1">Wij bouwen de<br>tool die jouw<br>bedrijf <em>mist</em></h1>
         <p class="hero-sub" id="cc-hero-sub">Geen dikke slides over AI. Wel een calculator, scan of configurator die binnen twee weken op jouw site staat. En morgen al iets oplevert.</p>
         <div class="hero-btns">
-          <a href="#" onclick="openModal();return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Demo aanvragen</span> <i class="ti ti-arrow-right"></i></a>
+          <a href="#" onclick="openModal('demo');return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Demo aanvragen</span> <i class="ti ti-arrow-right"></i></a>
           <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk cases</a>
         </div>
         <div class="hero-proof">
@@ -766,11 +768,7 @@
         <div class="section-label">Live case</div>
         <h2 class="section-h2" style="margin-bottom:18px;">Hoe SSPW meer leads vangt<br>met minder telefoontjes</h2>
         <p style="font-size:16px;color:#64748B;line-height:1.75;">Sun Sauna &amp; Poolworld had een herkenbaar probleem: klanten belden voor prijsindicaties die ook online gegeven konden worden. We bouwden een interactieve calculator. In 10 dagen live.</p>
-        <div class="case-stats">
-          <div class="cs-stat ix-card"><div class="cs-val">10</div><div class="cs-lbl">Dagen van brief naar live</div></div>
-          <div class="cs-stat ix-card"><div class="cs-val">24/7</div><div class="cs-lbl">Zelfservice voor klanten</div></div>
-          <div class="cs-stat ix-card"><div class="cs-val">↓</div><div class="cs-lbl">Minder onnodige telefoontjes</div></div>
-        </div>
+        <div class="impact-grid impact-grid--compact case-inline" id="cc-case-stats"></div>
         <div class="case-quote">
           <p class="q-text">"Klanten snappen nu zelf wat een zwembad kost voordat ze contact opnemen. De gesprekken die we nog voeren zijn meteen veel concreter."</p>
           <div class="q-author">Sun Sauna &amp; Poolworld</div>
@@ -778,6 +776,19 @@
         <a href="https://sspw-offerte-calc.vercel.app/" target="_blank" class="btn btn-outline" style="margin-top:28px;font-size:15px;padding:12px 22px;">Bekijk live tool <i class="ti ti-external-link"></i></a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- IMPACT STATS -->
+<section class="impact-section" id="impact">
+  <div class="impact-bg" aria-hidden="true"></div>
+  <div class="container impact-inner">
+    <div class="impact-head ix-reveal">
+      <div class="section-label">Bewijs</div>
+      <h2 class="impact-title">Waar het telt in cijfers</h2>
+      <p class="impact-sub">Geen AI-beloftes. Wel wat je merkt zodra een tool live staat en klanten ermee werken.</p>
+    </div>
+    <div class="impact-grid" id="cc-impact-stats"></div>
   </div>
 </section>
 
@@ -845,7 +856,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-plus" onclick="openModal()">
+      <div class="branch-plus" onclick="openModal('idee')">
         <div class="branch-plus-icon"><i class="ti ti-plus"></i></div>
         <div class="branch-plus-text">Jouw branche</div>
         <div class="branch-plus-sub">Neem contact op</div>
@@ -908,7 +919,7 @@
           <div class="pf"><i class="ti ti-check pf-check"></i>Admin dashboard voor leads</div>
           <div class="pf"><i class="ti ti-check pf-check"></i>Supabase database</div>
         </div>
-        <a href="#" onclick="openModal();return false;" class="btn btn-outline price-btn" style="font-size:15px;padding:13px 22px;" id="cc-p1-cta">Vraag offerte aan</a>
+        <a href="#" onclick="openModal('gesprek');return false;" class="btn btn-outline price-btn" style="font-size:15px;padding:13px 22px;" id="cc-p1-cta">Bespreek eerste fase</a>
       </div>
       <div class="price-card ix-card ix-tilt featured">
         <div class="price-badge" id="cc-p2-badge">Maandelijks opzegbaar</div>
@@ -923,7 +934,7 @@
           <div class="pf"><i class="ti ti-check pf-check"></i>Lead-dashboardtoegang</div>
           <div class="pf"><i class="ti ti-check pf-check"></i>Prioriteits-support</div>
         </div>
-        <a href="#" onclick="openModal();return false;" class="btn btn-teal price-btn" style="font-size:15px;padding:13px 22px;"><span id="cc-p2-cta">Start met demo</span> <i class="ti ti-arrow-right"></i></a>
+        <a href="#" onclick="openModal('demo');return false;" class="btn btn-teal price-btn" style="font-size:15px;padding:13px 22px;"><span id="cc-p2-cta">Start met demo</span> <i class="ti ti-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -978,15 +989,11 @@
       <h2 id="cc-cta-h2">Vertel ons wat jouw<br>bedrijf mist</h2>
       <p id="cc-cta-sub">In een gesprek van 30 minuten bepalen we samen of en hoe we kunnen helpen. Geen verplichtingen, geen verkooppraatje.</p>
       <div class="cta-btns">
-        <a href="#" onclick="openModal();return false;" class="btn btn-teal btn-lg"><span id="cc-cta-cta1">Vraag een gratis gesprek aan</span> <i class="ti ti-arrow-right"></i></a>
+        <a href="#" onclick="openModal('gesprek');return false;" class="btn btn-teal btn-lg"><span id="cc-cta-cta1">Vraag een gratis gesprek aan</span> <i class="ti ti-arrow-right"></i></a>
         <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-cta-cta2">Bekijk cases</a>
       </div>
       <div class="cta-note" id="cc-cta-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</div>
-      <div class="cta-stats-row" id="cc-cta-stats">
-        <div class="cs-stat2 ix-card"><div class="cs-stat2-v">3</div><div class="cs-stat2-l">Oprichters</div></div>
-        <div class="cs-stat2 ix-card"><div class="cs-stat2-v">&lt; 2 wkn</div><div class="cs-stat2-l">Gemiddelde bouwtijd</div></div>
-        <div class="cs-stat2 ix-card"><div class="cs-stat2-v">NL MKB</div><div class="cs-stat2-l">Onze focus</div></div>
-      </div>
+      <div class="impact-grid impact-grid--cta" id="cc-cta-stats"></div>
     </div>
   </div>
 </section>
@@ -996,52 +1003,23 @@
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal-close" onclick="closeModal()" aria-label="Sluiten"><i class="ti ti-x"></i></button>
     <div id="modalForm">
-      <div class="modal-label">Gratis gesprek aanvragen</div>
-      <h2 id="modalTitle">Vertel ons wat jouw bedrijf mist</h2>
-      <p class="modal-sub">We nemen binnen 1 werkdag contact op. Geen verplichtingen, geen verkooppraatje.</p>
-      <form id="contactForm" action="https://formspree.io/f/xgejwvoe" method="POST">
-        <div class="form-row">
-          <div class="form-group" style="margin-bottom:0;">
-            <label for="naam">Naam *</label>
-            <input type="text" id="naam" name="naam" placeholder="Jan de Vries" required>
-          </div>
-          <div class="form-group" style="margin-bottom:0;">
-            <label for="bedrijf">Bedrijf *</label>
-            <input type="text" id="bedrijf" name="bedrijf" placeholder="Jouw BV" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">E-mailadres *</label>
-          <input type="email" id="email" name="email" placeholder="jan@jouwbedrijf.nl" required>
-        </div>
-        <div class="form-group">
-          <label for="branche">Branche</label>
-          <select id="branche" name="branche">
-            <option value="">Selecteer jouw branche...</option>
-            <option value="zwembad-buitenleven">Zwembad &amp; Buitenleven</option>
-            <option value="automotive">Automotive</option>
-            <option value="installatie-bouw">Installatie &amp; Bouw</option>
-            <option value="beauty-wellness">Beauty &amp; Wellness</option>
-            <option value="retail">Retail</option>
-            <option value="zakelijke-dienstverlening">Zakelijke Dienstverlening</option>
-            <option value="horeca-recreatie">Horeca &amp; Recreatie</option>
-            <option value="anders">Anders</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="vraag">Wat wil je automatiseren of verbeteren?</label>
-          <textarea id="vraag" name="vraag" placeholder="Bijv: klanten bellen voor prijzen die we ook online kunnen geven..."></textarea>
-        </div>
+      <div class="modal-label" id="modalLabel">Demo aanvragen</div>
+      <h2 id="modalTitle">Zie wat er mogelijk is voor jouw bedrijf</h2>
+      <p class="modal-sub" id="modalSub">We laten zien welk type tool past bij jouw situatie. Geen verplichtingen.</p>
+      <form id="contactForm" method="POST">
+        <div id="modalFields"></div>
+        <input type="hidden" name="aanvraag_type" id="aanvraagType" value="demo">
+        <input type="hidden" name="pagina_bron" id="aanvraagBron" value="/">
         <button type="submit" class="form-submit" id="submitBtn">
-          Verstuur aanvraag <i class="ti ti-arrow-right"></i>
+          Demo aanvragen <i class="ti ti-arrow-right"></i>
         </button>
-        <p class="form-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</p>
+        <p class="form-note" id="modalNote">Binnen 1 werkdag reactie · Vrijblijvende demo</p>
       </form>
     </div>
     <div id="modalSuccess" class="form-success" style="display:none;">
       <div class="form-success-icon"><i class="ti ti-check"></i></div>
-      <h3>Aanvraag ontvangen!</h3>
-      <p>Bedankt voor je bericht. We nemen binnen 1 werkdag contact met je op om een gesprek in te plannen.</p>
+      <h3 id="modalSuccessTitle">Demo-aanvraag ontvangen!</h3>
+      <p id="modalSuccessText">We nemen binnen 1 werkdag contact op om een demo in te plannen.</p>
     </div>
   </div>
 </div>
@@ -1078,7 +1056,7 @@
         <div class="footer-col-title">Bedrijf</div>
         <div class="footer-links">
           <a href="/over-ons" class="footer-link">Over ons</a>
-          <a href="#" onclick="openModal();return false;" class="footer-link">Contact</a>
+          <a href="#" onclick="openModal('gesprek');return false;" class="footer-link">Contact</a>
         </div>
       </div>
       <div>
@@ -1096,45 +1074,7 @@
   </div>
 </footer>
 
-<script>
-  function openModal() {
-    document.getElementById('demoModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('demoModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.getElementById('demoModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-  });
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    var btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.innerHTML = 'Versturen...';
-    try {
-      var res = await fetch(this.action, {
-        method: 'POST',
-        body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        document.getElementById('modalForm').style.display = 'none';
-        document.getElementById('modalSuccess').style.display = 'block';
-      } else {
-        btn.disabled = false;
-        btn.innerHTML = 'Verstuur aanvraag <i class="ti ti-arrow-right"></i>';
-      }
-    } catch(err) {
-      btn.disabled = false;
-      btn.innerHTML = 'Verstuur aanvraag <i class="ti ti-arrow-right"></i>';
-    }
-  });
-</script>
+<script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
 </body>
 </html>
