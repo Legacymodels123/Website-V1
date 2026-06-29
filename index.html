@@ -112,11 +112,12 @@
     }
     .hero-bg-grad {
       position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(135deg, rgba(15,23,42,0.88) 55%, rgba(15,23,42,0.78) 100%);
+      background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(15,23,42,0.88) 48%, rgba(15,23,42,0.72) 100%);
     }
-    .hero-glow {
-      position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: radial-gradient(ellipse 62% 78% at 72% 46%, rgba(20,184,166,0.14), transparent);
+    .hero--home .hero-bg-grad {
+      background:
+        radial-gradient(ellipse 80% 60% at 12% 18%, rgba(20, 184, 166, 0.14), transparent 55%),
+        linear-gradient(115deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.92) 46%, rgba(15, 23, 42, 0.55) 100%);
     }
     .hero-inner {
       position: relative; z-index: 2;
@@ -136,14 +137,14 @@
     .pill-dot { width: 6px; height: 6px; background: #14B8A6; border-radius: 50%; }
     .hero h1 {
       font-size: clamp(42px, 5.5vw, 66px);
-      font-weight: 700; line-height: 1.06;
+      font-weight: 800; line-height: 1.06;
       letter-spacing: -0.035em; color: white;
       margin-bottom: 22px;
     }
-    .hero h1 em { font-style: normal; color: #14B8A6; }
+    .hero h1 em { font-style: normal; color: #5EEAD4; }
     .hero-sub {
-      font-size: 17px; color: rgba(255,255,255,0.48);
-      line-height: 1.78; margin-bottom: 40px; max-width: 440px;
+      font-size: 18px; color: rgba(255,255,255,0.62);
+      line-height: 1.75; margin-bottom: 40px; max-width: 440px;
     }
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
     .btn {
@@ -588,16 +589,11 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero--home">
   <div class="hero-media" id="cc-hero-media" aria-hidden="true">
     <div class="hero-vibe"></div>
-    <video class="hero-bg-video" id="cc-hero-video" autoplay muted loop playsinline preload="metadata"
-      poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80">
-      <source id="cc-hero-video-src" src="https://assets.mixkit.co/videos/preview/mixkit-team-of-people-working-in-the-office-4295-large.mp4" type="video/mp4">
-    </video>
   </div>
   <div class="hero-bg-grad"></div>
-  <div class="hero-glow"></div>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
@@ -621,42 +617,28 @@
         </div>
       </div>
 
-      <!-- HERO VISUAL: bento-signalen (geen tool-mockup) -->
-      <div class="hero-aside" aria-hidden="true">
-        <div class="hero-aside-glow"></div>
-        <div class="hero-bento">
-          <div class="hero-bento-card">
-            <div class="hero-bento-icon"><i class="ti ti-bolt"></i></div>
-            <div class="hero-bento-val">&lt; 2 wkn</div>
-            <div class="hero-bento-lbl">Richting eerste live versie</div>
+      <div class="hero-showcase" aria-hidden="true">
+        <div class="hero-showcase-glow"></div>
+        <div class="hero-showcase-frame" id="cc-hero-frame" style="--hero-poster: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80')">
+          <video class="hero-showcase-video" id="cc-hero-video" autoplay muted loop playsinline preload="metadata"
+            poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80">
+            <source id="cc-hero-video-src" src="https://assets.mixkit.co/videos/preview/mixkit-team-of-people-working-in-the-office-4295-large.mp4" type="video/mp4">
+          </video>
+          <div class="hero-showcase-scrim"></div>
+          <div class="hero-showcase-badges">
+            <span class="hero-showcase-badge"><i class="ti ti-bolt"></i> &lt; 2 wkn richting live</span>
+            <span class="hero-showcase-badge"><i class="ti ti-apps"></i> Calculator · Scan · Intake</span>
           </div>
-          <div class="hero-bento-card">
-            <div class="hero-bento-icon"><i class="ti ti-building-store"></i></div>
-            <div class="hero-bento-val">MKB</div>
-            <div class="hero-bento-lbl">Gebouwd voor echte praktijk</div>
+        </div>
+        <div class="hero-showcase-meta">
+          <div class="hero-founders">
+            <div class="hero-founder"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt=""></div>
+            <div class="hero-founder"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=80&q=80" alt=""></div>
+            <div class="hero-founder"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=80&q=80" alt=""></div>
           </div>
-          <div class="hero-bento-card wide">
-            <div class="hero-bento-icon"><i class="ti ti-apps"></i></div>
-            <div>
-              <div class="hero-bento-val" style="font-size:17px;font-weight:700;">Wat we bouwen</div>
-              <div class="hero-bento-tags">
-                <span class="hero-bento-tag">Calculator</span>
-                <span class="hero-bento-tag">Scan</span>
-                <span class="hero-bento-tag">Configurator</span>
-                <span class="hero-bento-tag">Intake</span>
-              </div>
-            </div>
-          </div>
-          <div class="hero-bento-card wide">
-            <div class="hero-founders">
-              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt=""></div>
-              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=80&q=80" alt=""></div>
-              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=80&q=80" alt=""></div>
-            </div>
-            <div>
-              <div class="hero-bento-val" style="font-size:15px;font-weight:700;">Levi, Shaquil &amp; Gianni</div>
-              <div class="hero-bento-lbl">Drie oprichters, één missie</div>
-            </div>
+          <div>
+            <div class="hero-showcase-meta-title">Levi, Shaquil &amp; Gianni</div>
+            <div class="hero-showcase-meta-sub">Drie oprichters · gebouwd voor MKB-praktijk</div>
           </div>
         </div>
       </div>

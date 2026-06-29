@@ -59,7 +59,7 @@
   .page-intro .hero-chip:hover,
   .content-card:hover,
   .content-card.ix-reveal:hover,
-  .hero-bento-card:hover {
+  .hero-showcase-frame:hover {
     transform: none !important;
     box-shadow: none !important;
     border-color: #E2E8F0 !important;
@@ -67,9 +67,12 @@
     filter: none !important;
   }
 
-  .hero-bento-card:hover {
-    border-color: rgba(255, 255, 255, 0.1) !important;
-    background: rgba(255, 255, 255, 0.06) !important;
+  .hero-showcase-frame:hover {
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    box-shadow:
+      0 28px 72px rgba(0, 0, 0, 0.48),
+      0 0 0 1px rgba(20, 184, 166, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
   }
 
   .page-intro-link:hover {

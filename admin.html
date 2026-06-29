@@ -1101,10 +1101,15 @@ const CONTENT_CONFIG_APPLY = `(function applyContent() {
     var src = document.getElementById('cc-hero-video-src');
     if (h.bgVideo && src) src.setAttribute('src', h.bgVideo);
     if (h.bgPoster && vid) vid.setAttribute('poster', h.bgPoster);
+    var frame = document.getElementById('cc-hero-frame');
+    if (frame && h.bgPoster) frame.style.setProperty('--hero-poster', 'url("' + h.bgPoster + '")');
     if (vid) {
       vid.addEventListener('error', function() {
-        var media = document.getElementById('cc-hero-media');
-        if (media) media.classList.add('no-video');
+        if (frame) {
+          frame.classList.add('no-video');
+          var poster = vid.getAttribute('poster');
+          if (poster) frame.style.backgroundImage = 'url("' + poster + '")';
+        }
       });
       if (h.bgVideo) { try { vid.load(); } catch(e) {} }
     }
