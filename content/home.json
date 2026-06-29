@@ -15,7 +15,7 @@
       "data": {
         "pill": "Eerste live tool: SSPW Prijscalculator",
         "h1": "Wij bouwen de\ntool die jouw\nbedrijf <em>mist</em>",
-        "sub": "Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan - live op jouw website in minder dan twee weken.",
+        "sub": "Geen dikke slides over AI. Wel een calculator, scan of configurator die binnen twee weken op jouw site staat — en morgen al iets oplevert.",
         "ctaPrimary": "Demo aanvragen",
         "ctaSecondary": "Bekijk cases",
         "proofText": "Sun Sauna & Poolworld werkt al met Briqo",
@@ -122,7 +122,7 @@
       "type": "team",
       "data": {
         "title": "Drie ondernemers, één missie",
-        "intro1": "Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op de vragen die ze elke week terugkrijgen.",
+        "intro1": "Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.",
         "intro2": "Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.",
         "linkText": "Lees ons volledige verhaal",
         "linkUrl": "/over-ons",
@@ -131,19 +131,19 @@
             "name": "Levi Kempen",
             "role": "Bouw & product",
             "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
-            "bio": "Liever iets live zetten waar een klant morgen mee kan werken, dan weken praten over mogelijkheden."
+            "bio": "Ik zet liever morgen iets live waar een klant mee kan werken, dan weken praten over wat er allemaal mogelijk is."
           },
           {
             "name": "Shaquil Reyes",
             "role": "Klant & commercie",
             "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
-            "bio": "Helpt bedrijven scherp krijgen welke tool het meeste oplevert — en zorgt dat het ook echt gebruikt wordt."
+            "bio": "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last — dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert."
           },
           {
             "name": "Gianni Geurtjens",
             "role": "Inhoud & ervaring",
             "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
-            "bio": "Zorgt dat flows en teksten logisch aanvoelen voor de gebruiker — zonder poespas."
+            "bio": "Tools falen zelden door de techniek. Meestal door onduidelijke vragen. Ik zorg dat flows logisch aanvoelen — helder en menselijk."
           }
         ],
         "values": [

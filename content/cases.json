@@ -15,13 +15,13 @@
       "type": "hero_simple",
       "data": {
         "label": "Cases",
-        "h1": "Voorbeelden van tools\\ndie al live staan",
-        "sub": "Geen abstract AI-verhaal, maar concrete tools die sneller antwoord geven, aanvragen beter kwalificeren en werk uit handen nemen.",
+        "h1": "Tools die je kunt openen,\\nniet alleen bekijken",
+        "sub": "Geen abstract AI-verhaal, maar concrete tools die sneller antwoord geven, leads beter kwalificeren en werk uit handen nemen.",
         "primaryCta": "Bespreek jouw idee",
         "primaryLink": "#contact",
         "secondaryCta": "Bekijk branches",
         "secondaryLink": "/branches",
-        "proof": "<strong>Echte toepassingen</strong> in plaats van losse AI-beloftes"
+        "proof": "<strong>Echte toepassingen</strong> — geen loze beloftes"
       }
     },
     {
@@ -29,7 +29,7 @@
       "type": "text_block",
       "data": {
         "h2": "Wat je hier ziet",
-        "content": "Elke case laat zien welk probleem er speelde, welk type tool past en wat het oplevert in de praktijk.\\n\\nWaar nog geen live klant is, labelen we dat eerlijk als concept — zodat je ziet wat wél mogelijk is.",
+        "content": "Elke case laat zien welk probleem er speelde, welk type tool daarbij past en wat het in de praktijk oplevert.\\n\\nIs er nog geen live klant? Dan zeggen we dat eerlijk en tonen we een concept — zodat je wél ziet wat mogelijk is.",
         "card": true
       }
     },
@@ -40,16 +40,16 @@
         "items": [
           {
             "client": "Sun Sauna & Poolworld",
-            "tool": "Zwembad prijscalculator",
-            "desc": "Klanten krijgen sneller een prijsindicatie en bellen pas wanneer hun aanvraag concreter is.",
+            "tool": "Zwembadprijscalculator",
+            "desc": "Klanten krijgen sneller een prijsindicatie en bellen pas als hun aanvraag concreet genoeg is.",
             "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=600&q=80",
             "link": "https://sspw-offerte-calc.vercel.app/",
-            "tags": ["Calculator", "Zwembad", "Leadkwalificatie"]
+            "tags": ["Calculator", "Zwembad", "Leads"]
           },
           {
             "client": "Concept — Automotive",
             "tool": "Lease- en inruilscan",
-            "desc": "Voorbeeld van hoe een online scan gesprekken sneller naar een serieuze offerte kan brengen. Nog geen live case.",
+            "desc": "Zo kan een online scan gesprekken sneller naar een serieuze offerte leiden. Nog geen live case.",
             "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80",
             "link": "",
             "tags": ["Automotive", "Intake", "Scan"]
@@ -57,7 +57,7 @@
           {
             "client": "Concept — Installatie",
             "tool": "Offertevoorbereider",
-            "desc": "Voorbeeld van een intakeflow die projectinfo vooraf verzamelt. Zo zie je wat een eerste versie kan doen.",
+            "desc": "Een intakeflow die projectinfo vooraf verzamelt. Zo zie je wat een eerste versie kan doen.",
             "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
             "link": "",
             "tags": ["Bouw", "Offerte", "Intake"]
@@ -69,16 +69,16 @@
       "id": "c4",
       "type": "cta",
       "data": {
-        "h2": "Benieuwd welke tool\\nvoor jouw bedrijf logisch is?",
-        "sub": "In een kort gesprek kijken we welk probleem je nu het meeste tijd of omzet kost, en of daar een snelle MVP voor past.",
-        "note": "Binnen 1 werkdag reactie · Praktisch en vrijblijvend",
+        "h2": "Welke tool past\\nbij jouw bedrijf?",
+        "sub": "In een kort gesprek kijken we welk probleem je nu het meeste tijd of omzet kost — en of daar een snelle eerste versie voor past.",
+        "note": "Binnen 1 werkdag reactie · Vrijblijvend",
         "ctaPrimary": "Plan een gratis gesprek",
         "ctaSecondary": "Bekijk branches",
         "ctaSecondaryLink": "/branches",
         "stats": [
-          { "value": "< 2 wkn", "label": "Richting eerste MVP" },
-          { "value": "MKB", "label": "Focus op praktische inzet" },
-          { "value": "1-op-1", "label": "Direct contact" }
+          { "value": "< 2 wkn", "label": "Richting eerste versie" },
+          { "value": "MKB", "label": "Onze focus" },
+          { "value": "1-op-1", "label": "Korte lijnen" }
         ]
       }
     }

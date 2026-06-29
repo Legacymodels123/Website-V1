@@ -4,7 +4,7 @@
   "title": "Inzichten",
   "seo": {
     "title": "Inzichten & whitepapers - Briqo",
-    "description": "Nuchtere artikelen en whitepapers over calculators, intakeflows en praktische tools voor het Nederlandse mkb.",
+    "description": "Nuchtere artikelen en whitepapers over calculators, intakeflows en praktische tools voor het Nederlandse MKB.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/blog"
   },
@@ -15,8 +15,8 @@
       "type": "hero_simple",
       "data": {
         "label": "Inzichten",
-        "h1": "Nuchtere kennis\\nvoor betere tools",
-        "sub": "Artikelen en whitepapers over wat wél werkt op een mkb-website: calculators, scans, intakeflows en leadkwalificatie. Geen hype, wel praktijk.",
+        "h1": "Wat we leren\\nterwijl we bouwen",
+        "sub": "Artikelen en whitepapers over wat wél werkt op een MKB-website: calculators, scans, intakeflows en slimme leadkwalificatie. Geen hype — wel praktijk.",
         "primaryCta": "Plan een gesprek",
         "primaryLink": "#contact",
         "secondaryCta": "Bekijk cases",
@@ -29,7 +29,7 @@
       "type": "text_block",
       "data": {
         "h2": "Waarom we dit doen",
-        "content": "Veel bedrijven twijfelen of een online tool het waard is. Begrijpelijk — er wordt veel beloofd over AI en automatisering.\\n\\nDaarom delen we hier wat we in de praktijk zien: wanneer een calculator zinvol is, hoe je leads beter kwalificeert, en wat een goede eerste versie moet kunnen. Kort, concreet en toepasbaar.",
+        "content": "Veel bedrijven twijfelen of een online tool het waard is. Begrijpelijk — er wordt veel beloofd over AI en automatisering.\\n\\nDaarom delen we hier wat we in de praktijk zien: wanneer een calculator zinvol is, hoe je leads beter kwalificeert en wat een goede eerste versie moet kunnen. Kort, concreet, toepasbaar.",
         "card": true
       }
     },
@@ -93,7 +93,7 @@
           },
           {
             "type": "blog",
-            "title": "AI op een mkb-site: wat wél zinvol is",
+            "title": "AI op een MKB-site: wat wél zinvol is",
             "excerpt": "Geen chatbot om de chatbot. Wel concrete toepassingen die direct iets opleveren voor jouw klant.",
             "date": "Binnenkort",
             "readTime": "7 min",

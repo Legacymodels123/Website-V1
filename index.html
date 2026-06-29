@@ -39,6 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="/interactions.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -330,18 +331,18 @@
       background: #0F172A; border: 4px solid #F8FAFC;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 20px; box-shadow: 0 0 0 1px #E2E8F0;
+      transition: background 0.3s ease, border-color 0.25s ease, box-shadow 0.35s ease, transform 0.35s ease;
     }
-    .p-step-circle.active { background: #14B8A6; box-shadow: 0 0 0 1px #14B8A6, 0 0 20px rgba(20,184,166,0.3); }
     .p-step-num { font-size: 16px; font-weight: 700; color: white; }
-    .p-step-title { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 8px; }
-    .p-step-desc { font-size: 13px; color: #64748B; line-height: 1.65; }
-    .p-step-tag { display: inline-block; margin-top: 12px; font-size: 11px; background: #F1F5F9; color: #64748B; padding: 4px 12px; border-radius: 100px; }
+    .p-step-title { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 8px; transition: color 0.25s ease; }
+    .p-step-desc { font-size: 13px; color: #64748B; line-height: 1.65; transition: opacity 0.3s ease; }
+    .p-step-tag { display: inline-block; margin-top: 12px; font-size: 11px; background: #F1F5F9; color: #64748B; padding: 4px 12px; border-radius: 100px; transition: background 0.25s ease, color 0.25s ease; }
 
     /* PRICING */
     .pricing-section { background: #F8FAFC; }
     .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 760px; margin: 56px auto 0; }
-    .price-card { background: white; border: 1px solid #E2E8F0; border-radius: 24px; padding: 36px; }
-    .price-card.featured { border-color: #14B8A6; box-shadow: 0 0 0 1px #14B8A6, 0 16px 48px rgba(20,184,166,0.1); }
+    .price-card { background: white; border: 1px solid #E2E8F0; border-radius: 24px; padding: 36px; transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s ease, opacity 0.3s ease, filter 0.3s ease; }
+    .price-card.featured { border-color: #E2E8F0; box-shadow: none; }
     .price-badge { display: inline-block; background: #CCFBF1; color: #0F766E; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 18px; }
     .price-title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 8px; }
     .price-desc { font-size: 14px; color: #64748B; line-height: 1.65; margin-bottom: 26px; }
@@ -600,7 +601,7 @@
           <span id="cc-hero-pill">Eerste live tool: SSPW Prijscalculator</span>
         </div>
         <h1 id="cc-hero-h1">Wij bouwen de<br>tool die jouw<br>bedrijf <em>mist</em></h1>
-        <p class="hero-sub" id="cc-hero-sub">Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan — live op jouw website in minder dan twee weken.</p>
+        <p class="hero-sub" id="cc-hero-sub">Geen dikke slides over AI. Wel een calculator, scan of configurator die binnen twee weken op jouw site staat — en morgen al iets oplevert.</p>
         <div class="hero-btns">
           <a href="#" onclick="openModal();return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Demo aanvragen</span> <i class="ti ti-arrow-right"></i></a>
           <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk cases</a>
@@ -654,7 +655,7 @@
     <div class="logos-row">
       <div class="logos-label">Vertrouwd door</div>
       <div class="logos-items">
-        <div class="logo-entry">
+        <div class="logo-entry ix-card">
           <div class="logo-entry-icon">SSPW</div>
           <span class="logo-entry-name">Sun Sauna &amp; Poolworld</span>
         </div>
@@ -667,9 +668,9 @@
 <section class="section problem">
   <div class="container">
     <div class="section-label">Herken je dit?</div>
-    <h2 class="section-h2" style="max-width:560px;">Jouw klant wil nu een antwoord.<br>Jij kan dat nog niet geven.</h2>
+    <h2 class="section-h2" style="max-width:560px;">Jouw klant wil nu antwoord.<br>Jij kunt dat nog niet geven.</h2>
     <div class="problem-grid">
-      <div class="p-card">
+      <div class="p-card ix-card ix-tilt">
         <div class="p-card-img">
           <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Klant aan de balie">
         </div>
@@ -679,7 +680,7 @@
           <div class="p-desc">Offerteaanvragen, prijsindicaties, productconfiguraties — ze kosten jou en je klant onnodig tijd aan de telefoon.</div>
         </div>
       </div>
-      <div class="p-card">
+      <div class="p-card ix-card ix-tilt">
         <div class="p-card-img">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Laptop op bureau">
         </div>
@@ -689,7 +690,7 @@
           <div class="p-desc">Bezoekers landen op jouw website, zien geen interactieve tool en vertrekken — naar een concurrent die wél direct antwoord geeft.</div>
         </div>
       </div>
-      <div class="p-card">
+      <div class="p-card ix-card ix-tilt">
         <div class="p-card-img">
           <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="Zakelijke bespreking">
         </div>
@@ -709,40 +710,40 @@
     <div class="section-label" style="color:#5EEAD4;">Wat we bouwen</div>
     <h2 class="section-h2" style="color:white;max-width:500px;">6 soorten tools,<br>voor elke situatie</h2>
     <div class="build-grid">
-      <div class="build-tile">
+      <div class="build-tile ix-card ix-tilt">
         <div class="build-icon"><i class="ti ti-calculator"></i></div>
         <div class="build-title">Prijscalculator</div>
         <div class="build-desc">Klant configureert zelf en krijgt direct een prijsindicatie. Minder telefoontjes, meer gekwalificeerde leads.</div>
         <div class="build-tags"><span class="b-tag">Zwembad</span><span class="b-tag">Installatie</span><span class="b-tag">Lease</span></div>
       </div>
-      <div class="build-tile">
+      <div class="build-tile ix-card ix-tilt">
         <div class="build-icon"><i class="ti ti-adjustments-horizontal"></i></div>
         <div class="build-title">Productconfigurator</div>
         <div class="build-desc">Klant stelt stap voor stap zijn product samen, ziet de prijs live updaten.</div>
         <div class="build-tags"><span class="b-tag">Automotive</span><span class="b-tag">Retail</span><span class="b-tag">Beauty</span></div>
       </div>
-      <div class="build-tile">
+      <div class="build-tile ix-card ix-tilt">
         <div class="build-icon"><i class="ti ti-sparkles"></i></div>
-        <div class="build-title">AI Quick-Win Scan</div>
-        <div class="build-desc">8 vragen, 3 concrete AI-kansen. Klant ziet direct wat mogelijk is — warm lead voor jou.</div>
+        <div class="build-title">Snelle kansen-scan</div>
+        <div class="build-desc">Acht korte vragen, drie concrete verbeterkansen. Je bezoeker ziet meteen wat mogelijk is — jij krijgt een warme lead terug.</div>
         <div class="build-tags"><span class="b-tag">Zakelijke dienstverlening</span><span class="b-tag">Advies</span></div>
       </div>
-      <div class="build-tile">
+      <div class="build-tile ix-card ix-tilt">
         <div class="build-icon"><i class="ti ti-file-invoice"></i></div>
         <div class="build-title">Offertevoorbereider</div>
         <div class="build-desc">Klant vult intake in, jij ontvangt een gestructureerde offertevoorbereiding klaar om te versturen.</div>
         <div class="build-tags"><span class="b-tag">Bouw</span><span class="b-tag">Events</span><span class="b-tag">Zorg</span></div>
       </div>
-      <div class="build-tile">
+      <div class="build-tile ix-card ix-tilt">
         <div class="build-icon"><i class="ti ti-users"></i></div>
-        <div class="build-title">Lead capture tool</div>
-        <div class="build-desc">Slimme formulieren die kwalificeren terwijl ze invullen. Jij ontvangt alleen leads die er klaar voor zijn.</div>
+        <div class="build-title">Leadkwalificatie-tool</div>
+        <div class="build-desc">Slimme vragen die filteren terwijl iemand invult. Jij hoeft alleen nog te bellen met leads die echt klaar zijn.</div>
         <div class="build-tags"><span class="b-tag">Horeca</span><span class="b-tag">Coaching</span><span class="b-tag">Retail</span></div>
       </div>
-      <div class="build-tile">
+      <div class="build-tile ix-card ix-tilt">
         <div class="build-icon"><i class="ti ti-brain"></i></div>
-        <div class="build-title">AI-adviesmodule</div>
-        <div class="build-desc">Klant beschrijft situatie, tool genereert een gepersonaliseerd advies of rapport.</div>
+        <div class="build-title">Adviesmodule</div>
+        <div class="build-desc">Bezoeker beschrijft de situatie, de tool levert een helder advies of rapport — persoonlijk, zonder dat jij meteen hoeft in te grijpen.</div>
         <div class="build-tags"><span class="b-tag">Zorg</span><span class="b-tag">Finance</span><span class="b-tag">HR</span></div>
       </div>
     </div>
@@ -769,9 +770,9 @@
         <h2 class="section-h2" style="margin-bottom:18px;">Hoe SSPW meer leads vangt<br>met minder telefoontjes</h2>
         <p style="font-size:16px;color:#64748B;line-height:1.75;">Sun Sauna &amp; Poolworld had een herkenbaar probleem: klanten belden voor prijsindicaties die ook online gegeven konden worden. We bouwden een interactieve calculator — in 10 dagen live.</p>
         <div class="case-stats">
-          <div class="cs-stat"><div class="cs-val">10</div><div class="cs-lbl">Dagen van brief naar live</div></div>
-          <div class="cs-stat"><div class="cs-val">24/7</div><div class="cs-lbl">Zelfservice voor klanten</div></div>
-          <div class="cs-stat"><div class="cs-val">↓</div><div class="cs-lbl">Minder onnodige telefoontjes</div></div>
+          <div class="cs-stat ix-card"><div class="cs-val">10</div><div class="cs-lbl">Dagen van brief naar live</div></div>
+          <div class="cs-stat ix-card"><div class="cs-val">24/7</div><div class="cs-lbl">Zelfservice voor klanten</div></div>
+          <div class="cs-stat ix-card"><div class="cs-val">↓</div><div class="cs-lbl">Minder onnodige telefoontjes</div></div>
         </div>
         <div class="case-quote">
           <p class="q-text">"Klanten snappen nu zelf wat een zwembad kost voordat ze contact opnemen. De gesprekken die we nog voeren zijn meteen veel concreter."</p>
@@ -790,7 +791,7 @@
     <h2 class="section-h2">Voor welke sector werk jij?</h2>
     <p class="section-sub">Klik op jouw branche en zie welke tools beschikbaar zijn — of laat ons iets nieuws bouwen.</p>
     <div class="branches-grid" id="cc-branches-grid">
-      <div class="branch-card" onclick="window.open('https://sspw-offerte-calc.vercel.app/','_blank')">
+      <div class="branch-card ix-card" onclick="window.open('https://sspw-offerte-calc.vercel.app/','_blank')">
         <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80" alt="Zwembad">
         <div class="branch-overlay"></div>
         <div class="branch-live">Live</div>
@@ -799,7 +800,7 @@
           <div class="branch-count">1 tool beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card" onclick="window.location='/branches'">
+      <div class="branch-card ix-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80" alt="Automotive">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -807,7 +808,7 @@
           <div class="branch-count">3 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card" onclick="window.location='/branches'">
+      <div class="branch-card ix-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80" alt="Installatie Bouw">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -815,7 +816,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card" onclick="window.location='/branches'">
+      <div class="branch-card ix-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80" alt="Beauty Wellness">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -823,7 +824,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card" onclick="window.location='/branches'">
+      <div class="branch-card ix-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80" alt="Retail">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -831,7 +832,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card" onclick="window.location='/branches'">
+      <div class="branch-card ix-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Zakelijke Dienstverlening">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -839,7 +840,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card" onclick="window.location='/branches'">
+      <div class="branch-card ix-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Horeca Recreatie">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -861,7 +862,7 @@
   <div class="container">
     <div class="section-label" style="text-align:center;">Werkwijze</div>
     <h2 class="section-h2" style="text-align:center;">Van idee naar live in twee weken</h2>
-    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Geen lange trajecten, geen onduidelijke offertes. Elke stap is concreet en transparant.</p>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Geen maandenlange trajecten of vage planningen. Elke stap is concreet — je weet precies wat er wanneer gebeurt.</p>
     <div class="process-steps">
       <div class="p-step">
         <div class="p-step-circle"><div class="p-step-num">1</div></div>
@@ -876,7 +877,7 @@
         <div class="p-step-tag">Binnen 2 werkdagen</div>
       </div>
       <div class="p-step">
-        <div class="p-step-circle active"><div class="p-step-num">3</div></div>
+        <div class="p-step-circle"><div class="p-step-num">3</div></div>
         <div class="p-step-title">Bouw (2 weken)</div>
         <div class="p-step-desc">We bouwen de MVP. Jij geeft feedback op een tussentijdse versie, wij passen aan.</div>
         <div class="p-step-tag">Next.js · Supabase · Vercel</div>
@@ -898,7 +899,7 @@
     <h2 class="section-h2" style="text-align:center;">Transparante prijzen,<br>geen verrassingen</h2>
     <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Eenmalige opzet + maandabonnement. Jij betaalt alleen als de tool live is.</p>
     <div class="pricing-grid">
-      <div class="price-card">
+      <div class="price-card ix-card ix-tilt">
         <div class="price-title" id="cc-p1-title">Opzet</div>
         <div class="price-desc" id="cc-p1-desc">Eenmalig — van brief tot live MVP op jouw eigen domein.</div>
         <div class="price-amount"><span id="cc-p1-amount">Op maat</span><sub> / <span id="cc-p1-sub">eenmalig</span></sub></div>
@@ -912,7 +913,7 @@
         </div>
         <a href="#" onclick="openModal();return false;" class="btn btn-outline price-btn" style="font-size:15px;padding:13px 22px;" id="cc-p1-cta">Vraag offerte aan</a>
       </div>
-      <div class="price-card featured">
+      <div class="price-card ix-card ix-tilt featured">
         <div class="price-badge" id="cc-p2-badge">Maandelijks opzegbaar</div>
         <div class="price-title" id="cc-p2-title">Abonnement</div>
         <div class="price-desc" id="cc-p2-desc">Maandelijks — wij houden het draaiend en bouwen door.</div>
@@ -937,7 +938,7 @@
     <div class="about-header">
       <div class="section-label">Over ons</div>
       <h2 class="section-h2" style="margin-bottom:18px;" id="cc-team-title">Drie ondernemers, één missie</h2>
-      <p id="cc-team-intro1">Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op de vragen die ze elke week terugkrijgen.</p>
+      <p id="cc-team-intro1">Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.</p>
       <p id="cc-team-intro2">Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.</p>
     </div>
     <div class="team-grid" id="cc-team-grid"></div>
@@ -945,21 +946,21 @@
       <a href="/over-ons" id="cc-team-link">Lees ons volledige verhaal <i class="ti ti-arrow-right"></i></a>
     </div>
     <div class="about-vals" id="cc-team-values">
-      <div class="av">
+      <div class="av ix-card">
         <div class="av-icon"><i class="ti ti-bolt"></i></div>
         <div>
           <div class="av-title">Snel live</div>
           <div class="av-desc">Van idee naar werkende tool in minder dan twee weken.</div>
         </div>
       </div>
-      <div class="av">
+      <div class="av ix-card">
         <div class="av-icon"><i class="ti ti-tool"></i></div>
         <div>
           <div class="av-title">Direct bruikbaar</div>
           <div class="av-desc">Teksten en logica aanpasbaar zonder developer.</div>
         </div>
       </div>
-      <div class="av">
+      <div class="av ix-card">
         <div class="av-icon"><i class="ti ti-chart-bar"></i></div>
         <div>
           <div class="av-title">Data in jouw hand</div>
@@ -985,9 +986,9 @@
       </div>
       <div class="cta-note" id="cc-cta-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</div>
       <div class="cta-stats-row" id="cc-cta-stats">
-        <div class="cs-stat2"><div class="cs-stat2-v">3</div><div class="cs-stat2-l">Oprichters</div></div>
-        <div class="cs-stat2"><div class="cs-stat2-v">&lt; 2 wkn</div><div class="cs-stat2-l">Gemiddelde bouwtijd</div></div>
-        <div class="cs-stat2"><div class="cs-stat2-v">NL MKB</div><div class="cs-stat2-l">Onze focus</div></div>
+        <div class="cs-stat2 ix-card"><div class="cs-stat2-v">3</div><div class="cs-stat2-l">Oprichters</div></div>
+        <div class="cs-stat2 ix-card"><div class="cs-stat2-v">&lt; 2 wkn</div><div class="cs-stat2-l">Gemiddelde bouwtijd</div></div>
+        <div class="cs-stat2 ix-card"><div class="cs-stat2-v">NL MKB</div><div class="cs-stat2-l">Onze focus</div></div>
       </div>
     </div>
   </div>
@@ -1137,5 +1138,6 @@
     }
   });
 </script>
+<script src="/interactions.js"></script>
 </body>
 </html>

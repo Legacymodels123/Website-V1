@@ -13,6 +13,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<link rel="stylesheet" href="/interactions.css">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--navy:#0F172A;--teal:#14B8A6;--teal-d:#0D9488;--bg:#F8FAFC;--border:#E2E8F0;--text:#0F172A;--muted:#64748B}
@@ -112,8 +113,8 @@ a{text-decoration:none;color:inherit}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.price-card{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:32px}
-.price-card.featured{border-color:var(--teal);box-shadow:0 0 0 1px rgba(20,184,166,.12),0 20px 50px rgba(20,184,166,.09)}
+.price-card{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:32px;transition:border-color .3s ease,box-shadow .35s ease,transform .35s ease,opacity .3s ease,filter .3s ease}
+.price-card.featured{border-color:var(--border);box-shadow:none}
 .price-badge{display:inline-block;background:#CCFBF1;color:#0F766E;font-size:12px;font-weight:700;border-radius:999px;padding:5px 12px;margin-bottom:14px}
 .price-title{font-size:24px;font-weight:800;margin-bottom:8px}
 .price-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:22px}
@@ -412,7 +413,7 @@ const renderers = {
     const cls = d.align === 'center' ? 'text-content center' : 'text-content';
     return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
       <div class="container">
-        <div class="${cls} ${d.card ? 'content-card' : ''}">
+        <div class="${cls} ${d.card ? 'content-card ix-card ix-reveal' : 'ix-reveal'}">
           ${d.h2 ? `<h2>${esc(d.h2)}</h2>` : ''}
           ${(d.content||'').split('\n\n').filter(Boolean).map(p => `<p class="body-text">${esc(p)}</p>`).join('')}
         </div>
@@ -422,7 +423,7 @@ const renderers = {
   image_text(d) {
     return `<section class="section">
       <div class="container">
-        <div class="img-text ${d.imagePosition === 'left' ? 'flip' : ''}">
+        <div class="img-text ix-card ix-reveal ${d.imagePosition === 'left' ? 'flip' : ''}">
           <div class="img-text-img">
             ${d.imageUrl ? `<img src="${esc(d.imageUrl)}" alt="${esc(d.imageAlt||'')}">` : ''}
           </div>
@@ -443,7 +444,7 @@ const renderers = {
         ${d.sub ? `<p class="section-sub">${esc(d.sub)}</p>` : ''}
         <div class="branches-grid">
           ${items.map(item => `
-            <a class="branch-card" ${resolveActionAttrs(resolveLink(item.link))}>
+            <a class="branch-card ix-card ix-reveal" ${resolveActionAttrs(resolveLink(item.link))}>
               ${item.img ? `<img src="${esc(item.img)}" alt="${esc(item.name || 'Branche')}">` : ''}
               <div class="branch-overlay"></div>
               ${item.live ? '<div class="branch-live">Live</div>' : ''}
@@ -462,8 +463,8 @@ const renderers = {
     return `<section class="section">
       <div class="container">
         <div class="cases-grid">
-          ${items.map(c => `
-            <div class="case-card" ${c.link ? `onclick="window.open('${esc(c.link)}','_blank')" style="cursor:pointer"` : `onclick="openModal()" style="cursor:pointer"`}>
+          ${items.map((c, i) => `
+            <div class="case-card ix-card ix-tilt ix-reveal ix-stagger-${(i % 5) + 1}" ${c.link ? `onclick="window.open('${esc(c.link)}','_blank')" style="cursor:pointer"` : `onclick="openModal()" style="cursor:pointer"`}>
               ${c.img ? `<div class="case-card-img"><img src="${esc(c.img)}" alt="${esc(c.client||'')}"></div>` : ''}
               <div class="case-card-body">
                 ${(c.tags||[]).length ? `<div class="case-card-tags">${c.tags.map(t=>`<span class="case-tag">${esc(t)}</span>`).join('')}</div>` : ''}
@@ -480,7 +481,7 @@ const renderers = {
   pricing(d) {
     const c1 = d.card1 || {};
     const c2 = d.card2 || {};
-    const renderCard = (card, featured) => `<div class="price-card ${featured ? 'featured' : ''}">
+    const renderCard = (card, featured) => `<div class="price-card ix-card ix-tilt ix-reveal ${featured ? 'featured' : ''}">
       ${card.badge ? `<div class="price-badge">${esc(card.badge)}</div>` : ''}
       <div class="price-title">${esc(card.title || '')}</div>
       ${card.desc ? `<div class="price-desc">${esc(card.desc)}</div>` : ''}
@@ -519,7 +520,7 @@ const renderers = {
             ${d.bio1 ? `<p>${esc(d.bio1)}</p>` : ''}
             ${d.bio2 ? `<p>${esc(d.bio2)}</p>` : ''}
             ${(values || []).length ? `<div class="about-vals">
-              ${values.map(v => `<div class="av"><div class="av-icon"><i class="ti ${esc(v.icon || 'ti-check')}"></i></div><div><div class="av-title">${esc(v.title || '')}</div><div class="av-desc">${esc(v.desc || '')}</div></div></div>`).join('')}
+              ${values.map((v, i) => `<div class="av ix-card ix-reveal ix-stagger-${(i % 5) + 1}"><div class="av-icon ix-icon"><i class="ti ${esc(v.icon || 'ti-check')}"></i></div><div><div class="av-title">${esc(v.title || '')}</div><div class="av-desc">${esc(v.desc || '')}</div></div></div>`).join('')}
             </div>` : ''}
           </div>
         </div>
@@ -538,7 +539,7 @@ const renderers = {
           ${d.intro2 ? `<p>${esc(d.intro2)}</p>` : ''}
         </div>` : ''}
         ${members.length ? `<div class="team-grid">
-          ${members.map(m => `<div class="team-card">
+          ${members.map((m, i) => `<div class="team-card ix-card ix-tilt ix-reveal ix-stagger-${(i % 5) + 1}">
             <div class="team-photo">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.name)}">` : ''}</div>
             <div class="team-body">
               <div class="team-name">${esc(m.name)}</div>
@@ -548,7 +549,7 @@ const renderers = {
           </div>`).join('')}
         </div>` : ''}
         ${(values || []).length ? `<div class="about-vals" style="max-width:720px">
-          ${values.map(v => `<div class="av"><div class="av-icon"><i class="ti ${esc(v.icon || 'ti-check')}"></i></div><div><div class="av-title">${esc(v.title || '')}</div><div class="av-desc">${esc(v.desc || '')}</div></div></div>`).join('')}
+          ${values.map((v, i) => `<div class="av ix-card ix-reveal ix-stagger-${(i % 5) + 1}"><div class="av-icon ix-icon"><i class="ti ${esc(v.icon || 'ti-check')}"></i></div><div><div class="av-title">${esc(v.title || '')}</div><div class="av-desc">${esc(v.desc || '')}</div></div></div>`).join('')}
         </div>` : ''}
       </div>
     </section>`;
@@ -563,9 +564,10 @@ const renderers = {
           ${d.sub ? `<p class="section-sub">${esc(d.sub)}</p>` : ''}
         </div>` : ''}
         <div class="articles-grid">
-          ${items.map(item => {
+          ${items.map((item, i) => {
             const soon = item.status === 'coming_soon' || !item.link;
             const typeLabel = item.type === 'whitepaper' ? 'Whitepaper' : 'Artikel';
+            const cls = `article-card ix-card ix-tilt ix-reveal ix-stagger-${(i % 5) + 1}${soon ? ' is-soon' : ' is-link'}`;
             const inner = `<div class="article-meta">
               <span class="article-type">${esc(typeLabel)}</span>
               ${soon ? '<span class="article-status">Binnenkort</span>' : ''}
@@ -577,8 +579,8 @@ const renderers = {
               ${(item.tags || []).length ? `<div class="article-tags">${item.tags.map(t => `<span class="article-tag">${esc(t)}</span>`).join('')}</div>` : ''}
             </div>`;
             return soon
-              ? `<div class="article-card is-soon">${inner}</div>`
-              : `<a href="${esc(item.link)}" class="article-card is-link">${inner}</a>`;
+              ? `<div class="${cls}">${inner}</div>`
+              : `<a href="${esc(item.link)}" class="${cls}">${inner}</a>`;
           }).join('')}
         </div>
       </div>
@@ -677,6 +679,8 @@ async function loadPage() {
   document.querySelectorAll('.page-hero-video').forEach(v => {
     v.addEventListener('error', () => v.closest('.page-hero-media')?.classList.add('no-video'));
   });
+
+  if (window.BriqoInteractions) window.BriqoInteractions.refresh();
 }
 
 loadPage();
@@ -697,5 +701,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
   } catch { btn.disabled=false; btn.innerHTML='Verstuur aanvraag <i class="ti ti-arrow-right"></i>'; }
 });
 </script>
+<script src="/interactions.js"></script>
 </body>
 </html>
