@@ -378,6 +378,11 @@ document.querySelectorAll('[data-navkey]').forEach(a => {
 
 // ── BLOCK RENDERERS ────────────────────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function unescapeText(s) { return String(s || '').replace(/\\n/g, '\n'); }
+function formatHeading(s) { return unescapeText(s).split('\n').map(line => esc(line)).join('<br>'); }
+function splitParagraphs(s) {
+  return unescapeText(s).split(/\n\n+/).map(p => p.trim()).filter(Boolean);
+}
 function resolveLink(link) {
   return !link || link === '#contact' ? '#' : link;
 }
@@ -386,6 +391,18 @@ function resolveActionAttrs(link) {
     ? 'href="#" onclick="openModal();return false;"'
     : `href="${esc(link)}"`;
 }
+function renderIntroMedia(d) {
+  const poster = d.bgPoster || '';
+  const video = d.bgVideo || '';
+  const image = video ? '' : (d.bgImage || poster || '');
+  if (!video && !image) return '';
+  return `<div class="page-intro-banner" aria-hidden="true">
+    ${video ? `<video class="page-intro-video" autoplay muted loop playsinline preload="metadata"${poster ? ` poster="${esc(poster)}"` : ''}><source src="${esc(video)}" type="video/mp4"></video>` : ''}
+    ${image ? `<img class="page-intro-image" src="${esc(image)}" alt="">` : ''}
+    <div class="page-intro-banner-scrim"></div>
+  </div>`;
+}
+
 function renderHeroMedia(d) {
   const poster = d.bgPoster || '';
   const video = d.bgVideo || '';
@@ -461,17 +478,20 @@ const renderers = {
           ${d.secondaryCta ? `<a ${resolveActionAttrs(d.secondaryLink || '/cases')} class="btn btn-outline">${esc(d.secondaryCta)}</a>` : ''}
         </div>`
       : '';
-    return `<section class="page-intro">
+    return `<section class="page-intro page-intro--media">
+      ${renderIntroMedia(d)}
+      <div class="page-intro-panel">
       <div class="container">
         ${crumbs}
         <div class="page-intro-body ix-reveal">
           ${d.label ? `<div class="page-intro-label">${esc(d.label)}</div>` : ''}
-          <h1>${(d.h1||'').replace(/\n/g,'<br>')}</h1>
+          <h1>${formatHeading(d.h1)}</h1>
           ${d.sub ? `<p class="page-intro-sub">${esc(d.sub)}</p>` : ''}
           ${meta ? `<div class="page-intro-meta">${meta}</div>` : ''}
           ${link}
           ${ctas}
         </div>
+      </div>
       </div>
     </section>`;
   },
@@ -479,9 +499,9 @@ const renderers = {
     const cls = d.align === 'center' ? 'text-content center' : 'text-content';
     return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
       <div class="container">
-        <div class="${cls} ${d.card ? 'content-card ix-card ix-reveal' : 'ix-reveal'}">
-          ${d.h2 ? `<h2>${esc(d.h2)}</h2>` : ''}
-          ${(d.content||'').split('\n\n').filter(Boolean).map(p => `<p class="body-text">${esc(p)}</p>`).join('')}
+        <div class="${cls} ${d.card ? 'content-card ix-reveal' : 'ix-reveal'}">
+          ${d.h2 ? `<h2>${formatHeading(d.h2)}</h2>` : ''}
+          ${splitParagraphs(d.content).map(p => `<p class="body-text">${esc(p)}</p>`).join('')}
         </div>
       </div>
     </section>`;
@@ -494,8 +514,8 @@ const renderers = {
             ${d.imageUrl ? `<img src="${esc(d.imageUrl)}" alt="${esc(d.imageAlt||'')}">` : ''}
           </div>
           <div>
-            ${d.h2 ? `<h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.025em;margin-bottom:16px">${esc(d.h2)}</h2>` : ''}
-            ${(d.content||'').split('\n\n').filter(Boolean).map(p => `<p style="color:#64748B;line-height:1.8;margin-bottom:12px">${esc(p)}</p>`).join('')}
+            ${d.h2 ? `<h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.025em;margin-bottom:16px">${formatHeading(d.h2)}</h2>` : ''}
+            ${splitParagraphs(d.content).map(p => `<p style="color:#64748B;line-height:1.8;margin-bottom:12px">${esc(p)}</p>`).join('')}
             ${d.ctaText ? `<a ${resolveActionAttrs(d.ctaLink)} class="img-text-cta">${esc(d.ctaText)} <i class="ti ti-arrow-right"></i></a>` : ''}
           </div>
         </div>
@@ -655,7 +675,7 @@ const renderers = {
   cta(d) {
     return `<section class="cta-sect">
       <div class="container">
-        <h2>${(d.h2||'').replace(/\n/g,'<br>')}</h2>
+        <h2>${formatHeading(d.h2)}</h2>
         ${d.sub ? `<p>${esc(d.sub)}</p>` : ''}
         <div class="cta-btns">
           ${d.ctaPrimary ? `<button class="btn btn-teal" onclick="openModal()">${esc(d.ctaPrimary)} <i class="ti ti-arrow-right"></i></button>` : ''}
@@ -742,8 +762,19 @@ async function loadPage() {
       <p>Deze pagina is leeg. Voeg blokken toe via de admin.</p>
     </div></section>`;
 
-  document.querySelectorAll('.page-hero-video').forEach(v => {
-    v.addEventListener('error', () => v.closest('.page-hero-media')?.classList.add('no-video'));
+  document.querySelectorAll('.page-hero-video, .page-intro-video').forEach(v => {
+    v.addEventListener('error', () => {
+      const wrap = v.closest('.page-hero-media') || v.closest('.page-intro-banner');
+      if (wrap) wrap.classList.add('no-video');
+      const poster = v.getAttribute('poster');
+      if (poster && v.closest('.page-intro-banner') && !v.closest('.page-intro-banner').querySelector('.page-intro-image')) {
+        const img = document.createElement('img');
+        img.className = 'page-intro-image';
+        img.src = poster;
+        img.alt = '';
+        v.parentNode.insertBefore(img, v);
+      }
+    });
   });
 
   if (window.BriqoInteractions) window.BriqoInteractions.refresh();

@@ -32,7 +32,9 @@
 
   function prepReveal(el, i) {
     if (!el.classList.contains('ix-reveal')) el.classList.add('ix-reveal');
-    if (!el.classList.contains('ix-card')) el.classList.add('ix-card');
+    if (!el.closest('.page-intro') && !el.classList.contains('content-card') && !el.classList.contains('ix-card')) {
+      el.classList.add('ix-card');
+    }
     const stagger = (i % 5) + 1;
     el.classList.add('ix-stagger-' + stagger);
   }
@@ -218,6 +220,7 @@
 
   function bindCards() {
     document.querySelectorAll(CARD_SEL).forEach(function (el) {
+      if (el.closest('.page-intro') || el.classList.contains('content-card')) return;
       if (!el.classList.contains('ix-card')) el.classList.add('ix-card');
     });
     document.querySelectorAll(TILT_SEL).forEach(bindTilt);

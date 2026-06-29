@@ -54,6 +54,28 @@
     box-shadow: 0 20px 48px rgba(20, 184, 166, 0.1);
   }
 
+  /* Geen hover-beweging op informatieve blokken — wel op knoppen */
+  .page-intro .ix-card:hover,
+  .page-intro .hero-chip:hover,
+  .content-card:hover,
+  .content-card.ix-reveal:hover,
+  .hero-bento-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: #E2E8F0 !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .hero-bento-card:hover {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+  }
+
+  .page-intro-link:hover {
+    color: #0F766E;
+  }
+
   .team-card.ix-card {
     overflow: hidden;
   }

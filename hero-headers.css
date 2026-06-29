@@ -53,13 +53,6 @@
   -webkit-backdrop-filter: blur(12px);
   border-radius: 16px;
   padding: 18px 16px;
-  transition: transform 0.35s ease, border-color 0.3s ease, background 0.3s ease;
-}
-
-.hero-bento-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(20, 184, 166, 0.45);
-  background: rgba(20, 184, 166, 0.08);
 }
 
 .hero-bento-card.wide {
@@ -142,7 +135,61 @@
   object-fit: cover;
 }
 
-/* ── Subpagina: lichte intro (geen donkere hero + geen aanvraag-CTA) ─ */
+/* ── Subpagina: intro met sfeer-banner ─────────────────────────── */
+.page-intro--media {
+  background: linear-gradient(180deg, #E2E8F0 0%, #F8FAFC 28%, #ffffff 100%);
+  border-bottom: 1px solid #E2E8F0;
+  padding: 0;
+}
+
+.page-intro-banner {
+  position: relative;
+  height: clamp(220px, 32vw, 320px);
+  overflow: hidden;
+  background: #0F172A;
+}
+
+.page-intro-video,
+.page-intro-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-intro-video {
+  opacity: 0.72;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+.page-intro-image {
+  opacity: 0.88;
+}
+
+.page-intro-banner-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.55) 100%);
+  pointer-events: none;
+}
+
+.page-intro-panel {
+  padding: 0 0 48px;
+  background: transparent;
+  margin-top: -56px;
+  position: relative;
+  z-index: 2;
+}
+
+.page-intro--media .page-intro-body {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 28px 32px 32px;
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.07);
+}
+
 .page-intro {
   background: linear-gradient(180deg, #F8FAFC 0%, #ffffff 100%);
   border-bottom: 1px solid #E2E8F0;
@@ -276,6 +323,15 @@
 @media (max-width: 768px) {
   .page-intro {
     padding: 20px 0 40px;
+  }
+
+  .page-intro--media .page-intro-panel {
+    margin-top: -32px;
+  }
+
+  .page-intro--media .page-intro-body {
+    padding: 22px 20px 24px;
+    border-radius: 16px;
   }
 
   .page-intro h1 {
