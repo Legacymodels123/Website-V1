@@ -2,18 +2,83 @@
   "id": "cases",
   "slug": "cases",
   "title": "Cases & Portfolio",
-  "seo": { "title": "Cases — Briqo", "description": "Bekijk welke tools Briqo heeft gebouwd voor het Nederlandse MKB.", "ogImage": "" },
+  "seo": {
+    "title": "Cases & Portfolio - Briqo",
+    "description": "Bekijk voorbeelden van tools, calculators en intakeflows die Briqo bouwt voor het Nederlandse MKB.",
+    "ogImage": "https://briqo.nl/og-image.png",
+    "canonical": "https://briqo.nl/cases"
+  },
   "headScripts": "",
   "blocks": [
     {
-      "id": "c1", "type": "hero_simple",
-      "data": { "h1": "Cases & Portfolio", "sub": "Bekijk welke tools we hebben gebouwd voor het Nederlandse MKB." }
+      "id": "c1",
+      "type": "hero_simple",
+      "data": {
+        "label": "Cases",
+        "h1": "Voorbeelden van tools\\ndie al live staan",
+        "sub": "Geen abstract AI-verhaal, maar concrete tools die sneller antwoord geven, aanvragen beter kwalificeren en werk uit handen nemen.",
+        "primaryCta": "Bespreek jouw idee",
+        "primaryLink": "#contact",
+        "secondaryCta": "Bekijk branches",
+        "secondaryLink": "/branches",
+        "proof": "<strong>Echte toepassingen</strong> in plaats van losse AI-beloftes"
+      }
     },
     {
-      "id": "c2", "type": "cases_grid",
+      "id": "c2",
+      "type": "text_block",
+      "data": {
+        "h2": "Wat je hier ziet",
+        "content": "Elke case laat zien welk probleem er speelde, welk type tool past en wat het oplevert in de praktijk. Zo kun je sneller inschatten wat voor jouw bedrijf logisch is.\\n\\nWe focussen op tools die direct verkoop, intake of offertewerk ondersteunen.",
+        "card": true
+      }
+    },
+    {
+      "id": "c3",
+      "type": "cases_grid",
       "data": {
         "items": [
-          { "client": "Sun Sauna & Poolworld", "tool": "Prijscalculator", "desc": "Klanten configureren zelf hun zwembad en ontvangen direct een prijsindicatie.", "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=600&q=80", "link": "https://sspw-offerte-calc.vercel.app/", "tags": ["Calculator", "Zwembad"] }
+          {
+            "client": "Sun Sauna & Poolworld",
+            "tool": "Zwembad prijscalculator",
+            "desc": "Klanten krijgen sneller een prijsindicatie en bellen pas wanneer hun aanvraag concreter is.",
+            "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=600&q=80",
+            "link": "https://sspw-offerte-calc.vercel.app/",
+            "tags": ["Calculator", "Zwembad", "Leadkwalificatie"]
+          },
+          {
+            "client": "Voorbeeld Automotive",
+            "tool": "Lease- en inruilscan",
+            "desc": "Bezoekers vullen online hun wensen en huidige auto in, zodat gesprekken sneller naar een serieuze offerte gaan.",
+            "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80",
+            "link": "",
+            "tags": ["Automotive", "Intake", "Scan"]
+          },
+          {
+            "client": "Voorbeeld Installatiebedrijf",
+            "tool": "Offertevoorbereider",
+            "desc": "Een slimme intake verzamelt projectinfo vooraf, waardoor minder heen-en-weer nodig is voor een eerste voorstel.",
+            "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+            "link": "",
+            "tags": ["Bouw", "Offerte", "Intake"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "c4",
+      "type": "cta",
+      "data": {
+        "h2": "Benieuwd welke tool\\nvoor jouw bedrijf logisch is?",
+        "sub": "In een kort gesprek kijken we welk probleem je nu het meeste tijd of omzet kost, en of daar een snelle MVP voor past.",
+        "note": "Binnen 1 werkdag reactie · Praktisch en vrijblijvend",
+        "ctaPrimary": "Plan een gratis gesprek",
+        "ctaSecondary": "Bekijk branches",
+        "ctaSecondaryLink": "/branches",
+        "stats": [
+          { "value": "< 2 wkn", "label": "Richting eerste MVP" },
+          { "value": "MKB", "label": "Focus op praktische inzet" },
+          { "value": "1-op-1", "label": "Direct contact" }
         ]
       }
     }

@@ -1,0 +1,95 @@
+{
+  "id": "werkwijze",
+  "slug": "werkwijze",
+  "title": "Werkwijze",
+  "seo": {
+    "title": "Werkwijze - Briqo",
+    "description": "Van idee naar werkende tool zonder lang traject. Bekijk hoe Briqo samenwerkt met mkb-bedrijven.",
+    "ogImage": "https://briqo.nl/og-image.png",
+    "canonical": "https://briqo.nl/werkwijze"
+  },
+  "headScripts": "",
+  "blocks": [
+    {
+      "id": "wk1",
+      "type": "hero_simple",
+      "data": {
+        "label": "Werkwijze",
+        "h1": "Van idee naar live tool\\nzonder lang traject",
+        "sub": "We houden het compact: eerst scherp krijgen welk probleem je wilt oplossen, daarna snel naar een werkende eerste versie.",
+        "primaryCta": "Plan een intake",
+        "primaryLink": "#contact",
+        "secondaryCta": "Bekijk prijzen",
+        "secondaryLink": "/prijzen",
+        "proof": "<strong>Snel en concreet</strong> zonder zwaar softwaretraject"
+      }
+    },
+    {
+      "id": "wk2",
+      "type": "text_block",
+      "data": {
+        "h2": "Hoe we werken",
+        "content": "We starten niet met een uitgebreid strategiedocument, maar met een concrete vraag: wat moet de tool voor jouw klant of team makkelijker maken?\\n\\nVan daaruit bepalen we welke minimale versie genoeg waarde geeft om snel live te gaan.",
+        "card": true
+      }
+    },
+    {
+      "id": "wk3",
+      "type": "image_text",
+      "data": {
+        "h2": "1. Intake en afbakening",
+        "content": "In een kort gesprek halen we boven tafel welke vragen klanten steeds stellen, waar tijd verloren gaat en wat een eerste tool moet kunnen.\\n\\nDaarmee voorkom je dat we te groot beginnen.",
+        "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80",
+        "imageAlt": "Intake en eerste scope",
+        "imagePosition": "right"
+      }
+    },
+    {
+      "id": "wk4",
+      "type": "image_text",
+      "data": {
+        "h2": "2. Scope en opzet",
+        "content": "Je krijgt een duidelijke eerste opzet: welke invoer de tool vraagt, welke uitkomst de gebruiker ziet en wat er aan de achterkant nodig is.\\n\\nZo weet je vooraf beter wat wel en niet in fase 1 zit.",
+        "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80",
+        "imageAlt": "Scope en opzet van een tool",
+        "imagePosition": "left"
+      }
+    },
+    {
+      "id": "wk5",
+      "type": "image_text",
+      "data": {
+        "h2": "3. Bouw en feedback",
+        "content": "We bouwen de MVP en laten tussendoor zien hoe de flow eruitziet. Daardoor kun je vroeg bijsturen op copy, logica of formulierstappen.\\n\\nHet doel is niet perfectie op dag 1, maar een tool die meteen bruikbaar is.",
+        "imageUrl": "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80",
+        "imageAlt": "Bouwen en testen van een tool",
+        "imagePosition": "right"
+      }
+    },
+    {
+      "id": "wk6",
+      "type": "text_block",
+      "data": {
+        "h2": "Veelgestelde vragen",
+        "content": "Hoe snel kunnen jullie iets live zetten?\\n\\nVaak kunnen we een compacte eerste versie binnen enkele weken neerzetten, afhankelijk van de logica en inhoud.\\n\\nMoet ik zelf teksten of inhoud aanleveren?\\n\\nDat mag, maar het hoeft niet perfect voorbereid te zijn. We kunnen juist helpen om de eerste flow en copy werkbaar te maken.\\n\\nKunnen jullie daarna verder bouwen?\\n\\nJa. De eerste live versie is juist bedoeld om op door te ontwikkelen op basis van echte vragen en gedrag.\\n\\nWerkt dit op mijn bestaande website?\\n\\nMeestal wel. We kunnen een tool los hosten of inpassen in je huidige site-opzet."
+      }
+    },
+    {
+      "id": "wk7",
+      "type": "cta",
+      "data": {
+        "h2": "Wil je weten of jouw idee\\nwerkt als eerste MVP?",
+        "sub": "Dan kijken we samen welke versie klein genoeg is om snel live te zetten, maar groot genoeg om echt iets op te leveren.",
+        "note": "Kort gesprek · Concreet advies",
+        "ctaPrimary": "Plan een intake",
+        "ctaSecondary": "Bekijk prijzen",
+        "ctaSecondaryLink": "/prijzen",
+        "stats": [
+          { "value": "MVP", "label": "Eerst klein en werkbaar" },
+          { "value": "Feedback", "label": "Bijsturen tijdens bouw" },
+          { "value": "Doorbouwen", "label": "Na livegang verder" }
+        ]
+      }
+    }
+  ]
+}

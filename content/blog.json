@@ -1,0 +1,48 @@
+{
+  "id": "blog",
+  "slug": "blog",
+  "title": "Blog",
+  "seo": {
+    "title": "Inzichten & voorbeelden - Briqo",
+    "description": "Korte inzichten over praktische AI-tools, calculators en intakeflows voor het Nederlandse mkb.",
+    "ogImage": "https://briqo.nl/og-image.png",
+    "canonical": "https://briqo.nl/blog"
+  },
+  "headScripts": "",
+  "blocks": [
+    {
+      "id": "bl1",
+      "type": "hero_simple",
+      "data": {
+        "label": "Inzichten",
+        "h1": "Praktische inzichten\\nvoor werkzamere websites",
+        "sub": "Hier komt straks content over calculators, intakeflows, leadkwalificatie en andere tools die het mkb direct kan inzetten."
+      }
+    },
+    {
+      "id": "bl2",
+      "type": "text_block",
+      "data": {
+        "h2": "Wat je hier straks kunt verwachten",
+        "content": "We gebruiken deze pagina later voor concrete voorbeelden per branche, veelgestelde vragen en korte artikelen over wanneer een tool zinvol is.\\n\\nDenk aan onderwerpen zoals een prijscalculator voor automotive, een intakeflow voor dienstverleners of een offertevoorbereider voor installatiebedrijven."
+      }
+    },
+    {
+      "id": "bl3",
+      "type": "cta",
+      "data": {
+        "h2": "Heb je nu al een idee\\nvoor een tool?",
+        "sub": "Dan hoef je niet te wachten op nieuwe artikelen. We kunnen meteen meekijken wat voor jouw bedrijf logisch is.",
+        "note": "Direct contact · Praktisch advies",
+        "ctaPrimary": "Plan een gesprek",
+        "ctaSecondary": "Bekijk branches",
+        "ctaSecondaryLink": "/branches",
+        "stats": [
+          { "value": "Cases", "label": "Gebaseerd op echte toepassingen" },
+          { "value": "MKB", "label": "Gericht op praktische inzet" },
+          { "value": "Snel", "label": "Van vraag naar richting" }
+        ]
+      }
+    }
+  ]
+}

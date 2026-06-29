@@ -3,8 +3,8 @@
 const SEO = {
   siteName: "Briqo",
   siteUrl: "https://briqo.nl",
-  title: "Briqo â Slimme AI-tools voor slim MKB",
-  description: "Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1â15 medewerkers. Van offertecalculatoren tot lead-capture tools â in dagen live, niet maanden.",
+  title: "Briqo - Slimme AI-tools voor slim MKB",
+  description: "Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1-15 medewerkers. Van offertecalculatoren tot lead-capture tools - in dagen live, niet maanden.",
   ogImage: "https://briqo.nl/og-image.png",
   twitterHandle: "",
   canonical: "https://briqo.nl",

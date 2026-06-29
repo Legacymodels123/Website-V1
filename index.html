@@ -538,11 +538,11 @@
         <span class="nav-name">Briqo</span>
       </div>
       <div class="nav-links">
-        <a href="#branches" class="nav-link">Branches</a>
-        <a href="#werkwijze" class="nav-link">Werkwijze</a>
-        <a href="#cases" class="nav-link">Cases</a>
-        <a href="#prijzen" class="nav-link">Prijzen</a>
-        <a href="#over-ons" class="nav-link">Over ons</a>
+        <a href="/branches" class="nav-link">Branches</a>
+        <a href="/werkwijze" class="nav-link">Werkwijze</a>
+        <a href="/cases" class="nav-link">Cases</a>
+        <a href="/prijzen" class="nav-link">Prijzen</a>
+        <a href="/over-ons" class="nav-link">Over ons</a>
       </div>
       <a href="#" onclick="openModal();return false;" class="nav-cta">Demo aanvragen</a>
     </div>
@@ -564,7 +564,7 @@
         <p class="hero-sub" id="cc-hero-sub">Geen vage AI-beloftes. Gewoon een werkende calculator, configurator of scan — live op jouw website in minder dan twee weken.</p>
         <div class="hero-btns">
           <a href="#" onclick="openModal();return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Demo aanvragen</span> <i class="ti ti-arrow-right"></i></a>
-          <a href="#cases" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk cases</a>
+          <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk cases</a>
         </div>
         <div class="hero-proof">
           <div class="proof-avatars">
@@ -751,7 +751,7 @@
     <h2 class="section-h2">Voor welke sector werk jij?</h2>
     <p class="section-sub">Klik op jouw branche en zie welke tools beschikbaar zijn — of laat ons iets nieuws bouwen.</p>
     <div class="branches-grid" id="cc-branches-grid">
-      <div class="branch-card">
+      <div class="branch-card" onclick="window.open('https://sspw-offerte-calc.vercel.app/','_blank')">
         <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80" alt="Zwembad">
         <div class="branch-overlay"></div>
         <div class="branch-live">Live</div>
@@ -760,7 +760,7 @@
           <div class="branch-count">1 tool beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card">
+      <div class="branch-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80" alt="Automotive">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -768,7 +768,7 @@
           <div class="branch-count">3 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card">
+      <div class="branch-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80" alt="Installatie Bouw">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -776,7 +776,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card">
+      <div class="branch-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80" alt="Beauty Wellness">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -784,7 +784,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card">
+      <div class="branch-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80" alt="Retail">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -792,7 +792,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card">
+      <div class="branch-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Zakelijke Dienstverlening">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -800,7 +800,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-card">
+      <div class="branch-card" onclick="window.location='/branches'">
         <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Horeca Recreatie">
         <div class="branch-overlay"></div>
         <div class="branch-content">
@@ -808,7 +808,7 @@
           <div class="branch-count">2 tools beschikbaar</div>
         </div>
       </div>
-      <div class="branch-plus">
+      <div class="branch-plus" onclick="openModal()">
         <div class="branch-plus-icon"><i class="ti ti-plus"></i></div>
         <div class="branch-plus-text">Jouw branche</div>
         <div class="branch-plus-sub">Neem contact op</div>
@@ -947,7 +947,7 @@
       <p id="cc-cta-sub">In een gesprek van 30 minuten bepalen we samen of en hoe we kunnen helpen. Geen verplichtingen, geen verkooppraatje.</p>
       <div class="cta-btns">
         <a href="#" onclick="openModal();return false;" class="btn btn-teal btn-lg"><span id="cc-cta-cta1">Vraag een gratis gesprek aan</span> <i class="ti ti-arrow-right"></i></a>
-        <a href="#cases" class="btn btn-ghost-white btn-lg" id="cc-cta-cta2">Bekijk cases</a>
+        <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-cta-cta2">Bekijk cases</a>
       </div>
       <div class="cta-note" id="cc-cta-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</div>
       <div class="cta-stats-row" id="cc-cta-stats">
@@ -967,7 +967,7 @@
       <div class="modal-label">Gratis gesprek aanvragen</div>
       <h2 id="modalTitle">Vertel ons wat jouw bedrijf mist</h2>
       <p class="modal-sub">We nemen binnen 1 werkdag contact op. Geen verplichtingen, geen verkooppraatje.</p>
-      <form id="contactForm" action="https://formspree.io/kempenlevi@gmail.com" method="POST">
+      <form id="contactForm" action="https://formspree.io/f/xgejwvoe" method="POST">
         <div class="form-row">
           <div class="form-group" style="margin-bottom:0;">
             <label for="naam">Naam *</label>

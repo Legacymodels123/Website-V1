@@ -34,11 +34,19 @@ a{text-decoration:none;color:inherit}
 .nav-cta:hover{background:#1E293B}
 
 /* HERO SIMPLE */
-.page-hero{background:var(--navy);padding:80px 0 70px;overflow:hidden;position:relative}
-.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(20,184,166,.12),transparent);pointer-events:none}
-.page-hero-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
-.page-hero h1{font-size:clamp(36px,5vw,54px);font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:18px}
-.page-hero p{font-size:18px;color:rgba(255,255,255,.65);line-height:1.7;max-width:560px}
+.page-hero{background:var(--navy);padding:92px 0 82px;overflow:hidden;position:relative}
+.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#0F172A 56%,rgba(15,23,42,.88) 100%)}
+.page-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 72% 48%,rgba(20,184,166,.12),transparent);pointer-events:none}
+.page-hero-inner{position:relative;z-index:1;max-width:760px}
+.page-hero-label{display:inline-flex;align-items:center;gap:8px;background:rgba(20,184,166,.12);border:1px solid rgba(20,184,166,.25);color:#5EEAD4;border-radius:999px;padding:6px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
+.page-hero-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.page-hero h1{font-size:clamp(40px,5.4vw,62px);font-weight:800;color:#fff;line-height:1.04;letter-spacing:-.04em;margin-bottom:18px}
+.page-hero p{font-size:18px;color:rgba(255,255,255,.56);line-height:1.78;max-width:620px}
+.page-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.page-hero-proof{display:flex;align-items:center;gap:12px;margin-top:26px;color:rgba(255,255,255,.34);font-size:13px}
+.page-hero-proof strong{color:rgba(255,255,255,.7);font-weight:600}
+.page-hero-proof-dots{display:flex;gap:8px}
+.page-hero-proof-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12)}
 
 /* SECTIONS */
 .section{padding:80px 0}
@@ -48,25 +56,26 @@ a{text-decoration:none;color:inherit}
 .section-sub{font-size:17px;color:var(--muted);line-height:1.75;max-width:580px;margin-bottom:40px}
 .section-center{text-align:center}
 .section-center .section-sub{margin-left:auto;margin-right:auto}
+.content-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:34px}
 
 /* TEXT BLOCK */
-.text-content{max-width:720px}
+.text-content{max-width:760px}
 .text-content h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.025em;margin-bottom:18px}
 .text-content p,.text-content .body-text{font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:16px}
 .text-content.center{margin:0 auto;text-align:center}
 
 /* IMAGE + TEXT */
-.img-text{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.img-text{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .img-text.flip{direction:rtl}.img-text.flip>*{direction:ltr}
-.img-text-img{border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:var(--bg)}
+.img-text-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--bg);box-shadow:0 18px 40px rgba(15,23,42,.08)}
 .img-text-img img{width:100%;height:100%;object-fit:cover}
 .img-text-cta{display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-weight:600;color:var(--teal);font-size:15px}
 .img-text-cta:hover{color:var(--teal-d)}
 
 /* CASES GRID */
 .cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-top:40px}
-.case-card{border:1.5px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,transform .2s;background:#fff}
-.case-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+.case-card{border:1.5px solid var(--border);border-radius:20px;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s;background:#fff}
+.case-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 18px 42px rgba(15,23,42,.08)}
 .case-card-img{aspect-ratio:16/9;overflow:hidden;background:var(--bg)}
 .case-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .case-card:hover .case-card-img img{transform:scale(1.04)}
@@ -78,6 +87,46 @@ a{text-decoration:none;color:inherit}
 .case-card-desc{font-size:14px;color:var(--muted);line-height:1.65}
 .case-card-link{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-size:13.5px;font-weight:600;color:var(--teal)}
 .case-card-link:hover{color:var(--teal-d)}
+
+/* BRANCHES */
+.branches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:40px}
+.branch-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:3/4;background:var(--bg);display:block}
+.branch-card img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.branch-card:hover img{transform:scale(1.04)}
+.branch-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.9) 0%,rgba(15,23,42,.2) 58%,transparent 100%)}
+.branch-content{position:absolute;left:0;right:0;bottom:0;padding:18px}
+.branch-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.branch-count{font-size:12px;color:rgba(255,255,255,.68);line-height:1.5}
+.branch-live{position:absolute;top:14px;right:14px;background:var(--teal);color:#fff;border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.price-card{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:32px}
+.price-card.featured{border-color:var(--teal);box-shadow:0 0 0 1px rgba(20,184,166,.12),0 20px 50px rgba(20,184,166,.09)}
+.price-badge{display:inline-block;background:#CCFBF1;color:#0F766E;font-size:12px;font-weight:700;border-radius:999px;padding:5px 12px;margin-bottom:14px}
+.price-title{font-size:24px;font-weight:800;margin-bottom:8px}
+.price-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:22px}
+.price-amount{font-size:38px;font-weight:800;letter-spacing:-.03em}
+.price-amount sub{font-size:14px;font-weight:500;color:#94A3B8}
+.price-hr{border:none;border-top:1px solid var(--border);margin:24px 0}
+.price-feats{display:flex;flex-direction:column;gap:12px}
+.pf{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#475569;line-height:1.6}
+.pf-check{color:var(--teal);font-size:16px;flex-shrink:0;margin-top:1px}
+.price-btn{display:flex;justify-content:center;width:100%;margin-top:24px}
+
+/* ABOUT */
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about-photo{position:relative;border-radius:22px;overflow:hidden;min-height:420px;background:var(--bg)}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-photo-tag{position:absolute;right:20px;bottom:20px;background:rgba(255,255,255,.95);padding:14px 16px;border-radius:14px}
+.apt-name{font-size:15px;font-weight:700}
+.apt-role{font-size:12px;color:var(--muted);margin-top:2px}
+.about-content p{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.about-vals{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.av{display:flex;gap:14px;align-items:flex-start}
+.av-icon{width:44px;height:44px;border-radius:12px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--teal);font-size:20px;flex-shrink:0}
+.av-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.av-desc{font-size:13px;color:var(--muted);line-height:1.65}
 
 /* EMBED */
 .embed-block{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
@@ -102,6 +151,7 @@ a{text-decoration:none;color:inherit}
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:7px;padding:13px 24px;border-radius:11px;font-size:15px;font-weight:600;transition:all .2s;cursor:pointer;border:none;font-family:inherit}
 .btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal-d)}
+.btn-outline{background:#fff;color:var(--navy);border:1.5px solid var(--border)}.btn-outline:hover{border-color:var(--navy)}
 .btn-outline-white{background:transparent;color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.2)}.btn-outline-white:hover{background:rgba(255,255,255,.08);color:#fff}
 
 /* SPACER */
@@ -143,8 +193,14 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
 /* RESPONSIVE */
 @media(max-width:768px){
   .nav-links{display:none}
+  .page-hero{padding:74px 0 64px}
+  .page-hero h1{font-size:38px}
+  .page-hero-actions{flex-direction:column}
+  .page-hero-actions .btn{width:100%;justify-content:center}
   .img-text{grid-template-columns:1fr;gap:24px}
   .img-text.flip{direction:ltr}
+  .pricing-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr;gap:32px}
   .footer-top{grid-template-columns:1fr 1fr}
   .cta-stats-row{gap:24px}
 }
@@ -152,6 +208,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
   .footer-top{grid-template-columns:1fr}
   .cases-grid{grid-template-columns:1fr}
   .cta-btns{flex-direction:column;align-items:center}
+  .content-card{padding:24px}
 }
 </style>
 </head>
@@ -200,17 +257,19 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
       <div>
         <div class="footer-col-title">Navigatie</div>
         <div class="footer-links">
+          <a href="/" class="footer-link">Home</a>
           <a href="/cases" class="footer-link">Cases</a>
+          <a href="/branches" class="footer-link">Branches</a>
+          <a href="/werkwijze" class="footer-link">Werkwijze</a>
+          <a href="/prijzen" class="footer-link">Prijzen</a>
           <a href="/blog" class="footer-link">Blog</a>
-          <a href="/#prijzen" class="footer-link">Prijzen</a>
-          <a href="/#branches" class="footer-link">Branches</a>
         </div>
       </div>
       <div>
         <div class="footer-col-title">Bedrijf</div>
         <div class="footer-links">
-          <a href="/#over-ons" class="footer-link">Over ons</a>
-          <a href="/#contact" class="footer-link">Contact</a>
+          <a href="/over-ons" class="footer-link">Over ons</a>
+          <a href="#" onclick="openModal();return false;" class="footer-link">Contact</a>
         </div>
       </div>
       <div>
@@ -270,14 +329,29 @@ document.querySelectorAll('[data-navkey]').forEach(a => {
 
 // ── BLOCK RENDERERS ────────────────────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function resolveLink(link) {
+  return !link || link === '#contact' ? '#' : link;
+}
+function resolveActionAttrs(link) {
+  return !link || link === '#contact'
+    ? 'href="#" onclick="openModal();return false;"'
+    : `href="${esc(link)}"`;
+}
 
 const renderers = {
   hero_simple(d) {
     return `<section class="page-hero">
       <div class="container">
+        <div class="page-hero-inner">
         ${d.label ? `<div class="page-hero-label">${esc(d.label)}</div>` : ''}
         <h1>${(d.h1||'').replace(/\n/g,'<br>')}</h1>
         ${d.sub ? `<p>${esc(d.sub)}</p>` : ''}
+        ${(d.primaryCta || d.secondaryCta) ? `<div class="page-hero-actions">
+          ${d.primaryCta ? `<a ${resolveActionAttrs(d.primaryLink)} class="btn btn-teal">${esc(d.primaryCta)} <i class="ti ti-arrow-right"></i></a>` : ''}
+          ${d.secondaryCta ? `<a ${resolveActionAttrs(d.secondaryLink || '/cases')} class="btn btn-outline-white">${esc(d.secondaryCta)}</a>` : ''}
+        </div>` : ''}
+        ${d.proof ? `<div class="page-hero-proof"><div class="page-hero-proof-dots"><span></span><span></span><span></span></div><div>${d.proof}</div></div>` : ''}
+        </div>
       </div>
     </section>`;
   },
@@ -285,7 +359,7 @@ const renderers = {
     const cls = d.align === 'center' ? 'text-content center' : 'text-content';
     return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
       <div class="container">
-        <div class="${cls}">
+        <div class="${cls} ${d.card ? 'content-card' : ''}">
           ${d.h2 ? `<h2>${esc(d.h2)}</h2>` : ''}
           ${(d.content||'').split('\n\n').filter(Boolean).map(p => `<p class="body-text">${esc(p)}</p>`).join('')}
         </div>
@@ -302,8 +376,30 @@ const renderers = {
           <div>
             ${d.h2 ? `<h2 style="font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.025em;margin-bottom:16px">${esc(d.h2)}</h2>` : ''}
             ${(d.content||'').split('\n\n').filter(Boolean).map(p => `<p style="color:#64748B;line-height:1.8;margin-bottom:12px">${esc(p)}</p>`).join('')}
-            ${d.ctaText ? `<a href="${esc(d.ctaLink||'#')}" class="img-text-cta">${esc(d.ctaText)} <i class="ti ti-arrow-right"></i></a>` : ''}
+            ${d.ctaText ? `<a ${resolveActionAttrs(d.ctaLink)} class="img-text-cta">${esc(d.ctaText)} <i class="ti ti-arrow-right"></i></a>` : ''}
           </div>
+        </div>
+      </div>
+    </section>`;
+  },
+  branches(d) {
+    const items = d.items || [];
+    return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
+      <div class="container">
+        ${d.title ? `<div class="section-label">Branches</div><h2 class="section-h2">${esc(d.title)}</h2>` : ''}
+        ${d.sub ? `<p class="section-sub">${esc(d.sub)}</p>` : ''}
+        <div class="branches-grid">
+          ${items.map(item => `
+            <a class="branch-card" ${resolveActionAttrs(resolveLink(item.link))}>
+              ${item.img ? `<img src="${esc(item.img)}" alt="${esc(item.name || 'Branche')}">` : ''}
+              <div class="branch-overlay"></div>
+              ${item.live ? '<div class="branch-live">Live</div>' : ''}
+              <div class="branch-content">
+                <div class="branch-name">${esc(item.name || '')}</div>
+                <div class="branch-count">${esc(item.count || '')}</div>
+              </div>
+            </a>
+          `).join('')}
         </div>
       </div>
     </section>`;
@@ -314,16 +410,65 @@ const renderers = {
       <div class="container">
         <div class="cases-grid">
           ${items.map(c => `
-            <div class="case-card" ${c.link ? `onclick="window.open('${esc(c.link)}','_blank')" style="cursor:pointer"` : ''}>
+            <div class="case-card" ${c.link ? `onclick="window.open('${esc(c.link)}','_blank')" style="cursor:pointer"` : `onclick="openModal()" style="cursor:pointer"`}>
               ${c.img ? `<div class="case-card-img"><img src="${esc(c.img)}" alt="${esc(c.client||'')}"></div>` : ''}
               <div class="case-card-body">
                 ${(c.tags||[]).length ? `<div class="case-card-tags">${c.tags.map(t=>`<span class="case-tag">${esc(t)}</span>`).join('')}</div>` : ''}
                 <div class="case-card-client">${esc(c.client||'')}</div>
                 <div class="case-card-title">${esc(c.tool||'')}</div>
                 <div class="case-card-desc">${esc(c.desc||'')}</div>
-                ${c.link ? `<div class="case-card-link">Bekijk tool <i class="ti ti-external-link"></i></div>` : ''}
+                <div class="case-card-link">${c.link ? 'Bekijk tool' : 'Bespreek dit type tool'} <i class="ti ${c.link ? 'ti-external-link' : 'ti-arrow-right'}"></i></div>
               </div>
             </div>`).join('')}
+        </div>
+      </div>
+    </section>`;
+  },
+  pricing(d) {
+    const c1 = d.card1 || {};
+    const c2 = d.card2 || {};
+    const renderCard = (card, featured) => `<div class="price-card ${featured ? 'featured' : ''}">
+      ${card.badge ? `<div class="price-badge">${esc(card.badge)}</div>` : ''}
+      <div class="price-title">${esc(card.title || '')}</div>
+      ${card.desc ? `<div class="price-desc">${esc(card.desc)}</div>` : ''}
+      <div class="price-amount">${esc(card.amount || '')}${card.amountSub ? `<sub> / ${esc(card.amountSub)}</sub>` : ''}</div>
+      <hr class="price-hr">
+      <div class="price-feats">
+        ${(card.features || []).map(feat => `<div class="pf"><i class="ti ti-check pf-check"></i><span>${esc(feat)}</span></div>`).join('')}
+      </div>
+      ${card.cta ? `<button class="btn ${featured ? 'btn-teal' : 'btn-outline'} price-btn" onclick="openModal()">${esc(card.cta)}${featured ? ' <i class="ti ti-arrow-right"></i>' : ''}</button>` : ''}
+    </div>`;
+    return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
+      <div class="container">
+        ${d.label || d.title ? `<div class="section-center">${d.label ? `<div class="section-label">${esc(d.label)}</div>` : ''}${d.title ? `<h2 class="section-h2">${esc(d.title)}</h2>` : ''}${d.sub ? `<p class="section-sub">${esc(d.sub)}</p>` : ''}</div>` : ''}
+        <div class="pricing-grid">
+          ${renderCard(c1, false)}
+          ${renderCard(c2, true)}
+        </div>
+      </div>
+    </section>`;
+  },
+  about(d) {
+    const values = d.values || [];
+    return `<section class="section">
+      <div class="container">
+        <div class="about-inner">
+          <div class="about-photo">
+            ${d.photo ? `<img src="${esc(d.photo)}" alt="${esc(d.name || 'Briqo')}">` : ''}
+            <div class="about-photo-tag">
+              <div class="apt-name">${esc(d.name || 'Briqo')}</div>
+              ${d.role ? `<div class="apt-role">${esc(d.role)}</div>` : ''}
+            </div>
+          </div>
+          <div class="about-content">
+            ${d.label ? `<div class="section-label">${esc(d.label)}</div>` : ''}
+            ${d.title ? `<h2 class="section-h2">${esc(d.title)}</h2>` : ''}
+            ${d.bio1 ? `<p>${esc(d.bio1)}</p>` : ''}
+            ${d.bio2 ? `<p>${esc(d.bio2)}</p>` : ''}
+            ${(values || []).length ? `<div class="about-vals">
+              ${values.map(v => `<div class="av"><div class="av-icon"><i class="ti ${esc(v.icon || 'ti-check')}"></i></div><div><div class="av-title">${esc(v.title || '')}</div><div class="av-desc">${esc(v.desc || '')}</div></div></div>`).join('')}
+            </div>` : ''}
+          </div>
         </div>
       </div>
     </section>`;
@@ -335,7 +480,7 @@ const renderers = {
         ${d.sub ? `<p>${esc(d.sub)}</p>` : ''}
         <div class="cta-btns">
           ${d.ctaPrimary ? `<button class="btn btn-teal" onclick="openModal()">${esc(d.ctaPrimary)} <i class="ti ti-arrow-right"></i></button>` : ''}
-          ${d.ctaSecondary ? `<a href="/cases" class="btn btn-outline-white">${esc(d.ctaSecondary)}</a>` : ''}
+          ${d.ctaSecondary ? `<a ${resolveActionAttrs(d.ctaSecondaryLink || '/cases')} class="btn btn-outline-white">${esc(d.ctaSecondary)}</a>` : ''}
         </div>
         ${d.note ? `<div class="cta-note">${esc(d.note)}</div>` : ''}
         ${(d.stats||[]).length ? `<div class="cta-stats-row">${d.stats.map(s=>`<div class="cs-stat2"><div class="cs-stat2-v">${esc(s.value)}</div><div class="cs-stat2-l">${esc(s.label)}</div></div>`).join('')}</div>` : ''}
@@ -383,6 +528,11 @@ async function loadPage() {
     document.querySelector('meta[property="og:description"]').content = data.seo.description;
   }
   if (data.seo?.title) document.querySelector('meta[property="og:title"]').content = data.seo.title;
+  if (data.seo?.ogImage) document.querySelector('meta[property="og:image"]').content = data.seo.ogImage;
+  if (data.seo?.canonical) {
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = data.seo.canonical;
+  }
 
   // Head scripts
   if (data.headScripts) {

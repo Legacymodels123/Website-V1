@@ -1,0 +1,119 @@
+{
+  "id": "branches",
+  "slug": "branches",
+  "title": "Branches",
+  "seo": {
+    "title": "AI-tools per branche - Briqo",
+    "description": "Bekijk voorbeelden van calculators, intakeflows en leadtools per branche voor het Nederlandse MKB.",
+    "ogImage": "https://briqo.nl/og-image.png",
+    "canonical": "https://briqo.nl/branches"
+  },
+  "headScripts": "",
+  "blocks": [
+    {
+      "id": "br1",
+      "type": "hero_simple",
+      "data": {
+        "label": "Branches",
+        "h1": "AI-tools per branche",
+        "sub": "Niet elk bedrijf heeft dezelfde tool nodig. Daarom kijken we eerst naar het soort vraag, intake of offerteproces dat bij jouw sector past.",
+        "primaryCta": "Plan een gratis gesprek",
+        "primaryLink": "#contact",
+        "secondaryCta": "Bekijk cases",
+        "secondaryLink": "/cases",
+        "proof": "<strong>Praktisch voor MKB</strong> met voorbeelden per sector"
+      }
+    },
+    {
+      "id": "br2",
+      "type": "text_block",
+      "data": {
+        "h2": "Waar we naar zoeken",
+        "content": "We zoeken altijd naar het moment waarop een klant nu nog moet wachten op antwoord. Daar zit meestal de eerste kans voor een calculator, scan, configurator of intakeflow.\\n\\nZo wordt je website niet alleen mooier, maar ook werkzamer.",
+        "card": true
+      }
+    },
+    {
+      "id": "br3",
+      "type": "branches",
+      "data": {
+        "title": "Voor welke sector werk jij?",
+        "sub": "Klik door voor voorbeelden of gebruik dit als startpunt voor een nieuw idee.",
+        "items": [
+          {
+            "name": "Zwembad & Buitenleven",
+            "count": "Prijsindicatie, configuratie en leadkwalificatie",
+            "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80",
+            "live": true,
+            "link": "https://sspw-offerte-calc.vercel.app/"
+          },
+          {
+            "name": "Automotive",
+            "count": "Leasecalculator, inruilscan en voorraadintake",
+            "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80",
+            "live": false,
+            "link": "#contact"
+          },
+          {
+            "name": "Installatie & Bouw",
+            "count": "Offertevoorbereider en projectintake",
+            "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80",
+            "live": false,
+            "link": "#contact"
+          },
+          {
+            "name": "Retail",
+            "count": "Productkeuzehulp en cadeauvinder",
+            "img": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80",
+            "live": false,
+            "link": "#contact"
+          },
+          {
+            "name": "Beauty & Wellness",
+            "count": "Intake, adviesflow en behandelkeuze",
+            "img": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80",
+            "live": false,
+            "link": "#contact"
+          },
+          {
+            "name": "Zakelijke Dienstverlening",
+            "count": "Quick scan, leadkwalificatie en intake-assistent",
+            "img": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80",
+            "live": false,
+            "link": "#contact"
+          }
+        ]
+      }
+    },
+    {
+      "id": "br4",
+      "type": "image_text",
+      "data": {
+        "h2": "Nog geen branchematch?",
+        "content": "Dat is geen probleem. Vaak begint een goede tool niet bij de branche, maar bij een terugkerende vraag van klanten.\\n\\nAls jij vaak dezelfde intake, prijsinschatting of voorselectie doet, kunnen we daar meestal iets slims voor bouwen.",
+        "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+        "imageAlt": "Samenwerken aan een digitale intakeflow",
+        "imagePosition": "left",
+        "ctaText": "Plan een kort gesprek",
+        "ctaLink": "#contact"
+      }
+    },
+    {
+      "id": "br5",
+      "type": "cta",
+      "data": {
+        "h2": "We bedenken samen\\nde eerste tool",
+        "sub": "Vertel welk type aanvraag, offerte of intake nu te veel handwerk kost. Dan maken we er een eerste opzet van.",
+        "note": "Praktisch gesprek · Geen verplichtingen",
+        "ctaPrimary": "Leg je idee voor",
+        "ctaSecondary": "Bekijk cases",
+        "ctaSecondaryLink": "/cases",
+        "stats": [
+          { "value": "1 probleem", "label": "Startpunt per branche" },
+          { "value": "Snel", "label": "Van idee naar eerste richting" },
+          { "value": "MKB", "label": "Gebouwd voor echte praktijk" }
+        ]
+      }
+    }
+  ]
+}

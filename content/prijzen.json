@@ -1,0 +1,102 @@
+{
+  "id": "prijzen",
+  "slug": "prijzen",
+  "title": "Prijzen",
+  "seo": {
+    "title": "Prijzen - Briqo",
+    "description": "Bekijk hoe Briqo prijzen opbouwt voor calculators, intakeflows en andere praktische AI-tools voor het mkb.",
+    "ogImage": "https://briqo.nl/og-image.png",
+    "canonical": "https://briqo.nl/prijzen"
+  },
+  "headScripts": "",
+  "blocks": [
+    {
+      "id": "pr1",
+      "type": "hero_simple",
+      "data": {
+        "label": "Prijzen",
+        "h1": "Duidelijke investering,\\ngeen bureau-gedoe",
+        "sub": "Je hoeft niet meteen een groot traject in. We werken liever toe naar een duidelijke eerste versie die echt gebruikt kan worden.",
+        "primaryCta": "Vraag een inschatting",
+        "primaryLink": "#contact",
+        "secondaryCta": "Bekijk werkwijze",
+        "secondaryLink": "/werkwijze",
+        "proof": "<strong>Compact starten</strong> en daarna gericht doorbouwen"
+      }
+    },
+    {
+      "id": "pr2",
+      "type": "pricing",
+      "data": {
+        "label": "Investering",
+        "title": "Wat zit erbij inbegrepen?",
+        "sub": "Een eerste opzet voor bouw en livegang, plus een onderhoudslaag als je wilt blijven verbeteren.",
+        "bg": "alt",
+        "card1": {
+          "title": "Opzet",
+          "desc": "Voor de eerste scope, bouw en livegang van een compacte MVP.",
+          "amount": "Op maat",
+          "amountSub": "eenmalig",
+          "features": [
+            "Intake en afbakening",
+            "Flow, copy en eerste logica",
+            "Bouw van de eerste werkende versie",
+            "Live op jouw domein of losse tool-URL",
+            "Ruimte voor een feedbackronde"
+          ],
+          "cta": "Vraag een inschatting"
+        },
+        "card2": {
+          "badge": "Voor doorontwikkeling",
+          "title": "Abonnement",
+          "desc": "Voor hosting, onderhoud en verdere verbeteringen na livegang.",
+          "amount": "Op maat",
+          "amountSub": "per maand",
+          "features": [
+            "Technisch onderhoud en hosting",
+            "Kleine updates en optimalisaties",
+            "Doorontwikkeling op basis van gebruik",
+            "Meedenken over volgende iteraties",
+            "Prioriteit op supportvragen"
+          ],
+          "cta": "Bespreek onderhoud"
+        }
+      }
+    },
+    {
+      "id": "pr3",
+      "type": "text_block",
+      "data": {
+        "h2": "Wanneer is iets nog een snelle MVP?",
+        "content": "Een compacte intakeflow, scan of calculator is vaak een goede eerste stap. Daarmee kun je snel testen of klanten echt reageren op de tool.\\n\\nWordt de logica uitgebreider, moeten er veel koppelingen in of wil je meerdere rollen en dashboards, dan schuift het sneller op richting maatwerk.",
+        "card": true
+      }
+    },
+    {
+      "id": "pr4",
+      "type": "text_block",
+      "data": {
+        "h2": "Wat valt meestal buiten de standaardscope?",
+        "content": "Volledige maatwerksystemen, veel complexe koppelingen, uitgebreide gebruikersrollen of zeer grote contentmigraties vallen meestal niet in een eerste compacte opzet.\\n\\nDaarom is het handig om te starten met een versie die direct iets oplost en daarna door te bouwen.",
+        "card": true
+      }
+    },
+    {
+      "id": "pr5",
+      "type": "cta",
+      "data": {
+        "h2": "Wil je een realistische\\neerste inschatting?",
+        "sub": "Laat kort weten welk type tool je voor ogen hebt. Dan kunnen we aangeven wat logisch is voor een eerste fase.",
+        "note": "Snel antwoord · Geen uitgebreide offerte nodig",
+        "ctaPrimary": "Vraag een inschatting",
+        "ctaSecondary": "Bekijk werkwijze",
+        "ctaSecondaryLink": "/werkwijze",
+        "stats": [
+          { "value": "Duidelijk", "label": "Afgebakende eerste fase" },
+          { "value": "Compact", "label": "Gericht op snelle livegang" },
+          { "value": "Groei", "label": "Later doorontwikkelbaar" }
+        ]
+      }
+    }
+  ]
+}
