@@ -1,4 +1,4 @@
-/* BRIQO — scroll reveal + subtle card tilt */
+/* BRIQO — scroll reveal, hover/touch interactions, mobile nav */
 (function () {
   const REVEAL_SEL = [
     '.ix-reveal',
@@ -26,6 +26,10 @@
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
 
+  function isTouchUI() {
+    return window.matchMedia('(hover: none)').matches;
+  }
+
   function prepReveal(el, i) {
     if (!el.classList.contains('ix-reveal')) el.classList.add('ix-reveal');
     if (!el.classList.contains('ix-card')) el.classList.add('ix-card');
@@ -37,6 +41,7 @@
     if (prefersReduced() || el.dataset.ixSpot) return;
     el.dataset.ixSpot = '1';
     el.classList.add('ix-spotlight');
+
     el.addEventListener('mousemove', function (e) {
       const r = el.getBoundingClientRect();
       el.style.setProperty('--ix-spot-x', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
@@ -45,7 +50,7 @@
   }
 
   function bindMagnetic(btn) {
-    if (prefersReduced() || btn.dataset.ixMag) return;
+    if (prefersReduced() || btn.dataset.ixMag || isTouchUI()) return;
     btn.dataset.ixMag = '1';
     btn.classList.add('ix-magnetic');
     btn.addEventListener('mousemove', function (e) {
@@ -60,7 +65,7 @@
   }
 
   function bindTilt(el) {
-    if (prefersReduced() || el.dataset.ixTilt) return;
+    if (prefersReduced() || el.dataset.ixTilt || isTouchUI()) return;
     el.dataset.ixTilt = '1';
     if (!el.classList.contains('ix-tilt')) el.classList.add('ix-tilt');
 
@@ -78,6 +83,108 @@
     });
   }
 
+  function clearTouchFocus(except) {
+    document.querySelectorAll('.ix-focus').forEach(function (el) {
+      if (el !== except) el.classList.remove('ix-focus');
+    });
+  }
+
+  function bindTouchFocusGroup(container, itemSel) {
+    if (!isTouchUI()) return;
+    container.querySelectorAll(itemSel).forEach(function (item) {
+      if (item.dataset.ixTouch) return;
+      item.dataset.ixTouch = '1';
+      item.addEventListener('click', function (e) {
+        if (e.target.closest('a, button, .price-btn')) return;
+        const wasFocused = item.classList.contains('ix-focus');
+        clearTouchFocus();
+        if (!wasFocused) item.classList.add('ix-focus');
+      });
+    });
+  }
+
+  function bindTouchInteractions() {
+    if (!isTouchUI()) return;
+
+    document.querySelectorAll('.pricing-grid').forEach(function (grid) {
+      bindTouchFocusGroup(grid, '.price-card');
+    });
+    document.querySelectorAll('.process-steps').forEach(function (grid) {
+      bindTouchFocusGroup(grid, '.p-step');
+    });
+    document.querySelectorAll('.branch-card.ix-spotlight').forEach(function (card) {
+      if (card.dataset.ixTouch) return;
+      card.dataset.ixTouch = '1';
+      card.addEventListener('click', function () {
+        const wasFocused = card.classList.contains('ix-focus');
+        clearTouchFocus();
+        if (!wasFocused) {
+          card.classList.add('ix-focus');
+          card.style.setProperty('--ix-spot-x', '50%');
+          card.style.setProperty('--ix-spot-y', '40%');
+        }
+      });
+    });
+
+    document.querySelectorAll('.img-text.ix-card').forEach(function (block) {
+      if (block.dataset.ixTouch) return;
+      block.dataset.ixTouch = '1';
+      block.addEventListener('click', function (e) {
+        if (e.target.closest('a, button')) return;
+        const wasFocused = block.classList.contains('ix-focus');
+        clearTouchFocus();
+        if (!wasFocused) block.classList.add('ix-focus');
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.pricing-grid, .process-steps, .img-text.ix-card, .branch-card')) return;
+      clearTouchFocus();
+    }, true);
+  }
+
+  function bindMobileNav() {
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    if (!toggle || !links || toggle.dataset.ixNav) return;
+    toggle.dataset.ixNav = '1';
+
+    function closeNav() {
+      links.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menu openen');
+      document.body.classList.remove('nav-open');
+    }
+
+    function openNav() {
+      links.classList.add('is-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Menu sluiten');
+      document.body.classList.add('nav-open');
+    }
+
+    toggle.addEventListener('click', function () {
+      if (links.classList.contains('is-open')) closeNav();
+      else openNav();
+    });
+
+    links.querySelectorAll('a, button').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (link.classList.contains('nav-link-cta-mobile') || link.getAttribute('href')) {
+          closeNav();
+        }
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) closeNav();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeNav();
+    });
+  }
+
   function observeReveal() {
     if (prefersReduced()) {
       document.querySelectorAll('.ix-reveal').forEach(function (el) {
@@ -85,6 +192,8 @@
       });
       return;
     }
+
+    const mobile = window.innerWidth <= 768;
     if (!observer) {
       observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -93,7 +202,10 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      }, {
+        threshold: mobile ? 0.08 : 0.12,
+        rootMargin: mobile ? '0px 0px -20px 0px' : '0px 0px -40px 0px'
+      });
     }
 
     document.querySelectorAll(REVEAL_SEL).forEach(function (el, i) {
@@ -119,6 +231,8 @@
         el.classList.add('ix-reveal', 'ix-stagger-' + ((i % 5) + 1));
       }
     });
+    bindTouchInteractions();
+    bindMobileNav();
   }
 
   function refresh() {

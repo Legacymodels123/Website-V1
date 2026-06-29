@@ -472,7 +472,6 @@
       .section { padding: 64px 0; }
 
       /* NAV */
-      .nav-links { display: none; }
       .nav-inner { height: 60px; }
       .nav-name { font-size: 16px; }
 
@@ -569,15 +568,23 @@
         </div>
         <span class="nav-name">Briqo</span>
       </div>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="/branches" class="nav-link">Branches</a>
         <a href="/werkwijze" class="nav-link">Werkwijze</a>
         <a href="/cases" class="nav-link">Cases</a>
         <a href="/prijzen" class="nav-link">Prijzen</a>
         <a href="/blog" class="nav-link">Inzichten</a>
         <a href="/over-ons" class="nav-link">Over ons</a>
+        <a href="#" onclick="openModal();return false;" class="nav-link nav-link-cta-mobile">Demo aanvragen</a>
       </div>
-      <a href="#" onclick="openModal();return false;" class="nav-cta">Demo aanvragen</a>
+      <div class="nav-actions">
+        <a href="#" onclick="openModal();return false;" class="nav-cta nav-cta-desktop">Demo aanvragen</a>
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
     </div>
   </div>
 </nav>

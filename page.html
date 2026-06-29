@@ -231,7 +231,6 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .nav-links{display:none}
   .page-hero{padding:74px 0 64px}
   .page-hero h1{font-size:38px}
   .page-hero-actions{flex-direction:column}
@@ -270,8 +269,16 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
         <a href="/prijzen" class="nav-link" data-navkey="prijzen">Prijzen</a>
         <a href="/blog" class="nav-link" data-navkey="blog">Inzichten</a>
         <a href="/over-ons" class="nav-link" data-navkey="over-ons">Over ons</a>
+        <button type="button" class="nav-link nav-link-cta-mobile" onclick="openModal()">Demo aanvragen</button>
       </div>
-      <button class="nav-cta" onclick="openModal()">Demo aanvragen</button>
+      <div class="nav-actions">
+        <button class="nav-cta nav-cta-desktop" onclick="openModal()">Demo aanvragen</button>
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
     </div>
   </div>
 </nav>
