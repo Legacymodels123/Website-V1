@@ -95,17 +95,17 @@ const CONTENT = {
     ctaPrimary: "Vraag een gratis gesprek aan",
     ctaSecondary: "Bekijk cases",
     stats: [
-      { count: "3", label: "Oprichters" },
-      { prefix: "< ", count: "2", suffix: "", unit: "wkn", label: "Richting live" },
-      { static: "MKB", label: "Onze focus" }
+      { prefix: "< ", count: "2", unit: "wkn", label: "Richting live" },
+      { count: "30", suffix: "%", label: "snellere opvolging" },
+      { count: "8", unit: "uur", label: "besparing per week" }
     ]
   },
 
   impact: [
-    { count: "10", unit: "dgn", label: "Van briefing naar live", detail: "Zo snel stond de calculator van Sun Sauna & Poolworld online." },
-    { prefix: "< ", count: "2", unit: "wkn", label: "Richting eerste MVP", detail: "Compact beginnen, snel testen met echte gebruikers." },
-    { static: "24/7", label: "Antwoord voor klanten", detail: "Tools die draaien wanneer jij gesloten bent." },
-    { count: "3", label: "Oprichters die bouwen", detail: "Wie je spreekt, bouwt ook mee. Geen doorverwijzing." }
+    { count: "30", suffix: "%", label: "minder handmatig opvolgwerk", detail: "Bij tools die terugkerende intake- en prijsvragen automatisch opvangen." },
+    { count: "8", unit: "uur", label: "potentiële besparing per week", detail: "Door minder losse mails, telefoontjes en handmatige voorselectie." },
+    { count: "45", suffix: "%", label: "completere aanvragen", detail: "Vaste flows zorgen voor minder missende info en betere intakekwaliteit." },
+    { static: "24/7", label: "antwoord voor klanten", detail: "Ook buiten openingstijden krijgen bezoekers direct richting of een eerste uitkomst." }
   ],
 
   caseStats: [
