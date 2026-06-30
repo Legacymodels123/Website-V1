@@ -282,6 +282,26 @@
     });
   }
 
+  function bindWorkbench() {
+    var wb = document.getElementById('cc-hero-workbench');
+    if (!wb || wb.dataset.ixWb) return;
+    wb.dataset.ixWb = '1';
+
+    wb.querySelectorAll('.workbench-step').forEach(function (step) {
+      step.addEventListener('mouseleave', function () {
+        if (prefersReduced()) return;
+        var active = wb.querySelector('.workbench-dot.is-active');
+        if (active) {
+          var idx = parseInt(active.dataset.wbIdx, 10);
+          if (!isNaN(idx)) {
+            wb.classList.remove('is-step-1', 'is-step-2', 'is-step-3');
+            wb.classList.add('is-step-' + ((idx % 3) + 1));
+          }
+        }
+      });
+    });
+  }
+
   function bindCards() {
     document.querySelectorAll(CARD_SEL).forEach(function (el) {
       if (el.closest('.page-intro') || el.classList.contains('content-card')) return;
@@ -302,6 +322,7 @@
     bindMobileNav();
     bindImpactCards();
     bindCountUp();
+    bindWorkbench();
   }
 
   function refresh() {

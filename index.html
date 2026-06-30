@@ -601,10 +601,10 @@
       <div class="hero-content">
         <div class="hero-pill">
           <div class="pill-dot"></div>
-          <span id="cc-hero-pill">Eerste live tool: SSPW Prijscalculator</span>
+          <span id="cc-hero-pill">Van klantvraag naar live tool</span>
         </div>
         <h1 id="cc-hero-h1">Wij bouwen de<br>tool die jouw<br>bedrijf <em>mist</em></h1>
-        <p class="hero-sub" id="cc-hero-sub">Geen dikke slides over AI. Wel een calculator, scan of configurator die binnen twee weken op jouw site staat. En morgen al iets oplevert.</p>
+        <p class="hero-sub" id="cc-hero-sub">Geen dikke slides. Wel een calculator, scan of intake die binnen twee weken op jouw site staat — gebouwd rond de vragen die elke week terugkomen.</p>
         <div class="hero-btns">
           <a href="#" onclick="openModal('demo');return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Demo aanvragen</span> <i class="ti ti-arrow-right"></i></a>
           <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk cases</a>
@@ -619,28 +619,86 @@
         </div>
       </div>
 
-      <div class="hero-showcase" aria-hidden="true">
-        <div class="hero-showcase-glow"></div>
-        <div class="hero-showcase-frame" id="cc-hero-frame" style="--hero-poster: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80')">
-          <video class="hero-showcase-video" id="cc-hero-video" autoplay muted loop playsinline preload="metadata"
-            poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80">
-            <source id="cc-hero-video-src" src="https://assets.mixkit.co/videos/preview/mixkit-team-of-people-working-in-the-office-4295-large.mp4" type="video/mp4">
-          </video>
-          <div class="hero-showcase-scrim"></div>
-          <div class="hero-showcase-badges">
-            <span class="hero-showcase-badge"><i class="ti ti-bolt"></i> &lt; 2 wkn richting live</span>
-            <span class="hero-showcase-badge"><i class="ti ti-apps"></i> Calculator · Scan · Intake</span>
+      <div class="hero-workbench is-step-1" id="cc-hero-workbench" aria-hidden="true">
+        <div class="workbench-board">
+          <div class="workbench-step workbench-step--question" data-wb-step="1">
+            <div class="workbench-step-head">
+              <span class="workbench-num">01</span>
+              <span class="workbench-step-label">Klantvraag</span>
+            </div>
+            <div class="workbench-card workbench-card--in">
+              <div class="workbench-source" id="cc-wb-source">
+                <i class="ti ti-inbox"></i>
+                <span>SSPW · website</span>
+              </div>
+              <p class="workbench-quote" id="cc-wb-question">"Wat kost een zwembad van 8×4 meter met verwarming?"</p>
+            </div>
+          </div>
+
+          <div class="workbench-route" aria-hidden="true">
+            <svg class="workbench-route-svg" viewBox="0 0 48 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="workbench-route-path" d="M24 0 L24 48 M24 72 L24 120" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
+              <circle class="workbench-route-dot" cx="24" cy="60" r="5"/>
+            </svg>
+            <div class="workbench-route-badge">
+              <i class="ti ti-arrow-down"></i>
+              <span>Briqo vertaalt</span>
+            </div>
+          </div>
+
+          <div class="workbench-step workbench-step--translate" data-wb-step="2">
+            <div class="workbench-step-head">
+              <span class="workbench-num">02</span>
+              <span class="workbench-step-label">Tool-type</span>
+            </div>
+            <div class="workbench-card workbench-card--type">
+              <div class="workbench-type-icon" id="cc-wb-type-icon"><i class="ti ti-calculator"></i></div>
+              <div>
+                <div class="workbench-type-name" id="cc-wb-type">Prijscalculator</div>
+                <div class="workbench-type-desc" id="cc-wb-type-desc">Klant configureert zelf, jij krijgt gekwalificeerde leads</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="workbench-step workbench-step--result" data-wb-step="3">
+            <div class="workbench-step-head">
+              <span class="workbench-num">03</span>
+              <span class="workbench-step-label">Live op jouw site</span>
+            </div>
+            <div class="workbench-card workbench-card--tool">
+              <div class="workbench-tool-bar">
+                <span class="workbench-tool-dot"></span>
+                <span class="workbench-tool-dot"></span>
+                <span class="workbench-tool-dot"></span>
+                <span class="workbench-tool-url" id="cc-wb-url">sspw.nl/prijs</span>
+                <span class="workbench-live" id="cc-wb-live"><span class="workbench-live-dot"></span> Live</span>
+              </div>
+              <div class="workbench-tool-body">
+                <div class="workbench-tool-fields">
+                  <div class="workbench-field"><span class="workbench-field-lbl">Afmeting</span><span class="workbench-field-val">8 × 4 m</span></div>
+                  <div class="workbench-field"><span class="workbench-field-lbl">Verwarming</span><span class="workbench-field-val">Ja</span></div>
+                </div>
+                <div class="workbench-result">
+                  <span class="workbench-result-lbl" id="cc-wb-outcome-label">Indicatie direct zichtbaar</span>
+                  <span class="workbench-result-val" id="cc-wb-outcome">€42.500</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="hero-showcase-meta">
-          <div class="hero-founders">
-            <div class="hero-founder"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt=""></div>
-            <div class="hero-founder"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=80&q=80" alt=""></div>
-            <div class="hero-founder"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=80&q=80" alt=""></div>
-          </div>
-          <div>
-            <div class="hero-showcase-meta-title">Levi, Shaquil &amp; Gianni</div>
-            <div class="hero-showcase-meta-sub">Drie oprichters · gebouwd voor MKB-praktijk</div>
+
+        <div class="workbench-foot">
+          <div class="workbench-dots" id="cc-wb-dots" role="tablist" aria-label="Voorbeeldscenario's"></div>
+          <div class="workbench-proof">
+            <div class="hero-founders">
+              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt=""></div>
+              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=80&q=80" alt=""></div>
+              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=80&q=80" alt=""></div>
+            </div>
+            <div>
+              <div class="workbench-proof-title">Levi, Shaquil &amp; Gianni</div>
+              <div class="workbench-proof-sub">Drie oprichters · &lt; 2 wkn richting live</div>
+            </div>
           </div>
         </div>
       </div>

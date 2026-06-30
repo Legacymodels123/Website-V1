@@ -3,14 +3,59 @@
 const CONTENT = {
 
   hero: {
-    pill: "Eerste live tool: SSPW Prijscalculator",
+    pill: "Terugkerende klantvraag? Bouw er een tool voor.",
     h1: "Wij bouwen de\\ntool die jouw\\nbedrijf <em>mist</em>",
-    sub: "Geen dikke slides over AI. Wel een calculator, scan of configurator die binnen twee weken op jouw site staat. En morgen al iets oplevert.",
+    sub: "Geen AI-verhaal omheen. Wel een calculator, scan of intake die snel live staat en direct antwoord geeft op de vragen die jouw team nu nog handmatig opvangt.",
     ctaPrimary: "Demo aanvragen",
     ctaSecondary: "Bekijk cases",
     proofText: "Sun Sauna & Poolworld werkt al met Briqo",
-    bgVideo: "https://assets.mixkit.co/videos/preview/mixkit-team-of-people-working-in-the-office-4295-large.mp4",
-    bgPoster: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+    workbench: [
+      {
+        source: "SSPW · website",
+        question: "\"Wat kost een zwembad van 8×4 meter met verwarming?\"",
+        type: "Prijscalculator",
+        typeIcon: "ti-calculator",
+        typeDesc: "Klant configureert zelf, jij krijgt gekwalificeerde leads",
+        url: "sspw.nl/prijs",
+        live: true,
+        fields: [
+          { label: "Afmeting", value: "8 × 4 m" },
+          { label: "Verwarming", value: "Ja" }
+        ],
+        outcome: "€42.500",
+        outcomeLabel: "Indicatie direct zichtbaar"
+      },
+      {
+        source: "Installatiebedrijf · telefoon",
+        question: "\"Kunnen jullie een offerte sturen voor zonnepanelen op een plat dak?\"",
+        type: "Intake-tool",
+        typeIcon: "ti-file-invoice",
+        typeDesc: "Gestructureerde aanvraag, klaar om te versturen",
+        url: "jouwsite.nl/intake",
+        live: false,
+        fields: [
+          { label: "Daktype", value: "Plat" },
+          { label: "Oppervlak", value: "120 m²" }
+        ],
+        outcome: "Offerteklaar",
+        outcomeLabel: "Alle info in één overzicht"
+      },
+      {
+        source: "Adviesbureau · contactformulier",
+        question: "\"Past jullie dienst bij een bedrijf van 8 man?\"",
+        type: "Snelle scan",
+        typeIcon: "ti-sparkles",
+        typeDesc: "Acht vragen, drie concrete verbeterkansen",
+        url: "jouwsite.nl/scan",
+        live: false,
+        fields: [
+          { label: "Teamgrootte", value: "8 FTE" },
+          { label: "Sector", value: "Dienstverlening" }
+        ],
+        outcome: "3 kansen",
+        outcomeLabel: "Direct inzicht voor bezoeker"
+      }
+    ]
   },
 
   team: {
@@ -144,6 +189,109 @@ const CONTENT = {
     return (items || []).map(function (s, i) { return renderImpactCard(s, i); }).join('');
   }
 
+  function renderWorkbenchFields(fields) {
+    var container = document.querySelector('.workbench-tool-fields');
+    if (!container || !fields) return;
+    container.innerHTML = fields.map(function (f) {
+      return '<div class="workbench-field"><span class="workbench-field-lbl">' + f.label + '</span><span class="workbench-field-val">' + f.value + '</span></div>';
+    }).join('');
+  }
+
+  function applyWorkbenchScenario(s, idx) {
+    setText('cc-wb-source', s.source);
+    setText('cc-wb-question', s.question);
+    setText('cc-wb-type', s.type);
+    setText('cc-wb-type-desc', s.typeDesc);
+    setText('cc-wb-url', s.url);
+    setText('cc-wb-outcome', s.outcome);
+    setText('cc-wb-outcome-label', s.outcomeLabel);
+    var icon = document.getElementById('cc-wb-type-icon');
+    if (icon && s.typeIcon) icon.innerHTML = '<i class="ti ' + s.typeIcon + '"></i>';
+    var live = document.getElementById('cc-wb-live');
+    if (live) live.classList.toggle('is-hidden', !s.live);
+    renderWorkbenchFields(s.fields);
+    var wb = document.getElementById('cc-hero-workbench');
+    if (wb) {
+      wb.classList.remove('is-step-1', 'is-step-2', 'is-step-3');
+      wb.classList.add('is-step-' + ((idx % 3) + 1));
+    }
+    document.querySelectorAll('.workbench-dot').forEach(function (dot, i) {
+      dot.classList.toggle('is-active', i === idx);
+      dot.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+  }
+
+  function initWorkbench(scenarios) {
+    if (!scenarios || !scenarios.length) return;
+    var wb = document.getElementById('cc-hero-workbench');
+    if (!wb) return;
+    if (wb._workbenchTimer) {
+      clearInterval(wb._workbenchTimer);
+      wb._workbenchTimer = null;
+    }
+
+    var dots = document.getElementById('cc-wb-dots');
+    if (dots) {
+      dots.innerHTML = scenarios.map(function (_, i) {
+        return '<button type="button" class="workbench-dot' + (i === 0 ? ' is-active' : '') + '" role="tab" aria-label="Scenario ' + (i + 1) + '" aria-selected="' + (i === 0 ? 'true' : 'false') + '" data-wb-idx="' + i + '"></button>';
+      }).join('');
+    }
+
+    var current = 0;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timer;
+
+    function goTo(idx, animate) {
+      idx = ((idx % scenarios.length) + scenarios.length) % scenarios.length;
+      if (animate && !reduced) {
+        wb.querySelectorAll('.workbench-step').forEach(function (el) { el.classList.add('is-fading'); });
+        setTimeout(function () {
+          applyWorkbenchScenario(scenarios[idx], idx);
+          wb.querySelectorAll('.workbench-step').forEach(function (el) { el.classList.remove('is-fading'); });
+        }, 220);
+      } else {
+        applyWorkbenchScenario(scenarios[idx], idx);
+      }
+      current = idx;
+    }
+
+    applyWorkbenchScenario(scenarios[0], 0);
+
+    if (dots) {
+      dots.addEventListener('click', function (e) {
+        var btn = e.target.closest('.workbench-dot');
+        if (!btn) return;
+        var idx = parseInt(btn.dataset.wbIdx, 10);
+        if (!isNaN(idx)) {
+          clearInterval(timer);
+          goTo(idx, true);
+          if (!reduced) {
+            timer = setInterval(function () { goTo(current + 1, true); }, 7000);
+            wb._workbenchTimer = timer;
+          }
+        }
+      });
+    }
+
+    wb.querySelectorAll('.workbench-step').forEach(function (step) {
+      step.addEventListener('mouseenter', function () {
+        if (reduced) return;
+        var n = parseInt(step.dataset.wbStep, 10);
+        if (!isNaN(n)) {
+          wb.classList.remove('is-step-1', 'is-step-2', 'is-step-3');
+          wb.classList.add('is-step-' + n);
+        }
+      });
+    });
+
+    if (!reduced && scenarios.length > 1) {
+      timer = setInterval(function () { goTo(current + 1, true); }, 7000);
+      wb._workbenchTimer = timer;
+    }
+
+    window.BriqoWorkbench = { goTo: goTo };
+  }
+
   function runApplyContent() {
   var h = CONTENT.hero;
   if (h) {
@@ -153,22 +301,7 @@ const CONTENT = {
     setText('cc-hero-cta1', h.ctaPrimary);
     setText('cc-hero-cta2', h.ctaSecondary);
     setText('cc-hero-proof', h.proofText);
-    var vid = document.getElementById('cc-hero-video');
-    var src = document.getElementById('cc-hero-video-src');
-    if (h.bgVideo && src) src.setAttribute('src', h.bgVideo);
-    if (h.bgPoster && vid) vid.setAttribute('poster', h.bgPoster);
-    var frame = document.getElementById('cc-hero-frame');
-    if (frame && h.bgPoster) frame.style.setProperty('--hero-poster', 'url("' + h.bgPoster + '")');
-    if (vid) {
-      vid.addEventListener('error', function() {
-        if (frame) {
-          frame.classList.add('no-video');
-          var poster = vid.getAttribute('poster');
-          if (poster) frame.style.backgroundImage = 'url("' + poster + '")';
-        }
-      });
-      if (h.bgVideo) { try { vid.load(); } catch(e) {} }
-    }
+    if (h.workbench) initWorkbench(h.workbench);
   }
 
   var t = CONTENT.team;

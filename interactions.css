@@ -58,8 +58,7 @@
   .page-intro .ix-card:hover,
   .page-intro .hero-chip:hover,
   .content-card:hover,
-  .content-card.ix-reveal:hover,
-  .hero-showcase-frame:hover {
+  .content-card.ix-reveal:hover {
     transform: none !important;
     box-shadow: none !important;
     border-color: #E2E8F0 !important;
@@ -67,12 +66,40 @@
     filter: none !important;
   }
 
-  .hero-showcase-frame:hover {
-    border-color: rgba(255, 255, 255, 0.14) !important;
+  .hero-workbench .workbench-card:hover {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .hero-workbench .workbench-card--tool:hover {
+    border-color: rgba(255, 255, 255, 0.1) !important;
     box-shadow:
-      0 28px 72px rgba(0, 0, 0, 0.48),
-      0 0 0 1px rgba(20, 184, 166, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+      0 20px 56px rgba(0, 0, 0, 0.38),
+      0 0 0 1px rgba(20, 184, 166, 0.15) !important;
+  }
+
+  /* Werkbank: stap-highlight bij hover, geen zweven */
+  .hero-workbench .workbench-step:hover .workbench-num {
+    background: rgba(20, 184, 166, 0.28);
+    color: #5EEAD4;
+  }
+
+  .hero-workbench .workbench-step--translate:hover .workbench-type-icon {
+    transform: scale(1.06);
+    background: rgba(20, 184, 166, 0.22);
+  }
+
+  .hero-workbench .workbench-step--result:hover .workbench-card--tool {
+    border-color: rgba(20, 184, 166, 0.35) !important;
+    box-shadow:
+      0 24px 64px rgba(0, 0, 0, 0.42),
+      0 0 0 1px rgba(20, 184, 166, 0.3) !important;
+  }
+
+  .workbench-dot:hover {
+    background: rgba(20, 184, 166, 0.55);
+    transform: scale(1.2);
   }
 
   .page-intro-link:hover {
