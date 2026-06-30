@@ -1,20 +1,46 @@
-/* Loopwerk brand preview — layout ongewijzigd, alleen kleuren & typografie.
-   Actief via class "lw-preview" op <html>. Verwijder link + class om terug te gaan. */
+/* Loopwerk brand preview — layout ongewijzigd.
+   html.lw-preview + lw-preview-v1 (loopgroen) of lw-preview-v2 (mos & strak) */
 
 html.lw-preview {
   --lw-night: #101820;
   --lw-night-hover: #1a2832;
   --lw-cream: #F7F4ED;
   --lw-cream-muted: #F0EDE6;
-  --lw-green: #3FA66B;
-  --lw-green-dark: #358f59;
-  --lw-green-light: #7DCE9A;
-  --lw-green-tint: #E8F5EC;
   --lw-orange: #F28C38;
   --lw-orange-dark: #E07D2F;
   --lw-gray-blue: #DDE6E8;
   --lw-moss: #1F4D3A;
   --lw-muted: #5c6b73;
+  --lw-warm-light: #E8DFD0;
+  --navy: var(--lw-night);
+  --bg: var(--lw-cream);
+  --border: var(--lw-gray-blue);
+  --text: var(--lw-night);
+  --muted: var(--lw-muted);
+}
+
+/* Variant 1: loopgroen (huidige preview) */
+html.lw-preview-v1 {
+  --lw-accent: #3FA66B;
+  --lw-accent-dark: #358f59;
+  --lw-accent-light: #7DCE9A;
+  --lw-accent-tint: #E8F5EC;
+  --lw-accent-rgb: 63, 166, 107;
+  --lw-on-dark: #7DCE9A;
+  --teal: var(--lw-accent);
+  --teal-d: var(--lw-accent-dark);
+}
+
+/* Variant 2: mos & strak — minimaal groen, nachtblauw + oranje + creme */
+html.lw-preview-v2 {
+  --lw-accent: #1F4D3A;
+  --lw-accent-dark: #163829;
+  --lw-accent-light: #4a6b58;
+  --lw-accent-tint: #EEF1F0;
+  --lw-accent-rgb: 31, 77, 58;
+  --lw-on-dark: #E8DFD0;
+  --teal: var(--lw-night);
+  --teal-d: var(--lw-night-hover);
 }
 
 /* ── Preview bar ─────────────────────────────────────────────── */
@@ -27,10 +53,10 @@ html.lw-preview {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
   padding: 8px 20px;
-  background: var(--lw-moss);
+  background: #101820;
   color: #fff;
   font-size: 13px;
   box-shadow: 0 4px 20px rgba(16, 24, 32, 0.25);
@@ -41,21 +67,51 @@ html.lw-preview {
   font-weight: 700;
 }
 
-.lw-preview-toggle {
-  background: var(--lw-orange);
-  color: #fff;
-  border: none;
+.lw-preview-variants {
+  display: flex;
+  gap: 6px;
+}
+
+.lw-preview-variant {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 8px;
-  padding: 6px 14px;
+  padding: 5px 12px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.15s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.lw-preview-variant:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.lw-preview-variant.is-active {
+  background: rgba(242, 140, 56, 0.22);
+  border-color: rgba(242, 140, 56, 0.55);
+  color: #fff;
+}
+
+.lw-preview-toggle {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
 }
 
 .lw-preview-toggle:hover {
-  background: var(--lw-orange-dark);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .lw-preview-restore {
@@ -63,7 +119,7 @@ html.lw-preview {
   bottom: 20px;
   right: 20px;
   z-index: 9999;
-  background: var(--lw-night);
+  background: #101820;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
@@ -76,10 +132,10 @@ html.lw-preview {
 }
 
 html.lw-preview body {
-  padding-top: 40px;
+  padding-top: 44px;
 }
 
-/* ── Typografie: Sora koppen ───────────────────────────────────── */
+/* ── Typografie ────────────────────────────────────────────────── */
 html.lw-preview h1,
 html.lw-preview h2,
 html.lw-preview h3,
@@ -94,7 +150,7 @@ html.lw-preview .page-hero h1 {
   font-family: 'Sora', 'Inter', sans-serif !important;
 }
 
-/* ── Basis & achtergronden ─────────────────────────────────────── */
+/* ── Basis ─────────────────────────────────────────────────────── */
 html.lw-preview body {
   background: var(--lw-cream) !important;
   color: var(--lw-night) !important;
@@ -121,7 +177,6 @@ html.lw-preview .av-icon {
   background: var(--lw-cream-muted) !important;
 }
 
-/* ── Borders & vlakken ─────────────────────────────────────────── */
 html.lw-preview .team-card,
 html.lw-preview .cs-stat,
 html.lw-preview .case-quote,
@@ -137,7 +192,6 @@ html.lw-preview .nav {
   border-bottom-color: var(--lw-gray-blue) !important;
 }
 
-/* ── Nachtblauw vlakken ────────────────────────────────────────── */
 html.lw-preview .hero,
 html.lw-preview .impact-section,
 html.lw-preview .cta-section,
@@ -155,11 +209,6 @@ html.lw-preview .hero-portal-ring {
   background: #0a1218 !important;
 }
 
-html.lw-preview .nav-logomark svg,
-html.lw-preview .footer-lm svg {
-  stroke: var(--lw-green) !important;
-}
-
 html.lw-preview .nav-name,
 html.lw-preview .nav-link:hover {
   color: var(--lw-night) !important;
@@ -169,29 +218,34 @@ html.lw-preview .nav-link {
   color: var(--lw-muted) !important;
 }
 
-/* ── Groen: labels, accenten, iconen ───────────────────────────── */
+/* ── Accenten (beide varianten, via tokens) ──────────────────── */
 html.lw-preview .section-label,
 html.lw-preview .p-num,
 html.lw-preview .team-role,
 html.lw-preview .cs-val,
 html.lw-preview .pf-check,
 html.lw-preview .modal-label,
-html.lw-preview .logo-entry-icon,
-html.lw-preview .cpb-icon,
-html.lw-preview .av-icon,
 html.lw-preview .about-more a:hover,
 html.lw-preview .page-intro-label,
 html.lw-preview .page-intro-link {
-  color: var(--lw-green) !important;
+  color: var(--lw-accent) !important;
 }
 
 html.lw-preview .page-intro-label::before {
-  background: var(--lw-green) !important;
+  background: var(--lw-accent) !important;
+}
+
+html.lw-preview .logo-entry-icon,
+html.lw-preview .cpb-icon {
+  color: var(--lw-on-dark) !important;
+}
+
+html.lw-preview .nav-logomark svg,
+html.lw-preview .footer-lm svg {
+  stroke: var(--lw-accent) !important;
 }
 
 html.lw-preview .hero h1 em,
-html.lw-preview .hero-pill,
-html.lw-preview .pill-dot,
 html.lw-preview .tr-label,
 html.lw-preview .ld,
 html.lw-preview .impact-head .section-label,
@@ -199,54 +253,62 @@ html.lw-preview .impact-val .impact-prefix,
 html.lw-preview .impact-val .impact-suffix,
 html.lw-preview .hero-float--tag i,
 html.lw-preview .page-hero-label,
-html.lw-preview .hero-chip i,
-html.lw-preview .hero-chip-dot {
-  color: var(--lw-green-light) !important;
+html.lw-preview .hero-chip i {
+  color: var(--lw-on-dark) !important;
 }
 
 html.lw-preview .pill-dot,
 html.lw-preview .ld,
 html.lw-preview .page-hero-label::before,
 html.lw-preview .hero-chip-dot {
-  background: var(--lw-green) !important;
+  background: var(--lw-accent) !important;
 }
 
 html.lw-preview .hero-pill,
 html.lw-preview .page-hero-label {
-  background: rgba(63, 166, 107, 0.14) !important;
-  border-color: rgba(63, 166, 107, 0.28) !important;
+  background: rgba(var(--lw-accent-rgb), 0.14) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.28) !important;
+  color: var(--lw-on-dark) !important;
 }
 
 html.lw-preview .case-quote {
-  border-left-color: var(--lw-green) !important;
-}
-
-html.lw-preview .branch-live {
-  background: var(--lw-green) !important;
+  border-left-color: var(--lw-accent) !important;
 }
 
 html.lw-preview .branch-plus:hover {
-  border-color: var(--lw-green) !important;
+  border-color: var(--lw-accent) !important;
 }
 
 html.lw-preview .form-input:focus,
 html.lw-preview .form-textarea:focus,
 html.lw-preview .fg input:focus,
 html.lw-preview .fg textarea:focus {
-  border-color: var(--lw-green) !important;
+  border-color: var(--lw-accent) !important;
 }
 
 html.lw-preview .form-success-icon {
-  background: var(--lw-green-tint) !important;
-  color: var(--lw-green) !important;
+  background: var(--lw-accent-tint) !important;
+  color: var(--lw-accent) !important;
 }
 
-/* ── Oranje: primaire CTA's ────────────────────────────────────── */
+html.lw-preview .av-icon {
+  color: var(--lw-accent) !important;
+}
+
+html.lw-preview .impact-grid--compact .impact-val,
+html.lw-preview .impact-grid--compact .impact-prefix,
+html.lw-preview .impact-grid--compact .impact-suffix {
+  color: var(--lw-accent) !important;
+}
+
+/* ── Oranje CTA's ──────────────────────────────────────────────── */
 html.lw-preview .btn-teal,
 html.lw-preview .nav-cta,
 html.lw-preview .price-btn,
 html.lw-preview .form-submit,
-html.lw-preview .modal-submit {
+html.lw-preview .modal-submit,
+html.lw-preview .btn-primary,
+html.lw-preview .page-hero-actions .btn-teal {
   background: var(--lw-orange) !important;
   color: #fff !important;
 }
@@ -260,18 +322,14 @@ html.lw-preview .modal-submit:hover {
   box-shadow: 0 8px 24px rgba(242, 140, 56, 0.35) !important;
 }
 
-html.lw-preview .nav-cta:hover {
-  background: var(--lw-orange-dark) !important;
-}
-
-/* ── Donkere secties: gradients & glows ────────────────────────── */
+/* ── Donkere secties ─────────────────────────────────────────── */
 html.lw-preview .hero--home .hero-bg-grad,
 html.lw-preview .hero.hero--atmosphere .hero-bg-grad,
 html.lw-preview .hero-bg-grad,
 html.lw-preview .impact-bg {
   background:
-    radial-gradient(ellipse 55% 70% at 88% 42%, rgba(63, 166, 107, 0.12) 0%, transparent 58%),
-    radial-gradient(ellipse 40% 50% at 12% 88%, rgba(31, 77, 58, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 70% at 88% 42%, rgba(var(--lw-accent-rgb), 0.1) 0%, transparent 58%),
+    radial-gradient(ellipse 40% 50% at 12% 88%, rgba(16, 24, 32, 0.45) 0%, transparent 55%),
     linear-gradient(165deg, var(--lw-night) 0%, #0c141c 48%, #080f14 100%) !important;
 }
 
@@ -283,87 +341,64 @@ html.lw-preview .hero-portal-scrim {
 }
 
 html.lw-preview .hero-portal-ring {
-  border-color: rgba(125, 206, 154, 0.35) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.35) !important;
   box-shadow:
-    0 0 40px rgba(63, 166, 107, 0.15),
-    inset 0 0 60px rgba(63, 166, 107, 0.04) !important;
+    0 0 40px rgba(var(--lw-accent-rgb), 0.12),
+    inset 0 0 60px rgba(var(--lw-accent-rgb), 0.04) !important;
 }
 
 html.lw-preview #heroSlashGrad stop:nth-child(2) {
-  stop-color: rgba(125, 206, 154, 0.85);
+  stop-color: rgba(var(--lw-accent-rgb), 0.75);
 }
 
 html.lw-preview #heroSlashGrad stop:nth-child(3) {
-  stop-color: rgba(63, 166, 107, 0.15);
+  stop-color: rgba(var(--lw-accent-rgb), 0.12);
 }
 
 html.lw-preview .impact-card:hover,
 html.lw-preview .impact-card.is-active {
-  border-color: rgba(63, 166, 107, 0.42) !important;
-  background: rgba(63, 166, 107, 0.07) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.38) !important;
+  background: rgba(var(--lw-accent-rgb), 0.06) !important;
 }
 
 html.lw-preview .impact-card::before {
-  background: radial-gradient(circle at var(--ix-spot-x, 50%) var(--ix-spot-y, 30%), rgba(63, 166, 107, 0.18), transparent 58%) !important;
+  background: radial-gradient(circle at var(--ix-spot-x, 50%) var(--ix-spot-y, 30%), rgba(var(--lw-accent-rgb), 0.16), transparent 58%) !important;
 }
 
 html.lw-preview .impact-grid--compact .impact-card::before {
-  background: radial-gradient(circle at var(--ix-spot-x, 50%) var(--ix-spot-y, 30%), rgba(63, 166, 107, 0.12), transparent 58%) !important;
+  background: radial-gradient(circle at var(--ix-spot-x, 50%) var(--ix-spot-y, 30%), rgba(var(--lw-accent-rgb), 0.1), transparent 58%) !important;
 }
 
 html.lw-preview .impact-grid--compact .impact-card:hover,
 html.lw-preview .impact-grid--compact .impact-card.is-active {
-  border-color: rgba(63, 166, 107, 0.4) !important;
-  box-shadow: 0 16px 40px rgba(63, 166, 107, 0.1) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.35) !important;
+  box-shadow: 0 16px 40px rgba(var(--lw-accent-rgb), 0.08) !important;
 }
 
-html.lw-preview .impact-grid--compact .impact-val,
-html.lw-preview .impact-grid--compact .impact-prefix,
-html.lw-preview .impact-grid--compact .impact-suffix {
-  color: var(--lw-green) !important;
-}
-
-/* ── Interactions overrides ────────────────────────────────────── */
 html.lw-preview .case-card.ix-card:hover,
 html.lw-preview .article-card.ix-card:hover {
-  border-color: var(--lw-green) !important;
+  border-color: var(--lw-accent) !important;
 }
 
 html.lw-preview .team-card.ix-card:hover {
-  border-color: rgba(63, 166, 107, 0.5) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.45) !important;
 }
 
 html.lw-preview .team-card.ix-card:hover .team-role {
-  color: var(--lw-green-dark) !important;
+  color: var(--lw-accent-dark) !important;
 }
 
 html.lw-preview .hero-atmosphere .hero-float--case:hover {
-  border-color: rgba(63, 166, 107, 0.45) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.4) !important;
 }
 
 html.lw-preview .pricing-grid .price-card.featured,
 html.lw-preview .pricing-grid .price-card:hover {
-  border-color: rgba(63, 166, 107, 0.45) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.4) !important;
 }
 
 html.lw-preview .page-hero-stat:hover {
-  border-color: rgba(63, 166, 107, 0.4) !important;
-}
-
-/* ── Subpagina's (page.html tokens) ────────────────────────────── */
-html.lw-preview {
-  --navy: var(--lw-night);
-  --teal: var(--lw-green);
-  --teal-d: var(--lw-green-dark);
-  --bg: var(--lw-cream);
-  --border: var(--lw-gray-blue);
-  --text: var(--lw-night);
-  --muted: var(--lw-muted);
-}
-
-html.lw-preview .btn-primary,
-html.lw-preview .page-hero-actions .btn-teal {
-  background: var(--lw-orange) !important;
+  border-color: rgba(var(--lw-accent-rgb), 0.38) !important;
 }
 
 html.lw-preview .page-intro--media {
@@ -375,13 +410,138 @@ html.lw-preview .page-intro {
   border-bottom-color: var(--lw-gray-blue) !important;
 }
 
+/* ── Variant 1: loopgroen badges ─────────────────────────────── */
+html.lw-preview-v1 .branch-live {
+  background: var(--lw-accent) !important;
+}
+
+/* ── Variant 2: mos & strak — minder groen, warmer op donker ─── */
+html.lw-preview-v2 .nav-logomark svg,
+html.lw-preview-v2 .footer-lm svg {
+  stroke: var(--lw-orange) !important;
+}
+
+html.lw-preview-v2 .section-label,
+html.lw-preview-v2 .p-num,
+html.lw-preview-v2 .team-role,
+html.lw-preview-v2 .cs-val,
+html.lw-preview-v2 .pf-check,
+html.lw-preview-v2 .modal-label,
+html.lw-preview-v2 .about-more a:hover,
+html.lw-preview-v2 .page-intro-label,
+html.lw-preview-v2 .page-intro-link,
+html.lw-preview-v2 .impact-grid--compact .impact-val,
+html.lw-preview-v2 .impact-grid--compact .impact-prefix,
+html.lw-preview-v2 .impact-grid--compact .impact-suffix,
+html.lw-preview-v2 .av-icon {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v2 .page-intro-label::before {
+  background: var(--lw-orange) !important;
+}
+
+html.lw-preview-v2 .hero h1 em,
+html.lw-preview-v2 .tr-label,
+html.lw-preview-v2 .impact-head .section-label,
+html.lw-preview-v2 .impact-val .impact-prefix,
+html.lw-preview-v2 .impact-val .impact-suffix,
+html.lw-preview-v2 .hero-float--tag i,
+html.lw-preview-v2 .page-hero-label,
+html.lw-preview-v2 .hero-chip i {
+  color: var(--lw-warm-light) !important;
+}
+
+html.lw-preview-v2 .hero-pill,
+html.lw-preview-v2 .page-hero-label {
+  background: rgba(232, 223, 208, 0.1) !important;
+  border-color: rgba(232, 223, 208, 0.22) !important;
+  color: var(--lw-warm-light) !important;
+}
+
+html.lw-preview-v2 .pill-dot,
+html.lw-preview-v2 .page-hero-label::before {
+  background: var(--lw-orange) !important;
+}
+
+html.lw-preview-v2 .hero-chip-dot,
+html.lw-preview-v2 .ld {
+  background: var(--lw-warm-light) !important;
+}
+
+html.lw-preview-v2 .case-quote {
+  border-left-color: var(--lw-night) !important;
+}
+
+html.lw-preview-v2 .branch-live {
+  background: var(--lw-orange) !important;
+}
+
+html.lw-preview-v2 .branch-plus:hover,
+html.lw-preview-v2 .case-card.ix-card:hover,
+html.lw-preview-v2 .article-card.ix-card:hover,
+html.lw-preview-v2 .team-card.ix-card:hover {
+  border-color: rgba(16, 24, 32, 0.35) !important;
+}
+
+html.lw-preview-v2 .team-card.ix-card:hover .team-role {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v2 .form-input:focus,
+html.lw-preview-v2 .form-textarea:focus {
+  border-color: var(--lw-night) !important;
+}
+
+html.lw-preview-v2 .form-success-icon {
+  background: var(--lw-cream-muted) !important;
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v2 .hero--home .hero-bg-grad,
+html.lw-preview-v2 .hero.hero--atmosphere .hero-bg-grad,
+html.lw-preview-v2 .hero-bg-grad,
+html.lw-preview-v2 .impact-bg {
+  background:
+    radial-gradient(ellipse 50% 60% at 85% 40%, rgba(242, 140, 56, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 10% 90%, rgba(31, 77, 58, 0.2) 0%, transparent 50%),
+    linear-gradient(165deg, var(--lw-night) 0%, #0c141c 48%, #080f14 100%) !important;
+}
+
+html.lw-preview-v2 .hero-portal-ring {
+  border-color: rgba(232, 223, 208, 0.25) !important;
+  box-shadow: 0 0 40px rgba(242, 140, 56, 0.08) !important;
+}
+
+html.lw-preview-v2 #heroSlashGrad stop:nth-child(2) {
+  stop-color: rgba(242, 140, 56, 0.7);
+}
+
+html.lw-preview-v2 .impact-card:hover,
+html.lw-preview-v2 .impact-card.is-active {
+  border-color: rgba(232, 223, 208, 0.2) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+html.lw-preview-v2 .impact-grid--compact .impact-card:hover,
+html.lw-preview-v2 .impact-grid--compact .impact-card.is-active {
+  border-color: var(--lw-gray-blue) !important;
+  box-shadow: 0 12px 32px rgba(16, 24, 32, 0.06) !important;
+}
+
 @media (max-width: 768px) {
   html.lw-preview body {
-    padding-top: 56px;
+    padding-top: 72px;
   }
 
   .lw-preview-bar {
     font-size: 12px;
-    padding: 10px 14px;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .lw-preview-variants {
+    width: 100%;
+    justify-content: center;
   }
 }

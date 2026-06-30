@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" class="lw-preview">
+<html lang="nl" class="lw-preview lw-preview-v1">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -261,8 +261,12 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
 <body>
 
 <div class="lw-preview-bar" id="lwPreviewBar">
-  <span><strong>Loopwerk</strong> kleurpreview — layout ongewijzigd, alleen kleuren &amp; fonts.</span>
-  <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Terug naar Briqo-kleuren</button>
+  <span><strong>Loopwerk</strong> kleurpreview</span>
+  <div class="lw-preview-variants">
+    <button type="button" class="lw-preview-variant is-active" data-variant="v1">1 · Loopgroen</button>
+    <button type="button" class="lw-preview-variant" data-variant="v2">2 · Mos &amp; strak</button>
+  </div>
+  <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Briqo-kleuren</button>
 </div>
 
 <nav class="nav">
@@ -812,27 +816,6 @@ loadPage();
 </script>
 <script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
-<script>
-(function () {
-  var bar = document.getElementById('lwPreviewBar');
-  var off = document.getElementById('lwPreviewOff');
-  if (!off) return;
-  off.addEventListener('click', function () {
-    document.documentElement.classList.remove('lw-preview');
-    if (bar) bar.remove();
-    document.body.style.paddingTop = '';
-    var restore = document.createElement('button');
-    restore.type = 'button';
-    restore.className = 'lw-preview-restore';
-    restore.textContent = 'Loopwerk-kleuren';
-    restore.addEventListener('click', function () {
-      document.documentElement.classList.add('lw-preview');
-      restore.remove();
-      location.reload();
-    });
-    document.body.appendChild(restore);
-  });
-})();
-</script>
+<script src="/brand-loopwerk-preview.js"></script>
 </body>
 </html>
