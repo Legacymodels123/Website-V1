@@ -3,7 +3,7 @@
   "slug": "blog",
   "title": "Inzichten",
   "seo": {
-    "title": "Inzichten & whitepapers - Briqo",
+    "title": "Inzichten & whitepapers — Loopwerk",
     "description": "Nuchtere artikelen en whitepapers over calculators, intakeflows en praktische tools voor het Nederlandse MKB.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/blog"
@@ -17,10 +17,17 @@
         "label": "Inzichten",
         "h1": "Wat we leren\\nterwijl we bouwen",
         "sub": "Artikelen en whitepapers over wat wél werkt op een MKB-website: calculators, scans, intakeflows en slimme leadkwalificatie. Geen hype. Wel praktijk.",
-        "relatedLink": { "text": "Bekijk cases", "url": "/cases" },
+        "relatedLink": {
+          "text": "Bekijk cases",
+          "url": "/cases"
+        },
         "chips": [
-          { "text": "Whitepapers & artikelen" },
-          { "text": "Binnenkort meer" }
+          {
+            "text": "Whitepapers & artikelen"
+          },
+          {
+            "text": "Binnenkort meer"
+          }
         ]
       }
     },
@@ -49,7 +56,10 @@
             "readTime": "12 min",
             "status": "coming_soon",
             "link": "",
-            "tags": ["Calculator", "MKB"]
+            "tags": [
+              "Calculator",
+              "MKB"
+            ]
           },
           {
             "type": "whitepaper",
@@ -59,7 +69,10 @@
             "readTime": "10 min",
             "status": "coming_soon",
             "link": "",
-            "tags": ["MVP", "Werkwijze"]
+            "tags": [
+              "MVP",
+              "Werkwijze"
+            ]
           },
           {
             "type": "blog",
@@ -69,7 +82,10 @@
             "readTime": "6 min",
             "status": "coming_soon",
             "link": "",
-            "tags": ["Case", "Zwembad"]
+            "tags": [
+              "Case",
+              "Zwembad"
+            ]
           },
           {
             "type": "blog",
@@ -79,7 +95,10 @@
             "readTime": "5 min",
             "status": "coming_soon",
             "link": "",
-            "tags": ["MKB", "Leadkwalificatie"]
+            "tags": [
+              "MKB",
+              "Leadkwalificatie"
+            ]
           },
           {
             "type": "whitepaper",
@@ -89,7 +108,10 @@
             "readTime": "14 min",
             "status": "coming_soon",
             "link": "",
-            "tags": ["Bouw", "Intake"]
+            "tags": [
+              "Bouw",
+              "Intake"
+            ]
           },
           {
             "type": "blog",
@@ -99,7 +121,10 @@
             "readTime": "7 min",
             "status": "coming_soon",
             "link": "",
-            "tags": ["AI", "Praktijk"]
+            "tags": [
+              "AI",
+              "Praktijk"
+            ]
           }
         ]
       }
@@ -115,9 +140,18 @@
         "ctaSecondary": "Bekijk werkwijze",
         "ctaSecondaryLink": "/werkwijze",
         "stats": [
-          { "value": "Praktisch", "label": "Geen verkooppraatje" },
-          { "value": "MKB", "label": "Onze focus" },
-          { "value": "MVP", "label": "Klein beginnen" }
+          {
+            "value": "Praktisch",
+            "label": "Geen verkooppraatje"
+          },
+          {
+            "value": "MKB",
+            "label": "Onze focus"
+          },
+          {
+            "value": "MVP",
+            "label": "Klein beginnen"
+          }
         ]
       }
     }

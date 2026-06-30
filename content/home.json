@@ -3,8 +3,8 @@
   "slug": "",
   "title": "Home",
   "seo": {
-    "title": "Briqo - Slimme AI-tools voor slim MKB",
-    "description": "Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1-15 medewerkers. Van offertecalculatoren tot lead-capture tools - in dagen live, niet maanden.",
+    "title": "Loopwerk | Slimme tools voor werk dat steeds terugkomt",
+    "description": "Loopwerk bouwt praktische tools en automatiseringen voor Nederlandse MKB-bedrijven. Geen groot IT-traject — wel een concrete oplossing voor werk dat steeds terugkomt.",
     "ogImage": "https://briqo.nl/og-image.png"
   },
   "headScripts": "",
@@ -18,11 +18,19 @@
         "sub": "Geen AI-verhaal omheen. Wel een calculator, scan of intake die snel live staat en direct antwoord geeft op de vragen die jouw team nu nog handmatig opvangt.",
         "ctaPrimary": "Demo aanvragen",
         "ctaSecondary": "Bekijk cases",
-        "proofText": "Sun Sauna & Poolworld gebruikt Briqo voor snellere prijsaanvragen",
+        "proofText": "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
         "atmosphere": {
           "floats": [
-            { "type": "tag", "icon": "ti-bolt", "text": "< 2 wkn richting live" },
-            { "type": "tag", "icon": "ti-apps", "text": "Calculator · Scan · Intake" },
+            {
+              "type": "tag",
+              "icon": "ti-bolt",
+              "text": "< 2 wkn richting live"
+            },
+            {
+              "type": "tag",
+              "icon": "ti-apps",
+              "text": "Calculator · Scan · Intake"
+            },
             {
               "type": "case",
               "href": "https://sspw-offerte-calc.vercel.app/",
@@ -133,7 +141,7 @@
       "type": "team",
       "data": {
         "title": "Drie ondernemers, één missie",
-        "intro1": "Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.",
+        "intro1": "Loopwerk is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.",
         "intro2": "Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.",
         "linkText": "Lees ons volledige verhaal",
         "linkUrl": "/over-ons",
@@ -158,9 +166,21 @@
           }
         ],
         "values": [
-          { "icon": "ti-bolt", "title": "Snel live", "desc": "Van idee naar werkende tool in minder dan twee weken." },
-          { "icon": "ti-tool", "title": "Direct bruikbaar", "desc": "Teksten en logica aanpasbaar zonder developer." },
-          { "icon": "ti-chart-bar", "title": "Data in jouw hand", "desc": "Leads en inzendingen in een helder dashboard." }
+          {
+            "icon": "ti-bolt",
+            "title": "Snel live",
+            "desc": "Van idee naar werkende tool in minder dan twee weken."
+          },
+          {
+            "icon": "ti-tool",
+            "title": "Direct bruikbaar",
+            "desc": "Teksten en logica aanpasbaar zonder developer."
+          },
+          {
+            "icon": "ti-chart-bar",
+            "title": "Data in jouw hand",
+            "desc": "Leads en inzendingen in een helder dashboard."
+          }
         ]
       }
     },

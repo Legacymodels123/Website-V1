@@ -1,11 +1,46 @@
 {
   "pages": [
-    { "id": "home", "slug": "", "title": "Home", "icon": "ti-home" },
-    { "id": "cases", "slug": "cases", "title": "Cases & Portfolio", "icon": "ti-briefcase" },
-    { "id": "branches", "slug": "branches", "title": "Branches", "icon": "ti-building-store" },
-    { "id": "werkwijze", "slug": "werkwijze", "title": "Werkwijze", "icon": "ti-route" },
-    { "id": "prijzen", "slug": "prijzen", "title": "Prijzen", "icon": "ti-receipt" },
-    { "id": "over-ons", "slug": "over-ons", "title": "Over ons", "icon": "ti-user" },
-    { "id": "blog", "slug": "blog", "title": "Inzichten", "icon": "ti-article" }
+    {
+      "id": "home",
+      "slug": "",
+      "title": "Home",
+      "icon": "ti-home"
+    },
+    {
+      "id": "cases",
+      "slug": "cases",
+      "title": "Cases & Portfolio",
+      "icon": "ti-briefcase"
+    },
+    {
+      "id": "branches",
+      "slug": "branches",
+      "title": "Branches",
+      "icon": "ti-building-store"
+    },
+    {
+      "id": "werkwijze",
+      "slug": "werkwijze",
+      "title": "Werkwijze",
+      "icon": "ti-route"
+    },
+    {
+      "id": "prijzen",
+      "slug": "prijzen",
+      "title": "Prijzen",
+      "icon": "ti-receipt"
+    },
+    {
+      "id": "over-ons",
+      "slug": "over-ons",
+      "title": "Over ons",
+      "icon": "ti-user"
+    },
+    {
+      "id": "blog",
+      "slug": "blog",
+      "title": "Inzichten",
+      "icon": "ti-article"
+    }
   ]
 }

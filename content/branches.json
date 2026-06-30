@@ -3,7 +3,7 @@
   "slug": "branches",
   "title": "Branches",
   "seo": {
-    "title": "AI-tools per branche - Briqo",
+    "title": "AI-tools per branche — Loopwerk",
     "description": "Bekijk voorbeelden van calculators, intakeflows en leadtools per branche voor het Nederlandse MKB.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/branches"
@@ -17,10 +17,17 @@
         "label": "Branches",
         "h1": "Praktische tools\\nper branche",
         "sub": "Niet elk bedrijf heeft dezelfde tool nodig. We kijken eerst naar het soort vraag, intake of offerteproces dat bij jouw sector past.",
-        "relatedLink": { "text": "Bekijk cases", "url": "/cases" },
+        "relatedLink": {
+          "text": "Bekijk cases",
+          "url": "/cases"
+        },
         "chips": [
-          { "text": "Praktisch voor MKB" },
-          { "text": "Voorbeelden per sector" }
+          {
+            "text": "Praktisch voor MKB"
+          },
+          {
+            "text": "Voorbeelden per sector"
+          }
         ]
       }
     },
@@ -109,9 +116,18 @@
         "ctaSecondary": "Bekijk cases",
         "ctaSecondaryLink": "/cases",
         "stats": [
-          { "value": "1 probleem", "label": "Startpunt per branche" },
-          { "value": "Snel", "label": "Van idee naar eerste richting" },
-          { "value": "MKB", "label": "Gebouwd voor echte praktijk" }
+          {
+            "value": "1 probleem",
+            "label": "Startpunt per branche"
+          },
+          {
+            "value": "Snel",
+            "label": "Van idee naar eerste richting"
+          },
+          {
+            "value": "MKB",
+            "label": "Gebouwd voor echte praktijk"
+          }
         ]
       }
     }

@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Briqo</title>
+<title>Loopwerk</title>
 <meta name="description" content="">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Briqo">
+<meta property="og:title" content="Loopwerk">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://briqo.nl/og-image.png">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<script src="/brand-config.js"></script>
 <link rel="stylesheet" href="/interactions.css">
 <link rel="stylesheet" href="/hero-headers.css">
 <style>
@@ -271,7 +272,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
       <button type="button" class="lw-preview-variant" data-variant="v5">5 · Design B</button>
       <button type="button" class="lw-preview-variant is-active" data-variant="v6">6 · Hand ★</button>
     </div>
-    <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Briqo</button>
+    <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Kleuren uit</button>
   </div>
   <p class="lw-preview-hint" id="lwPreviewHint">★ Variant 6: salie-kleuren + handgeschreven, laagdrempelige toon.</p>
 </div>
@@ -283,7 +284,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
         <div class="nav-logomark">
           <svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
         </div>
-        <span class="nav-name">Briqo</span>
+        <span class="nav-name">Loopwerk</span>
       </a>
       <div class="nav-links" id="navLinks">
         <a href="/branches" class="nav-link" data-navkey="branches">Branches</a>
@@ -321,9 +322,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
       <div>
         <div class="footer-logo">
           <div class="footer-lm"><svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg></div>
-          <span class="footer-ln">Briqo</span>
+          <span class="footer-ln">Loopwerk</span>
         </div>
-        <p class="footer-desc">Slimme AI-tools voor het Nederlandse MKB. Van idee naar live tool in minder dan twee weken.</p>
+        <p class="footer-desc">Slimme tools voor werk dat steeds terugkomt. Van idee naar live tool in minder dan twee weken.</p>
       </div>
       <div>
         <div class="footer-col-title">Navigatie</div>
@@ -352,7 +353,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
       </div>
     </div>
     <div class="footer-bottom">
-      <span id="footerCopy">&copy; 2026 Briqo. Alle rechten voorbehouden.</span>
+      <span id="footerCopy">&copy; 2026 Loopwerk. Alle rechten voorbehouden.</span>
       <span id="footerTag">Gebouwd voor het Nederlandse MKB</span>
     </div>
   </div>
@@ -631,9 +632,9 @@ const renderers = {
       <div class="container">
         <div class="about-inner">
           <div class="about-photo">
-            ${d.photo ? `<img src="${esc(d.photo)}" alt="${esc(d.name || 'Briqo')}">` : ''}
+            ${d.photo ? `<img src="${esc(d.photo)}" alt="${esc(d.name || 'Loopwerk')}">` : ''}
             <div class="about-photo-tag">
-              <div class="apt-name">${esc(d.name || 'Briqo')}</div>
+              <div class="apt-name">${esc(d.name || 'Loopwerk')}</div>
               ${d.role ? `<div class="apt-role">${esc(d.role)}</div>` : ''}
             </div>
           </div>

@@ -3,8 +3,8 @@
   "slug": "werkwijze",
   "title": "Werkwijze",
   "seo": {
-    "title": "Werkwijze - Briqo",
-    "description": "Van idee naar werkende tool zonder lang traject. Bekijk hoe Briqo samenwerkt met MKB-bedrijven.",
+    "title": "Werkwijze — Loopwerk",
+    "description": "Van idee naar werkende tool zonder lang traject. Bekijk hoe Loopwerk samenwerkt met MKB-bedrijven.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/werkwijze"
   },
@@ -17,10 +17,17 @@
         "label": "Werkwijze",
         "h1": "Van idee naar live tool\\nzonder lang traject",
         "sub": "We houden het compact: eerst scherp krijgen welk probleem je wilt oplossen, daarna snel naar een werkende eerste versie.",
-        "relatedLink": { "text": "Bekijk prijzen", "url": "/prijzen" },
+        "relatedLink": {
+          "text": "Bekijk prijzen",
+          "url": "/prijzen"
+        },
         "chips": [
-          { "text": "Snel en concreet" },
-          { "text": "Geen zwaar traject" }
+          {
+            "text": "Snel en concreet"
+          },
+          {
+            "text": "Geen zwaar traject"
+          }
         ]
       }
     },
@@ -85,9 +92,18 @@
         "ctaSecondary": "Bekijk prijzen",
         "ctaSecondaryLink": "/prijzen",
         "stats": [
-          { "value": "MVP", "label": "Eerst klein en werkbaar" },
-          { "value": "Feedback", "label": "Bijsturen tijdens bouw" },
-          { "value": "Doorbouwen", "label": "Na livegang verder" }
+          {
+            "value": "MVP",
+            "label": "Eerst klein en werkbaar"
+          },
+          {
+            "value": "Feedback",
+            "label": "Bijsturen tijdens bouw"
+          },
+          {
+            "value": "Doorbouwen",
+            "label": "Na livegang verder"
+          }
         ]
       }
     }

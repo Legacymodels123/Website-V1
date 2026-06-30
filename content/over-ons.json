@@ -3,8 +3,8 @@
   "slug": "over-ons",
   "title": "Over ons",
   "seo": {
-    "title": "Over ons - Briqo",
-    "description": "Levi Kempen, Shaquil Reyes en Gianni Geurtjens bouwen met Briqo praktische tools voor het Nederlandse MKB.",
+    "title": "Over ons — Loopwerk",
+    "description": "Levi Kempen, Shaquil Reyes en Gianni Geurtjens bouwen met Loopwerk praktische tools voor het Nederlandse MKB.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/over-ons"
   },
@@ -17,10 +17,17 @@
         "label": "Over ons",
         "h1": "Drie ondernemers.\\nEén missie.",
         "sub": "We bouwen de tool die jouw bedrijf mist. Zonder maandenlang IT-traject en zonder vaag AI-verhaal. Gewoon iets dat werkt en snel live kan.",
-        "relatedLink": { "text": "Lees onze inzichten", "url": "/blog" },
+        "relatedLink": {
+          "text": "Lees onze inzichten",
+          "url": "/blog"
+        },
         "chips": [
-          { "text": "Levi, Shaquil & Gianni" },
-          { "text": "Briqo team" }
+          {
+            "text": "Levi, Shaquil & Gianni"
+          },
+          {
+            "text": "Loopwerk team"
+          }
         ]
       }
     },
@@ -28,7 +35,7 @@
       "id": "ov2",
       "type": "text_block",
       "data": {
-        "h2": "Waarom we Briqo zijn gestart",
+        "h2": "Waarom we Loopwerk zijn gestart",
         "content": "We zagen steeds hetzelfde: sterke bedrijven met goede diensten, maar zonder een simpele manier om online antwoord te geven op vragen die elke week terugkomen.\\n\\nKlanten willen nu een prijsindicatie. Of weten of iets past. Of een aanvraag doen zonder te bellen. En jij hebt geen tijd om daar maandenlang een softwareproject voor op te tuigen.\\n\\nDaarom werken we anders: klein beginnen, snel live, en alleen doorbouwen als het echt iets oplevert.",
         "card": true
       }
@@ -39,7 +46,7 @@
       "data": {
         "label": "Het team",
         "title": "Wie we zijn",
-        "intro1": "Briqo is geen groot bureau. Wij zijn met z'n drieën: Levi, Shaquil en Gianni. We delen dezelfde insteek: liever iets werkends dan iets moois op papier.",
+        "intro1": "Loopwerk is geen groot bureau. Wij zijn met z'n drieën: Levi, Shaquil en Gianni. We delen dezelfde insteek: liever iets werkends dan iets moois op papier.",
         "members": [
           {
             "name": "Levi Kempen",
@@ -99,9 +106,18 @@
         "ctaSecondary": "Lees onze inzichten",
         "ctaSecondaryLink": "/blog",
         "stats": [
-          { "value": "3", "label": "Oprichters" },
-          { "value": "MKB", "label": "Onze focus" },
-          { "value": "MVP", "label": "Klein beginnen" }
+          {
+            "value": "3",
+            "label": "Oprichters"
+          },
+          {
+            "value": "MKB",
+            "label": "Onze focus"
+          },
+          {
+            "value": "MVP",
+            "label": "Klein beginnen"
+          }
         ]
       }
     }

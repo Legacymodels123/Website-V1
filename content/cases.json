@@ -3,8 +3,8 @@
   "slug": "cases",
   "title": "Cases & Portfolio",
   "seo": {
-    "title": "Cases & Portfolio - Briqo",
-    "description": "Bekijk voorbeelden van tools, calculators en intakeflows die Briqo bouwt voor het Nederlandse MKB.",
+    "title": "Cases & Portfolio — Loopwerk",
+    "description": "Bekijk voorbeelden van tools, calculators en intakeflows die Loopwerk bouwt voor het Nederlandse MKB.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/cases"
   },
@@ -17,10 +17,17 @@
         "label": "Cases",
         "h1": "Tools die je kunt openen,\\nniet alleen bekijken",
         "sub": "Geen abstract AI-verhaal, maar concrete tools die sneller antwoord geven, leads beter kwalificeren en werk uit handen nemen.",
-        "relatedLink": { "text": "Bekijk per branche", "url": "/branches" },
+        "relatedLink": {
+          "text": "Bekijk per branche",
+          "url": "/branches"
+        },
         "chips": [
-          { "text": "Echte toepassingen" },
-          { "text": "Geen loze beloftes" }
+          {
+            "text": "Echte toepassingen"
+          },
+          {
+            "text": "Geen loze beloftes"
+          }
         ]
       }
     },
@@ -44,7 +51,11 @@
             "desc": "Klanten krijgen sneller een prijsindicatie en bellen pas als hun aanvraag concreet genoeg is.",
             "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=600&q=80",
             "link": "https://sspw-offerte-calc.vercel.app/",
-            "tags": ["Calculator", "Zwembad", "Leads"]
+            "tags": [
+              "Calculator",
+              "Zwembad",
+              "Leads"
+            ]
           },
           {
             "client": "Concept: Automotive",
@@ -52,7 +63,11 @@
             "desc": "Zo kan een online scan gesprekken sneller naar een serieuze offerte leiden. Nog geen live case.",
             "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80",
             "link": "",
-            "tags": ["Automotive", "Intake", "Scan"]
+            "tags": [
+              "Automotive",
+              "Intake",
+              "Scan"
+            ]
           },
           {
             "client": "Concept: Installatie",
@@ -60,7 +75,11 @@
             "desc": "Een intakeflow die projectinfo vooraf verzamelt. Zo zie je wat een eerste versie kan doen.",
             "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
             "link": "",
-            "tags": ["Bouw", "Offerte", "Intake"]
+            "tags": [
+              "Bouw",
+              "Offerte",
+              "Intake"
+            ]
           }
         ]
       }
@@ -76,9 +95,18 @@
         "ctaSecondary": "Bekijk branches",
         "ctaSecondaryLink": "/branches",
         "stats": [
-          { "value": "< 2 wkn", "label": "Richting eerste versie" },
-          { "value": "MKB", "label": "Onze focus" },
-          { "value": "1-op-1", "label": "Korte lijnen" }
+          {
+            "value": "< 2 wkn",
+            "label": "Richting eerste versie"
+          },
+          {
+            "value": "MKB",
+            "label": "Onze focus"
+          },
+          {
+            "value": "1-op-1",
+            "label": "Korte lijnen"
+          }
         ]
       }
     }

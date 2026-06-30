@@ -3,8 +3,8 @@
   "slug": "prijzen",
   "title": "Prijzen",
   "seo": {
-    "title": "Prijzen - Briqo",
-    "description": "Bekijk hoe Briqo prijzen opbouwt voor calculators, intakeflows en andere praktische tools voor het MKB.",
+    "title": "Prijzen — Loopwerk",
+    "description": "Bekijk hoe Loopwerk prijzen opbouwt voor calculators, intakeflows en andere praktische tools voor het MKB.",
     "ogImage": "https://briqo.nl/og-image.png",
     "canonical": "https://briqo.nl/prijzen"
   },
@@ -17,10 +17,17 @@
         "label": "Prijzen",
         "h1": "Duidelijke investering,\\ngeen bureau-gedoe",
         "sub": "Je hoeft niet meteen een groot traject in. We werken liever toe naar een duidelijke eerste versie die echt gebruikt kan worden.",
-        "relatedLink": { "text": "Zo werken we", "url": "/werkwijze" },
+        "relatedLink": {
+          "text": "Zo werken we",
+          "url": "/werkwijze"
+        },
         "chips": [
-          { "text": "Compact starten" },
-          { "text": "Gericht doorbouwen" }
+          {
+            "text": "Compact starten"
+          },
+          {
+            "text": "Gericht doorbouwen"
+          }
         ]
       }
     },
@@ -95,9 +102,18 @@
         "ctaSecondary": "Bekijk werkwijze",
         "ctaSecondaryLink": "/werkwijze",
         "stats": [
-          { "value": "Duidelijk", "label": "Afgebakende eerste fase" },
-          { "value": "Compact", "label": "Gericht op snelle livegang" },
-          { "value": "Groei", "label": "Later doorontwikkelbaar" }
+          {
+            "value": "Duidelijk",
+            "label": "Afgebakende eerste fase"
+          },
+          {
+            "value": "Compact",
+            "label": "Gericht op snelle livegang"
+          },
+          {
+            "value": "Groei",
+            "label": "Later doorontwikkelbaar"
+          }
         ]
       }
     }

@@ -1,4 +1,4 @@
-// BRIQO CONTENT CONFIG — bewerk via /admin.html
+// LOOPWERK CONTENT CONFIG — bewerk via /admin.html
 
 const CONTENT = {
 
@@ -8,7 +8,7 @@ const CONTENT = {
     sub: "Geen AI-verhaal omheen. Wel een calculator, scan of intake die snel live staat en direct antwoord geeft op de vragen die jouw team nu nog handmatig opvangt.",
     ctaPrimary: "Demo aanvragen",
     ctaSecondary: "Bekijk cases",
-    proofText: "Sun Sauna & Poolworld gebruikt Briqo voor snellere prijsaanvragen",
+    proofText: "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
     atmosphere: {
       floats: [
         { type: "tag", icon: "ti-bolt", text: "< 2 wkn richting live" },
@@ -25,7 +25,7 @@ const CONTENT = {
 
   team: {
     title: "Drie ondernemers, één missie",
-    intro1: "Briqo is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.",
+    intro1: "Loopwerk is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.",
     intro2: "Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.",
     linkText: "Lees ons volledige verhaal",
     linkUrl: "/over-ons",

@@ -1,16 +1,16 @@
-// BRIQO SEO CONFIG — bewerk via /admin.html
+// LOOPWERK SEO CONFIG — bewerk via /admin.html of brand-config.js
 
 const SEO = {
-  siteName: "Briqo",
-  siteUrl: "https://briqo.nl",
-  title: "Briqo | Slimme AI-tools voor slim MKB",
-  description: "Briqo bouwt praktische AI-tools voor Nederlandse MKB-bedrijven van 1 tot 15 medewerkers. Van offertecalculatoren tot lead-capture tools. In dagen live, niet maanden.",
-  ogImage: "https://briqo.nl/og-image.png",
+  siteName: typeof BRAND !== "undefined" ? BRAND.name : "Loopwerk",
+  siteUrl: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://briqo.nl",
+  title: (typeof BRAND !== "undefined" ? BRAND.name : "Loopwerk") + " | Slimme tools voor werk dat steeds terugkomt",
+  description: typeof BRAND !== "undefined" ? BRAND.description : "Loopwerk bouwt praktische tools voor het MKB.",
+  ogImage: typeof BRAND !== "undefined" ? BRAND.ogImage : "https://briqo.nl/og-image.png",
   twitterHandle: "",
-  canonical: "https://briqo.nl",
+  canonical: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://briqo.nl",
   robots: "index, follow",
   locale: "nl_NL",
-  themeColor: "#0F172A",
+  themeColor: typeof BRAND !== "undefined" ? BRAND.themeColor : "#101820",
 };
 
 (function () {
