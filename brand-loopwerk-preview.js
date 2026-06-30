@@ -1,18 +1,19 @@
 (function () {
   var root = document.documentElement;
   var STORAGE = 'lw-preview-variant';
-  var VARIANTS = ['v1', 'v2', 'v3', 'v4', 'v5'];
+  var VARIANTS = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
 
   var HINTS = {
     v1: 'Fel loopgroen — energiek, maar kan snel “app-groen” aanvoelen.',
     v2: 'Mos & strak — rustig, weinig kleur (navy + creme + oranje).',
-    v3: '★ Ons voorstel: creme + saliegroen accent + oranje CTA’s.',
-    v4: 'Terracotta / roodachtig — warmer en menselijker, minder groen.',
-    v5: 'Design B — lichte hero, scherpere cards, ander geheel gevoel.'
+    v3: 'Salie — creme + saliegroen accent + oranje CTA’s.',
+    v4: 'Terracotta — warmer en menselijker, minder groen.',
+    v5: 'Design B — lichte hero, scherpere cards, ander geheel gevoel.',
+    v6: '★ Handgemaakt — zelfde kleuren als salie, maar laagdrempelig en menselijk. Geen blokkerige UI.'
   };
 
   function setVariant(v) {
-    if (VARIANTS.indexOf(v) < 0) v = 'v3';
+    if (VARIANTS.indexOf(v) < 0) v = 'v6';
     root.classList.add('lw-preview');
     VARIANTS.forEach(function (id) { root.classList.remove('lw-preview-' + id); });
     root.classList.add('lw-preview-' + v);
@@ -25,8 +26,8 @@
   }
 
   function init() {
-    var saved = 'v3';
-    try { saved = localStorage.getItem(STORAGE) || 'v3'; } catch (e) {}
+    var saved = 'v6';
+    try { saved = localStorage.getItem(STORAGE) || 'v6'; } catch (e) {}
     if (root.classList.contains('lw-preview')) setVariant(saved);
 
     document.querySelectorAll('.lw-preview-variant').forEach(function (btn) {

@@ -175,6 +175,24 @@ html.lw-preview-v5 {
   border-color: rgba(232, 184, 154, 0.5);
 }
 
+.lw-preview-variant[data-variant="v6"].is-active {
+  background: rgba(74, 124, 111, 0.35);
+  border-color: rgba(143, 181, 168, 0.65);
+}
+
+/* Variant 6: handgemaakt — salie-kleuren (zelfde als v3) + menselijke vormtaal */
+html.lw-preview-v6 {
+  --lw-accent: #4A7C6F;
+  --lw-accent-dark: #3d665b;
+  --lw-accent-light: #8FB5A8;
+  --lw-accent-tint: #E8F0ED;
+  --lw-accent-rgb: 74, 124, 111;
+  --lw-on-dark: #B8D4CB;
+  --teal: var(--lw-accent);
+  --teal-d: var(--lw-accent-dark);
+  --lw-hand: 'Kalam', 'Segoe Print', 'Comic Sans MS', cursive;
+}
+
 .lw-preview-toggle {
   background: transparent;
   color: rgba(255, 255, 255, 0.55);
@@ -923,4 +941,213 @@ html.lw-preview-v2 .impact-grid--compact .impact-card:hover,
 html.lw-preview-v2 .impact-grid--compact .impact-card.is-active {
   border-color: var(--lw-gray-blue) !important;
   box-shadow: 0 12px 32px rgba(16, 24, 32, 0.06) !important;
+}
+
+/* ── Variant 6: handgemaakt — vorm & typografie ──────────────── */
+html.lw-preview-v6 .branch-live {
+  background: var(--lw-accent) !important;
+}
+
+html.lw-preview-v6 .hero-pill,
+html.lw-preview-v6 .page-hero-label {
+  color: var(--lw-on-dark) !important;
+}
+
+html.lw-preview-v6 .nav-logomark svg {
+  stroke: var(--lw-accent-light) !important;
+}
+
+/* Handletter alleen op labels & annotaties — body blijft leesbaar */
+html.lw-preview-v6 .section-label,
+html.lw-preview-v6 .hero-pill,
+html.lw-preview-v6 .hero-pill span,
+html.lw-preview-v6 .p-num,
+html.lw-preview-v6 .p-step-num,
+html.lw-preview-v6 .modal-label,
+html.lw-preview-v6 .page-intro-label,
+html.lw-preview-v6 .page-hero-label,
+html.lw-preview-v6 .hero-float--tag,
+html.lw-preview-v6 .p-step-tag,
+html.lw-preview-v6 .branch-live,
+html.lw-preview-v6 .workbench-step-label {
+  font-family: var(--lw-hand) !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+}
+
+html.lw-preview-v6 .section-label {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+html.lw-preview-v6 .section-label::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 10px;
+  margin-top: 4px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 10' fill='none'%3E%3Cpath d='M2 7 C18 2, 28 9, 42 5 S62 3, 70 6' stroke='%234A7C6F' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat left center;
+  background-size: 100% 100%;
+}
+
+html.lw-preview-v6 .impact-head .section-label::after {
+  margin-left: 0;
+}
+
+html.lw-preview-v6 .hero-pill {
+  font-size: 19px !important;
+  border-radius: 255px 12px 240px 14px / 14px 240px 12px 255px !important;
+  padding: 8px 18px !important;
+}
+
+html.lw-preview-v6 .p-num {
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+}
+
+html.lw-preview-v6 .hero h1 em {
+  font-family: var(--lw-hand) !important;
+  font-style: normal !important;
+  font-size: 1.05em !important;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: rgba(74, 124, 111, 0.55);
+  text-underline-offset: 6px;
+}
+
+/* Organische hoeken i.p.v. strakke blokken */
+html.lw-preview-v6 .btn-teal,
+html.lw-preview-v6 .nav-cta,
+html.lw-preview-v6 .price-btn,
+html.lw-preview-v6 .form-submit,
+html.lw-preview-v6 .btn-lg {
+  border-radius: 255px 10px 255px 10px / 10px 255px 10px 255px !important;
+  box-shadow: 0 4px 0 rgba(16, 24, 32, 0.12) !important;
+}
+
+html.lw-preview-v6 .btn-teal:hover,
+html.lw-preview-v6 .nav-cta:hover,
+html.lw-preview-v6 .price-btn:hover {
+  transform: translateY(-1px) rotate(-0.3deg) !important;
+  box-shadow: 0 6px 0 rgba(16, 24, 32, 0.1), 0 10px 24px rgba(242, 140, 56, 0.25) !important;
+}
+
+html.lw-preview-v6 .team-card,
+html.lw-preview-v6 .case-card.ix-card,
+html.lw-preview-v6 .branch-card,
+html.lw-preview-v6 .price-card,
+html.lw-preview-v6 .p-step,
+html.lw-preview-v6 .p-card,
+html.lw-preview-v6 .impact-card,
+html.lw-preview-v6 .impact-grid--compact .impact-card,
+html.lw-preview-v6 .cs-stat,
+html.lw-preview-v6 .av,
+html.lw-preview-v6 .content-card,
+html.lw-preview-v6 .modal-box {
+  border-radius: 20px 8px 18px 10px / 10px 18px 8px 20px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  box-shadow: none !important;
+}
+
+html.lw-preview-v6 .p-step,
+html.lw-preview-v6 .p-card {
+  border-style: dashed !important;
+  border-color: rgba(74, 124, 111, 0.35) !important;
+  background: #fff !important;
+}
+
+html.lw-preview-v6 .p-step-circle {
+  border-radius: 48% 52% 50% 50% / 52% 48% 52% 48% !important;
+  transform: rotate(-3deg);
+}
+
+html.lw-preview-v6 .p-step-num {
+  font-size: 20px !important;
+}
+
+html.lw-preview-v6 .hero-float {
+  border-radius: 16px 8px 14px 10px / 10px 14px 8px 16px !important;
+  border-style: dashed !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  font-family: var(--lw-hand) !important;
+  font-size: 14px !important;
+}
+
+html.lw-preview-v6 .hero-float:nth-child(2) {
+  transform: rotate(-1deg);
+}
+
+html.lw-preview-v6 .hero-float:nth-child(3) {
+  transform: rotate(0.8deg);
+}
+
+html.lw-preview-v6 .case-quote {
+  border-left-width: 3px !important;
+  border-left-style: dashed !important;
+  border-radius: 0 14px 14px 0 !important;
+  font-style: normal !important;
+}
+
+html.lw-preview-v6 .case-quote::before {
+  content: '“';
+  font-family: var(--lw-hand);
+  font-size: 28px;
+  color: var(--lw-accent);
+  line-height: 0;
+  margin-right: 4px;
+}
+
+html.lw-preview-v6 .impact-card {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+html.lw-preview-v6 .impact-card:hover,
+html.lw-preview-v6 .impact-card.is-active {
+  border-style: dashed !important;
+  transform: translateY(-4px) rotate(-0.4deg) !important;
+}
+
+html.lw-preview-v6 .impact-grid--compact .impact-card {
+  border-style: dashed !important;
+  border-color: var(--lw-gray-blue) !important;
+}
+
+html.lw-preview-v6 .nav-logomark {
+  border-radius: 12px 6px 10px 8px / 8px 10px 6px 12px !important;
+}
+
+html.lw-preview-v6 .pf-check {
+  font-size: 20px !important;
+}
+
+html.lw-preview-v6 .page-intro--media .page-intro-body {
+  border-radius: 22px 10px 20px 12px / 12px 20px 10px 22px !important;
+  border-style: dashed !important;
+}
+
+html.lw-preview-v6 .team-role {
+  font-family: var(--lw-hand) !important;
+  font-size: 15px !important;
+}
+
+@media (max-width: 768px) {
+  html.lw-preview-v6 .section-label {
+    font-size: 20px !important;
+  }
+
+  html.lw-preview-v6 .hero-float {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lw-preview-v6 .btn-teal:hover,
+  html.lw-preview-v6 .impact-card:hover,
+  html.lw-preview-v6 .hero-float {
+    transform: none !important;
+  }
 }
