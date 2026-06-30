@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="lw-preview">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +37,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="/interactions.css">
   <link rel="stylesheet" href="/hero-headers.css">
@@ -553,8 +553,14 @@
     }
 
   </style>
+  <link rel="stylesheet" href="/brand-loopwerk-preview.css">
 </head>
 <body>
+
+<div class="lw-preview-bar" id="lwPreviewBar">
+  <span><strong>Loopwerk</strong> kleurpreview — layout ongewijzigd, alleen kleuren &amp; fonts (Sora + Inter).</span>
+  <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Terug naar Briqo-kleuren</button>
+</div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -1082,5 +1088,27 @@
 
 <script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
+<script>
+(function () {
+  var bar = document.getElementById('lwPreviewBar');
+  var off = document.getElementById('lwPreviewOff');
+  if (!off) return;
+  off.addEventListener('click', function () {
+    document.documentElement.classList.remove('lw-preview');
+    if (bar) bar.remove();
+    document.body.style.paddingTop = '';
+    var restore = document.createElement('button');
+    restore.type = 'button';
+    restore.className = 'lw-preview-restore';
+    restore.textContent = 'Loopwerk-kleuren';
+    restore.addEventListener('click', function () {
+      document.documentElement.classList.add('lw-preview');
+      restore.remove();
+      location.reload();
+    });
+    document.body.appendChild(restore);
+  });
+})();
+</script>
 </body>
 </html>

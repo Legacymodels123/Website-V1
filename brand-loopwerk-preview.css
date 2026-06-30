@@ -1,0 +1,387 @@
+/* Loopwerk brand preview — layout ongewijzigd, alleen kleuren & typografie.
+   Actief via class "lw-preview" op <html>. Verwijder link + class om terug te gaan. */
+
+html.lw-preview {
+  --lw-night: #101820;
+  --lw-night-hover: #1a2832;
+  --lw-cream: #F7F4ED;
+  --lw-cream-muted: #F0EDE6;
+  --lw-green: #3FA66B;
+  --lw-green-dark: #358f59;
+  --lw-green-light: #7DCE9A;
+  --lw-green-tint: #E8F5EC;
+  --lw-orange: #F28C38;
+  --lw-orange-dark: #E07D2F;
+  --lw-gray-blue: #DDE6E8;
+  --lw-moss: #1F4D3A;
+  --lw-muted: #5c6b73;
+}
+
+/* ── Preview bar ─────────────────────────────────────────────── */
+.lw-preview-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px 20px;
+  background: var(--lw-moss);
+  color: #fff;
+  font-size: 13px;
+  box-shadow: 0 4px 20px rgba(16, 24, 32, 0.25);
+}
+
+.lw-preview-bar strong {
+  font-family: 'Sora', 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+.lw-preview-toggle {
+  background: var(--lw-orange);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.lw-preview-toggle:hover {
+  background: var(--lw-orange-dark);
+}
+
+.lw-preview-restore {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background: var(--lw-night);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 8px 28px rgba(16, 24, 32, 0.35);
+}
+
+html.lw-preview body {
+  padding-top: 40px;
+}
+
+/* ── Typografie: Sora koppen ───────────────────────────────────── */
+html.lw-preview h1,
+html.lw-preview h2,
+html.lw-preview h3,
+html.lw-preview .section-h2,
+html.lw-preview .impact-title,
+html.lw-preview .nav-name,
+html.lw-preview .footer-brand,
+html.lw-preview .modal-title,
+html.lw-preview .price-title,
+html.lw-preview .page-intro h1,
+html.lw-preview .page-hero h1 {
+  font-family: 'Sora', 'Inter', sans-serif !important;
+}
+
+/* ── Basis & achtergronden ─────────────────────────────────────── */
+html.lw-preview body {
+  background: var(--lw-cream) !important;
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview .problem,
+html.lw-preview .branches-section,
+html.lw-preview .pricing-section,
+html.lw-preview .team-card,
+html.lw-preview .section-alt,
+html.lw-preview .cs-stat,
+html.lw-preview .case-quote,
+html.lw-preview .impact-grid--compact .impact-card {
+  background: var(--lw-cream) !important;
+}
+
+html.lw-preview .impact-grid--compact .impact-card:hover,
+html.lw-preview .impact-grid--compact .impact-card.is-active {
+  background: #fff !important;
+}
+
+html.lw-preview .p-step-tag,
+html.lw-preview .av-icon {
+  background: var(--lw-cream-muted) !important;
+}
+
+/* ── Borders & vlakken ─────────────────────────────────────────── */
+html.lw-preview .team-card,
+html.lw-preview .cs-stat,
+html.lw-preview .case-quote,
+html.lw-preview .av-icon,
+html.lw-preview .impact-grid--compact .impact-card,
+html.lw-preview .content-card,
+html.lw-preview .page-intro--media .page-intro-body {
+  border-color: var(--lw-gray-blue) !important;
+}
+
+html.lw-preview .nav {
+  background: rgba(247, 244, 237, 0.92) !important;
+  border-bottom-color: var(--lw-gray-blue) !important;
+}
+
+/* ── Nachtblauw vlakken ────────────────────────────────────────── */
+html.lw-preview .hero,
+html.lw-preview .impact-section,
+html.lw-preview .cta-section,
+html.lw-preview .footer,
+html.lw-preview .nav-logomark,
+html.lw-preview .logo-entry-icon,
+html.lw-preview .cpb-icon,
+html.lw-preview .page-hero,
+html.lw-preview .page-intro-banner {
+  background-color: var(--lw-night) !important;
+}
+
+html.lw-preview .hero-portal,
+html.lw-preview .hero-portal-ring {
+  background: #0a1218 !important;
+}
+
+html.lw-preview .nav-logomark svg,
+html.lw-preview .footer-lm svg {
+  stroke: var(--lw-green) !important;
+}
+
+html.lw-preview .nav-name,
+html.lw-preview .nav-link:hover {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview .nav-link {
+  color: var(--lw-muted) !important;
+}
+
+/* ── Groen: labels, accenten, iconen ───────────────────────────── */
+html.lw-preview .section-label,
+html.lw-preview .p-num,
+html.lw-preview .team-role,
+html.lw-preview .cs-val,
+html.lw-preview .pf-check,
+html.lw-preview .modal-label,
+html.lw-preview .logo-entry-icon,
+html.lw-preview .cpb-icon,
+html.lw-preview .av-icon,
+html.lw-preview .about-more a:hover,
+html.lw-preview .page-intro-label,
+html.lw-preview .page-intro-link {
+  color: var(--lw-green) !important;
+}
+
+html.lw-preview .page-intro-label::before {
+  background: var(--lw-green) !important;
+}
+
+html.lw-preview .hero h1 em,
+html.lw-preview .hero-pill,
+html.lw-preview .pill-dot,
+html.lw-preview .tr-label,
+html.lw-preview .ld,
+html.lw-preview .impact-head .section-label,
+html.lw-preview .impact-val .impact-prefix,
+html.lw-preview .impact-val .impact-suffix,
+html.lw-preview .hero-float--tag i,
+html.lw-preview .page-hero-label,
+html.lw-preview .hero-chip i,
+html.lw-preview .hero-chip-dot {
+  color: var(--lw-green-light) !important;
+}
+
+html.lw-preview .pill-dot,
+html.lw-preview .ld,
+html.lw-preview .page-hero-label::before,
+html.lw-preview .hero-chip-dot {
+  background: var(--lw-green) !important;
+}
+
+html.lw-preview .hero-pill,
+html.lw-preview .page-hero-label {
+  background: rgba(63, 166, 107, 0.14) !important;
+  border-color: rgba(63, 166, 107, 0.28) !important;
+}
+
+html.lw-preview .case-quote {
+  border-left-color: var(--lw-green) !important;
+}
+
+html.lw-preview .branch-live {
+  background: var(--lw-green) !important;
+}
+
+html.lw-preview .branch-plus:hover {
+  border-color: var(--lw-green) !important;
+}
+
+html.lw-preview .form-input:focus,
+html.lw-preview .form-textarea:focus,
+html.lw-preview .fg input:focus,
+html.lw-preview .fg textarea:focus {
+  border-color: var(--lw-green) !important;
+}
+
+html.lw-preview .form-success-icon {
+  background: var(--lw-green-tint) !important;
+  color: var(--lw-green) !important;
+}
+
+/* ── Oranje: primaire CTA's ────────────────────────────────────── */
+html.lw-preview .btn-teal,
+html.lw-preview .nav-cta,
+html.lw-preview .price-btn,
+html.lw-preview .form-submit,
+html.lw-preview .modal-submit {
+  background: var(--lw-orange) !important;
+  color: #fff !important;
+}
+
+html.lw-preview .btn-teal:hover,
+html.lw-preview .nav-cta:hover,
+html.lw-preview .price-btn:hover,
+html.lw-preview .form-submit:hover,
+html.lw-preview .modal-submit:hover {
+  background: var(--lw-orange-dark) !important;
+  box-shadow: 0 8px 24px rgba(242, 140, 56, 0.35) !important;
+}
+
+html.lw-preview .nav-cta:hover {
+  background: var(--lw-orange-dark) !important;
+}
+
+/* ── Donkere secties: gradients & glows ────────────────────────── */
+html.lw-preview .hero--home .hero-bg-grad,
+html.lw-preview .hero.hero--atmosphere .hero-bg-grad,
+html.lw-preview .hero-bg-grad,
+html.lw-preview .impact-bg {
+  background:
+    radial-gradient(ellipse 55% 70% at 88% 42%, rgba(63, 166, 107, 0.12) 0%, transparent 58%),
+    radial-gradient(ellipse 40% 50% at 12% 88%, rgba(31, 77, 58, 0.35) 0%, transparent 55%),
+    linear-gradient(165deg, var(--lw-night) 0%, #0c141c 48%, #080f14 100%) !important;
+}
+
+html.lw-preview .hero-portal-scrim {
+  background:
+    linear-gradient(105deg, rgba(16, 24, 32, 0.92) 0%, rgba(16, 24, 32, 0.35) 38%, transparent 62%),
+    linear-gradient(0deg, rgba(16, 24, 32, 0.55) 0%, transparent 35%),
+    linear-gradient(180deg, transparent 55%, rgba(16, 24, 32, 0.45) 100%) !important;
+}
+
+html.lw-preview .hero-portal-ring {
+  border-color: rgba(125, 206, 154, 0.35) !important;
+  box-shadow:
+    0 0 40px rgba(63, 166, 107, 0.15),
+    inset 0 0 60px rgba(63, 166, 107, 0.04) !important;
+}
+
+html.lw-preview #heroSlashGrad stop:nth-child(2) {
+  stop-color: rgba(125, 206, 154, 0.85);
+}
+
+html.lw-preview #heroSlashGrad stop:nth-child(3) {
+  stop-color: rgba(63, 166, 107, 0.15);
+}
+
+html.lw-preview .impact-card:hover,
+html.lw-preview .impact-card.is-active {
+  border-color: rgba(63, 166, 107, 0.42) !important;
+  background: rgba(63, 166, 107, 0.07) !important;
+}
+
+html.lw-preview .impact-card::before {
+  background: radial-gradient(circle at var(--ix-spot-x, 50%) var(--ix-spot-y, 30%), rgba(63, 166, 107, 0.18), transparent 58%) !important;
+}
+
+html.lw-preview .impact-grid--compact .impact-card::before {
+  background: radial-gradient(circle at var(--ix-spot-x, 50%) var(--ix-spot-y, 30%), rgba(63, 166, 107, 0.12), transparent 58%) !important;
+}
+
+html.lw-preview .impact-grid--compact .impact-card:hover,
+html.lw-preview .impact-grid--compact .impact-card.is-active {
+  border-color: rgba(63, 166, 107, 0.4) !important;
+  box-shadow: 0 16px 40px rgba(63, 166, 107, 0.1) !important;
+}
+
+html.lw-preview .impact-grid--compact .impact-val,
+html.lw-preview .impact-grid--compact .impact-prefix,
+html.lw-preview .impact-grid--compact .impact-suffix {
+  color: var(--lw-green) !important;
+}
+
+/* ── Interactions overrides ────────────────────────────────────── */
+html.lw-preview .case-card.ix-card:hover,
+html.lw-preview .article-card.ix-card:hover {
+  border-color: var(--lw-green) !important;
+}
+
+html.lw-preview .team-card.ix-card:hover {
+  border-color: rgba(63, 166, 107, 0.5) !important;
+}
+
+html.lw-preview .team-card.ix-card:hover .team-role {
+  color: var(--lw-green-dark) !important;
+}
+
+html.lw-preview .hero-atmosphere .hero-float--case:hover {
+  border-color: rgba(63, 166, 107, 0.45) !important;
+}
+
+html.lw-preview .pricing-grid .price-card.featured,
+html.lw-preview .pricing-grid .price-card:hover {
+  border-color: rgba(63, 166, 107, 0.45) !important;
+}
+
+html.lw-preview .page-hero-stat:hover {
+  border-color: rgba(63, 166, 107, 0.4) !important;
+}
+
+/* ── Subpagina's (page.html tokens) ────────────────────────────── */
+html.lw-preview {
+  --navy: var(--lw-night);
+  --teal: var(--lw-green);
+  --teal-d: var(--lw-green-dark);
+  --bg: var(--lw-cream);
+  --border: var(--lw-gray-blue);
+  --text: var(--lw-night);
+  --muted: var(--lw-muted);
+}
+
+html.lw-preview .btn-primary,
+html.lw-preview .page-hero-actions .btn-teal {
+  background: var(--lw-orange) !important;
+}
+
+html.lw-preview .page-intro--media {
+  background: linear-gradient(180deg, var(--lw-gray-blue) 0%, var(--lw-cream) 28%, #ffffff 100%) !important;
+}
+
+html.lw-preview .page-intro {
+  background: linear-gradient(180deg, var(--lw-cream) 0%, #ffffff 100%) !important;
+  border-bottom-color: var(--lw-gray-blue) !important;
+}
+
+@media (max-width: 768px) {
+  html.lw-preview body {
+    padding-top: 56px;
+  }
+
+  .lw-preview-bar {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+}

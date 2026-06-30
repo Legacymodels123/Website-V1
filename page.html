@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="lw-preview">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 <meta property="og:image" content="https://briqo.nl/og-image.png">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <link rel="stylesheet" href="/interactions.css">
 <link rel="stylesheet" href="/hero-headers.css">
@@ -256,8 +256,14 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
   .content-card{padding:24px}
 }
 </style>
+<link rel="stylesheet" href="/brand-loopwerk-preview.css">
 </head>
 <body>
+
+<div class="lw-preview-bar" id="lwPreviewBar">
+  <span><strong>Loopwerk</strong> kleurpreview — layout ongewijzigd, alleen kleuren &amp; fonts.</span>
+  <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Terug naar Briqo-kleuren</button>
+</div>
 
 <nav class="nav">
   <div class="container">
@@ -806,5 +812,27 @@ loadPage();
 </script>
 <script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
+<script>
+(function () {
+  var bar = document.getElementById('lwPreviewBar');
+  var off = document.getElementById('lwPreviewOff');
+  if (!off) return;
+  off.addEventListener('click', function () {
+    document.documentElement.classList.remove('lw-preview');
+    if (bar) bar.remove();
+    document.body.style.paddingTop = '';
+    var restore = document.createElement('button');
+    restore.type = 'button';
+    restore.className = 'lw-preview-restore';
+    restore.textContent = 'Loopwerk-kleuren';
+    restore.addEventListener('click', function () {
+      document.documentElement.classList.add('lw-preview');
+      restore.remove();
+      location.reload();
+    });
+    document.body.appendChild(restore);
+  });
+})();
+</script>
 </body>
 </html>
