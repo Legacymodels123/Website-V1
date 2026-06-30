@@ -239,6 +239,8 @@
     .logo-entry { display: flex; align-items: center; gap: 9px; opacity: 0.55; transition: opacity 0.2s; }
     .logo-entry:hover { opacity: 1; }
     .logo-entry-icon { width: 32px; height: 32px; background: #0F172A; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #14B8A6; font-size: 11px; font-weight: 800; }
+    .logo-entry-icon--image { background: white; border: 1px solid #E2E8F0; padding: 4px; }
+    .logo-entry-icon--image img { width: 100%; height: 100%; object-fit: contain; }
     .logo-entry-name { font-size: 14px; font-weight: 600; color: #0F172A; }
 
     /* PROBLEM SECTION */
@@ -591,13 +593,10 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero hero--home">
-  <div class="hero-media" id="cc-hero-media" aria-hidden="true">
-    <div class="hero-vibe"></div>
-  </div>
+<section class="hero hero--home hero--atmosphere">
   <div class="hero-bg-grad"></div>
   <div class="container">
-    <div class="hero-inner">
+    <div class="hero-inner hero-inner--atmosphere">
       <div class="hero-content">
         <div class="hero-pill">
           <div class="pill-dot"></div>
@@ -611,95 +610,42 @@
         </div>
         <div class="hero-proof">
           <div class="proof-avatars">
-            <div class="pavatar">
-              <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=60&q=80" alt="">
+            <div class="pavatar pavatar--brand">
+              <img src="https://sspw.nl/wp-content/uploads/2021/12/logo.png" alt="Sun Sauna &amp; Poolworld logo">
             </div>
           </div>
-          <span class="proof-text" style="margin-left:16px;" id="cc-hero-proof"><strong>Sun Sauna &amp; Poolworld</strong> werkt al met Briqo</span>
+          <span class="proof-text" style="margin-left:16px;" id="cc-hero-proof"><strong>Sun Sauna &amp; Poolworld</strong> gebruikt Briqo voor snellere prijsaanvragen</span>
         </div>
       </div>
 
-      <div class="hero-workbench is-step-1" id="cc-hero-workbench" aria-hidden="true">
-        <div class="workbench-board">
-          <div class="workbench-step workbench-step--question" data-wb-step="1">
-            <div class="workbench-step-head">
-              <span class="workbench-num">01</span>
-              <span class="workbench-step-label">Klantvraag</span>
-            </div>
-            <div class="workbench-card workbench-card--in">
-              <div class="workbench-source" id="cc-wb-source">
-                <i class="ti ti-inbox"></i>
-                <span>SSPW · website</span>
-              </div>
-              <p class="workbench-quote" id="cc-wb-question">"Wat kost een zwembad van 8×4 meter met verwarming?"</p>
-            </div>
+      <div class="hero-atmosphere" id="cc-hero-atmosphere" aria-hidden="true">
+        <div class="hero-portal-wrap">
+          <div class="hero-portal" id="cc-hero-portal">
+            <video class="hero-portal-video" id="cc-hero-video" autoplay muted loop playsinline preload="metadata"
+              poster="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=1600&q=85">
+              <source id="cc-hero-video-src" src="https://assets.mixkit.co/videos/preview/mixkit-swimming-pool-at-a-luxury-hotel-4064-large.mp4" type="video/mp4">
+            </video>
+            <div class="hero-portal-scrim"></div>
+            <div class="hero-portal-ring"></div>
           </div>
-
-          <div class="workbench-route" aria-hidden="true">
-            <svg class="workbench-route-svg" viewBox="0 0 48 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path class="workbench-route-path" d="M24 0 L24 48 M24 72 L24 120" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
-              <circle class="workbench-route-dot" cx="24" cy="60" r="5"/>
-            </svg>
-            <div class="workbench-route-badge">
-              <i class="ti ti-arrow-down"></i>
-              <span>Briqo vertaalt</span>
-            </div>
-          </div>
-
-          <div class="workbench-step workbench-step--translate" data-wb-step="2">
-            <div class="workbench-step-head">
-              <span class="workbench-num">02</span>
-              <span class="workbench-step-label">Tool-type</span>
-            </div>
-            <div class="workbench-card workbench-card--type">
-              <div class="workbench-type-icon" id="cc-wb-type-icon"><i class="ti ti-calculator"></i></div>
-              <div>
-                <div class="workbench-type-name" id="cc-wb-type">Prijscalculator</div>
-                <div class="workbench-type-desc" id="cc-wb-type-desc">Klant configureert zelf, jij krijgt gekwalificeerde leads</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="workbench-step workbench-step--result" data-wb-step="3">
-            <div class="workbench-step-head">
-              <span class="workbench-num">03</span>
-              <span class="workbench-step-label">Live op jouw site</span>
-            </div>
-            <div class="workbench-card workbench-card--tool">
-              <div class="workbench-tool-bar">
-                <span class="workbench-tool-dot"></span>
-                <span class="workbench-tool-dot"></span>
-                <span class="workbench-tool-dot"></span>
-                <span class="workbench-tool-url" id="cc-wb-url">sspw.nl/prijs</span>
-                <span class="workbench-live" id="cc-wb-live"><span class="workbench-live-dot"></span> Live</span>
-              </div>
-              <div class="workbench-tool-body">
-                <div class="workbench-tool-fields">
-                  <div class="workbench-field"><span class="workbench-field-lbl">Afmeting</span><span class="workbench-field-val">8 × 4 m</span></div>
-                  <div class="workbench-field"><span class="workbench-field-lbl">Verwarming</span><span class="workbench-field-val">Ja</span></div>
-                </div>
-                <div class="workbench-result">
-                  <span class="workbench-result-lbl" id="cc-wb-outcome-label">Indicatie direct zichtbaar</span>
-                  <span class="workbench-result-val" id="cc-wb-outcome">€42.500</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <svg class="hero-portal-slash" viewBox="0 0 120 520" fill="none" aria-hidden="true">
+            <path d="M108 0 L12 520" stroke="url(#heroSlashGrad)" stroke-width="2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="heroSlashGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(20,184,166,0)"/>
+                <stop offset="35%" stop-color="rgba(94,234,212,0.85)"/>
+                <stop offset="100%" stop-color="rgba(20,184,166,0.15)"/>
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
-
-        <div class="workbench-foot">
-          <div class="workbench-dots" id="cc-wb-dots" role="tablist" aria-label="Voorbeeldscenario's"></div>
-          <div class="workbench-proof">
-            <div class="hero-founders">
-              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt=""></div>
-              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=80&q=80" alt=""></div>
-              <div class="hero-founder"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=80&q=80" alt=""></div>
-            </div>
-            <div>
-              <div class="workbench-proof-title">Levi, Shaquil &amp; Gianni</div>
-              <div class="workbench-proof-sub">Drie oprichters · &lt; 2 wkn richting live</div>
-            </div>
-          </div>
+        <div class="hero-floats" id="cc-hero-floats">
+          <div class="hero-float hero-float--tag"><i class="ti ti-bolt"></i> &lt; 2 wkn richting live</div>
+          <div class="hero-float hero-float--tag"><i class="ti ti-apps"></i> Calculator · Scan · Intake</div>
+          <a class="hero-float hero-float--case" href="https://sspw-offerte-calc.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <img src="https://sspw.nl/wp-content/uploads/2021/12/logo.png" alt="">
+            <span>Live bij Sun Sauna &amp; Poolworld</span>
+          </a>
         </div>
       </div>
     </div>
@@ -713,7 +659,9 @@
       <div class="logos-label">Vertrouwd door</div>
       <div class="logos-items">
         <div class="logo-entry ix-card">
-          <div class="logo-entry-icon">SSPW</div>
+          <div class="logo-entry-icon logo-entry-icon--image">
+            <img src="https://sspw.nl/wp-content/uploads/2021/12/logo.png" alt="Sun Sauna &amp; Poolworld logo">
+          </div>
           <span class="logo-entry-name">Sun Sauna &amp; Poolworld</span>
         </div>
       </div>

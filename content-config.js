@@ -8,54 +8,19 @@ const CONTENT = {
     sub: "Geen AI-verhaal omheen. Wel een calculator, scan of intake die snel live staat en direct antwoord geeft op de vragen die jouw team nu nog handmatig opvangt.",
     ctaPrimary: "Demo aanvragen",
     ctaSecondary: "Bekijk cases",
-    proofText: "Sun Sauna & Poolworld werkt al met Briqo",
-    workbench: [
-      {
-        source: "SSPW · website",
-        question: "\"Wat kost een zwembad van 8×4 meter met verwarming?\"",
-        type: "Prijscalculator",
-        typeIcon: "ti-calculator",
-        typeDesc: "Klant configureert zelf, jij krijgt gekwalificeerde leads",
-        url: "sspw.nl/prijs",
-        live: true,
-        fields: [
-          { label: "Afmeting", value: "8 × 4 m" },
-          { label: "Verwarming", value: "Ja" }
-        ],
-        outcome: "€42.500",
-        outcomeLabel: "Indicatie direct zichtbaar"
-      },
-      {
-        source: "Installatiebedrijf · telefoon",
-        question: "\"Kunnen jullie een offerte sturen voor zonnepanelen op een plat dak?\"",
-        type: "Intake-tool",
-        typeIcon: "ti-file-invoice",
-        typeDesc: "Gestructureerde aanvraag, klaar om te versturen",
-        url: "jouwsite.nl/intake",
-        live: false,
-        fields: [
-          { label: "Daktype", value: "Plat" },
-          { label: "Oppervlak", value: "120 m²" }
-        ],
-        outcome: "Offerteklaar",
-        outcomeLabel: "Alle info in één overzicht"
-      },
-      {
-        source: "Adviesbureau · contactformulier",
-        question: "\"Past jullie dienst bij een bedrijf van 8 man?\"",
-        type: "Snelle scan",
-        typeIcon: "ti-sparkles",
-        typeDesc: "Acht vragen, drie concrete verbeterkansen",
-        url: "jouwsite.nl/scan",
-        live: false,
-        fields: [
-          { label: "Teamgrootte", value: "8 FTE" },
-          { label: "Sector", value: "Dienstverlening" }
-        ],
-        outcome: "3 kansen",
-        outcomeLabel: "Direct inzicht voor bezoeker"
-      }
-    ]
+    proofText: "Sun Sauna & Poolworld gebruikt Briqo voor snellere prijsaanvragen",
+    atmosphere: {
+      floats: [
+        { type: "tag", icon: "ti-bolt", text: "< 2 wkn richting live" },
+        { type: "tag", icon: "ti-apps", text: "Calculator · Scan · Intake" },
+        {
+          type: "case",
+          href: "https://sspw-offerte-calc.vercel.app/",
+          logo: "https://sspw.nl/wp-content/uploads/2021/12/logo.png",
+          text: "Live bij Sun Sauna & Poolworld"
+        }
+      ]
+    }
   },
 
   team: {
@@ -189,107 +154,38 @@ const CONTENT = {
     return (items || []).map(function (s, i) { return renderImpactCard(s, i); }).join('');
   }
 
-  function renderWorkbenchFields(fields) {
-    var container = document.querySelector('.workbench-tool-fields');
-    if (!container || !fields) return;
-    container.innerHTML = fields.map(function (f) {
-      return '<div class="workbench-field"><span class="workbench-field-lbl">' + f.label + '</span><span class="workbench-field-val">' + f.value + '</span></div>';
-    }).join('');
+  function renderHeroFloat(f) {
+    if (f.type === 'case') {
+      return '<a class="hero-float hero-float--case" href="' + (f.href || '#') + '" target="_blank" rel="noopener noreferrer">' +
+        '<img src="' + f.logo + '" alt="">' +
+        '<span>' + f.text + '</span></a>';
+    }
+    return '<div class="hero-float hero-float--tag"><i class="ti ' + (f.icon || 'ti-sparkles') + '"></i> ' + f.text + '</div>';
   }
 
-  function applyWorkbenchScenario(s, idx) {
-    setText('cc-wb-source', s.source);
-    setText('cc-wb-question', s.question);
-    setText('cc-wb-type', s.type);
-    setText('cc-wb-type-desc', s.typeDesc);
-    setText('cc-wb-url', s.url);
-    setText('cc-wb-outcome', s.outcome);
-    setText('cc-wb-outcome-label', s.outcomeLabel);
-    var icon = document.getElementById('cc-wb-type-icon');
-    if (icon && s.typeIcon) icon.innerHTML = '<i class="ti ' + s.typeIcon + '"></i>';
-    var live = document.getElementById('cc-wb-live');
-    if (live) live.classList.toggle('is-hidden', !s.live);
-    renderWorkbenchFields(s.fields);
-    var wb = document.getElementById('cc-hero-workbench');
-    if (wb) {
-      wb.classList.remove('is-step-1', 'is-step-2', 'is-step-3');
-      wb.classList.add('is-step-' + ((idx % 3) + 1));
+  function initAtmosphere(atmo) {
+    var floats = document.getElementById('cc-hero-floats');
+    if (floats && atmo && atmo.floats) {
+      floats.innerHTML = atmo.floats.map(renderHeroFloat).join('');
     }
-    document.querySelectorAll('.workbench-dot').forEach(function (dot, i) {
-      dot.classList.toggle('is-active', i === idx);
-      dot.setAttribute('aria-selected', i === idx ? 'true' : 'false');
-    });
-  }
-
-  function initWorkbench(scenarios) {
-    if (!scenarios || !scenarios.length) return;
-    var wb = document.getElementById('cc-hero-workbench');
-    if (!wb) return;
-    if (wb._workbenchTimer) {
-      clearInterval(wb._workbenchTimer);
-      wb._workbenchTimer = null;
-    }
-
-    var dots = document.getElementById('cc-wb-dots');
-    if (dots) {
-      dots.innerHTML = scenarios.map(function (_, i) {
-        return '<button type="button" class="workbench-dot' + (i === 0 ? ' is-active' : '') + '" role="tab" aria-label="Scenario ' + (i + 1) + '" aria-selected="' + (i === 0 ? 'true' : 'false') + '" data-wb-idx="' + i + '"></button>';
-      }).join('');
-    }
-
-    var current = 0;
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var timer;
-
-    function goTo(idx, animate) {
-      idx = ((idx % scenarios.length) + scenarios.length) % scenarios.length;
-      if (animate && !reduced) {
-        wb.querySelectorAll('.workbench-step').forEach(function (el) { el.classList.add('is-fading'); });
-        setTimeout(function () {
-          applyWorkbenchScenario(scenarios[idx], idx);
-          wb.querySelectorAll('.workbench-step').forEach(function (el) { el.classList.remove('is-fading'); });
-        }, 220);
-      } else {
-        applyWorkbenchScenario(scenarios[idx], idx);
-      }
-      current = idx;
-    }
-
-    applyWorkbenchScenario(scenarios[0], 0);
-
-    if (dots) {
-      dots.addEventListener('click', function (e) {
-        var btn = e.target.closest('.workbench-dot');
-        if (!btn) return;
-        var idx = parseInt(btn.dataset.wbIdx, 10);
-        if (!isNaN(idx)) {
-          clearInterval(timer);
-          goTo(idx, true);
-          if (!reduced) {
-            timer = setInterval(function () { goTo(current + 1, true); }, 7000);
-            wb._workbenchTimer = timer;
+    fetch('/content/hero-media.json')
+      .then(function (r) { return r.json(); })
+      .then(function (hm) {
+        var m = (hm && hm.home) || {};
+        var vid = document.getElementById('cc-hero-video');
+        var src = document.getElementById('cc-hero-video-src');
+        var url = (atmo && atmo.video) || m.bgVideo;
+        var poster = (atmo && atmo.poster) || m.bgPoster;
+        if (poster && vid) vid.setAttribute('poster', poster);
+        if (url && src) {
+          src.setAttribute('src', url);
+          if (vid) {
+            try { vid.load(); } catch (e) {}
+            vid.play().catch(function () {});
           }
         }
-      });
-    }
-
-    wb.querySelectorAll('.workbench-step').forEach(function (step) {
-      step.addEventListener('mouseenter', function () {
-        if (reduced) return;
-        var n = parseInt(step.dataset.wbStep, 10);
-        if (!isNaN(n)) {
-          wb.classList.remove('is-step-1', 'is-step-2', 'is-step-3');
-          wb.classList.add('is-step-' + n);
-        }
-      });
-    });
-
-    if (!reduced && scenarios.length > 1) {
-      timer = setInterval(function () { goTo(current + 1, true); }, 7000);
-      wb._workbenchTimer = timer;
-    }
-
-    window.BriqoWorkbench = { goTo: goTo };
+      })
+      .catch(function () {});
   }
 
   function runApplyContent() {
@@ -301,7 +197,8 @@ const CONTENT = {
     setText('cc-hero-cta1', h.ctaPrimary);
     setText('cc-hero-cta2', h.ctaSecondary);
     setText('cc-hero-proof', h.proofText);
-    if (h.workbench) initWorkbench(h.workbench);
+    if (h.atmosphere) initAtmosphere(h.atmosphere);
+    else initAtmosphere({});
   }
 
   var t = CONTENT.team;

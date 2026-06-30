@@ -18,54 +18,19 @@
         "sub": "Geen AI-verhaal omheen. Wel een calculator, scan of intake die snel live staat en direct antwoord geeft op de vragen die jouw team nu nog handmatig opvangt.",
         "ctaPrimary": "Demo aanvragen",
         "ctaSecondary": "Bekijk cases",
-        "proofText": "Sun Sauna & Poolworld werkt al met Briqo",
-        "workbench": [
-          {
-            "source": "SSPW · website",
-            "question": "\"Wat kost een zwembad van 8×4 meter met verwarming?\"",
-            "type": "Prijscalculator",
-            "typeIcon": "ti-calculator",
-            "typeDesc": "Klant configureert zelf, jij krijgt gekwalificeerde leads",
-            "url": "sspw.nl/prijs",
-            "live": true,
-            "fields": [
-              { "label": "Afmeting", "value": "8 × 4 m" },
-              { "label": "Verwarming", "value": "Ja" }
-            ],
-            "outcome": "€42.500",
-            "outcomeLabel": "Indicatie direct zichtbaar"
-          },
-          {
-            "source": "Installatiebedrijf · telefoon",
-            "question": "\"Kunnen jullie een offerte sturen voor zonnepanelen op een plat dak?\"",
-            "type": "Intake-tool",
-            "typeIcon": "ti-file-invoice",
-            "typeDesc": "Gestructureerde aanvraag, klaar om te versturen",
-            "url": "jouwsite.nl/intake",
-            "live": false,
-            "fields": [
-              { "label": "Daktype", "value": "Plat" },
-              { "label": "Oppervlak", "value": "120 m²" }
-            ],
-            "outcome": "Offerteklaar",
-            "outcomeLabel": "Alle info in één overzicht"
-          },
-          {
-            "source": "Adviesbureau · contactformulier",
-            "question": "\"Past jullie dienst bij een bedrijf van 8 man?\"",
-            "type": "Snelle scan",
-            "typeIcon": "ti-sparkles",
-            "typeDesc": "Acht vragen, drie concrete verbeterkansen",
-            "url": "jouwsite.nl/scan",
-            "live": false,
-            "fields": [
-              { "label": "Teamgrootte", "value": "8 FTE" },
-              { "label": "Sector", "value": "Dienstverlening" }
-            ],
-            "outcome": "3 kansen",
-            "outcomeLabel": "Direct inzicht voor bezoeker"
-          }
-        ]
+        "proofText": "Sun Sauna & Poolworld gebruikt Briqo voor snellere prijsaanvragen",
+        "atmosphere": {
+          "floats": [
+            { "type": "tag", "icon": "ti-bolt", "text": "< 2 wkn richting live" },
+            { "type": "tag", "icon": "ti-apps", "text": "Calculator · Scan · Intake" },
+            {
+              "type": "case",
+              "href": "https://sspw-offerte-calc.vercel.app/",
+              "logo": "https://sspw.nl/wp-content/uploads/2021/12/logo.png",
+              "text": "Live bij Sun Sauna & Poolworld"
+            }
+          ]
+        }
       }
     },
     {

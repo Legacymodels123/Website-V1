@@ -282,23 +282,24 @@
     });
   }
 
-  function bindWorkbench() {
-    var wb = document.getElementById('cc-hero-workbench');
-    if (!wb || wb.dataset.ixWb) return;
-    wb.dataset.ixWb = '1';
+  function bindAtmosphere() {
+    var wrap = document.getElementById('cc-hero-atmosphere');
+    if (!wrap || wrap.dataset.ixAtmo) return;
+    wrap.dataset.ixAtmo = '1';
+    if (prefersReduced()) return;
 
-    wb.querySelectorAll('.workbench-step').forEach(function (step) {
-      step.addEventListener('mouseleave', function () {
-        if (prefersReduced()) return;
-        var active = wb.querySelector('.workbench-dot.is-active');
-        if (active) {
-          var idx = parseInt(active.dataset.wbIdx, 10);
-          if (!isNaN(idx)) {
-            wb.classList.remove('is-step-1', 'is-step-2', 'is-step-3');
-            wb.classList.add('is-step-' + ((idx % 3) + 1));
-          }
-        }
-      });
+    var video = wrap.querySelector('.hero-portal-video');
+    if (!video) return;
+
+    wrap.addEventListener('mousemove', function (e) {
+      var rect = wrap.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      video.style.transform = 'scale(1.08) translate(' + (x * 14) + 'px, ' + (y * 10) + 'px)';
+    });
+
+    wrap.addEventListener('mouseleave', function () {
+      video.style.transform = 'scale(1.08)';
     });
   }
 
@@ -322,7 +323,7 @@
     bindMobileNav();
     bindImpactCards();
     bindCountUp();
-    bindWorkbench();
+    bindAtmosphere();
   }
 
   function refresh() {
