@@ -1,20 +1,32 @@
 (function () {
   var root = document.documentElement;
   var STORAGE = 'lw-preview-variant';
+  var VARIANTS = ['v1', 'v2', 'v3', 'v4', 'v5'];
+
+  var HINTS = {
+    v1: 'Fel loopgroen — energiek, maar kan snel “app-groen” aanvoelen.',
+    v2: 'Mos & strak — rustig, weinig kleur (navy + creme + oranje).',
+    v3: '★ Ons voorstel: creme + saliegroen accent + oranje CTA’s.',
+    v4: 'Terracotta / roodachtig — warmer en menselijker, minder groen.',
+    v5: 'Design B — lichte hero, scherpere cards, ander geheel gevoel.'
+  };
 
   function setVariant(v) {
+    if (VARIANTS.indexOf(v) < 0) v = 'v3';
     root.classList.add('lw-preview');
-    root.classList.remove('lw-preview-v1', 'lw-preview-v2');
+    VARIANTS.forEach(function (id) { root.classList.remove('lw-preview-' + id); });
     root.classList.add('lw-preview-' + v);
     try { localStorage.setItem(STORAGE, v); } catch (e) {}
     document.querySelectorAll('.lw-preview-variant').forEach(function (btn) {
       btn.classList.toggle('is-active', btn.dataset.variant === v);
     });
+    var hint = document.getElementById('lwPreviewHint');
+    if (hint && HINTS[v]) hint.textContent = HINTS[v];
   }
 
   function init() {
-    var saved = 'v1';
-    try { saved = localStorage.getItem(STORAGE) || 'v1'; } catch (e) {}
+    var saved = 'v3';
+    try { saved = localStorage.getItem(STORAGE) || 'v3'; } catch (e) {}
     if (root.classList.contains('lw-preview')) setVariant(saved);
 
     document.querySelectorAll('.lw-preview-variant').forEach(function (btn) {
@@ -26,18 +38,16 @@
     var off = document.getElementById('lwPreviewOff');
     if (off) {
       off.addEventListener('click', function () {
-        root.classList.remove('lw-preview', 'lw-preview-v1', 'lw-preview-v2');
+        VARIANTS.forEach(function (id) { root.classList.remove('lw-preview', 'lw-preview-' + id); });
         var bar = document.getElementById('lwPreviewBar');
         if (bar) bar.remove();
         document.body.style.paddingTop = '';
         var restore = document.createElement('button');
         restore.type = 'button';
         restore.className = 'lw-preview-restore';
-        restore.textContent = 'Loopwerk-kleuren';
+        restore.textContent = 'Loopwerk-voorlegging';
         restore.addEventListener('click', function () {
           restore.remove();
-          root.classList.add('lw-preview');
-          setVariant(saved);
           location.reload();
         });
         document.body.appendChild(restore);

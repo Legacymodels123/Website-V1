@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" class="lw-preview lw-preview-v1">
+<html lang="nl" class="lw-preview lw-preview-v3">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -558,12 +558,18 @@
 <body>
 
 <div class="lw-preview-bar" id="lwPreviewBar">
-  <span><strong>Loopwerk</strong> kleurpreview</span>
-  <div class="lw-preview-variants">
-    <button type="button" class="lw-preview-variant is-active" data-variant="v1">1 · Loopgroen</button>
-    <button type="button" class="lw-preview-variant" data-variant="v2">2 · Mos &amp; strak</button>
+  <div class="lw-preview-bar-inner">
+    <span class="lw-preview-title"><strong>Loopwerk</strong> · kleurrichtingen voor overleg</span>
+    <div class="lw-preview-variants">
+      <button type="button" class="lw-preview-variant" data-variant="v1">1 · Groen</button>
+      <button type="button" class="lw-preview-variant" data-variant="v2">2 · Mos</button>
+      <button type="button" class="lw-preview-variant is-active" data-variant="v3">3 · Salie ★</button>
+      <button type="button" class="lw-preview-variant" data-variant="v4">4 · Terracotta</button>
+      <button type="button" class="lw-preview-variant" data-variant="v5">5 · Design B</button>
+    </div>
+    <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Briqo</button>
   </div>
-  <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Briqo-kleuren</button>
+  <p class="lw-preview-hint" id="lwPreviewHint">★ Ons voorstel: creme + saliegroen accent + oranje CTA's.</p>
 </div>
 
 <!-- NAV -->

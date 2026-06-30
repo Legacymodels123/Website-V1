@@ -31,7 +31,7 @@ html.lw-preview-v1 {
   --teal-d: var(--lw-accent-dark);
 }
 
-/* Variant 2: mos & strak — minimaal groen, nachtblauw + oranje + creme */
+/* Variant 2: mos & strak */
 html.lw-preview-v2 {
   --lw-accent: #1F4D3A;
   --lw-accent-dark: #163829;
@@ -43,6 +43,48 @@ html.lw-preview-v2 {
   --teal-d: var(--lw-night-hover);
 }
 
+/* Variant 3: warm & werkbaar — saliegroen (aanbevolen) */
+html.lw-preview-v3 {
+  --lw-accent: #4A7C6F;
+  --lw-accent-dark: #3d665b;
+  --lw-accent-light: #8FB5A8;
+  --lw-accent-tint: #E8F0ED;
+  --lw-accent-rgb: 74, 124, 111;
+  --lw-on-dark: #B8D4CB;
+  --teal: var(--lw-accent);
+  --teal-d: var(--lw-accent-dark);
+}
+
+/* Variant 4: terracotta / roodachtig */
+html.lw-preview-v4 {
+  --lw-accent: #C45C4A;
+  --lw-accent-dark: #A84D3E;
+  --lw-accent-light: #E8A898;
+  --lw-accent-tint: #FAECE9;
+  --lw-accent-rgb: 196, 92, 74;
+  --lw-on-dark: #F5D6CE;
+  --lw-orange: #C45C4A;
+  --lw-orange-dark: #A84D3E;
+  --teal: var(--lw-accent);
+  --teal-d: var(--lw-accent-dark);
+}
+
+/* Variant 5: design B — licht editorial + koper/rust */
+html.lw-preview-v5 {
+  --lw-night: #2C3338;
+  --lw-night-hover: #3d464d;
+  --lw-accent: #C4704B;
+  --lw-accent-dark: #A85A38;
+  --lw-accent-light: #E8B89A;
+  --lw-accent-tint: #FAF0EA;
+  --lw-accent-rgb: 196, 112, 75;
+  --lw-on-dark: #C4704B;
+  --lw-orange: #C4704B;
+  --lw-orange-dark: #A85A38;
+  --teal: var(--lw-accent);
+  --teal-d: var(--lw-accent-dark);
+}
+
 /* ── Preview bar ─────────────────────────────────────────────── */
 .lw-preview-bar {
   position: fixed;
@@ -51,15 +93,37 @@ html.lw-preview-v2 {
   right: 0;
   z-index: 10000;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px 12px;
+  background: #101820;
+  color: #fff;
+  font-size: 13px;
+  box-shadow: 0 4px 24px rgba(16, 24, 32, 0.3);
+}
+
+.lw-preview-bar-inner {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-  padding: 8px 20px;
-  background: #101820;
-  color: #fff;
-  font-size: 13px;
-  box-shadow: 0 4px 20px rgba(16, 24, 32, 0.25);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.lw-preview-title {
+  flex-shrink: 0;
+}
+
+.lw-preview-hint {
+  margin: 0;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  max-width: 640px;
+  line-height: 1.45;
 }
 
 .lw-preview-bar strong {
@@ -94,6 +158,21 @@ html.lw-preview-v2 {
   background: rgba(242, 140, 56, 0.22);
   border-color: rgba(242, 140, 56, 0.55);
   color: #fff;
+}
+
+.lw-preview-variant[data-variant="v3"].is-active {
+  background: rgba(74, 124, 111, 0.35);
+  border-color: rgba(143, 181, 168, 0.65);
+}
+
+.lw-preview-variant[data-variant="v4"].is-active {
+  background: rgba(196, 92, 74, 0.3);
+  border-color: rgba(232, 168, 152, 0.55);
+}
+
+.lw-preview-variant[data-variant="v5"].is-active {
+  background: rgba(196, 112, 75, 0.28);
+  border-color: rgba(232, 184, 154, 0.5);
 }
 
 .lw-preview-toggle {
@@ -132,7 +211,7 @@ html.lw-preview-v2 {
 }
 
 html.lw-preview body {
-  padding-top: 44px;
+  padding-top: 76px;
 }
 
 /* ── Typografie ────────────────────────────────────────────────── */
@@ -410,9 +489,326 @@ html.lw-preview .page-intro {
   border-bottom-color: var(--lw-gray-blue) !important;
 }
 
-/* ── Variant 1: loopgroen badges ─────────────────────────────── */
-html.lw-preview-v1 .branch-live {
+/* ── Variant 1 & 3: gekleurde live-badges ────────────────────── */
+html.lw-preview-v1 .branch-live,
+html.lw-preview-v3 .branch-live {
   background: var(--lw-accent) !important;
+}
+
+html.lw-preview-v4 .branch-live {
+  background: var(--lw-accent) !important;
+}
+
+/* ── Variant 3: salie — balanced, warm on dark ───────────────── */
+html.lw-preview-v3 .hero-pill,
+html.lw-preview-v3 .page-hero-label {
+  color: var(--lw-on-dark) !important;
+}
+
+html.lw-preview-v3 .nav-logomark svg {
+  stroke: var(--lw-accent-light) !important;
+}
+
+/* ── Variant 4: terracotta — warm roodachtig overal ────────────── */
+html.lw-preview-v4 .nav-logomark svg,
+html.lw-preview-v4 .footer-lm svg {
+  stroke: var(--lw-accent) !important;
+}
+
+html.lw-preview-v4 .hero--home .hero-bg-grad,
+html.lw-preview-v4 .hero.hero--atmosphere .hero-bg-grad,
+html.lw-preview-v4 .hero-bg-grad,
+html.lw-preview-v4 .impact-bg {
+  background:
+    radial-gradient(ellipse 55% 65% at 82% 38%, rgba(196, 92, 74, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 50% at 8% 85%, rgba(31, 77, 58, 0.18) 0%, transparent 50%),
+    linear-gradient(165deg, var(--lw-night) 0%, #121820 48%, #0a0f14 100%) !important;
+}
+
+html.lw-preview-v4 .hero-portal-ring {
+  border-color: rgba(232, 168, 152, 0.35) !important;
+}
+
+html.lw-preview-v4 #heroSlashGrad stop:nth-child(2) {
+  stop-color: rgba(232, 168, 152, 0.8);
+}
+
+html.lw-preview-v4 .hero-pill,
+html.lw-preview-v4 .page-hero-label {
+  background: rgba(196, 92, 74, 0.14) !important;
+  border-color: rgba(196, 92, 74, 0.28) !important;
+  color: var(--lw-on-dark) !important;
+}
+
+html.lw-preview-v4 .pill-dot,
+html.lw-preview-v4 .page-hero-label::before {
+  background: var(--lw-accent-light) !important;
+}
+
+/* ── Variant 5: design B — licht, editorial, scherp ───────────── */
+html.lw-preview-v5 .hero,
+html.lw-preview-v5 .hero--home,
+html.lw-preview-v5 .hero--atmosphere {
+  background: var(--lw-cream) !important;
+}
+
+html.lw-preview-v5 .hero--home .hero-bg-grad,
+html.lw-preview-v5 .hero.hero--atmosphere .hero-bg-grad,
+html.lw-preview-v5 .hero-bg-grad {
+  background:
+    radial-gradient(ellipse 70% 55% at 95% 15%, rgba(196, 112, 75, 0.09) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 45% at 0% 100%, rgba(74, 124, 111, 0.06) 0%, transparent 45%),
+    linear-gradient(180deg, var(--lw-cream) 0%, #fff 55%, var(--lw-cream-muted) 100%) !important;
+}
+
+html.lw-preview-v5 .hero h1 {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v5 .hero h1 em {
+  color: var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .hero-sub {
+  color: var(--lw-muted) !important;
+}
+
+html.lw-preview-v5 .hero-pill {
+  background: rgba(196, 112, 75, 0.1) !important;
+  border-color: rgba(196, 112, 75, 0.25) !important;
+  color: var(--lw-accent-dark) !important;
+}
+
+html.lw-preview-v5 .hero-pill,
+html.lw-preview-v5 .pill-dot {
+  color: var(--lw-accent-dark) !important;
+}
+
+html.lw-preview-v5 .pill-dot {
+  background: var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .btn-ghost-white {
+  background: transparent !important;
+  color: var(--lw-night) !important;
+  border: 2px solid var(--lw-night) !important;
+  box-shadow: none !important;
+}
+
+html.lw-preview-v5 .btn-ghost-white:hover {
+  background: var(--lw-night) !important;
+  color: #fff !important;
+}
+
+html.lw-preview-v5 .hero-proof .proof-text {
+  color: var(--lw-muted) !important;
+}
+
+html.lw-preview-v5 .hero-proof .proof-text strong {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v5 .hero-portal-scrim {
+  background:
+    linear-gradient(105deg, rgba(247, 244, 237, 0.55) 0%, transparent 45%),
+    linear-gradient(180deg, transparent 60%, rgba(247, 244, 237, 0.35) 100%) !important;
+}
+
+html.lw-preview-v5 .hero-portal-ring {
+  border-color: rgba(196, 112, 75, 0.4) !important;
+  box-shadow: 0 0 32px rgba(196, 112, 75, 0.12) !important;
+}
+
+html.lw-preview-v5 .hero-float {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: var(--lw-gray-blue) !important;
+  color: var(--lw-night) !important;
+  box-shadow: 0 8px 28px rgba(44, 51, 56, 0.1) !important;
+}
+
+html.lw-preview-v5 .hero-float--tag i {
+  color: var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .impact-section {
+  background: #fff !important;
+  border-top: 1px solid var(--lw-gray-blue);
+  border-bottom: 1px solid var(--lw-gray-blue);
+}
+
+html.lw-preview-v5 .impact-bg {
+  background: transparent !important;
+}
+
+html.lw-preview-v5 .impact-bg::after {
+  opacity: 0.12 !important;
+}
+
+html.lw-preview-v5 .impact-title {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v5 .impact-sub {
+  color: var(--lw-muted) !important;
+}
+
+html.lw-preview-v5 .impact-head .section-label {
+  color: var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .impact-val {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v5 .impact-val .impact-prefix,
+html.lw-preview-v5 .impact-val .impact-suffix {
+  color: var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .impact-lbl {
+  color: var(--lw-muted) !important;
+}
+
+html.lw-preview-v5 .impact-card {
+  background: var(--lw-cream) !important;
+  border-color: var(--lw-gray-blue) !important;
+  border-radius: 8px !important;
+  border-left: 4px solid var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .impact-card:hover,
+html.lw-preview-v5 .impact-card.is-active {
+  background: #fff !important;
+  border-color: var(--lw-gray-blue) !important;
+  border-left-color: var(--lw-accent) !important;
+  box-shadow: 0 12px 36px rgba(44, 51, 56, 0.08) !important;
+}
+
+html.lw-preview-v5 .cta-section {
+  background: var(--lw-cream-muted) !important;
+}
+
+html.lw-preview-v5 .cta-section .section-label {
+  color: var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .cta-section h2 {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v5 .cta-section .hero-sub,
+html.lw-preview-v5 .cta-section p {
+  color: var(--lw-muted) !important;
+}
+
+html.lw-preview-v5 .footer {
+  background: var(--lw-night) !important;
+}
+
+html.lw-preview-v5 .nav-cta {
+  background: transparent !important;
+  color: var(--lw-night) !important;
+  border: 2px solid var(--lw-night) !important;
+  box-shadow: none !important;
+}
+
+html.lw-preview-v5 .nav-cta:hover {
+  background: var(--lw-night) !important;
+  color: #fff !important;
+}
+
+html.lw-preview-v5 .team-card,
+html.lw-preview-v5 .case-card.ix-card,
+html.lw-preview-v5 .branch-card,
+html.lw-preview-v5 .price-card,
+html.lw-preview-v5 .p-step,
+html.lw-preview-v5 .cs-stat,
+html.lw-preview-v5 .content-card {
+  border-radius: 8px !important;
+}
+
+html.lw-preview-v5 .p-step,
+html.lw-preview-v5 .case-quote,
+html.lw-preview-v5 .team-card {
+  border-left: 4px solid var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .section-label {
+  letter-spacing: 0.12em !important;
+}
+
+html.lw-preview-v5 .section-label::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 3px;
+  background: var(--lw-accent);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+html.lw-preview-v5 .impact-head .section-label::after,
+html.lw-preview-v5 .cta-section .section-label::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html.lw-preview-v5 .page-hero {
+  background: var(--lw-cream) !important;
+}
+
+html.lw-preview-v5 .page-hero-scrim,
+html.lw-preview-v5 .page-hero-glow {
+  background: linear-gradient(180deg, var(--lw-cream) 0%, rgba(247, 244, 237, 0.85) 100%) !important;
+}
+
+html.lw-preview-v5 .page-hero h1 {
+  color: var(--lw-night) !important;
+}
+
+html.lw-preview-v5 .page-hero p {
+  color: var(--lw-muted) !important;
+}
+
+html.lw-preview-v5 .page-hero-label {
+  background: rgba(196, 112, 75, 0.1) !important;
+  border-color: rgba(196, 112, 75, 0.25) !important;
+  color: var(--lw-accent-dark) !important;
+}
+
+html.lw-preview-v5 .page-hero-label::before {
+  background: var(--lw-accent) !important;
+}
+
+html.lw-preview-v5 .branch-live {
+  background: var(--lw-accent) !important;
+}
+
+@media (max-width: 768px) {
+  html.lw-preview body {
+    padding-top: 108px;
+  }
+
+  .lw-preview-bar {
+    font-size: 12px;
+    padding: 8px 10px 10px;
+    gap: 6px;
+  }
+
+  .lw-preview-variants {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .lw-preview-variant {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .lw-preview-hint {
+    font-size: 10.5px;
+  }
 }
 
 /* ── Variant 2: mos & strak — minder groen, warmer op donker ─── */
@@ -527,21 +923,4 @@ html.lw-preview-v2 .impact-grid--compact .impact-card:hover,
 html.lw-preview-v2 .impact-grid--compact .impact-card.is-active {
   border-color: var(--lw-gray-blue) !important;
   box-shadow: 0 12px 32px rgba(16, 24, 32, 0.06) !important;
-}
-
-@media (max-width: 768px) {
-  html.lw-preview body {
-    padding-top: 72px;
-  }
-
-  .lw-preview-bar {
-    font-size: 12px;
-    padding: 10px 12px;
-    gap: 8px;
-  }
-
-  .lw-preview-variants {
-    width: 100%;
-    justify-content: center;
-  }
 }
