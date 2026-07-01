@@ -1,0 +1,75 @@
+/* Hero-varianten — wissel via html.lw-hero-loop | html.lw-hero-portal */
+
+.hero-visual--portal {
+  display: none;
+}
+
+html.lw-hero-portal .hero-visual--loop {
+  display: none !important;
+}
+
+html.lw-hero-portal .hero-visual--portal {
+  display: block !important;
+}
+
+html.lw-hero-portal .hero-bg-grad {
+  display: block !important;
+}
+
+.hero--workshop .hero-bg-grad {
+  display: none;
+}
+
+/* Preview-balk: tweede rij hero-keuze */
+.lw-preview-bar-inner--hero {
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 2px;
+}
+
+.lw-preview-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  flex-shrink: 0;
+}
+
+.lw-preview-hero {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.lw-preview-hero:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.lw-preview-hero.is-active {
+  background: rgba(143, 181, 168, 0.28);
+  border-color: rgba(143, 181, 168, 0.55);
+  color: #fff;
+}
+
+html.lw-preview body {
+  padding-top: 108px !important;
+}
+
+@media (max-width: 640px) {
+  html.lw-preview body {
+    padding-top: 128px !important;
+  }
+
+  .lw-preview-bar-inner--hero {
+    justify-content: center;
+  }
+}

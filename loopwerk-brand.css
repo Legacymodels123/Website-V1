@@ -1,0 +1,77 @@
+/* Loopwerk — productie-brand (v6 Hand, zonder preview-balk) */
+
+html.loopwerk {
+  --lw-night: #101820;
+  --lw-night-hover: #1a2832;
+  --lw-cream: #F7F4ED;
+  --lw-cream-muted: #F0EDE6;
+  --lw-orange: #F28C38;
+  --lw-orange-dark: #E07D2F;
+  --lw-gray-blue: #DDE6E8;
+  --lw-muted: #5c6b73;
+  --lw-accent: #4A7C6F;
+  --lw-accent-dark: #3d665b;
+  --lw-accent-light: #8FB5A8;
+  --lw-accent-tint: #E8F0ED;
+  --lw-on-dark: #B8D4CB;
+  --lw-hand: 'Kalam', 'Segoe Print', cursive;
+  --teal: var(--lw-accent);
+  --teal-d: var(--lw-accent-dark);
+}
+
+html.loopwerk:not(.lw-preview) body {
+  padding-top: 0 !important;
+}
+
+html.loopwerk .nav-name-hand {
+  font-family: var(--lw-hand);
+  font-weight: 700;
+  color: var(--lw-accent);
+}
+
+/* Lichte workshop-hero wint van donkere preview-defaults */
+html.loopwerk .hero--workshop {
+  background: var(--lw-cream) !important;
+}
+
+html.loopwerk .hero--workshop h1 {
+  color: var(--lw-night) !important;
+}
+
+html.loopwerk .hero--workshop h1 em {
+  color: var(--lw-accent) !important;
+}
+
+html.loopwerk .hero--workshop .hero-sub {
+  color: var(--lw-muted) !important;
+}
+
+html.loopwerk .hero--workshop .hero-pill,
+html.loopwerk .hero--workshop .hero-pill span {
+  background: var(--lw-accent-tint) !important;
+  border: 2px dashed rgba(74, 124, 111, 0.35) !important;
+  color: var(--lw-accent-dark) !important;
+}
+
+html.loopwerk .hero--workshop .pill-dot {
+  background: var(--lw-orange) !important;
+}
+
+html.loopwerk .hero--workshop .proof-text {
+  color: var(--lw-muted) !important;
+}
+
+html.loopwerk .hero--workshop .proof-text strong {
+  color: var(--lw-night) !important;
+}
+
+html.loopwerk .hero--workshop .hero-float {
+  background: #fff !important;
+  border: 2px dashed var(--lw-gray-blue) !important;
+  color: var(--lw-night) !important;
+  box-shadow: 0 8px 28px rgba(16, 24, 32, 0.08) !important;
+}
+
+html.loopwerk .hero--workshop .hero-float i {
+  color: var(--lw-accent) !important;
+}

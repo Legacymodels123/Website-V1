@@ -10,6 +10,17 @@ const CONTENT = {
     ctaSecondary: "Bekijk cases",
     proofText: "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
     atmosphere: {
+      loop: {
+        questions: [
+          "Wat kost het?",
+          "Kan ik reserveren?",
+          "Hoe lang duurt het?",
+          "Offerte graag",
+          "Nog op voorraad?"
+        ],
+        weekLabel: "3",
+        stamp: "elke week weer"
+      },
       floats: [
         { type: "tag", icon: "ti-bolt", text: "< 2 wkn richting live" },
         { type: "tag", icon: "ti-apps", text: "Calculator · Scan · Intake" },
@@ -164,28 +175,14 @@ const CONTENT = {
   }
 
   function initAtmosphere(atmo) {
-    var floats = document.getElementById('cc-hero-floats');
-    if (floats && atmo && atmo.floats) {
-      floats.innerHTML = atmo.floats.map(renderHeroFloat).join('');
+    var html = '';
+    if (atmo && atmo.floats) html = atmo.floats.map(renderHeroFloat).join('');
+    document.querySelectorAll('.cc-hero-floats-sync').forEach(function (el) {
+      if (html) el.innerHTML = html;
+    });
+    if (window.LoopwerkHeroLoop) {
+      window.LoopwerkHeroLoop.init(atmo || {});
     }
-    fetch('/content/hero-media.json')
-      .then(function (r) { return r.json(); })
-      .then(function (hm) {
-        var m = (hm && hm.home) || {};
-        var vid = document.getElementById('cc-hero-video');
-        var src = document.getElementById('cc-hero-video-src');
-        var url = (atmo && atmo.video) || m.bgVideo;
-        var poster = (atmo && atmo.poster) || m.bgPoster;
-        if (poster && vid) vid.setAttribute('poster', poster);
-        if (url && src) {
-          src.setAttribute('src', url);
-          if (vid) {
-            try { vid.load(); } catch (e) {}
-            vid.play().catch(function () {});
-          }
-        }
-      })
-      .catch(function () {});
   }
 
   function runApplyContent() {

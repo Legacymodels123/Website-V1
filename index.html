@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" class="lw-preview lw-preview-v6">
+<html lang="nl" class="loopwerk lw-preview lw-preview-v6 lw-hero-loop">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -554,13 +554,17 @@
     }
 
   </style>
+  <link rel="stylesheet" href="/loopwerk-brand.css">
   <link rel="stylesheet" href="/brand-loopwerk-preview.css">
+  <link rel="stylesheet" href="/hero-tool-showcase.css">
+  <link rel="stylesheet" href="/hero-loop.css">
+  <link rel="stylesheet" href="/hero-variants.css">
 </head>
 <body>
 
 <div class="lw-preview-bar" id="lwPreviewBar">
   <div class="lw-preview-bar-inner">
-    <span class="lw-preview-title"><strong>Loopwerk</strong> · kleurrichtingen voor overleg</span>
+    <span class="lw-preview-title"><strong>Loopwerk</strong> · voorlegging</span>
     <div class="lw-preview-variants">
       <button type="button" class="lw-preview-variant" data-variant="v1">1 · Groen</button>
       <button type="button" class="lw-preview-variant" data-variant="v2">2 · Mos</button>
@@ -569,9 +573,14 @@
       <button type="button" class="lw-preview-variant" data-variant="v5">5 · Design B</button>
       <button type="button" class="lw-preview-variant is-active" data-variant="v6">6 · Hand ★</button>
     </div>
-    <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Kleuren uit</button>
+    <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Voorlegging uit</button>
   </div>
-  <p class="lw-preview-hint" id="lwPreviewHint">★ Variant 6: salie-kleuren + handgeschreven, laagdrempelige toon.</p>
+  <div class="lw-preview-bar-inner lw-preview-bar-inner--hero">
+    <span class="lw-preview-subtitle">Hero</span>
+    <button type="button" class="lw-preview-hero is-active" data-hero="loop">Loop ★</button>
+    <button type="button" class="lw-preview-hero" data-hero="portal">Portal</button>
+  </div>
+  <p class="lw-preview-hint" id="lwPreviewHint">★ De Loop — vragen draaien de baan in. · Handgemaakt — salie + handgeschreven labels.</p>
 </div>
 
 <!-- NAV -->
@@ -587,7 +596,7 @@
             <rect x="11" y="11" width="7" height="7" rx="1.5"/>
           </svg>
         </div>
-        <span class="nav-name">Loopwerk</span>
+        <span class="nav-name">Loop<span class="nav-name-hand">werk</span></span>
       </div>
       <div class="nav-links" id="navLinks">
         <a href="/branches" class="nav-link">Branches</a>
@@ -611,10 +620,10 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero hero--home hero--atmosphere">
-  <div class="hero-bg-grad"></div>
+<section class="hero hero--home hero--workshop" id="cc-hero-section">
+  <div class="hero-bg-grad" id="cc-hero-bg-grad"></div>
   <div class="container">
-    <div class="hero-inner hero-inner--atmosphere">
+    <div class="hero-inner hero-inner--workshop" id="cc-hero-inner">
       <div class="hero-content">
         <div class="hero-pill">
           <div class="pill-dot"></div>
@@ -636,7 +645,47 @@
         </div>
       </div>
 
-      <div class="hero-atmosphere" id="cc-hero-atmosphere" aria-hidden="true">
+      <div class="hero-visual-loop hero-visual--loop" id="cc-hero-loop">
+        <div class="loop-grain"></div>
+        <div class="loop-stage">
+          <svg class="loop-svg" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+            <path class="loop-path-dash" d="M200 68 C 290 52, 348 118, 332 200 C 316 282, 238 318, 168 288 C 98 258, 72 178, 108 112 C 144 46, 200 68, 200 68 Z"/>
+            <path class="loop-path-glow" d="M200 72 C 278 58, 338 122, 322 198 C 306 274, 232 308, 170 280 C 108 252, 84 176, 118 116 C 152 56, 200 72, 200 72 Z"/>
+            <path class="loop-path-draw" d="M200 72 C 278 58, 338 122, 322 198 C 306 274, 232 308, 170 280 C 108 252, 84 176, 118 116 C 152 56, 200 72, 200 72 Z"/>
+          </svg>
+          <div class="loop-spark"></div>
+          <div class="loop-spark"></div>
+          <div class="loop-spark"></div>
+          <div class="loop-spark"></div>
+          <div class="loop-orbit" id="cc-hero-loop-orbit">
+            <div class="loop-chip">Wat kost het?</div>
+            <div class="loop-chip">Kan ik reserveren?</div>
+            <div class="loop-chip">Hoe lang duurt het?</div>
+            <div class="loop-chip">Offerte graag</div>
+            <div class="loop-chip">Nog op voorraad?</div>
+          </div>
+          <div class="loop-core">
+            <div class="loop-core-icon" aria-hidden="true">↻</div>
+            <div class="loop-core-label">antwoord</div>
+            <div class="loop-core-sub">in je tool</div>
+          </div>
+          <div class="loop-note loop-note--week">
+            week <span id="cc-hero-loop-week">3</span>
+            <small style="font-size:11px;font-weight:600;opacity:.8">dezelfde vraag</small>
+          </div>
+          <div class="loop-stamp" id="cc-hero-loop-stamp">elke week weer</div>
+        </div>
+        <div class="hero-floats cc-hero-floats-sync" id="cc-hero-floats">
+          <div class="hero-float hero-float--tag"><i class="ti ti-bolt"></i> &lt; 2 wkn richting live</div>
+          <div class="hero-float hero-float--tag"><i class="ti ti-apps"></i> Calculator · Scan · Intake</div>
+          <a class="hero-float hero-float--case" href="https://sspw-offerte-calc.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <img src="https://sspw.nl/wp-content/uploads/2021/12/logo.png" alt="">
+            <span>Live bij Sun Sauna &amp; Poolworld</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-atmosphere hero-visual--portal" id="cc-hero-atmosphere" aria-hidden="true">
         <div class="hero-portal-wrap">
           <div class="hero-portal" id="cc-hero-portal">
             <video class="hero-portal-video" id="cc-hero-video" autoplay muted loop playsinline preload="metadata"
@@ -657,7 +706,7 @@
             </defs>
           </svg>
         </div>
-        <div class="hero-floats" id="cc-hero-floats">
+        <div class="hero-floats cc-hero-floats-sync" id="cc-hero-floats-portal">
           <div class="hero-float hero-float--tag"><i class="ti ti-bolt"></i> &lt; 2 wkn richting live</div>
           <div class="hero-float hero-float--tag"><i class="ti ti-apps"></i> Calculator · Scan · Intake</div>
           <a class="hero-float hero-float--case" href="https://sspw-offerte-calc.vercel.app/" target="_blank" rel="noopener noreferrer">
@@ -1100,6 +1149,8 @@
 
 <script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
+<script src="/hero-loop.js"></script>
+<script src="/hero-variants.js"></script>
 <script src="/brand-loopwerk-preview.js"></script>
 </body>
 </html>

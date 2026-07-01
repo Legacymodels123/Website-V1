@@ -1,0 +1,89 @@
+/* Loopwerk — lichte workshop-hero (basis) */
+
+.hero--workshop {
+  background: var(--lw-cream, #F7F4ED);
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero--workshop .hero-bg-grad {
+  display: none;
+}
+
+.hero--workshop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 92% 18%, rgba(74, 124, 111, 0.08), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 8% 92%, rgba(242, 140, 56, 0.06), transparent 50%);
+  pointer-events: none;
+}
+
+.hero-inner--workshop {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) !important;
+  align-items: center !important;
+  gap: clamp(28px, 5vw, 56px) !important;
+  padding: clamp(64px, 9vh, 100px) 0 clamp(56px, 7vh, 80px) !important;
+  min-height: clamp(480px, 68vh, 640px);
+}
+
+.hero--workshop .hero-content {
+  max-width: 540px;
+  padding-bottom: 0 !important;
+}
+
+.hero--workshop .hero-pill {
+  background: var(--lw-accent-tint, #E8F0ED);
+  border: 2px dashed rgba(74, 124, 111, 0.35);
+  color: var(--lw-accent-dark, #3d665b);
+}
+
+.hero--workshop .pill-dot {
+  background: var(--lw-orange, #F28C38);
+}
+
+.hero--workshop h1 {
+  color: var(--lw-night, #101820);
+}
+
+.hero--workshop h1 em {
+  color: var(--lw-accent, #4A7C6F);
+}
+
+.hero--workshop .hero-sub {
+  color: var(--lw-muted, #5c6b73);
+  max-width: 480px !important;
+}
+
+.hero--workshop .btn-ghost-white {
+  background: #fff;
+  border: 2px solid var(--lw-gray-blue, #DDE6E8);
+  color: var(--lw-night, #101820);
+}
+
+.hero--workshop .btn-ghost-white:hover {
+  background: var(--lw-cream-muted, #F0EDE6);
+  border-color: var(--lw-accent, #4A7C6F);
+}
+
+.hero--workshop .proof-text {
+  color: var(--lw-muted, #5c6b73);
+}
+
+.hero--workshop .proof-text strong {
+  color: var(--lw-night, #101820);
+}
+
+.hero--workshop .pavatar {
+  border-color: var(--lw-cream, #F7F4ED);
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .hero-inner--workshop {
+    grid-template-columns: 1fr !important;
+    min-height: auto;
+  }
+}

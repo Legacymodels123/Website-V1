@@ -20,6 +20,17 @@
         "ctaSecondary": "Bekijk cases",
         "proofText": "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
         "atmosphere": {
+          "loop": {
+            "questions": [
+              "Wat kost het?",
+              "Kan ik reserveren?",
+              "Hoe lang duurt het?",
+              "Offerte graag",
+              "Nog op voorraad?"
+            ],
+            "weekLabel": "3",
+            "stamp": "elke week weer"
+          },
           "floats": [
             {
               "type": "tag",
