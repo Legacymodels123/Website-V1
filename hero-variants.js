@@ -4,7 +4,7 @@
   var HEROES = ['loop', 'portal'];
 
   var HINTS = {
-    loop: '★ De Loop — vragen vloeien door de infinity-baan naar een werkende tool.',
+    loop: '★ De Loop v2 — rustig paneel: vraag wisselt, tool bouwt zich op.',
     portal: 'Sfeervideo-portal — donkere hero met asymmetrische video (vorige richting).'
   };
 

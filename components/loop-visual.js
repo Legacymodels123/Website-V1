@@ -1,9 +1,8 @@
 /**
- * LoopVisual — vraagkaartjes op de loop + parallax
- * Component-logica voor De Loop hero (vanilla JS)
+ * LoopVisual v2 — vraag-rotatie + tool-build cyclus
  */
 (function () {
-  var DEFAULT_QUESTIONS = [
+  var QUESTIONS = [
     'Wat kost het?',
     'Kan ik reserveren?',
     'Hoe lang duurt het?',
@@ -11,11 +10,19 @@
     'Nog op voorraad?'
   ];
 
-  var TRAVEL_DURATIONS = [20, 22, 24, 21, 23];
-  var TRAVEL_DELAYS = [0, -4.4, -8.8, -13.2, -17.6];
+  var ROTATE_MS = 3800;
+  var BUILD_MS = 4500;
 
   function prefersReduced() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function renderQuestions(list) {
+    var box = document.getElementById('lw-question-rotator');
+    if (!box) return;
+    box.innerHTML = list.map(function (q, i) {
+      return '<p class="lw-flow__q' + (i === 0 ? ' is-active' : '') + '">' + escapeHtml(q) + '</p>';
+    }).join('');
   }
 
   function escapeHtml(s) {
@@ -24,47 +31,61 @@
     return d.innerHTML;
   }
 
-  /** Render QuestionCard elementen op de motion-path */
-  function renderTravelers(questions) {
-    var el = document.getElementById('cc-hero-loop-travelers');
-    if (!el) return;
-    el.innerHTML = questions.map(function (q, i) {
-      return (
-        '<div class="loop-question" style="--travel-dur:' + TRAVEL_DURATIONS[i % 5] + 's;--travel-delay:' +
-        TRAVEL_DELAYS[i % 5] + 's" role="presentation">' + escapeHtml(q) + '</div>'
-      );
-    }).join('');
+  function rotateQuestions() {
+    var items = document.querySelectorAll('.lw-flow__q');
+    if (!items.length) return;
+    var idx = 0;
+    items.forEach(function (el, i) {
+      if (el.classList.contains('is-active')) idx = i;
+    });
+    items[idx].classList.remove('is-active');
+    items[(idx + 1) % items.length].classList.add('is-active');
   }
 
-  /** Subtiele 2.5D parallax op hover */
-  function bindParallax() {
-    var wrap = document.getElementById('cc-hero-loop');
-    var stage = wrap && wrap.querySelector('.loop-visual__stage');
-    if (!wrap || !stage || prefersReduced()) return;
+  function runBuildCycle() {
+    var fields = document.querySelectorAll('.lw-flow__field');
+    var cta = document.querySelector('.lw-flow__tool-cta');
+    var result = document.querySelector('.lw-flow__tool-result');
+    if (!fields.length) return;
 
-    wrap.classList.add('is-tilt');
-    wrap.addEventListener('mousemove', function (e) {
-      var rect = wrap.getBoundingClientRect();
-      var x = (e.clientX - rect.left) / rect.width - 0.5;
-      var y = (e.clientY - rect.top) / rect.height - 0.5;
-      stage.style.setProperty('--tilt-y', (-10 + x * 8) + 'deg');
-      stage.style.setProperty('--tilt-x', (6 + -y * 6) + 'deg');
-    });
+    fields.forEach(function (f) { f.classList.remove('is-lit'); });
+    if (cta) cta.classList.remove('is-lit');
+    if (result) result.classList.remove('is-visible');
 
-    wrap.addEventListener('mouseleave', function () {
-      stage.style.setProperty('--tilt-x', '6deg');
-      stage.style.setProperty('--tilt-y', '-10deg');
-    });
+    var step = 0;
+    var max = fields.length + 2;
+
+    function tick() {
+      if (step < fields.length) {
+        fields[step].classList.add('is-lit');
+      } else if (step === fields.length && cta) {
+        cta.classList.add('is-lit');
+      } else if (step === fields.length + 1 && result) {
+        result.classList.add('is-visible');
+      }
+      step++;
+      if (step <= max) {
+        setTimeout(tick, 700);
+      } else {
+        setTimeout(runBuildCycle, 2200);
+      }
+    }
+
+    tick();
   }
 
   function initLoop(config) {
     var loop = (config && config.loop) || {};
-    var questions = loop.questions && loop.questions.length ? loop.questions : DEFAULT_QUESTIONS;
-    renderTravelers(questions);
-    bindParallax();
+    var questions = loop.questions && loop.questions.length ? loop.questions : QUESTIONS;
+    renderQuestions(questions);
+
+    if (prefersReduced()) return;
+
+    setInterval(rotateQuestions, ROTATE_MS);
+    setTimeout(runBuildCycle, 800);
   }
 
-  window.LoopwerkHeroLoop = { init: initLoop, renderTravelers: renderTravelers };
+  window.LoopwerkHeroLoop = { init: initLoop };
 
   document.addEventListener('briqo:content-ready', function (e) {
     var hero = e.detail && e.detail.hero;
@@ -74,6 +95,7 @@
   function boot() {
     var h = window.CONTENT && window.CONTENT.hero;
     if (h && h.atmosphere) initLoop(h.atmosphere);
+    else initLoop({});
   }
 
   if (document.readyState === 'loading') {

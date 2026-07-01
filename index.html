@@ -580,7 +580,7 @@
     <button type="button" class="lw-preview-hero is-active" data-hero="loop">Loop ★</button>
     <button type="button" class="lw-preview-hero" data-hero="portal">Portal</button>
   </div>
-  <p class="lw-preview-hint" id="lwPreviewHint">★ De Loop — infinity-baan, Probleem → Middel → Oplossing. · Handgemaakt — salie + terracotta.</p>
+  <p class="lw-preview-hint" id="lwPreviewHint">★ De Loop v2 — editorial paneel, vraag → tool. · Hand ★ kleuren.</p>
 </div>
 
 <!-- NAV -->
@@ -645,72 +645,58 @@
         </div>
       </div>
 
-      <div class="loop-visual hero-visual--loop" id="cc-hero-loop" aria-label="Animatie: klantvragen worden een werkende tool">
-        <div class="loop-visual__depth">
-          <div class="loop-visual__plate loop-visual__plate--back"></div>
-          <div class="loop-visual__plate loop-visual__plate--mid"></div>
-          <div class="loop-visual__stage">
-            <!-- SVG: infinity-loop baan -->
-            <svg class="loop-visual__svg" viewBox="0 0 480 340" fill="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="loopTrackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#1F4D3A" stop-opacity="0.5"/>
-                  <stop offset="50%" stop-color="#4A7C6F"/>
-                  <stop offset="100%" stop-color="#C4704B" stop-opacity="0.6"/>
-                </linearGradient>
-              </defs>
-              <path class="loop-visual__path-bg" d="M 240 175 C 310 95 410 95 410 175 C 410 255 310 255 240 175 C 170 95 70 95 70 175 C 70 255 170 255 240 175"/>
-              <path class="loop-visual__path-glow" d="M 240 175 C 310 95 410 95 410 175 C 410 255 310 255 240 175 C 170 95 70 95 70 175 C 70 255 170 255 240 175"/>
-              <path class="loop-visual__path-track" d="M 240 175 C 310 95 410 95 410 175 C 410 255 310 255 240 175 C 170 95 70 95 70 175 C 70 255 170 255 240 175"/>
+      <aside class="lw-flow hero-visual--loop" id="cc-hero-loop" aria-label="Van terugkerende vraag naar werkende tool">
+        <div class="lw-flow__card">
+          <!-- Terugkerende vraag -->
+          <div class="lw-flow__zone lw-flow__zone--in">
+            <span class="lw-flow__tag">Terugkerende vraag</span>
+            <div class="lw-flow__question" id="lw-question-rotator">
+              <p class="lw-flow__q is-active">Wat kost het?</p>
+            </div>
+            <span class="lw-flow__week"><strong>Week 3</strong> · dezelfde vraag, opnieuw</span>
+          </div>
+
+          <!-- Loop / bouw -->
+          <div class="lw-flow__bridge" aria-hidden="true">
+            <svg viewBox="0 0 28 48" fill="none">
+              <path class="lw-flow__bridge-line" d="M14 4 C14 20, 6 24, 6 32 C6 40, 14 44, 14 44"/>
             </svg>
+            <span class="lw-flow__bridge-label">Loopwerk bouwt</span>
+          </div>
 
-            <span class="loop-step loop-step--probleem">Probleem</span>
-            <span class="loop-step loop-step--middel">Middel</span>
-            <span class="loop-step loop-step--oplossing">Oplossing</span>
-
-            <!-- Tool-fragmenten in middel-zone -->
-            <div class="loop-tools" aria-hidden="true">
-              <div class="loop-tool loop-tool--field">
-                <div class="loop-tool__label">Veld</div>
-                <div class="loop-tool__bar"></div>
+          <!-- Werkende tool -->
+          <div class="lw-flow__zone lw-flow__zone--out">
+            <span class="lw-flow__tag">Werkende tool</span>
+            <div class="lw-flow__tool">
+              <div class="lw-flow__tool-head">
+                <span class="lw-flow__tool-name">Prijscalculator</span>
+                <span class="lw-flow__tool-live">Live</span>
               </div>
-              <div class="loop-tool loop-tool--slider">
-                <div class="loop-tool__label">Slider</div>
-                <div class="loop-tool__track"></div>
-              </div>
-              <div class="loop-tool loop-tool--chips">
-                <span class="loop-tool__chip">A</span>
-                <span class="loop-tool__chip">B</span>
-                <span class="loop-tool__chip">C</span>
-              </div>
-              <div class="loop-tool loop-tool--price">
-                <div class="loop-tool__label">Prijs</div>
-                <div class="loop-tool__price">€ —</div>
-              </div>
-              <div class="loop-tool loop-tool--lead">
-                <div class="loop-tool__label">Lead</div>
-                <div class="loop-tool__lines"><span></span><span></span></div>
-              </div>
-              <div class="loop-tool loop-tool--advice">
-                <div class="loop-tool__icon">💡</div>
-                <div class="loop-tool__label">Advies</div>
+              <div class="lw-flow__tool-body">
+                <div class="lw-flow__field">
+                  <label>Afmeting</label>
+                  <input type="text" value="8 × 4 m" readonly tabindex="-1">
+                </div>
+                <div class="lw-flow__field">
+                  <label>Opties</label>
+                  <input type="text" value="Verwarming + overkapping" readonly tabindex="-1">
+                </div>
+                <button type="button" class="lw-flow__tool-cta" tabindex="-1">Bereken indicatie</button>
+                <div class="lw-flow__tool-result">
+                  <span class="lw-flow__result-label">Indicatie</span>
+                  <span class="lw-flow__result-value">€ 47.850</span>
+                </div>
               </div>
             </div>
-
-            <!-- Vraagkaartjes op de baan (QuestionCard) -->
-            <div class="loop-travelers" id="cc-hero-loop-travelers"></div>
-
-            <!-- ToolOutputCard -->
-            <div class="loop-output">
-              <div class="loop-output__title">Werkende tool</div>
-              <div class="loop-output__item"><i>€</i> Prijsindicatie</div>
-              <div class="loop-output__item"><i>@</i> Lead</div>
-              <div class="loop-output__item"><i>↗</i> Advies</div>
-              <div class="loop-output__item"><i>☰</i> Offertevoorbereiding</div>
+            <div class="lw-flow__outputs">
+              <span class="lw-flow__output-pill">Prijsindicatie</span>
+              <span class="lw-flow__output-pill">Lead</span>
+              <span class="lw-flow__output-pill">Advies</span>
+              <span class="lw-flow__output-pill">Offerte</span>
             </div>
           </div>
         </div>
-      </div>
+      </aside>
 
       <div class="hero-atmosphere hero-visual--portal" id="cc-hero-atmosphere" aria-hidden="true">
         <div class="hero-portal-wrap">
