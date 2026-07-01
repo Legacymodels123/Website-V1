@@ -4,7 +4,7 @@
   var HEROES = ['loop', 'portal'];
 
   var HINTS = {
-    loop: '★ De Loop v2 — rustig paneel: vraag wisselt, tool bouwt zich op.',
+    loop: '★ De levende loop — fullscreen typografie met organische baan en labels.',
     portal: 'Sfeervideo-portal — donkere hero met asymmetrische video (vorige richting).'
   };
 
@@ -30,14 +30,11 @@
 
   function applyHeroLayout(hero) {
     var section = document.getElementById('cc-hero-section');
-    var inner = document.getElementById('cc-hero-inner');
-    if (!section || !inner) return;
+    if (!section) return;
 
     var isPortal = hero === 'portal';
-    section.classList.toggle('hero--workshop', !isPortal);
+    section.classList.toggle('hero--living', !isPortal);
     section.classList.toggle('hero--atmosphere', isPortal);
-    inner.classList.toggle('hero-inner--workshop', !isPortal);
-    inner.classList.toggle('hero-inner--atmosphere', isPortal);
 
     if (isPortal) loadPortalVideo();
   }

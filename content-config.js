@@ -4,8 +4,8 @@ const CONTENT = {
 
   hero: {
     pill: "Van klantvraag naar live tool",
-    h1: "Maak van terugkerende klantvragen een werkende tool.",
-    sub: "Loopwerk bouwt calculators, scans en intakes rond de vragen die elke week terugkomen. Geen vaag AI-traject, maar een concrete tool die bezoekers direct verder helpt.",
+    h1: "Vragen komen terug.\\nWij maken ze <em>werkend</em>.",
+    sub: "Loopwerk bouwt calculators, scans en intakes rond de vragen die elke week terugkomen. Geen vaag AI-traject, maar een concrete tool op je website.",
     ctaPrimary: "Bekijk demo",
     ctaSecondary: "Ontdek je eerste tool",
     ctaSecondaryLink: "/werkwijze",
@@ -15,7 +15,8 @@ const CONTENT = {
         questions: [
           "Wat kost het?",
           "Kan ik reserveren?",
-          "Hoe lang duurt het?",
+          "Welke optie past?",
+          "Hoe snel kan dit?",
           "Offerte graag",
           "Nog op voorraad?"
         ],

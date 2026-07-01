@@ -1,4 +1,4 @@
-/* Hero-varianten — wissel via html.lw-hero-loop | html.lw-hero-portal */
+/* Hero-varianten — Levende loop vs Portal */
 
 .hero-visual--portal {
   display: none;
@@ -10,17 +10,37 @@ html.lw-hero-portal .hero-visual--loop {
 
 html.lw-hero-portal .hero-visual--portal {
   display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
 }
 
-html.lw-hero-portal .hero-bg-grad {
-  display: block !important;
+html.lw-hero-portal .living-hero__frame {
+  position: relative;
+  z-index: 10;
+  min-height: calc(100vh - 70px);
+  justify-content: center;
 }
 
-.hero--workshop .hero-bg-grad {
-  display: none;
+html.lw-hero-portal .hero--living h1,
+html.lw-hero-portal .hero--living .hero-sub,
+html.lw-hero-portal .hero--living .proof-text {
+  color: #fff !important;
 }
 
-/* Preview-balk: tweede rij hero-keuze */
+html.lw-hero-portal .hero--living .proof-text strong {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+html.lw-hero-portal .hero--living .living-hero__eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+html.lw-hero-portal .hero--living h1 em {
+  color: #B8D4CB !important;
+}
+
+/* Preview-balk */
 .lw-preview-bar-inner--hero {
   padding-top: 4px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -67,9 +87,5 @@ html.lw-preview body {
 @media (max-width: 640px) {
   html.lw-preview body {
     padding-top: 128px !important;
-  }
-
-  .lw-preview-bar-inner--hero {
-    justify-content: center;
   }
 }
