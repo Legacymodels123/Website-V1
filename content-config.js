@@ -3,11 +3,12 @@
 const CONTENT = {
 
   hero: {
-    pill: "Terugkerende klantvraag? Bouw er een tool voor.",
-    h1: "Wij bouwen de\\ntool die jouw\\nbedrijf <em>mist</em>",
-    sub: "Geen AI-verhaal omheen. Wel een calculator, scan of intake die snel live staat en direct antwoord geeft op de vragen die jouw team nu nog handmatig opvangt.",
-    ctaPrimary: "Demo aanvragen",
-    ctaSecondary: "Bekijk cases",
+    pill: "Van klantvraag naar live tool",
+    h1: "Maak van terugkerende klantvragen een werkende tool.",
+    sub: "Loopwerk bouwt calculators, scans en intakes rond de vragen die elke week terugkomen. Geen vaag AI-traject, maar een concrete tool die bezoekers direct verder helpt.",
+    ctaPrimary: "Bekijk demo",
+    ctaSecondary: "Ontdek je eerste tool",
+    ctaSecondaryLink: "/werkwijze",
     proofText: "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
     atmosphere: {
       loop: {
@@ -192,7 +193,11 @@ const CONTENT = {
     setText('cc-hero-h1', (h.h1 || '').replace(/\\n/g, '<br>'), true);
     setText('cc-hero-sub', h.sub);
     setText('cc-hero-cta1', h.ctaPrimary);
-    setText('cc-hero-cta2', h.ctaSecondary);
+    var cta2 = document.getElementById('cc-hero-cta2');
+    if (cta2) {
+      cta2.textContent = h.ctaSecondary || cta2.textContent;
+      if (h.ctaSecondaryLink) cta2.setAttribute('href', h.ctaSecondaryLink);
+    }
     setText('cc-hero-proof', h.proofText);
     if (h.atmosphere) initAtmosphere(h.atmosphere);
     else initAtmosphere({});

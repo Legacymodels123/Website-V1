@@ -26,7 +26,7 @@
   align-items: center !important;
   gap: clamp(28px, 5vw, 56px) !important;
   padding: clamp(64px, 9vh, 100px) 0 clamp(56px, 7vh, 80px) !important;
-  min-height: clamp(480px, 68vh, 640px);
+  min-height: clamp(520px, 72vh, 680px);
 }
 
 .hero--workshop .hero-content {

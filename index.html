@@ -557,7 +557,7 @@
   <link rel="stylesheet" href="/loopwerk-brand.css">
   <link rel="stylesheet" href="/brand-loopwerk-preview.css">
   <link rel="stylesheet" href="/hero-tool-showcase.css">
-  <link rel="stylesheet" href="/hero-loop.css">
+  <link rel="stylesheet" href="/components/loop-hero.css">
   <link rel="stylesheet" href="/hero-variants.css">
 </head>
 <body>
@@ -580,7 +580,7 @@
     <button type="button" class="lw-preview-hero is-active" data-hero="loop">Loop ★</button>
     <button type="button" class="lw-preview-hero" data-hero="portal">Portal</button>
   </div>
-  <p class="lw-preview-hint" id="lwPreviewHint">★ De Loop — vragen draaien de baan in. · Handgemaakt — salie + handgeschreven labels.</p>
+  <p class="lw-preview-hint" id="lwPreviewHint">★ De Loop — infinity-baan, Probleem → Middel → Oplossing. · Handgemaakt — salie + terracotta.</p>
 </div>
 
 <!-- NAV -->
@@ -629,11 +629,11 @@
           <div class="pill-dot"></div>
           <span id="cc-hero-pill">Van klantvraag naar live tool</span>
         </div>
-        <h1 id="cc-hero-h1">Wij bouwen de<br>tool die jouw<br>bedrijf <em>mist</em></h1>
-        <p class="hero-sub" id="cc-hero-sub">Geen dikke slides. Wel een calculator, scan of intake die binnen twee weken op jouw site staat — gebouwd rond de vragen die elke week terugkomen.</p>
+        <h1 id="cc-hero-h1">Maak van terugkerende klantvragen een werkende tool.</h1>
+        <p class="hero-sub" id="cc-hero-sub">Loopwerk bouwt calculators, scans en intakes rond de vragen die elke week terugkomen. Geen vaag AI-traject, maar een concrete tool die bezoekers direct verder helpt.</p>
         <div class="hero-btns">
-          <a href="#" onclick="openModal('demo');return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Demo aanvragen</span> <i class="ti ti-arrow-right"></i></a>
-          <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk cases</a>
+          <a href="#" onclick="openModal('demo');return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Bekijk demo</span> <i class="ti ti-arrow-right"></i></a>
+          <a href="/werkwijze" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Ontdek je eerste tool</a>
         </div>
         <div class="hero-proof">
           <div class="proof-avatars">
@@ -645,43 +645,70 @@
         </div>
       </div>
 
-      <div class="hero-visual-loop hero-visual--loop" id="cc-hero-loop">
-        <div class="loop-grain"></div>
-        <div class="loop-stage">
-          <svg class="loop-svg" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-            <path class="loop-path-dash" d="M200 68 C 290 52, 348 118, 332 200 C 316 282, 238 318, 168 288 C 98 258, 72 178, 108 112 C 144 46, 200 68, 200 68 Z"/>
-            <path class="loop-path-glow" d="M200 72 C 278 58, 338 122, 322 198 C 306 274, 232 308, 170 280 C 108 252, 84 176, 118 116 C 152 56, 200 72, 200 72 Z"/>
-            <path class="loop-path-draw" d="M200 72 C 278 58, 338 122, 322 198 C 306 274, 232 308, 170 280 C 108 252, 84 176, 118 116 C 152 56, 200 72, 200 72 Z"/>
-          </svg>
-          <div class="loop-spark"></div>
-          <div class="loop-spark"></div>
-          <div class="loop-spark"></div>
-          <div class="loop-spark"></div>
-          <div class="loop-orbit" id="cc-hero-loop-orbit">
-            <div class="loop-chip">Wat kost het?</div>
-            <div class="loop-chip">Kan ik reserveren?</div>
-            <div class="loop-chip">Hoe lang duurt het?</div>
-            <div class="loop-chip">Offerte graag</div>
-            <div class="loop-chip">Nog op voorraad?</div>
+      <div class="loop-visual hero-visual--loop" id="cc-hero-loop" aria-label="Animatie: klantvragen worden een werkende tool">
+        <div class="loop-visual__depth">
+          <div class="loop-visual__plate loop-visual__plate--back"></div>
+          <div class="loop-visual__plate loop-visual__plate--mid"></div>
+          <div class="loop-visual__stage">
+            <!-- SVG: infinity-loop baan -->
+            <svg class="loop-visual__svg" viewBox="0 0 480 340" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="loopTrackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1F4D3A" stop-opacity="0.5"/>
+                  <stop offset="50%" stop-color="#4A7C6F"/>
+                  <stop offset="100%" stop-color="#C4704B" stop-opacity="0.6"/>
+                </linearGradient>
+              </defs>
+              <path class="loop-visual__path-bg" d="M 240 175 C 310 95 410 95 410 175 C 410 255 310 255 240 175 C 170 95 70 95 70 175 C 70 255 170 255 240 175"/>
+              <path class="loop-visual__path-glow" d="M 240 175 C 310 95 410 95 410 175 C 410 255 310 255 240 175 C 170 95 70 95 70 175 C 70 255 170 255 240 175"/>
+              <path class="loop-visual__path-track" d="M 240 175 C 310 95 410 95 410 175 C 410 255 310 255 240 175 C 170 95 70 95 70 175 C 70 255 170 255 240 175"/>
+            </svg>
+
+            <span class="loop-step loop-step--probleem">Probleem</span>
+            <span class="loop-step loop-step--middel">Middel</span>
+            <span class="loop-step loop-step--oplossing">Oplossing</span>
+
+            <!-- Tool-fragmenten in middel-zone -->
+            <div class="loop-tools" aria-hidden="true">
+              <div class="loop-tool loop-tool--field">
+                <div class="loop-tool__label">Veld</div>
+                <div class="loop-tool__bar"></div>
+              </div>
+              <div class="loop-tool loop-tool--slider">
+                <div class="loop-tool__label">Slider</div>
+                <div class="loop-tool__track"></div>
+              </div>
+              <div class="loop-tool loop-tool--chips">
+                <span class="loop-tool__chip">A</span>
+                <span class="loop-tool__chip">B</span>
+                <span class="loop-tool__chip">C</span>
+              </div>
+              <div class="loop-tool loop-tool--price">
+                <div class="loop-tool__label">Prijs</div>
+                <div class="loop-tool__price">€ —</div>
+              </div>
+              <div class="loop-tool loop-tool--lead">
+                <div class="loop-tool__label">Lead</div>
+                <div class="loop-tool__lines"><span></span><span></span></div>
+              </div>
+              <div class="loop-tool loop-tool--advice">
+                <div class="loop-tool__icon">💡</div>
+                <div class="loop-tool__label">Advies</div>
+              </div>
+            </div>
+
+            <!-- Vraagkaartjes op de baan (QuestionCard) -->
+            <div class="loop-travelers" id="cc-hero-loop-travelers"></div>
+
+            <!-- ToolOutputCard -->
+            <div class="loop-output">
+              <div class="loop-output__title">Werkende tool</div>
+              <div class="loop-output__item"><i>€</i> Prijsindicatie</div>
+              <div class="loop-output__item"><i>@</i> Lead</div>
+              <div class="loop-output__item"><i>↗</i> Advies</div>
+              <div class="loop-output__item"><i>☰</i> Offertevoorbereiding</div>
+            </div>
           </div>
-          <div class="loop-core">
-            <div class="loop-core-icon" aria-hidden="true">↻</div>
-            <div class="loop-core-label">antwoord</div>
-            <div class="loop-core-sub">in je tool</div>
-          </div>
-          <div class="loop-note loop-note--week">
-            week <span id="cc-hero-loop-week">3</span>
-            <small style="font-size:11px;font-weight:600;opacity:.8">dezelfde vraag</small>
-          </div>
-          <div class="loop-stamp" id="cc-hero-loop-stamp">elke week weer</div>
-        </div>
-        <div class="hero-floats cc-hero-floats-sync" id="cc-hero-floats">
-          <div class="hero-float hero-float--tag"><i class="ti ti-bolt"></i> &lt; 2 wkn richting live</div>
-          <div class="hero-float hero-float--tag"><i class="ti ti-apps"></i> Calculator · Scan · Intake</div>
-          <a class="hero-float hero-float--case" href="https://sspw-offerte-calc.vercel.app/" target="_blank" rel="noopener noreferrer">
-            <img src="https://sspw.nl/wp-content/uploads/2021/12/logo.png" alt="">
-            <span>Live bij Sun Sauna &amp; Poolworld</span>
-          </a>
         </div>
       </div>
 
@@ -1149,7 +1176,7 @@
 
 <script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
-<script src="/hero-loop.js"></script>
+<script src="/components/loop-visual.js"></script>
 <script src="/hero-variants.js"></script>
 <script src="/brand-loopwerk-preview.js"></script>
 </body>

@@ -13,11 +13,12 @@
       "id": "b1",
       "type": "hero",
       "data": {
-        "pill": "Terugkerende klantvraag? Bouw er een tool voor.",
-        "h1": "Wij bouwen de\ntool die jouw\nbedrijf <em>mist</em>",
-        "sub": "Geen AI-verhaal omheen. Wel een calculator, scan of intake die snel live staat en direct antwoord geeft op de vragen die jouw team nu nog handmatig opvangt.",
-        "ctaPrimary": "Demo aanvragen",
-        "ctaSecondary": "Bekijk cases",
+        "pill": "Van klantvraag naar live tool",
+        "h1": "Maak van terugkerende klantvragen een werkende tool.",
+        "sub": "Loopwerk bouwt calculators, scans en intakes rond de vragen die elke week terugkomen. Geen vaag AI-traject, maar een concrete tool die bezoekers direct verder helpt.",
+        "ctaPrimary": "Bekijk demo",
+        "ctaSecondary": "Ontdek je eerste tool",
+        "ctaSecondaryLink": "/werkwijze",
         "proofText": "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
         "atmosphere": {
           "loop": {
