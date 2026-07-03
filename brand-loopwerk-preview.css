@@ -2,16 +2,17 @@
    html.lw-preview + lw-preview-v1 (loopgroen) of lw-preview-v2 (mos & strak) */
 
 html.lw-preview {
-  --lw-night: #101820;
-  --lw-night-hover: #1a2832;
-  --lw-cream: #F7F4ED;
-  --lw-cream-muted: #F0EDE6;
-  --lw-orange: #F28C38;
-  --lw-orange-dark: #E07D2F;
-  --lw-gray-blue: #DDE6E8;
-  --lw-moss: #1F4D3A;
-  --lw-muted: #5c6b73;
-  --lw-warm-light: #E8DFD0;
+  --lw-night: #1E2A26;
+  --lw-night-hover: #2a3832;
+  --lw-cream: #F6F4EF;
+  --lw-cream-muted: #E5DFD3;
+  --lw-orange: #C46F4A;
+  --lw-orange-dark: #A85A38;
+  --lw-gray-blue: #D9D3C8;
+  --lw-moss: #5F7161;
+  --lw-muted: #5c6b63;
+  --lw-warm-light: #E5DFD3;
+  --lw-success: #3E7C4F;
   --navy: var(--lw-night);
   --bg: var(--lw-cream);
   --border: var(--lw-gray-blue);
@@ -180,16 +181,18 @@ html.lw-preview-v5 {
   border-color: rgba(143, 181, 168, 0.65);
 }
 
-/* Variant 6: handgemaakt — salie-kleuren (zelfde als v3) + menselijke vormtaal */
+/* Variant 6: productie — warm-ambachtelijk (salie + terracotta) */
 html.lw-preview-v6 {
-  --lw-accent: #4A7C6F;
-  --lw-accent-dark: #3d665b;
-  --lw-accent-light: #8FB5A8;
-  --lw-accent-tint: #E8F0ED;
-  --lw-accent-rgb: 74, 124, 111;
-  --lw-on-dark: #B8D4CB;
-  --teal: var(--lw-accent);
-  --teal-d: var(--lw-accent-dark);
+  --lw-accent: #5F7161;
+  --lw-accent-dark: #4d5d50;
+  --lw-accent-light: #8a9d8f;
+  --lw-accent-tint: #EEF0ED;
+  --lw-accent-rgb: 95, 113, 97;
+  --lw-on-dark: #C5D4C8;
+  --lw-orange: #C46F4A;
+  --lw-orange-dark: #A85A38;
+  --teal: var(--lw-orange);
+  --teal-d: var(--lw-orange-dark);
   --lw-hand: 'Kalam', 'Segoe Print', 'Comic Sans MS', cursive;
 }
 
@@ -945,7 +948,7 @@ html.lw-preview-v2 .impact-grid--compact .impact-card.is-active {
 
 /* ── Variant 6: handgemaakt — vorm & typografie ──────────────── */
 html.lw-preview-v6 .branch-live {
-  background: var(--lw-accent) !important;
+  background: #3E7C4F !important;
 }
 
 html.lw-preview-v6 .hero-pill,

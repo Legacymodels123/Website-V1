@@ -3,12 +3,12 @@
 const CONTENT = {
 
   hero: {
-    pill: "Van klantvraag naar live tool",
-    h1: "Vragen komen terug.\\nWij maken ze <em>werkend</em>.",
-    sub: "Loopwerk bouwt calculators, scans en intakes rond de vragen die elke week terugkomen. Geen vaag AI-traject, maar een concrete tool op je website.",
+    pill: "Voor het MKB zonder IT-afdeling",
+    h1: "De vraag die elke week terugkomt?\\nWij maken er een <em>werkende tool</em> van.",
+    sub: "Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen.",
     ctaPrimary: "Bekijk demo",
-    ctaSecondary: "Ontdek je eerste tool",
-    ctaSecondaryLink: "/werkwijze",
+    ctaSecondary: "Bekijk pakketten",
+    ctaSecondaryLink: "/prijzen",
     proofText: "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
     atmosphere: {
       loop: {
@@ -24,13 +24,13 @@ const CONTENT = {
         stamp: "elke week weer"
       },
       floats: [
-        { type: "tag", icon: "ti-bolt", text: "< 2 wkn richting live" },
+        { type: "tag", icon: "ti-bolt", text: "2–3 wkn richting live" },
         { type: "tag", icon: "ti-apps", text: "Calculator · Scan · Intake" },
         {
           type: "case",
           href: "https://sspw-offerte-calc.vercel.app/",
           logo: "https://sspw.nl/wp-content/uploads/2021/12/logo.png",
-          text: "Live bij Sun Sauna & Poolworld"
+          text: "Demo live bij Sun Sauna & Poolworld"
         }
       ]
     }
@@ -39,7 +39,7 @@ const CONTENT = {
   team: {
     title: "Drie ondernemers, één missie",
     intro1: "Loopwerk is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.",
-    intro2: "Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.",
+    intro2: "Geen groot IT-traject. Wel een tool die snel live kan — met een vaste prijs die je in één avond kunt beslissen.",
     linkText: "Lees ons volledige verhaal",
     linkUrl: "/over-ons",
     members: [
@@ -63,64 +63,82 @@ const CONTENT = {
       }
     ],
     values: [
-      { icon: "ti-bolt", title: "Snel live", desc: "Van idee naar werkende tool in minder dan twee weken." },
-      { icon: "ti-tool", title: "Direct bruikbaar", desc: "Teksten en logica aanpasbaar zonder developer." },
-      { icon: "ti-chart-bar", title: "Data in jouw hand", desc: "Leads en inzendingen in een helder dashboard." }
+      { icon: "ti-bolt", title: "Snel live", desc: "Van idee naar werkende tool in 2–3 weken." },
+      { icon: "ti-tool", title: "Vaste prijs", desc: "Geen offerte-traject. Prijs op de site = prijs op de factuur." },
+      { icon: "ti-chart-bar", title: "Door te bouwen", desc: "Begin met één tool. Daarna verder op basis van echte data." }
     ]
   },
 
   pricing: {
+    label: "Pakketten",
+    title: "Vaste prijzen, geen verrassingen",
+    sub: "Begin met één tool. Daarna bouwen we verder op wat de data laat zien.",
+    launchOffer: "We zijn net gestart. De eerste drie klanten bouwen we tegen halve setupkosten — in ruil voor een eerlijke case.",
     card1: {
-      title: "Opzet",
-      desc: "Eenmalig: van brief tot live MVP op jouw eigen domein.",
-      amount: "Op maat",
+      title: "Loop Start",
+      desc: "Eén tool op je website: calculator, scan of intake.",
+      amount: "€1.950",
       amountSub: "eenmalig",
+      monthly: "€99 per maand",
       features: [
-        "Intakegesprek & scope",
-        "Ontwerp & volledige bouw",
-        "Live op Vercel + eigen domein",
-        "Admin dashboard voor leads",
-        "Supabase database"
+        "Hosting, onderhoud en kleine aanpassingen",
+        "Live in 2 weken",
+        "Maandelijks opzegbaar"
       ],
-      cta: "Bespreek eerste fase",
+      cta: "Kies Loop Start",
+      formType: "gesprek"
     },
     card2: {
-      badge: "Maandelijks opzegbaar",
-      title: "Abonnement",
-      desc: "Maandelijks: wij houden het draaiend en bouwen door.",
-      amount: "Op maat",
-      amountSub: "",
+      badge: "Meest compleet",
+      title: "Loop Compleet",
+      desc: "Tool plus automatische opvolging en leaddashboard.",
+      amount: "€2.950",
+      amountSub: "eenmalig",
+      monthly: "€179 per maand",
       features: [
-        "Hosting & technisch onderhoud",
-        "Updates & bugfixes",
-        "Doorontwikkeling op aanvraag",
-        "Lead-dashboardtoegang",
-        "Prioriteits-support"
+        "Alles uit Loop Start",
+        "Leaddashboard met status",
+        "AI-samenvatting en opvolgmail",
+        "Live in 3 weken"
       ],
-      cta: "Start met demo",
+      cta: "Kies Loop Compleet",
+      formType: "gesprek"
+    },
+    card3: {
+      title: "Loop Op Maat",
+      desc: "Koppelingen, interne automatisering en agents.",
+      amount: "vanaf €4.500",
+      amountSub: "eenmalig",
+      monthly: "vanaf €249 per maand",
+      features: [
+        "Alles uit Loop Compleet",
+        "CRM- en boekhoudkoppelingen",
+        "Interne automatisering op maat",
+        "Prioriteit bij doorontwikkeling"
+      ],
+      cta: "Bespreek op maat",
+      formType: "gesprek"
     }
   },
 
   branches: [
-    { name: "Zwembad & Buitenleven", count: "1 tool beschikbaar", img: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80", live: true, link: "https://sspw-offerte-calc.vercel.app/" },
-    { name: "Automotive", count: "3 tools beschikbaar", img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
-    { name: "Installatie & Bouw", count: "2 tools beschikbaar", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
-    { name: "Beauty & Wellness", count: "2 tools beschikbaar", img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
-    { name: "Retail", count: "2 tools beschikbaar", img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
-    { name: "Zakelijke Dienstverlening", count: "2 tools beschikbaar", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
-    { name: "Horeca & Recreatie", count: "2 tools beschikbaar", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
+    { name: "Zwembad & Buitenleven", count: "Demo live", img: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80", live: true, link: "https://sspw-offerte-calc.vercel.app/" },
+    { name: "Installatie & Bouw", count: "Demo in voorbereiding", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
+    { name: "Beauty & Wellness", count: "Demo in voorbereiding", img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
+    { name: "Zakelijke Dienstverlening", count: "Op aanvraag", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80", live: false, link: "" }
   ],
 
   cta: {
-    h2: "Vertel ons wat jouw\\nbedrijf mist",
-    sub: "In een gesprek van 30 minuten bepalen we samen of en hoe we kunnen helpen. Geen verplichtingen, geen verkooppraatje.",
-    note: "Binnen 1 werkdag reactie · Geen verplichtingen",
-    ctaPrimary: "Vraag een gratis gesprek aan",
-    ctaSecondary: "Bekijk cases",
+    h2: "Welke vraag komt bij jou\\nhet vaakst terug?",
+    sub: "In 30 minuten bespreken we of er een tool voor is — en welk pakket past. Vaste prijs, geen verplichtingen.",
+    note: "Gratis intake · Binnen 1 werkdag reactie",
+    ctaPrimary: "Plan een gratis gesprek",
+    ctaSecondary: "Bekijk pakketten",
+    ctaSecondaryLink: "/prijzen",
     stats: [
-      { prefix: "< ", count: "2", unit: "wkn", label: "Richting live" },
-      { count: "30", suffix: "%", label: "snellere opvolging" },
-      { count: "8", unit: "uur", label: "besparing per week" }
+      { static: "€1.950", label: "Instap vanaf" },
+      { static: "2–3 wkn", label: "Richting live" },
+      { static: "MKB", label: "1–15 medewerkers" }
     ]
   },
 
@@ -187,6 +205,27 @@ const CONTENT = {
     }
   }
 
+  function renderPriceCard(card, featured) {
+    var formType = card.formType || 'gesprek';
+    var feats = (card.features || []).map(function (f) {
+      return '<div class="pf"><i class="ti ti-check pf-check"></i>' + f + '</div>';
+    }).join('');
+    var badge = card.badge ? '<div class="price-badge">' + card.badge + '</div>' : '';
+    var monthly = card.monthly ? '<div class="price-monthly">+ ' + card.monthly + '</div>' : '';
+    var btnClass = featured ? 'btn btn-teal' : 'btn btn-outline';
+    var arrow = featured ? ' <i class="ti ti-arrow-right"></i>' : '';
+    return '<div class="price-card ix-card ix-tilt' + (featured ? ' featured' : '') + '">' +
+      badge +
+      '<div class="price-title">' + card.title + '</div>' +
+      '<div class="price-desc">' + (card.desc || '') + '</div>' +
+      '<div class="price-amount"><span>' + card.amount + '</span><sub> / ' + (card.amountSub || '') + '</sub></div>' +
+      monthly +
+      '<hr class="price-hr">' +
+      '<div class="price-feats">' + feats + '</div>' +
+      '<a href="#" onclick="openModal(\'' + formType + '\');return false;" class="' + btnClass + ' price-btn" style="font-size:15px;padding:13px 22px;">' + card.cta + arrow + '</a>' +
+      '</div>';
+  }
+
   function runApplyContent() {
   var h = CONTENT.hero;
   if (h) {
@@ -238,30 +277,42 @@ const CONTENT = {
 
   var p = CONTENT.pricing;
   if (p) {
-    var c1 = p.card1 || {}, c2 = p.card2 || {};
-    setText('cc-p1-title', c1.title); setText('cc-p1-desc', c1.desc);
-    setText('cc-p1-amount', c1.amount); setText('cc-p1-sub', c1.amountSub);
-    var el = document.getElementById('cc-p1-feats');
-    if (el && c1.features) el.innerHTML = c1.features.map(function(f) { return '<div class="pf"><i class="ti ti-check pf-check"></i>' + f + '</div>'; }).join('');
-    setText('cc-p1-cta', c1.cta);
-    setText('cc-p2-badge', c2.badge); setText('cc-p2-title', c2.title);
-    setText('cc-p2-desc', c2.desc); setText('cc-p2-amount', c2.amount); setText('cc-p2-sub', c2.amountSub || 'maand');
-    el = document.getElementById('cc-p2-feats');
-    if (el && c2.features) el.innerHTML = c2.features.map(function(f) { return '<div class="pf"><i class="ti ti-check pf-check"></i>' + f + '</div>'; }).join('');
-    setText('cc-p2-cta', c2.cta);
+    setText('cc-pr-label', p.label);
+    setText('cc-pr-title', p.title);
+    setText('cc-pr-sub', p.sub);
+    var launch = document.getElementById('cc-pr-launch');
+    if (launch) {
+      if (p.launchOffer) {
+        launch.innerHTML = '<p>' + p.launchOffer + '</p>';
+        launch.style.display = '';
+      } else {
+        launch.style.display = 'none';
+      }
+    }
+    var cards = [p.card1, p.card2, p.card3].filter(function (c) { return c && c.title; });
+    var prGrid = document.getElementById('cc-pricing-grid');
+    if (prGrid && cards.length) {
+      prGrid.className = 'pricing-grid' + (cards.length >= 3 ? ' pricing-grid--3' : '');
+      prGrid.innerHTML = cards.map(function (card, i) { return renderPriceCard(card, i === 1); }).join('');
+    }
   }
 
   var grid2 = document.getElementById('cc-branches-grid');
   if (grid2 && CONTENT.branches) {
-    grid2.innerHTML = CONTENT.branches.map(function(b) {
+    var branchHtml = CONTENT.branches.map(function(b) {
       var onclick = b.link ? ' onclick="window.open(\'' + b.link + '\',\'_blank\')" style="cursor:pointer"' : '';
       return '<div class="branch-card ix-card"' + onclick + '>' +
         (b.live ? '<div class="branch-live">Live</div>' : '') +
         '<img src="' + b.img + '" alt="' + b.name + '" loading="lazy">' +
         '<div class="branch-overlay"></div>' +
-        '<div class="branch-content"><div class="branch-name">' + b.name + '</div><div class="branch-tools">' + b.count + '</div></div>' +
+        '<div class="branch-content"><div class="branch-name">' + b.name + '</div><div class="branch-count">' + b.count + '</div></div>' +
         '</div>';
     }).join('');
+    branchHtml += '<div class="branch-plus" onclick="openModal(\'idee\')">' +
+      '<div class="branch-plus-icon"><i class="ti ti-plus"></i></div>' +
+      '<div class="branch-plus-text">Jouw branche</div>' +
+      '<div class="branch-plus-sub">Neem contact op</div></div>';
+    grid2.innerHTML = branchHtml;
   }
 
   var c = CONTENT.cta;
@@ -271,6 +322,8 @@ const CONTENT = {
     setText('cc-cta-cta1', c.ctaPrimary);
     setText('cc-cta-cta2', c.ctaSecondary);
     setText('cc-cta-note', c.note);
+    var cta2link = document.getElementById('cc-cta-cta2');
+    if (cta2link && c.ctaSecondaryLink) cta2link.setAttribute('href', c.ctaSecondaryLink);
     var stats = document.getElementById('cc-cta-stats');
     if (stats && c.stats) {
       stats.innerHTML = renderImpactGrid(c.stats);

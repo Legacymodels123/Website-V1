@@ -133,7 +133,7 @@
   };
 
   var PAGE_CTA_DEFAULTS = {
-    prijzen: 'inschatting',
+    prijzen: 'gesprek',
     werkwijze: 'intake',
     branches: 'idee',
     cases: 'gesprek',

@@ -5,26 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO — beheerd via /admin of seo-config.js -->
-  <title>Loopwerk | Slimme tools voor werk dat steeds terugkomt</title>
-  <meta name="description" content="Loopwerk bouwt praktische tools en automatiseringen voor Nederlandse MKB-bedrijven. Geen groot IT-traject — wel een concrete oplossing voor werk dat steeds terugkomt.">
+  <title>Loopwerk | De tool voor jouw meest gestelde vraag</title>
+  <meta name="description" content="Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen. Vaste prijzen, live in 2–3 weken.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#101820">
-  <link rel="canonical" href="https://briqo.nl">
+  <meta name="theme-color" content="#1E2A26">
+  <link rel="canonical" href="https://loopwerk.nl">
 
   <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
-  <meta property="og:title" content="Loopwerk | Slimme tools voor werk dat steeds terugkomt">
-  <meta property="og:description" content="Loopwerk bouwt praktische tools en automatiseringen voor Nederlandse MKB-bedrijven. Geen groot IT-traject — wel een concrete oplossing voor werk dat steeds terugkomt.">
-  <meta property="og:image" content="https://briqo.nl/og-image.png">
-  <meta property="og:url" content="https://briqo.nl">
+  <meta property="og:title" content="Loopwerk | De tool voor jouw meest gestelde vraag">
+  <meta property="og:description" content="Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen. Vaste prijzen, live in 2–3 weken.">
+  <meta property="og:image" content="https://loopwerk.nl/og-image.png">
+  <meta property="og:url" content="https://loopwerk.nl">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Loopwerk">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Loopwerk | Slimme tools voor werk dat steeds terugkomt">
-  <meta name="twitter:description" content="Loopwerk bouwt praktische tools en automatiseringen voor Nederlandse MKB-bedrijven. Geen groot IT-traject — wel een concrete oplossing voor werk dat steeds terugkomt.">
-  <meta name="twitter:image" content="https://briqo.nl/og-image.png">
+  <meta name="twitter:title" content="Loopwerk | De tool voor jouw meest gestelde vraag">
+  <meta name="twitter:description" content="Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen. Vaste prijzen, live in 2–3 weken.">
+  <meta name="twitter:image" content="https://loopwerk.nl/og-image.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
@@ -329,7 +329,7 @@
 
     /* HOW IT WORKS */
     .process-section { background: white; }
-    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 60px; position: relative; }
+    .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; margin-top: 60px; position: relative; }
     .process-steps::before { content: ''; position: absolute; top: 26px; left: 70px; right: 70px; height: 1px; background: #E2E8F0; z-index: 0; }
     .p-step { text-align: center; position: relative; z-index: 1; }
     .p-step-circle {
@@ -345,15 +345,19 @@
     .p-step-tag { display: inline-block; margin-top: 12px; font-size: 11px; background: #F1F5F9; color: #64748B; padding: 4px 12px; border-radius: 100px; transition: background 0.25s ease, color 0.25s ease; }
 
     /* PRICING */
-    .pricing-section { background: #F8FAFC; }
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 760px; margin: 56px auto 0; }
+    .pricing-section { background: #F6F4EF; }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 56px auto 0; }
+    .pricing-grid--3 { grid-template-columns: repeat(3, 1fr); max-width: 1100px; }
+    .launch-offer { background: #E5DFD3; border: 1px solid #D9D3C8; border-left: 4px solid #C46F4A; border-radius: 18px; padding: 20px 24px; max-width: 880px; margin: 32px auto 0; }
+    .launch-offer p { font-size: 15px; color: #5c6b63; line-height: 1.75; margin: 0; }
     .price-card { background: white; border: 1px solid #E2E8F0; border-radius: 24px; padding: 36px; transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s ease, opacity 0.3s ease, filter 0.3s ease; }
-    .price-card.featured { border-color: #E2E8F0; box-shadow: none; }
+    .price-card.featured { border-color: #5F7161; box-shadow: 0 8px 32px rgba(30,42,38,.08); }
     .price-badge { display: inline-block; background: #CCFBF1; color: #0F766E; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 18px; }
     .price-title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 8px; }
     .price-desc { font-size: 14px; color: #64748B; line-height: 1.65; margin-bottom: 26px; }
     .price-amount { font-size: 38px; font-weight: 700; color: #0F172A; }
     .price-amount sub { font-size: 15px; font-weight: 400; color: #94A3B8; }
+    .price-monthly { font-size: 15px; font-weight: 600; color: #64748B; margin-top: 8px; }
     .price-hr { border: none; border-top: 1px solid #F1F5F9; margin: 26px 0; }
     .price-feats { display: flex; flex-direction: column; gap: 13px; }
     .pf { display: flex; align-items: flex-start; gap: 11px; font-size: 14px; color: #475569; }
@@ -522,6 +526,7 @@
 
       /* PRICING */
       .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+      .pricing-grid--3 { grid-template-columns: 1fr; }
 
       /* ABOUT */
       .team-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -679,12 +684,12 @@
 
   <div class="living-hero__frame hero-visual--loop">
     <div class="living-hero__inner">
-      <div class="living-hero__eyebrow" id="cc-hero-pill">Van klantvraag naar live tool</div>
-      <h1 id="cc-hero-h1">Vragen komen terug.<br>Wij maken ze <em>werkend</em>.</h1>
-      <p class="hero-sub" id="cc-hero-sub">Loopwerk bouwt calculators, scans en intakes rond de vragen die elke week terugkomen. Geen vaag AI-traject, maar een concrete tool op je website.</p>
+      <div class="living-hero__eyebrow" id="cc-hero-pill">Voor het MKB zonder IT-afdeling</div>
+      <h1 id="cc-hero-h1">De vraag die elke week terugkomt?<br>Wij maken er een <em>werkende tool</em> van.</h1>
+      <p class="hero-sub" id="cc-hero-sub">Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen.</p>
       <div class="hero-btns">
         <a href="#" onclick="openModal('demo');return false;" class="btn btn-teal btn-lg"><span id="cc-hero-cta1">Bekijk demo</span> <i class="ti ti-arrow-right"></i></a>
-        <a href="/werkwijze" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Ontdek je eerste tool</a>
+        <a href="/prijzen" class="btn btn-ghost-white btn-lg" id="cc-hero-cta2">Bekijk pakketten</a>
       </div>
       <div class="hero-proof">
         <div class="proof-avatars">
@@ -849,71 +854,8 @@
   <div class="container">
     <div class="section-label">Branches</div>
     <h2 class="section-h2">Voor welke sector werk jij?</h2>
-    <p class="section-sub">Klik op jouw branche en zie welke tools beschikbaar zijn. Of laat ons iets nieuws bouwen.</p>
-    <div class="branches-grid" id="cc-branches-grid">
-      <div class="branch-card ix-card" onclick="window.open('https://sspw-offerte-calc.vercel.app/','_blank')">
-        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80" alt="Zwembad">
-        <div class="branch-overlay"></div>
-        <div class="branch-live">Live</div>
-        <div class="branch-content">
-          <div class="branch-name">Zwembad &amp; Buitenleven</div>
-          <div class="branch-count">1 tool beschikbaar</div>
-        </div>
-      </div>
-      <div class="branch-card ix-card" onclick="window.location='/branches'">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80" alt="Automotive">
-        <div class="branch-overlay"></div>
-        <div class="branch-content">
-          <div class="branch-name">Automotive</div>
-          <div class="branch-count">3 tools beschikbaar</div>
-        </div>
-      </div>
-      <div class="branch-card ix-card" onclick="window.location='/branches'">
-        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80" alt="Installatie Bouw">
-        <div class="branch-overlay"></div>
-        <div class="branch-content">
-          <div class="branch-name">Installatie &amp; Bouw</div>
-          <div class="branch-count">2 tools beschikbaar</div>
-        </div>
-      </div>
-      <div class="branch-card ix-card" onclick="window.location='/branches'">
-        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80" alt="Beauty Wellness">
-        <div class="branch-overlay"></div>
-        <div class="branch-content">
-          <div class="branch-name">Beauty &amp; Wellness</div>
-          <div class="branch-count">2 tools beschikbaar</div>
-        </div>
-      </div>
-      <div class="branch-card ix-card" onclick="window.location='/branches'">
-        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80" alt="Retail">
-        <div class="branch-overlay"></div>
-        <div class="branch-content">
-          <div class="branch-name">Retail</div>
-          <div class="branch-count">2 tools beschikbaar</div>
-        </div>
-      </div>
-      <div class="branch-card ix-card" onclick="window.location='/branches'">
-        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Zakelijke Dienstverlening">
-        <div class="branch-overlay"></div>
-        <div class="branch-content">
-          <div class="branch-name">Zakelijke Dienstverlening</div>
-          <div class="branch-count">2 tools beschikbaar</div>
-        </div>
-      </div>
-      <div class="branch-card ix-card" onclick="window.location='/branches'">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=500&q=80" alt="Horeca Recreatie">
-        <div class="branch-overlay"></div>
-        <div class="branch-content">
-          <div class="branch-name">Horeca &amp; Recreatie</div>
-          <div class="branch-count">2 tools beschikbaar</div>
-        </div>
-      </div>
-      <div class="branch-plus" onclick="openModal('idee')">
-        <div class="branch-plus-icon"><i class="ti ti-plus"></i></div>
-        <div class="branch-plus-text">Jouw branche</div>
-        <div class="branch-plus-sub">Neem contact op</div>
-      </div>
-    </div>
+    <p class="section-sub" id="cc-branches-sub">We bouwen per branche een werkende demo — zodat je ziet hoe het er voor jouw zaak uitziet, vóór je tekent.</p>
+    <div class="branches-grid" id="cc-branches-grid"></div>
   </div>
 </section>
 
@@ -921,32 +863,38 @@
 <section class="section process-section" id="werkwijze">
   <div class="container">
     <div class="section-label" style="text-align:center;">Werkwijze</div>
-    <h2 class="section-h2" style="text-align:center;">Van idee naar live in twee weken</h2>
-    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Geen maandenlange trajecten of vage planningen. Elke stap is concreet. Je weet precies wat er wanneer gebeurt.</p>
+    <h2 class="section-h2" style="text-align:center;">Van vraag naar live in 2–3 weken</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Geen strategiedocument van twaalf pagina's. Wel een helder proces met vaste prijs op één A4.</p>
     <div class="process-steps">
       <div class="p-step">
         <div class="p-step-circle"><div class="p-step-num">1</div></div>
-        <div class="p-step-title">Intakegesprek</div>
-        <div class="p-step-desc">We bespreken jouw probleem en klant. Wat moet de tool doen, en voor wie?</div>
-        <div class="p-step-tag">Gratis · 30 min</div>
+        <div class="p-step-title">Intake</div>
+        <div class="p-step-desc">Welke vraag komt het vaakst terug? Wat kost het je per week om die te beantwoorden?</div>
+        <div class="p-step-tag">30 min · gratis</div>
       </div>
       <div class="p-step">
         <div class="p-step-circle"><div class="p-step-num">2</div></div>
-        <div class="p-step-title">Voorstel &amp; scope</div>
-        <div class="p-step-desc">Je ontvangt een heldere scope: wat we bouwen, wat het kost en wanneer het live gaat.</div>
+        <div class="p-step-title">Voorstel</div>
+        <div class="p-step-desc">Eén A4: probleem, tool, vaste prijs en planning. Geen offerte-pdf.</div>
         <div class="p-step-tag">Binnen 2 werkdagen</div>
       </div>
       <div class="p-step">
         <div class="p-step-circle"><div class="p-step-num">3</div></div>
-        <div class="p-step-title">Bouw (2 weken)</div>
-        <div class="p-step-desc">We bouwen de MVP. Jij geeft feedback op een tussentijdse versie, wij passen aan.</div>
-        <div class="p-step-tag">Next.js · Supabase · Vercel</div>
+        <div class="p-step-title">Bouw</div>
+        <div class="p-step-desc">Sprint 1: ruwe versie + feedback. Sprint 2: afwerken en live.</div>
+        <div class="p-step-tag">2–3 weken</div>
       </div>
       <div class="p-step">
         <div class="p-step-circle"><div class="p-step-num">4</div></div>
-        <div class="p-step-title">Live &amp; doorontwikkeling</div>
-        <div class="p-step-desc">De tool gaat live op jouw domein. We bouwen door op basis van echte data.</div>
-        <div class="p-step-tag">Maandabonnement</div>
+        <div class="p-step-title">Live</div>
+        <div class="p-step-desc">Op jouw domein, meetbaar vanaf dag 1: bezoekers, invullers, leads.</div>
+        <div class="p-step-tag">Vast moment</div>
+      </div>
+      <div class="p-step">
+        <div class="p-step-circle"><div class="p-step-num">5</div></div>
+        <div class="p-step-title">Dag-30 evaluatie</div>
+        <div class="p-step-desc">Cijfers doornemen: aanvragen, tijdswinst. Hier ontstaat je case.</div>
+        <div class="p-step-tag">30 min</div>
       </div>
     </div>
   </div>
@@ -955,40 +903,11 @@
 <!-- PRICING -->
 <section class="section pricing-section" id="prijzen">
   <div class="container">
-    <div class="section-label" style="text-align:center;">Investering</div>
-    <h2 class="section-h2" style="text-align:center;">Transparante prijzen,<br>geen verrassingen</h2>
-    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;">Eenmalige opzet + maandabonnement. Jij betaalt alleen als de tool live is.</p>
-    <div class="pricing-grid">
-      <div class="price-card ix-card ix-tilt">
-        <div class="price-title" id="cc-p1-title">Opzet</div>
-        <div class="price-desc" id="cc-p1-desc">Eenmalig: van brief tot live MVP op jouw eigen domein.</div>
-        <div class="price-amount"><span id="cc-p1-amount">Op maat</span><sub> / <span id="cc-p1-sub">eenmalig</span></sub></div>
-        <hr class="price-hr">
-        <div class="price-feats" id="cc-p1-feats">
-          <div class="pf"><i class="ti ti-check pf-check"></i>Intakegesprek &amp; scope</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Ontwerp &amp; volledige bouw</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Live op Vercel + eigen domein</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Admin dashboard voor leads</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Supabase database</div>
-        </div>
-        <a href="#" onclick="openModal('gesprek');return false;" class="btn btn-outline price-btn" style="font-size:15px;padding:13px 22px;" id="cc-p1-cta">Bespreek eerste fase</a>
-      </div>
-      <div class="price-card ix-card ix-tilt featured">
-        <div class="price-badge" id="cc-p2-badge">Maandelijks opzegbaar</div>
-        <div class="price-title" id="cc-p2-title">Abonnement</div>
-        <div class="price-desc" id="cc-p2-desc">Maandelijks: wij houden het draaiend en bouwen door.</div>
-        <div class="price-amount"><span id="cc-p2-amount">Op maat</span><sub> / <span id="cc-p2-sub">maand</span></sub></div>
-        <hr class="price-hr">
-        <div class="price-feats" id="cc-p2-feats">
-          <div class="pf"><i class="ti ti-check pf-check"></i>Hosting &amp; technisch onderhoud</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Updates &amp; bugfixes</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Doorontwikkeling op aanvraag</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Lead-dashboardtoegang</div>
-          <div class="pf"><i class="ti ti-check pf-check"></i>Prioriteits-support</div>
-        </div>
-        <a href="#" onclick="openModal('demo');return false;" class="btn btn-teal price-btn" style="font-size:15px;padding:13px 22px;"><span id="cc-p2-cta">Start met demo</span> <i class="ti ti-arrow-right"></i></a>
-      </div>
-    </div>
+    <div class="section-label" style="text-align:center;" id="cc-pr-label">Pakketten</div>
+    <h2 class="section-h2" style="text-align:center;" id="cc-pr-title">Vaste prijzen,<br>geen verrassingen</h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto;" id="cc-pr-sub">Begin met één tool. Daarna bouwen we verder op wat de data laat zien.</p>
+    <div class="launch-offer" id="cc-pr-launch" style="display:none;"></div>
+    <div class="pricing-grid pricing-grid--3" id="cc-pricing-grid"></div>
   </div>
 </section>
 
@@ -999,7 +918,7 @@
       <div class="section-label">Over ons</div>
       <h2 class="section-h2" style="margin-bottom:18px;" id="cc-team-title">Drie ondernemers, één missie</h2>
       <p id="cc-team-intro1">Loopwerk is Levi Kempen, Shaquil Reyes en Gianni Geurtjens. We zagen steeds hetzelfde: goede bedrijven die online geen antwoord kunnen geven op vragen die elke week terugkomen.</p>
-      <p id="cc-team-intro2">Geen groot IT-traject. Wel een tool die snel live kan en direct iets oplevert.</p>
+      <p id="cc-team-intro2">Geen groot IT-traject. Wel een tool die snel live kan — met een vaste prijs die je in één avond kunt beslissen.</p>
     </div>
     <div class="team-grid" id="cc-team-grid"></div>
     <div class="about-more">
@@ -1038,13 +957,13 @@
   <div class="container">
     <div class="cta-inner">
       <div class="section-label" style="color:#5EEAD4;margin-bottom:18px;">Klaar om te starten?</div>
-      <h2 id="cc-cta-h2">Vertel ons wat jouw<br>bedrijf mist</h2>
-      <p id="cc-cta-sub">In een gesprek van 30 minuten bepalen we samen of en hoe we kunnen helpen. Geen verplichtingen, geen verkooppraatje.</p>
+      <h2 id="cc-cta-h2">Welke vraag komt bij jou<br>het vaakst terug?</h2>
+      <p id="cc-cta-sub">In 30 minuten bespreken we of er een tool voor is — en welk pakket past. Vaste prijs, geen verplichtingen.</p>
       <div class="cta-btns">
-        <a href="#" onclick="openModal('gesprek');return false;" class="btn btn-teal btn-lg"><span id="cc-cta-cta1">Vraag een gratis gesprek aan</span> <i class="ti ti-arrow-right"></i></a>
-        <a href="/cases" class="btn btn-ghost-white btn-lg" id="cc-cta-cta2">Bekijk cases</a>
+        <a href="#" onclick="openModal('gesprek');return false;" class="btn btn-teal btn-lg"><span id="cc-cta-cta1">Plan een gratis gesprek</span> <i class="ti ti-arrow-right"></i></a>
+        <a href="/prijzen" class="btn btn-ghost-white btn-lg" id="cc-cta-cta2">Bekijk pakketten</a>
       </div>
-      <div class="cta-note" id="cc-cta-note">Binnen 1 werkdag reactie &nbsp;·&nbsp; Geen verplichtingen</div>
+      <div class="cta-note" id="cc-cta-note">Gratis intake · Binnen 1 werkdag reactie</div>
       <div class="impact-grid impact-grid--cta" id="cc-cta-stats"></div>
     </div>
   </div>
@@ -1092,7 +1011,7 @@
           </div>
           <span class="footer-ln">Loopwerk</span>
         </div>
-        <p class="footer-desc">Slimme tools voor werk dat steeds terugkomt. Van idee naar live tool in minder dan twee weken.</p>
+        <p class="footer-desc">De tool voor jouw meest gestelde vraag. Vaste prijzen, live in 2–3 weken.</p>
       </div>
       <div>
         <div class="footer-col-title">Navigatie</div>

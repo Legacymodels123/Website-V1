@@ -16,30 +16,30 @@ html.loopwerk .nav-name-hand {
 
 /* Levende loop wint van donkere preview-defaults op .hero */
 html.loopwerk .hero--living {
-  background: #F7F4ED !important;
+  background: #F6F4EF !important;
 }
 
 html.loopwerk.lw-hero-portal .hero--living {
-  background: #101820 !important;
+  background: #1E2A26 !important;
 }
 
 html.loopwerk .hero--living h1 {
-  color: #101820 !important;
+  color: #1E2A26 !important;
 }
 
 html.loopwerk .hero--living .hero-sub,
 html.loopwerk .hero--living .proof-text {
-  color: #5c6b73 !important;
+  color: #5c6b63 !important;
 }
 
 html.loopwerk .hero--living .proof-text strong {
-  color: #101820 !important;
+  color: #1E2A26 !important;
 }
 
 html.loopwerk .hero--living .living-hero__eyebrow {
-  color: #1F4D3A !important;
+  color: #5F7161 !important;
 }
 
 html.loopwerk .hero--living h1 em {
-  color: #4A7C6F !important;
+  color: #5F7161 !important;
 }

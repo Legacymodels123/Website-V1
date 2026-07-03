@@ -4,9 +4,9 @@
   "title": "Prijzen",
   "seo": {
     "title": "Prijzen — Loopwerk",
-    "description": "Bekijk hoe Loopwerk prijzen opbouwt voor calculators, intakeflows en andere praktische tools voor het MKB.",
-    "ogImage": "https://briqo.nl/og-image.png",
-    "canonical": "https://briqo.nl/prijzen"
+    "description": "Vaste pakketten voor calculators, scans en intakeflows. Geen offerte-gedoe — prijs op de site is prijs op de factuur.",
+    "ogImage": "https://loopwerk.nl/og-image.png",
+    "canonical": "https://loopwerk.nl/prijzen"
   },
   "headScripts": "",
   "blocks": [
@@ -15,18 +15,18 @@
       "type": "hero_simple",
       "data": {
         "label": "Prijzen",
-        "h1": "Duidelijke investering,\\ngeen bureau-gedoe",
-        "sub": "Je hoeft niet meteen een groot traject in. We werken liever toe naar een duidelijke eerste versie die echt gebruikt kan worden.",
+        "h1": "Vaste prijzen.\\nGeen bureau-gedoe.",
+        "sub": "Drie pakketten, vaste bedragen. Geen offerte van twaalf pagina's — je weet vooraf wat je betaalt en wanneer het live is.",
         "relatedLink": {
           "text": "Zo werken we",
           "url": "/werkwijze"
         },
         "chips": [
           {
-            "text": "Compact starten"
+            "text": "Maandelijks opzegbaar"
           },
           {
-            "text": "Gericht doorbouwen"
+            "text": "Tool blijft werken bij opzegging"
           }
         ]
       }
@@ -35,39 +35,57 @@
       "id": "pr2",
       "type": "pricing",
       "data": {
-        "label": "Investering",
-        "title": "Wat zit erbij inbegrepen?",
-        "sub": "Een eerste opzet voor bouw en livegang, plus een onderhoudslaag als je wilt blijven verbeteren.",
+        "label": "Pakketten",
+        "title": "Kies je instap",
+        "sub": "Begin met één tool. Daarna bouwen we verder op wat de data laat zien.",
         "bg": "alt",
+        "launchOffer": "We zijn net gestart. De eerste drie klanten bouwen we tegen halve setupkosten (€975 / €1.475 / vanaf €2.250) — in ruil voor een eerlijke case met echte cijfers en een testimonial.",
         "card1": {
-          "title": "Opzet",
-          "desc": "Voor de eerste scope, bouw en livegang van een compacte MVP.",
-          "amount": "Op maat",
+          "title": "Loop Start",
+          "desc": "Eén tool op je website: calculator, scan of intake. Lost één zichtbaar probleem op.",
+          "amount": "€1.950",
           "amountSub": "eenmalig",
+          "monthly": "€99 per maand",
           "features": [
-            "Intake en afbakening",
-            "Flow, copy en eerste logica",
-            "Bouw van de eerste werkende versie",
-            "Live op jouw domein of losse tool-URL",
-            "Ruimte voor een feedbackronde"
+            "Hosting, onderhoud en kleine aanpassingen",
+            "Live op jouw domein in 2 weken",
+            "Eén feedbackronde tijdens bouw",
+            "Maandelijks opzegbaar"
           ],
-          "cta": "Vraag een inschatting",
-          "formType": "inschatting"
+          "cta": "Kies Loop Start",
+          "formType": "gesprek"
         },
         "card2": {
-          "badge": "Voor doorontwikkeling",
-          "title": "Abonnement",
-          "desc": "Voor hosting, onderhoud en verdere verbeteringen na livegang.",
-          "amount": "Op maat",
-          "amountSub": "per maand",
+          "badge": "Meest compleet",
+          "title": "Loop Compleet",
+          "desc": "Tool plus automatische opvolging: samenvatting per aanvraag, opvolgmail en leaddashboard.",
+          "amount": "€2.950",
+          "amountSub": "eenmalig",
+          "monthly": "€179 per maand",
           "features": [
-            "Technisch onderhoud en hosting",
-            "Kleine updates en optimalisaties",
-            "Doorontwikkeling op basis van gebruik",
-            "Meedenken over volgende iteraties",
-            "Prioriteit op supportvragen"
+            "Alles uit Loop Start",
+            "Leaddashboard met status",
+            "AI-samenvatting per aanvraag",
+            "Opvolgmail-automatisering",
+            "Live in 3 weken"
           ],
-          "cta": "Bespreek onderhoud",
+          "cta": "Kies Loop Compleet",
+          "formType": "gesprek"
+        },
+        "card3": {
+          "title": "Loop Op Maat",
+          "desc": "Koppelingen, interne automatisering en agents voor terugkerend kantoorwerk.",
+          "amount": "vanaf €4.500",
+          "amountSub": "eenmalig",
+          "monthly": "vanaf €249 per maand",
+          "features": [
+            "Alles uit Loop Compleet",
+            "Doorontwikkeling op prioriteit",
+            "Koppelingen met CRM of boekhouding",
+            "Interne automatisering op maat",
+            "Scope en planning per project"
+          ],
+          "cta": "Bespreek op maat",
           "formType": "gesprek"
         }
       }
@@ -76,8 +94,8 @@
       "id": "pr3",
       "type": "text_block",
       "data": {
-        "h2": "Wanneer is iets nog een snelle MVP?",
-        "content": "Een compacte intakeflow, scan of calculator is vaak een goede eerste stap. Daarmee kun je snel testen of klanten echt reageren op de tool.\\n\\nWordt de logica uitgebreider, moeten er veel koppelingen in of wil je meerdere rollen en dashboards, dan schuift het sneller op richting maatwerk.",
+        "h2": "Wat je kunt verwachten",
+        "content": "Maandelijks opzegbaar — geen jaarcontract.\\n\\nBij opzegging blijft je tool gewoon werken. Geen gijzeling.\\n\\nPrijs op de site = prijs op de factuur. Geen verborgen kosten.\\n\\nSetup is eenmalig. Het abonnement dekt hosting, onderhoud en wat in je pakket zit.",
         "card": true
       }
     },
@@ -85,8 +103,8 @@
       "id": "pr4",
       "type": "text_block",
       "data": {
-        "h2": "Wat valt meestal buiten de standaardscope?",
-        "content": "Volledige maatwerksystemen, veel complexe koppelingen, uitgebreide gebruikersrollen of zeer grote contentmigraties vallen meestal niet in een eerste compacte opzet.\\n\\nDaarom is het handig om te starten met een versie die direct iets oplost en daarna door te bouwen.",
+        "h2": "De trap omhoog",
+        "content": "Trede 1: de tool op je website — dat is wat je nu koopt.\\n\\nTrede 2: opvolging — elke aanvraag samengevat, opvolgmail klaar, leads in een dashboard.\\n\\nTrede 3: het loopwerk erachter — offertes voorbereiden, planning, koppelingen met je boekhouding.\\n\\nOp de site houden we het simpel. In het gesprek en het abonnement zit de groei.",
         "card": true
       }
     },
@@ -94,25 +112,25 @@
       "id": "pr5",
       "type": "cta",
       "data": {
-        "h2": "Wil je een realistische\\neerste inschatting?",
-        "sub": "Laat kort weten welk type tool je voor ogen hebt. Dan kunnen we aangeven wat logisch is voor een eerste fase.",
-        "note": "Snel antwoord · Geen uitgebreide offerte nodig",
-        "ctaPrimary": "Vraag een inschatting",
-        "formType": "inschatting",
+        "h2": "Welke vraag komt\\nbij jou het vaakst terug?",
+        "sub": "In 30 minuten bespreken we of er een tool voor is — en welk pakket past. Vaste prijs, geen offerte-traject.",
+        "note": "Gratis intake · Vaste prijs daarna",
+        "ctaPrimary": "Plan een gesprek",
+        "formType": "gesprek",
         "ctaSecondary": "Bekijk werkwijze",
         "ctaSecondaryLink": "/werkwijze",
         "stats": [
           {
-            "value": "Duidelijk",
-            "label": "Afgebakende eerste fase"
+            "value": "€1.950",
+            "label": "Instap vanaf"
           },
           {
-            "value": "Compact",
-            "label": "Gericht op snelle livegang"
+            "value": "2 wkn",
+            "label": "Richting live"
           },
           {
-            "value": "Groei",
-            "label": "Later doorontwikkelbaar"
+            "value": "Opzegbaar",
+            "label": "Per maand"
           }
         ]
       }

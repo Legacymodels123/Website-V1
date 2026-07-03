@@ -8,7 +8,7 @@
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Loopwerk">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://briqo.nl/og-image.png">
+<meta property="og:image" content="https://loopwerk.nl/og-image.png">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
@@ -115,13 +115,18 @@ a{text-decoration:none;color:inherit}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.pricing-grid--3{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.launch-offer{background:var(--lw-cream-muted,#E5DFD3);border:1.5px solid var(--border);border-left:4px solid var(--lw-orange,#C46F4A);border-radius:18px;padding:24px 28px;margin-bottom:32px;max-width:880px;margin-left:auto;margin-right:auto}
+.launch-offer strong{color:var(--lw-night)}
+.launch-offer p{font-size:15px;color:var(--muted);line-height:1.75;margin:0}
 .price-card{background:#fff;border:1.5px solid var(--border);border-radius:22px;padding:32px;transition:border-color .3s ease,box-shadow .35s ease,transform .35s ease,opacity .3s ease,filter .3s ease}
-.price-card.featured{border-color:var(--border);box-shadow:none}
+.price-card.featured{border-color:var(--lw-accent,#5F7161);box-shadow:0 8px 32px rgba(30,42,38,.08)}
 .price-badge{display:inline-block;background:#CCFBF1;color:#0F766E;font-size:12px;font-weight:700;border-radius:999px;padding:5px 12px;margin-bottom:14px}
 .price-title{font-size:24px;font-weight:800;margin-bottom:8px}
 .price-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:22px}
 .price-amount{font-size:38px;font-weight:800;letter-spacing:-.03em}
 .price-amount sub{font-size:14px;font-weight:500;color:#94A3B8}
+.price-monthly{font-size:15px;font-weight:600;color:var(--muted);margin-top:8px}
 .price-hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 .price-feats{display:flex;flex-direction:column;gap:12px}
 .pf{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#475569;line-height:1.6}
@@ -245,6 +250,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
   .img-text{grid-template-columns:1fr;gap:24px}
   .img-text.flip{direction:ltr}
   .pricing-grid{grid-template-columns:1fr}
+  .pricing-grid--3{grid-template-columns:1fr}
   .about-inner{grid-template-columns:1fr;gap:32px}
   .team-grid,.articles-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr 1fr}
@@ -324,7 +330,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
           <div class="footer-lm"><svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg></div>
           <span class="footer-ln">Loopwerk</span>
         </div>
-        <p class="footer-desc">Slimme tools voor werk dat steeds terugkomt. Van idee naar live tool in minder dan twee weken.</p>
+        <p class="footer-desc">De tool voor jouw meest gestelde vraag. Vaste prijzen, live in 2–3 weken.</p>
       </div>
       <div>
         <div class="footer-col-title">Navigatie</div>
@@ -600,15 +606,18 @@ const renderers = {
   pricing(d) {
     const c1 = d.card1 || {};
     const c2 = d.card2 || {};
+    const c3 = d.card3 || null;
+    const cards = [c1, c2, c3].filter(c => c && c.title);
     const renderCard = (card, featured) => {
       const formType = card.formType || (slug === 'prijzen'
-        ? (featured ? 'gesprek' : 'inschatting')
+        ? 'gesprek'
         : (featured ? 'demo' : 'gesprek'));
       return `<div class="price-card ix-card ix-tilt ix-reveal ${featured ? 'featured' : ''}">
       ${card.badge ? `<div class="price-badge">${esc(card.badge)}</div>` : ''}
       <div class="price-title">${esc(card.title || '')}</div>
       ${card.desc ? `<div class="price-desc">${esc(card.desc)}</div>` : ''}
       <div class="price-amount">${esc(card.amount || '')}${card.amountSub ? `<sub> / ${esc(card.amountSub)}</sub>` : ''}</div>
+      ${card.monthly ? `<div class="price-monthly">+ ${esc(card.monthly)}</div>` : ''}
       <hr class="price-hr">
       <div class="price-feats">
         ${(card.features || []).map(feat => `<div class="pf"><i class="ti ti-check pf-check"></i><span>${esc(feat)}</span></div>`).join('')}
@@ -616,12 +625,16 @@ const renderers = {
       ${card.cta ? `<button class="btn ${featured ? 'btn-teal' : 'btn-outline'} price-btn" onclick="${modalOnclick(formType, slug + '-pricing')}">${esc(card.cta)}${featured ? ' <i class="ti ti-arrow-right"></i>' : ''}</button>` : ''}
     </div>`;
     };
+    const launchHtml = d.launchOffer
+      ? `<div class="launch-offer ix-reveal"><p>${esc(d.launchOffer)}</p></div>`
+      : '';
+    const gridClass = cards.length >= 3 ? 'pricing-grid pricing-grid--3' : 'pricing-grid';
     return `<section class="section ${d.bg === 'alt' ? 'section-alt' : ''}">
       <div class="container">
         ${d.label || d.title ? `<div class="section-center">${d.label ? `<div class="section-label">${esc(d.label)}</div>` : ''}${d.title ? `<h2 class="section-h2">${esc(d.title)}</h2>` : ''}${d.sub ? `<p class="section-sub">${esc(d.sub)}</p>` : ''}</div>` : ''}
-        <div class="pricing-grid">
-          ${renderCard(c1, false)}
-          ${renderCard(c2, true)}
+        ${launchHtml}
+        <div class="${gridClass}">
+          ${cards.map((card, i) => renderCard(card, i === 1)).join('')}
         </div>
       </div>
     </section>`;

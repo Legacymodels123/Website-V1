@@ -5,8 +5,8 @@
   "seo": {
     "title": "Over ons — Loopwerk",
     "description": "Levi Kempen, Shaquil Reyes en Gianni Geurtjens bouwen met Loopwerk praktische tools voor het Nederlandse MKB.",
-    "ogImage": "https://briqo.nl/og-image.png",
-    "canonical": "https://briqo.nl/over-ons"
+    "ogImage": "https://loopwerk.nl/og-image.png",
+    "canonical": "https://loopwerk.nl/over-ons"
   },
   "headScripts": "",
   "blocks": [
@@ -16,7 +16,7 @@
       "data": {
         "label": "Over ons",
         "h1": "Drie ondernemers.\\nEén missie.",
-        "sub": "We bouwen de tool die jouw bedrijf mist. Zonder maandenlang IT-traject en zonder vaag AI-verhaal. Gewoon iets dat werkt en snel live kan.",
+        "sub": "We bouwen de tool die jouw bedrijf mist. Zonder maandenlang IT-traject en zonder vaag AI-verhaal. Gewoon iets dat werkt — met een vaste prijs.",
         "relatedLink": {
           "text": "Lees onze inzichten",
           "url": "/blog"

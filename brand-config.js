@@ -2,13 +2,13 @@
 
 const BRAND = {
   name: "Loopwerk",
-  tagline: "Slimme tools voor werk dat steeds terugkomt",
-  description: "Loopwerk bouwt praktische tools en automatiseringen voor Nederlandse MKB-bedrijven. Geen groot IT-traject — wel een concrete oplossing voor werk dat steeds terugkomt.",
-  footerDesc: "Slimme tools voor werk dat steeds terugkomt. Van idee naar live tool in minder dan twee weken.",
+  tagline: "De tool voor jouw meest gestelde vraag",
+  description: "Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen.",
+  footerDesc: "De tool voor jouw meest gestelde vraag. Vaste prijzen, live in 2–3 weken.",
   footerTag: "Gebouwd voor het Nederlandse MKB",
-  siteUrl: "https://briqo.nl",
-  ogImage: "https://briqo.nl/og-image.png",
-  themeColor: "#101820"
+  siteUrl: "https://loopwerk.nl",
+  ogImage: "https://loopwerk.nl/og-image.png",
+  themeColor: "#1E2A26"
 };
 
 (function () {
