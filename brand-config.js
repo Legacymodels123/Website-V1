@@ -6,8 +6,8 @@ const BRAND = {
   description: "Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen.",
   footerDesc: "De tool voor jouw meest gestelde vraag. Vaste prijzen, live in 2–3 weken.",
   footerTag: "Gebouwd voor het Nederlandse MKB",
-  siteUrl: "https://briqo.nl",
-  ogImage: "https://briqo.nl/og-image.png",
+  siteUrl: "https://loopwerktools.nl",
+  ogImage: "https://loopwerktools.nl/og-image.png",
   themeColor: "#1E2A26"
 };
 
