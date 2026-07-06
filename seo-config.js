@@ -2,12 +2,12 @@
 
 const SEO = {
   siteName: typeof BRAND !== "undefined" ? BRAND.name : "Loopwerk",
-  siteUrl: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://loopwerktools.nl",
+  siteUrl: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://loopwerkonline.nl",
   title: (typeof BRAND !== "undefined" ? BRAND.name : "Loopwerk") + " | De tool voor jouw meest gestelde vraag",
   description: typeof BRAND !== "undefined" ? BRAND.description : "Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen.",
-  ogImage: typeof BRAND !== "undefined" ? BRAND.ogImage : "https://loopwerktools.nl/og-image.png",
+  ogImage: typeof BRAND !== "undefined" ? BRAND.ogImage : "https://loopwerkonline.nl/og-image.png",
   twitterHandle: "",
-  canonical: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://loopwerktools.nl",
+  canonical: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://loopwerkonline.nl",
   robots: "index, follow",
   locale: "nl_NL",
   themeColor: typeof BRAND !== "undefined" ? BRAND.themeColor : "#1E2A26",
