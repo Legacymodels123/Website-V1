@@ -5,7 +5,7 @@
   "seo": {
     "title": "Werkwijze — Loopwerk",
     "description": "Van intake tot live tool in 2–3 weken. Vast proces, vaste prijs, geen bureau-traject.",
-    "ogImage": "https://loopwerkonline.nl/og-image.png",
+    "ogImage": "https://loopwerkonline.nl/og-image.svg",
     "canonical": "https://loopwerkonline.nl/werkwijze"
   },
   "headScripts": "",
@@ -22,12 +22,8 @@
           "url": "/prijzen"
         },
         "chips": [
-          {
-            "text": "30 min intake"
-          },
-          {
-            "text": "Vaste prijs op A4"
-          }
+          { "text": "30 min intake" },
+          { "text": "Vaste prijs op A4" }
         ]
       }
     },
@@ -46,8 +42,9 @@
       "data": {
         "h2": "1. Intake (30 min)",
         "content": "Bel of video: welke vraag komt het vaakst terug? Wat kost het je per week om die steeds te beantwoorden?\\n\\nWe checken of dit een probleem is waarvoor je wilt betalen — niet of je een digitaal traject nodig hebt.",
-        "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80",
-        "imageAlt": "Intakegesprek",
+        "stepNum": "01",
+        "visualIcon": "phone",
+        "visualLabel": "Gratis intake",
         "imagePosition": "right"
       }
     },
@@ -57,8 +54,9 @@
       "data": {
         "h2": "2. Voorstel (binnen 2 werkdagen)",
         "content": "Je krijgt één A4: het probleem, de tool, de vaste prijs en de planning. Geen offerte-pdf van twaalf pagina's.\\n\\nPas als je tekent, gaan we bouwen.",
-        "imageUrl": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80",
-        "imageAlt": "Voorstel op één pagina",
+        "stepNum": "02",
+        "visualIcon": "file-text",
+        "visualLabel": "Eén A4",
         "imagePosition": "left"
       }
     },
@@ -68,8 +66,9 @@
       "data": {
         "h2": "3. Bouw (2–3 weken)",
         "content": "Sprint 1: werkende ruwe versie → feedbackmoment met jou. Sprint 2: afwerken en live.\\n\\nElk feedbackmoment is max één revisieronde — anders wordt avondwerk een moeras.",
-        "imageUrl": "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80",
-        "imageAlt": "Bouwen en testen",
+        "stepNum": "03",
+        "visualIcon": "tool",
+        "visualLabel": "2 sprints",
         "imagePosition": "right"
       }
     },
@@ -79,8 +78,9 @@
       "data": {
         "h2": "4. Live + dag-30 evaluatie",
         "content": "De tool gaat live op jouw domein. Vanaf dag 1 meetbaar: bezoekers, invullers, leads.\\n\\nNa een maand doornemen we de cijfers samen. Daar ontstaat je case — en eventueel de stap naar meer opvolging of automatisering.",
-        "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
-        "imageAlt": "Resultaten en evaluatie",
+        "stepNum": "04",
+        "visualIcon": "chart-bar",
+        "visualLabel": "Meetbaar",
         "imagePosition": "left"
       }
     },
@@ -104,18 +104,9 @@
         "ctaSecondary": "Bekijk prijzen",
         "ctaSecondaryLink": "/prijzen",
         "stats": [
-          {
-            "value": "30 min",
-            "label": "Intake"
-          },
-          {
-            "value": "1 A4",
-            "label": "Voorstel"
-          },
-          {
-            "value": "2–3 wkn",
-            "label": "Naar live"
-          }
+          { "value": "30 min", "label": "Intake" },
+          { "value": "1 A4", "label": "Voorstel" },
+          { "value": "2–3 wkn", "label": "Naar live" }
         ]
       }
     }

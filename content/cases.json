@@ -5,7 +5,7 @@
   "seo": {
     "title": "Cases & Portfolio — Loopwerk",
     "description": "Bekijk voorbeelden van tools, calculators en intakeflows die Loopwerk bouwt voor het Nederlandse MKB.",
-    "ogImage": "https://loopwerkonline.nl/og-image.png",
+    "ogImage": "https://loopwerkonline.nl/og-image.svg",
     "canonical": "https://loopwerkonline.nl/cases"
   },
   "headScripts": "",
@@ -17,17 +17,10 @@
         "label": "Cases",
         "h1": "Tools die je kunt openen,\\nniet alleen bekijken",
         "sub": "Geen abstract AI-verhaal, maar concrete tools die sneller antwoord geven, leads beter kwalificeren en werk uit handen nemen.",
-        "relatedLink": {
-          "text": "Bekijk per branche",
-          "url": "/branches"
-        },
+        "relatedLink": { "text": "Bekijk per branche", "url": "/branches" },
         "chips": [
-          {
-            "text": "Echte toepassingen"
-          },
-          {
-            "text": "Geen loze beloftes"
-          }
+          { "text": "Echte toepassingen" },
+          { "text": "Geen loze beloftes" }
         ]
       }
     },
@@ -49,37 +42,25 @@
             "client": "Sun Sauna & Poolworld",
             "tool": "Zwembadprijscalculator",
             "desc": "Klanten krijgen sneller een prijsindicatie en bellen pas als hun aanvraag concreet genoeg is.",
-            "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=600&q=80",
+            "icon": "ti-calculator",
             "link": "https://sspw-offerte-calc.vercel.app/",
-            "tags": [
-              "Calculator",
-              "Zwembad",
-              "Leads"
-            ]
-          },
-          {
-            "client": "Concept: Automotive",
-            "tool": "Lease- en inruilscan",
-            "desc": "Zo kan een online scan gesprekken sneller naar een serieuze offerte leiden. Nog geen live case.",
-            "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80",
-            "link": "",
-            "tags": [
-              "Automotive",
-              "Intake",
-              "Scan"
-            ]
+            "tags": ["Calculator", "Zwembad", "Live"]
           },
           {
             "client": "Concept: Installatie",
             "tool": "Offertevoorbereider",
             "desc": "Een intakeflow die projectinfo vooraf verzamelt. Zo zie je wat een eerste versie kan doen.",
-            "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
+            "icon": "ti-clipboard-list",
             "link": "",
-            "tags": [
-              "Bouw",
-              "Offerte",
-              "Intake"
-            ]
+            "tags": ["Bouw", "Offerte", "Concept"]
+          },
+          {
+            "client": "Concept: Beauty",
+            "tool": "Behandel-intake",
+            "desc": "Korte scan die de juiste behandeling voorselecteert. Minder heen-en-weer mailen.",
+            "icon": "ti-list-check",
+            "link": "",
+            "tags": ["Wellness", "Intake", "Concept"]
           }
         ]
       }
@@ -95,18 +76,9 @@
         "ctaSecondary": "Bekijk branches",
         "ctaSecondaryLink": "/branches",
         "stats": [
-          {
-            "value": "< 2 wkn",
-            "label": "Richting eerste versie"
-          },
-          {
-            "value": "MKB",
-            "label": "Onze focus"
-          },
-          {
-            "value": "1-op-1",
-            "label": "Korte lijnen"
-          }
+          { "value": "2–3 wkn", "label": "Richting live" },
+          { "value": "MKB", "label": "Onze focus" },
+          { "value": "1-op-1", "label": "Korte lijnen" }
         ]
       }
     }

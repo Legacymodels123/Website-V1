@@ -14,7 +14,7 @@
   <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
   <meta property="og:title" content="Loopwerk | De tool voor jouw meest gestelde vraag">
   <meta property="og:description" content="Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen. Vaste prijzen, live in 2–3 weken.">
-  <meta property="og:image" content="https://loopwerkonline.nl/og-image.png">
+  <meta property="og:image" content="https://loopwerkonline.nl/og-image.svg">
   <meta property="og:url" content="https://loopwerkonline.nl">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Loopwerk">
@@ -24,7 +24,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Loopwerk | De tool voor jouw meest gestelde vraag">
   <meta name="twitter:description" content="Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen. Vaste prijzen, live in 2–3 weken.">
-  <meta name="twitter:image" content="https://loopwerkonline.nl/og-image.png">
+  <meta name="twitter:image" content="https://loopwerkonline.nl/og-image.svg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/loopwerk-logo.svg">
@@ -40,530 +40,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="/loopwerk-site.css">
   <link rel="stylesheet" href="/interactions.css">
-  <link rel="stylesheet" href="/hero-headers.css">
-  <link rel="stylesheet" href="/impact-stats.css">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: #F8FAFC; color: #0F172A; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-    .section { padding: 100px 0; }
-
-    /* NAV */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0,0,0,0.07);
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 70px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; }
-    .nav-logomark {
-      width: 34px; height: 34px; background: #0F172A; border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .nav-logomark svg { width: 18px; height: 18px; fill: none; stroke: #14B8A6; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .nav-name { font-size: 18px; font-weight: 700; color: #0F172A; letter-spacing: -0.02em; }
-    .nav-links { display: flex; gap: 36px; }
-    .nav-link { font-size: 14px; font-weight: 500; color: #64748B; transition: color 0.15s; }
-    .nav-link:hover { color: #0F172A; }
-    .nav-cta {
-      background: #0F172A; color: white; font-size: 14px; font-weight: 600;
-      padding: 10px 20px; border-radius: 10px; transition: background 0.2s;
-    }
-    .nav-cta:hover { background: #1E293B; }
-
-    /* HERO */
-    .hero {
-      background: #0F172A;
-      overflow: hidden;
-      position: relative;
-      isolation: isolate;
-    }
-    .hero > .container { position: relative; z-index: 2; }
-    .hero-bg-photo {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.12; object-position: center;
-    }
-    .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-    .hero-vibe {
-      position: absolute; inset: -18%;
-      background:
-        radial-gradient(circle at 18% 28%, rgba(20,184,166,0.22), transparent 42%),
-        radial-gradient(circle at 78% 58%, rgba(56,189,248,0.12), transparent 40%),
-        radial-gradient(circle at 48% 82%, rgba(99,102,241,0.1), transparent 36%);
-      animation: heroVibeShift 16s ease-in-out infinite alternate;
-      filter: blur(1px);
-    }
-  .hero-bg-video {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.48; filter: saturate(0.95) contrast(1.05);
-    }
-    .hero-media.no-video .hero-bg-video { display: none; }
-    @keyframes heroVibeShift {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-2.5%, 1.5%) scale(1.05); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-vibe { animation: none; }
-      .hero-bg-video { display: none; }
-    }
-    .hero-bg-grad {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(15,23,42,0.88) 48%, rgba(15,23,42,0.72) 100%);
-    }
-    .hero--home .hero-bg-grad {
-      background:
-        radial-gradient(ellipse 80% 60% at 12% 18%, rgba(20, 184, 166, 0.14), transparent 55%),
-        linear-gradient(115deg, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.92) 46%, rgba(15, 23, 42, 0.55) 100%);
-    }
-    .hero-inner {
-      position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 64px; align-items: end;
-      padding: 96px 0 0;
-    }
-    .hero-content { padding-bottom: 96px; }
-    .hero-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(20,184,166,0.12);
-      border: 1px solid rgba(20,184,166,0.25);
-      color: #5EEAD4; border-radius: 100px;
-      padding: 6px 16px; font-size: 13px; font-weight: 500;
-      margin-bottom: 32px;
-    }
-    .pill-dot { width: 6px; height: 6px; background: #14B8A6; border-radius: 50%; }
-    .hero h1 {
-      font-size: clamp(42px, 5.5vw, 66px);
-      font-weight: 800; line-height: 1.06;
-      letter-spacing: -0.035em; color: white;
-      margin-bottom: 22px;
-    }
-    .hero h1 em { font-style: normal; color: #5EEAD4; }
-    .hero-sub {
-      font-size: 18px; color: rgba(255,255,255,0.62);
-      line-height: 1.75; margin-bottom: 40px; max-width: 440px;
-    }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 14px; font-weight: 600; padding: 12px 22px;
-      border-radius: 10px; cursor: pointer; transition: all 0.2s;
-      border: none;
-    }
-    .btn-teal { background: #14B8A6; color: white; }
-    .btn-teal:hover { background: #0F9488; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(20,184,166,0.3); }
-    .btn-ghost-white {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.8);
-    }
-    .btn-ghost-white:hover { background: rgba(255,255,255,0.14); }
-    .btn-lg { font-size: 16px; padding: 14px 28px; border-radius: 12px; }
-    .btn-outline {
-      background: white; color: #0F172A;
-      border: 1.5px solid #E2E8F0;
-    }
-    .btn-outline:hover { border-color: #0F172A; }
-    .hero-proof { display: flex; align-items: center; gap: 12px; }
-    .proof-avatars { display: flex; }
-    .pavatar {
-      width: 30px; height: 30px; border-radius: 50%;
-      border: 2px solid #0F172A; overflow: hidden; margin-right: -9px;
-      background: #1E293B;
-    }
-    .pavatar img { width: 100%; height: 100%; object-fit: cover; }
-    .proof-text { margin-left: 16px; font-size: 13px; color: rgba(255,255,255,0.35); }
-    .proof-text strong { color: rgba(255,255,255,0.65); font-weight: 500; }
-
-    /* Hero browser mockup */
-    .hero-visual { position: relative; align-self: end; }
-    .browser {
-      background: #1a2535;
-      border-radius: 14px 14px 0 0;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-bottom: none;
-      box-shadow: 0 -28px 64px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05);
-      overflow: hidden;
-    }
-    .browser-bar {
-      background: #141e2d; border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 12px 18px; display: flex; align-items: center; gap: 14px;
-    }
-    .b-dots { display: flex; gap: 7px; }
-    .b-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .bd1 { background: #FF5F57; } .bd2 { background: #FFBD2E; } .bd3 { background: #28C941; }
-    .b-url {
-      flex: 1; background: rgba(255,255,255,0.06); border-radius: 7px;
-      padding: 5px 14px; font-size: 12px; color: rgba(255,255,255,0.28);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-    }
-    .browser-body { padding: 28px; }
-    .tool-header { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .tool-logo-badge {
-      width: 40px; height: 40px; background: #14B8A6; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 800; color: white; letter-spacing: -0.5px;
-    }
-    .tool-hname { font-size: 14px; font-weight: 600; color: white; }
-    .tool-hsub { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 1px; }
-    .live-badge {
-      margin-left: auto; display: flex; align-items: center; gap: 5px;
-      background: rgba(20,184,166,0.14); border: 1px solid rgba(20,184,166,0.28);
-      border-radius: 100px; padding: 3px 10px; font-size: 11px; color: #5EEAD4; font-weight: 600;
-    }
-    .ld { width: 5px; height: 5px; border-radius: 50%; background: #14B8A6; }
-    .tool-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 16px; }
-    .tfield {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 9px; padding: 11px 14px;
-    }
-    .tf-label { font-size: 10px; color: rgba(255,255,255,0.28); font-weight: 500; margin-bottom: 4px; }
-    .tf-value { font-size: 14px; color: white; font-weight: 500; }
-    .tool-result {
-      background: rgba(20,184,166,0.1); border: 1px solid rgba(20,184,166,0.22);
-      border-radius: 11px; padding: 16px 18px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .tr-label { font-size: 13px; color: #5EEAD4; font-weight: 500; }
-    .tr-value { font-size: 22px; font-weight: 700; color: white; }
-
-    /* LOGOS */
-    .logos { background: white; border-bottom: 1px solid #F1F5F9; padding: 28px 0; }
-    .logos-row { display: flex; align-items: center; gap: 0; }
-    .logos-label { font-size: 12px; color: #94A3B8; font-weight: 500; padding-right: 40px; border-right: 1px solid #E2E8F0; white-space: nowrap; }
-    .logos-items { display: flex; align-items: center; gap: 48px; padding-left: 40px; }
-    .logo-entry { display: flex; align-items: center; gap: 9px; opacity: 0.55; transition: opacity 0.2s; }
-    .logo-entry:hover { opacity: 1; }
-    .logo-entry-icon { width: 32px; height: 32px; background: #0F172A; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #14B8A6; font-size: 11px; font-weight: 800; }
-    .logo-entry-icon--image { background: white; border: 1px solid #E2E8F0; padding: 4px; }
-    .logo-entry-icon--image img { width: 100%; height: 100%; object-fit: contain; }
-    .logo-entry-name { font-size: 14px; font-weight: 600; color: #0F172A; }
-
-    /* PROBLEM SECTION */
-    .problem { background: #F8FAFC; }
-    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #14B8A6; }
-    .section-h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; line-height: 1.14; letter-spacing: -0.025em; margin-top: 14px; }
-    .section-sub { font-size: 17px; color: #64748B; line-height: 1.72; margin-top: 14px; max-width: 520px; }
-    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-    .p-card { background: white; border: 1px solid #E8EEF5; border-radius: 20px; overflow: hidden; transition: box-shadow 0.25s; }
-    .p-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-    .p-card-img { height: 210px; overflow: hidden; }
-    .p-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .p-card:hover .p-card-img img { transform: scale(1.05); }
-    .p-card-body { padding: 26px; }
-    .p-num { font-size: 11px; font-weight: 700; color: #14B8A6; letter-spacing: 0.1em; margin-bottom: 10px; }
-    .p-title { font-size: 17px; font-weight: 600; color: #0F172A; line-height: 1.32; margin-bottom: 10px; }
-    .p-desc { font-size: 14px; color: #64748B; line-height: 1.68; }
-
-    /* WHAT WE BUILD */
-    .build-section { background: #0F172A; }
-    .build-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: rgba(255,255,255,0.06);
-      border-radius: 22px; overflow: hidden; margin-top: 56px;
-    }
-    .build-tile { background: #0F172A; padding: 34px; transition: background 0.2s; }
-    .build-tile:hover { background: #162032; }
-    .build-icon {
-      width: 50px; height: 50px; border-radius: 14px;
-      background: rgba(20,184,166,0.1); border: 1px solid rgba(20,184,166,0.18);
-      display: flex; align-items: center; justify-content: center;
-      color: #14B8A6; font-size: 24px; margin-bottom: 20px;
-    }
-    .build-title { font-size: 16px; font-weight: 600; color: white; margin-bottom: 9px; }
-    .build-desc { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.65; margin-bottom: 16px; }
-    .build-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .b-tag { font-size: 11px; color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.06); padding: 3px 10px; border-radius: 100px; }
-
-    /* CASE STUDY */
-    .case-section { background: white; }
-    .case-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-    .case-photo { border-radius: 24px; overflow: hidden; height: 520px; position: relative; }
-    .case-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .case-photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.82) 0%, rgba(15,23,42,0.15) 55%, transparent 100%); }
-    .case-photo-badge {
-      position: absolute; bottom: 24px; left: 24px;
-      background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
-      border-radius: 14px; padding: 14px 18px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .cpb-icon { width: 36px; height: 36px; background: #0F172A; border-radius: 9px; display: flex; align-items: center; justify-content: center; color: #14B8A6; font-size: 11px; font-weight: 800; }
-    .cpb-name { font-size: 13px; font-weight: 700; color: #0F172A; }
-    .cpb-type { font-size: 12px; color: #64748B; margin-top: 1px; }
-    .case-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 32px 0; }
-    .cs-stat { background: #F8FAFC; border: 1px solid #E8EEF5; border-radius: 16px; padding: 22px; text-align: center; }
-    .cs-val { font-size: 28px; font-weight: 700; color: #14B8A6; }
-    .cs-lbl { font-size: 12px; color: #64748B; margin-top: 5px; line-height: 1.45; }
-    .case-quote {
-      border-left: 3px solid #14B8A6; border-radius: 0 14px 14px 0;
-      background: #F8FAFC; padding: 20px 22px;
-    }
-    .q-text { font-size: 14px; color: #475569; line-height: 1.75; font-style: italic; margin-bottom: 12px; }
-    .q-author { font-size: 13px; font-weight: 600; color: #0F172A; }
-
-    /* BRANCHES */
-    .branches-section { background: #F8FAFC; }
-    .branches-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
-    .branch-card { border-radius: 20px; overflow: hidden; position: relative; aspect-ratio: 3/4; cursor: pointer; }
-    .branch-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.55s ease; }
-    .branch-card:hover img { transform: scale(1.07); }
-    .branch-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.25) 55%, transparent 100%); }
-    .branch-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px; }
-    .branch-name { font-size: 14px; font-weight: 600; color: white; margin-bottom: 4px; }
-    .branch-count { font-size: 12px; color: rgba(255,255,255,0.45); }
-    .branch-live { position: absolute; top: 14px; right: 14px; background: #14B8A6; color: white; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 100px; }
-    .branch-plus {
-      background: white; border: 2px dashed #CBD5E1; border-radius: 20px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 10px; aspect-ratio: 3/4; cursor: pointer; transition: border-color 0.2s;
-    }
-    .branch-plus:hover { border-color: #14B8A6; }
-    .branch-plus-icon { font-size: 28px; color: #94A3B8; }
-    .branch-plus-text { font-size: 14px; font-weight: 600; color: #64748B; }
-    .branch-plus-sub { font-size: 12px; color: #94A3B8; }
-
-    /* HOW IT WORKS */
-    .process-section { background: white; }
-    .process-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px; margin-top: 60px; position: relative; }
-    .process-steps::before { content: ''; position: absolute; top: 26px; left: 70px; right: 70px; height: 1px; background: #E2E8F0; z-index: 0; }
-    .p-step { text-align: center; position: relative; z-index: 1; }
-    .p-step-circle {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: #0F172A; border: 4px solid #F8FAFC;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px; box-shadow: 0 0 0 1px #E2E8F0;
-      transition: background 0.3s ease, border-color 0.25s ease, box-shadow 0.35s ease, transform 0.35s ease;
-    }
-    .p-step-num { font-size: 16px; font-weight: 700; color: white; }
-    .p-step-title { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 8px; transition: color 0.25s ease; }
-    .p-step-desc { font-size: 13px; color: #64748B; line-height: 1.65; transition: opacity 0.3s ease; }
-    .p-step-tag { display: inline-block; margin-top: 12px; font-size: 11px; background: #F1F5F9; color: #64748B; padding: 4px 12px; border-radius: 100px; transition: background 0.25s ease, color 0.25s ease; }
-
-    /* PRICING */
-    .pricing-section { background: #F6F4EF; }
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 56px auto 0; }
-    .pricing-grid--3 { grid-template-columns: repeat(3, 1fr); max-width: 1100px; }
-    .launch-offer { background: #E5DFD3; border: 1px solid #D9D3C8; border-left: 4px solid #C46F4A; border-radius: 18px; padding: 20px 24px; max-width: 880px; margin: 32px auto 0; }
-    .launch-offer p { font-size: 15px; color: #5c6b63; line-height: 1.75; margin: 0; }
-    .price-card { background: white; border: 1px solid #E2E8F0; border-radius: 24px; padding: 36px; transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s ease, opacity 0.3s ease, filter 0.3s ease; }
-    .price-card.featured { border-color: #5F7161; box-shadow: 0 8px 32px rgba(30,42,38,.08); }
-    .price-badge { display: inline-block; background: #CCFBF1; color: #0F766E; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 18px; }
-    .price-title { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 8px; }
-    .price-desc { font-size: 14px; color: #64748B; line-height: 1.65; margin-bottom: 26px; }
-    .price-amount { font-size: 38px; font-weight: 700; color: #0F172A; }
-    .price-amount sub { font-size: 15px; font-weight: 400; color: #94A3B8; }
-    .price-monthly { font-size: 15px; font-weight: 600; color: #64748B; margin-top: 8px; }
-    .price-hr { border: none; border-top: 1px solid #F1F5F9; margin: 26px 0; }
-    .price-feats { display: flex; flex-direction: column; gap: 13px; }
-    .pf { display: flex; align-items: flex-start; gap: 11px; font-size: 14px; color: #475569; }
-    .pf-check { color: #14B8A6; font-size: 17px; flex-shrink: 0; margin-top: 1px; }
-    .price-btn { display: block; text-align: center; margin-top: 28px; width: 100%; }
-
-    /* ABOUT / TEAM */
-    .about-section { background: white; }
-    .about-header { max-width: 720px; margin-bottom: 48px; }
-    .about-header p { font-size: 16px; color: #64748B; line-height: 1.78; margin-bottom: 14px; }
-    .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px; }
-    .team-card { background: #F8FAFC; border: 1.5px solid #E8EEF5; border-radius: 22px; overflow: hidden; }
-    .team-photo { aspect-ratio: 4/3; overflow: hidden; background: #E2E8F0; }
-    .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
-    .team-body { padding: 22px; }
-    .team-name { font-size: 17px; font-weight: 700; color: #0F172A; margin-bottom: 4px; }
-    .team-role { font-size: 13px; font-weight: 600; color: #14B8A6; margin-bottom: 12px; }
-    .team-bio { font-size: 14px; color: #64748B; line-height: 1.72; }
-    .about-more { margin-bottom: 40px; }
-    .about-more a { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: #0F172A; }
-    .about-more a:hover { color: #14B8A6; }
-    .about-vals { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; max-width: 720px; }
-    .av { display: flex; gap: 18px; align-items: flex-start; }
-    .av-icon { width: 46px; height: 46px; border-radius: 13px; background: #F8FAFC; border: 1px solid #E8EEF5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #14B8A6; font-size: 22px; }
-    .av-title { font-size: 15px; font-weight: 600; color: #0F172A; margin-bottom: 4px; }
-    .av-desc { font-size: 13px; color: #64748B; line-height: 1.62; }
-
-    /* CTA */
-    .cta-section { background: #0F172A; position: relative; overflow: hidden; }
-    .cta-bg-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.13; }
-    .cta-bg-grad { position: absolute; inset: 0; background: linear-gradient(to right, #0F172A 40%, rgba(15,23,42,0.6) 100%); }
-    .cta-inner { position: relative; z-index: 1; text-align: center; max-width: 660px; margin: 0 auto; }
-    .cta-section h2 { font-size: clamp(32px, 4.5vw, 54px); font-weight: 700; color: white; margin-bottom: 18px; letter-spacing: -0.03em; }
-    .cta-section p { font-size: 17px; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 40px; }
-    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-    .cta-note { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.2); }
-    .cta-stats-row { display: flex; justify-content: center; gap: 56px; margin-top: 60px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.07); }
-    .cs-stat2 { text-align: center; }
-    .cs-stat2-v { font-size: 34px; font-weight: 700; color: white; letter-spacing: -0.02em; }
-    .cs-stat2-l { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 5px; }
-
-    /* FOOTER */
-    footer { background: #020617; padding: 60px 0 36px; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px; margin-bottom: 56px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-    .footer-lm { width: 32px; height: 32px; background: #1E293B; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
-    .footer-lm svg { width: 16px; height: 16px; fill: none; stroke: #14B8A6; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .footer-ln { font-size: 16px; font-weight: 700; color: white; }
-    .footer-desc { font-size: 14px; color: #334155; line-height: 1.7; }
-    .footer-col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
-    .footer-links { display: flex; flex-direction: column; gap: 11px; }
-    .footer-link { font-size: 14px; color: #334155; transition: color 0.2s; }
-    .footer-link:hover { color: rgba(255,255,255,0.65); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.04); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 13px; color: #1E293B; }
-    .footer-tag { font-size: 13px; color: #1E293B; }
-
-    /* =====================
-       DEMO MODAL
-    ===================== */
-    .modal-overlay {
-      position: fixed; inset: 0; z-index: 999;
-      background: rgba(2,6,23,0.75); backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: center;
-      padding: 20px; opacity: 0; pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal {
-      background: white; border-radius: 24px; width: 100%; max-width: 560px;
-      padding: 40px; position: relative; max-height: 90vh; overflow-y: auto;
-      transform: translateY(16px); transition: transform 0.25s ease;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
-    }
-    .modal-overlay.open .modal { transform: translateY(0); }
-    .modal-close {
-      position: absolute; top: 20px; right: 20px;
-      width: 36px; height: 36px; border-radius: 50%;
-      background: #F1F5F9; border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: #64748B; font-size: 18px; transition: background 0.2s;
-    }
-    .modal-close:hover { background: #E2E8F0; }
-    .modal-label { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #14B8A6; margin-bottom: 8px; }
-    .modal h2 { font-size: 26px; font-weight: 700; color: #0F172A; letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1.2; }
-    .modal-sub { font-size: 14px; color: #64748B; margin-bottom: 28px; line-height: 1.6; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-    .form-group label { font-size: 13px; font-weight: 600; color: #0F172A; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; padding: 11px 14px; font-size: 14px; font-family: inherit;
-      border: 1.5px solid #E2E8F0; border-radius: 10px; color: #0F172A;
-      background: #F8FAFC; transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none; appearance: none;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: #14B8A6; background: white;
-      box-shadow: 0 0 0 3px rgba(20,184,166,0.12);
-    }
-    .form-group textarea { resize: vertical; min-height: 90px; }
-    .form-group select { cursor: pointer; }
-    .form-submit {
-      width: 100%; padding: 14px; background: #14B8A6; color: white;
-      font-size: 15px; font-weight: 600; border: none; border-radius: 12px;
-      cursor: pointer; transition: all 0.2s; margin-top: 8px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-    }
-    .form-submit:hover { background: #0F9488; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(20,184,166,0.3); }
-    .form-submit:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
-    .form-note { font-size: 12px; color: #94A3B8; text-align: center; margin-top: 12px; }
-    .form-success { text-align: center; padding: 20px 0; }
-    .form-success-icon { width: 64px; height: 64px; background: #CCFBF1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; color: #14B8A6; }
-    .form-success h3 { font-size: 22px; font-weight: 700; color: #0F172A; margin-bottom: 10px; }
-    .form-success p { font-size: 15px; color: #64748B; line-height: 1.65; }
-
-    /* =====================
-       RESPONSIVE — MOBILE
-    ===================== */
-    @media (max-width: 768px) {
-
-      .container { padding: 0 20px; }
-      .section { padding: 64px 0; }
-
-      /* NAV */
-      .nav-inner { height: 60px; }
-      .nav-name { font-size: 16px; }
-
-      /* HERO */
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 64px 0 0; }
-      .hero-content { padding-bottom: 0; }
-      .hero h1 { font-size: 36px; }
-      .hero-sub { font-size: 15px; max-width: 100%; }
-      .hero-btns { flex-direction: column; }
-      .hero-btns .btn { width: 100%; justify-content: center; }
-      .form-row { grid-template-columns: 1fr; }
-      .hero-visual { padding-bottom: 0; }
-
-      /* LOGOS */
-      .logos-row { flex-direction: column; gap: 16px; align-items: flex-start; }
-      .logos-label { border-right: none; padding-right: 0; }
-      .logos-items { padding-left: 0; gap: 24px; flex-wrap: wrap; }
-
-      /* PROBLEM */
-      .problem-grid { grid-template-columns: 1fr; gap: 16px; }
-
-      /* BUILD / TOOLS */
-      .build-grid { grid-template-columns: 1fr; }
-      .build-tile { padding: 24px; }
-
-      /* CASE STUDY */
-      .case-inner { grid-template-columns: 1fr; gap: 36px; }
-      .case-photo { height: 280px; }
-      .case-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .cs-val { font-size: 22px; }
-      .cs-lbl { font-size: 11px; }
-
-      /* BRANCHES */
-      .branches-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-      .branch-card { aspect-ratio: 4/5; }
-      .branch-name { font-size: 13px; }
-      .branch-plus { aspect-ratio: 4/5; }
-
-      /* PROCESS */
-      .process-steps { grid-template-columns: 1fr 1fr; gap: 28px; }
-      .process-steps::before { display: none; }
-
-      /* PRICING */
-      .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
-      .pricing-grid--3 { grid-template-columns: 1fr; }
-
-      /* ABOUT */
-      .team-grid { grid-template-columns: 1fr; gap: 20px; }
-      .about-photo { height: 320px; }
-
-      /* CTA */
-      .cta-section h2 { font-size: 30px; }
-      .cta-btns { flex-direction: column; align-items: center; }
-      .cta-btns .btn { width: 100%; justify-content: center; max-width: 360px; }
-      .cta-stats-row { gap: 28px; flex-wrap: wrap; }
-      .cs-stat2-v { font-size: 26px; }
-
-      /* FOOTER */
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
-
-      /* SECTION HEADINGS */
-      .section-h2 { font-size: 28px; }
-      .section-sub { font-size: 15px; }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 30px; }
-      .branches-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .case-stats { grid-template-columns: repeat(3, 1fr); }
-      .process-steps { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; }
-      .tool-fields { grid-template-columns: 1fr 1fr; }
-      .cta-stats-row { gap: 20px; }
-    }
-
-  </style>
-  <link rel="stylesheet" href="/loopwerk-theme.css">
-  <link rel="stylesheet" href="/loopwerk-brand.css">
-  <link rel="stylesheet" href="/hero-tool-showcase.css">
   <link rel="stylesheet" href="/components/living-loop.css">
-  <link rel="stylesheet" href="/hero-variants.css">
 </head>
 <body>
 
@@ -638,25 +117,7 @@
       <div class="living-output__line">Calculator <span>·</span> Scan <span>·</span> Offerteflow</div>
     </aside>
 
-    <div class="living-stamp">Geen AI-praat.<br>Wel werkende tools.</div>
-  </div>
-
-  <div class="hero-atmosphere hero-visual--portal" id="cc-hero-atmosphere" aria-hidden="true">
-    <div class="container">
-      <div class="hero-inner hero-inner--atmosphere" id="cc-hero-inner">
-        <div class="hero-portal-wrap">
-          <div class="hero-portal" id="cc-hero-portal">
-            <video class="hero-portal-video" id="cc-hero-video" autoplay muted loop playsinline preload="metadata"
-              poster="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=1600&q=85">
-              <source id="cc-hero-video-src" src="https://assets.mixkit.co/videos/preview/mixkit-swimming-pool-at-a-luxury-hotel-4064-large.mp4" type="video/mp4">
-            </video>
-            <div class="hero-portal-scrim"></div>
-            <div class="hero-portal-ring"></div>
-          </div>
-        </div>
-        <div class="hero-floats cc-hero-floats-sync" id="cc-hero-floats-portal"></div>
-      </div>
-    </div>
+    <div class="living-stamp" id="cc-hero-stamp">Geen AI-praat.<br>Wel werkende tools.</div>
   </div>
 
   <div class="living-hero__frame hero-visual--loop">
@@ -701,140 +162,62 @@
 <section class="section problem">
   <div class="container">
     <div class="section-label">Herken je dit?</div>
-    <h2 class="section-h2" style="max-width:560px;">Jouw klant wil nu antwoord.<br>Jij kunt dat nog niet geven.</h2>
+    <h2 class="section-h2">Jouw klant wil nu antwoord.<br>Jij kunt dat nog niet geven.</h2>
     <div class="problem-grid">
-      <div class="p-card ix-card ix-tilt">
-        <div class="p-card-img">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=700&q=80" alt="Klant aan de balie">
-        </div>
+      <div class="p-card ix-card ix-reveal">
+        <div class="p-card-visual"><i class="ti ti-phone-off"></i></div>
         <div class="p-card-body">
           <div class="p-num">01</div>
-          <div class="p-title">Klanten bellen voor iets wat online kan</div>
-          <div class="p-desc">Offerteaanvragen, prijsindicaties, productconfiguraties. Dat kost jou en je klant onnodig tijd aan de telefoon.</div>
+          <div class="p-title">Dezelfde vraag, elke week opnieuw</div>
+          <div class="p-desc">Prijzen, beschikbaarheid, offertes — je neemt de hoorn op terwijl je eigenlijk aan het werk bent.</div>
         </div>
       </div>
-      <div class="p-card ix-card ix-tilt">
-        <div class="p-card-img">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="Laptop op bureau">
-        </div>
+      <div class="p-card ix-card ix-reveal">
+        <div class="p-card-visual"><i class="ti ti-door-exit"></i></div>
         <div class="p-card-body">
           <div class="p-num">02</div>
-          <div class="p-title">Leads verdwijnen zonder actie</div>
-          <div class="p-desc">Bezoekers landen op jouw website, zien geen interactieve tool en vertrekken. Naar een concurrent die wél direct antwoord geeft.</div>
+          <div class="p-title">Bezoekers haken af</div>
+          <div class="p-desc">Geen antwoord op je site betekent: door naar de concurrent die wél een calculator of intake heeft.</div>
         </div>
       </div>
-      <div class="p-card ix-card ix-tilt">
-        <div class="p-card-img">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80" alt="Zakelijke bespreking">
-        </div>
+      <div class="p-card ix-card ix-reveal">
+        <div class="p-card-visual"><i class="ti ti-file-off"></i></div>
         <div class="p-card-body">
           <div class="p-num">03</div>
-          <div class="p-title">Maatwerk voelt te duur en te complex</div>
-          <div class="p-desc">Een bureau vraagt €15.000 en 3 maanden. Een standaard plugin past nooit precies. Dus blijft het erbij.</div>
+          <div class="p-title">Bureau of plugin past niet</div>
+          <div class="p-desc">€15.000 en drie maanden wachten — of een standaardtool die net niet doet wat jij nodig hebt. Dus blijft het zo.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT WE BUILD -->
-<section class="section build-section">
+<!-- TOOLS -->
+<section class="section tools-section">
   <div class="container">
-    <div class="section-label" style="color:#5EEAD4;">Wat we bouwen</div>
-    <h2 class="section-h2" style="color:white;max-width:500px;">6 soorten tools,<br>voor elke situatie</h2>
-    <div class="build-grid">
-      <div class="build-tile ix-card ix-tilt">
-        <div class="build-icon"><i class="ti ti-calculator"></i></div>
-        <div class="build-title">Prijscalculator</div>
-        <div class="build-desc">Klant configureert zelf en krijgt direct een prijsindicatie. Minder telefoontjes, meer gekwalificeerde leads.</div>
-        <div class="build-tags"><span class="b-tag">Zwembad</span><span class="b-tag">Installatie</span><span class="b-tag">Lease</span></div>
+    <div class="section-label">Wat we bouwen</div>
+    <h2 class="section-h2">Eén tool die past.<br>Niet een heel platform.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.55);">Calculator, scan of intake — we beginnen met wat jouw klanten het vaakst vragen.</p>
+    <div class="tools-grid">
+      <div class="tool-tile ix-reveal">
+        <div class="tool-tile-icon"><i class="ti ti-calculator"></i></div>
+        <div class="tool-tile-title">Calculator</div>
+        <div class="tool-tile-desc">Klant stelt zelf samen en ziet direct een prijsindicatie. Minder telefoontjes, betere leads.</div>
       </div>
-      <div class="build-tile ix-card ix-tilt">
-        <div class="build-icon"><i class="ti ti-adjustments-horizontal"></i></div>
-        <div class="build-title">Productconfigurator</div>
-        <div class="build-desc">Klant stelt stap voor stap zijn product samen, ziet de prijs live updaten.</div>
-        <div class="build-tags"><span class="b-tag">Automotive</span><span class="b-tag">Retail</span><span class="b-tag">Beauty</span></div>
+      <div class="tool-tile ix-reveal">
+        <div class="tool-tile-icon"><i class="ti ti-list-check"></i></div>
+        <div class="tool-tile-title">Scan of intake</div>
+        <div class="tool-tile-desc">Korte vragen, helder advies of voorselectie. Jij krijgt completere aanvragen terug.</div>
       </div>
-      <div class="build-tile ix-card ix-tilt">
-        <div class="build-icon"><i class="ti ti-sparkles"></i></div>
-        <div class="build-title">Snelle kansen-scan</div>
-        <div class="build-desc">Acht korte vragen, drie concrete verbeterkansen. Je bezoeker ziet meteen wat mogelijk is. Jij krijgt een warme lead terug.</div>
-        <div class="build-tags"><span class="b-tag">Zakelijke dienstverlening</span><span class="b-tag">Advies</span></div>
-      </div>
-      <div class="build-tile ix-card ix-tilt">
-        <div class="build-icon"><i class="ti ti-file-invoice"></i></div>
-        <div class="build-title">Offertevoorbereider</div>
-        <div class="build-desc">Klant vult intake in, jij ontvangt een gestructureerde offertevoorbereiding klaar om te versturen.</div>
-        <div class="build-tags"><span class="b-tag">Bouw</span><span class="b-tag">Events</span><span class="b-tag">Zorg</span></div>
-      </div>
-      <div class="build-tile ix-card ix-tilt">
-        <div class="build-icon"><i class="ti ti-users"></i></div>
-        <div class="build-title">Leadkwalificatie-tool</div>
-        <div class="build-desc">Slimme vragen die filteren terwijl iemand invult. Jij hoeft alleen nog te bellen met leads die echt klaar zijn.</div>
-        <div class="build-tags"><span class="b-tag">Horeca</span><span class="b-tag">Coaching</span><span class="b-tag">Retail</span></div>
-      </div>
-      <div class="build-tile ix-card ix-tilt">
-        <div class="build-icon"><i class="ti ti-brain"></i></div>
-        <div class="build-title">Adviesmodule</div>
-        <div class="build-desc">Bezoeker beschrijft de situatie, de tool levert een helder advies of rapport. Persoonlijk, zonder dat jij meteen hoeft in te grijpen.</div>
-        <div class="build-tags"><span class="b-tag">Zorg</span><span class="b-tag">Finance</span><span class="b-tag">HR</span></div>
+      <div class="tool-tile ix-reveal">
+        <div class="tool-tile-icon"><i class="ti ti-route"></i></div>
+        <div class="tool-tile-title">Configurator</div>
+        <div class="tool-tile-desc">Stap voor stap naar de juiste optie. De klant snapt het zelf — jij hoeft het niet uit te leggen.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CASE STUDY -->
-<section class="section case-section" id="cases">
-  <div class="container">
-    <div class="case-inner">
-      <div class="case-photo">
-        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=900&q=85" alt="Sun Sauna & Poolworld zwembad">
-        <div class="case-photo-overlay"></div>
-        <div class="case-photo-badge">
-          <div class="cpb-icon">SSPW</div>
-          <div>
-            <div class="cpb-name">Sun Sauna &amp; Poolworld</div>
-            <div class="cpb-type">Zwembad &amp; Buitenleven</div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section-label">Live case</div>
-        <h2 class="section-h2" style="margin-bottom:18px;">Hoe SSPW meer leads vangt<br>met minder telefoontjes</h2>
-        <p style="font-size:16px;color:#64748B;line-height:1.75;">Sun Sauna &amp; Poolworld had een herkenbaar probleem: klanten belden voor prijsindicaties die ook online gegeven konden worden. We bouwden een interactieve calculator. In 10 dagen live.</p>
-        <div class="impact-grid impact-grid--compact case-inline" id="cc-case-stats"></div>
-        <div class="case-quote">
-          <p class="q-text">"Klanten snappen nu zelf wat een zwembad kost voordat ze contact opnemen. De gesprekken die we nog voeren zijn meteen veel concreter."</p>
-          <div class="q-author">Sun Sauna &amp; Poolworld</div>
-        </div>
-        <a href="https://sspw-offerte-calc.vercel.app/" target="_blank" class="btn btn-outline" style="margin-top:28px;font-size:15px;padding:12px 22px;">Bekijk live tool <i class="ti ti-external-link"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- IMPACT STATS -->
-<section class="impact-section" id="impact">
-  <div class="impact-bg" aria-hidden="true"></div>
-  <div class="container impact-inner">
-    <div class="impact-head ix-reveal">
-      <div class="section-label">Bewijs</div>
-      <h2 class="impact-title">Waar het telt in cijfers</h2>
-      <p class="impact-sub">Indicatieve marktimpact voor dit soort tools. Gericht op tijdswinst, lagere werkdruk en betere aanvraagkwaliteit.</p>
-    </div>
-    <div class="impact-grid" id="cc-impact-stats"></div>
-  </div>
-</section>
-
-<!-- BRANCHES -->
-<section class="section branches-section" id="branches">
-  <div class="container">
-    <div class="section-label">Branches</div>
-    <h2 class="section-h2">Voor welke sector werk jij?</h2>
-    <p class="section-sub" id="cc-branches-sub">We bouwen per branche een werkende demo — zodat je ziet hoe het er voor jouw zaak uitziet, vóór je tekent.</p>
-    <div class="branches-grid" id="cc-branches-grid"></div>
-  </div>
-</section>
 
 <!-- HOW IT WORKS -->
 <section class="section process-section" id="werkwijze">
@@ -876,6 +259,46 @@
     </div>
   </div>
 </section>
+
+
+<!-- BRANCHES -->
+<section class="section branches-section" id="branches">
+  <div class="container">
+    <div class="section-label">Branches</div>
+    <h2 class="section-h2">Voor welke sector werk jij?</h2>
+    <p class="section-sub" id="cc-branches-sub">We bouwen per branche een werkende demo — zodat je ziet hoe het er voor jouw zaak uitziet, vóór je tekent.</p>
+    <div class="branches-grid" id="cc-branches-grid"></div>
+  </div>
+</section>
+
+
+<!-- CASE -->
+<section class="section case-section" id="cases">
+  <div class="container">
+    <div class="case-inner">
+      <div class="case-mockup ix-reveal" aria-hidden="true">
+        <div class="case-mockup-bar"><span class="case-mockup-dot"></span><span class="case-mockup-dot"></span><span class="case-mockup-dot"></span></div>
+        <div class="case-mockup-title">SSPW · Prijscalculator</div>
+        <div class="case-mockup-field">Zwembadtype · Inground</div>
+        <div class="case-mockup-field">Afmeting · 8 × 4 meter</div>
+        <div class="case-mockup-field">Extra's · Trap + verwarming</div>
+        <div class="case-mockup-result"><span>Indicatie</span><span>€ 24.500</span></div>
+      </div>
+      <div class="ix-reveal">
+        <div class="section-label">Live demo</div>
+        <h2 class="section-h2">Sun Sauna &amp; Poolworld</h2>
+        <p style="font-size:16px;color:var(--lw-muted);line-height:1.75;margin-bottom:8px;">Klanten belden voor prijsindicaties die ook online konden. We bouwden een calculator — in 10 dagen live op sspw.nl.</p>
+        <div class="impact-grid impact-grid--compact" id="cc-case-stats"></div>
+        <div class="case-quote">
+          <p class="q-text">"De gesprekken die we nog voeren zijn meteen veel concreter."</p>
+          <div class="q-author">Sun Sauna &amp; Poolworld</div>
+        </div>
+        <a href="https://sspw-offerte-calc.vercel.app/" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:24px;">Bekijk live demo <i class="ti ti-external-link"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- PRICING -->
 <section class="section pricing-section" id="prijzen">
@@ -929,8 +352,7 @@
 
 <!-- CTA -->
 <section class="section cta-section" id="contact">
-  <img class="cta-bg-photo" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=60" alt="">
-  <div class="cta-bg-grad"></div>
+  <div class="cta-bg-pattern" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-inner">
       <div class="section-label" style="margin-bottom:18px;">Klaar om te starten?</div>
@@ -1020,6 +442,5 @@
 <script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
 <script src="/components/living-loop.js"></script>
-<script src="/hero-variants.js"></script>
 </body>
 </html>

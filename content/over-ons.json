@@ -5,7 +5,7 @@
   "seo": {
     "title": "Over ons — Loopwerk",
     "description": "Levi Kempen, Shaquil Reyes en Gianni Geurtjens bouwen met Loopwerk praktische tools voor het Nederlandse MKB.",
-    "ogImage": "https://loopwerkonline.nl/og-image.png",
+    "ogImage": "https://loopwerkonline.nl/og-image.svg",
     "canonical": "https://loopwerkonline.nl/over-ons"
   },
   "headScripts": "",
@@ -17,17 +17,10 @@
         "label": "Over ons",
         "h1": "Drie ondernemers.\\nEén missie.",
         "sub": "We bouwen de tool die jouw bedrijf mist. Zonder maandenlang IT-traject en zonder vaag AI-verhaal. Gewoon iets dat werkt — met een vaste prijs.",
-        "relatedLink": {
-          "text": "Lees onze inzichten",
-          "url": "/blog"
-        },
+        "relatedLink": { "text": "Lees onze inzichten", "url": "/blog" },
         "chips": [
-          {
-            "text": "Levi, Shaquil & Gianni"
-          },
-          {
-            "text": "Loopwerk team"
-          }
+          { "text": "Levi, Shaquil & Gianni" },
+          { "text": "Loopwerk team" }
         ]
       }
     },
@@ -51,38 +44,29 @@
           {
             "name": "Levi Kempen",
             "role": "Bouw & product",
-            "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+            "initials": "LK",
+            "avatarClass": "team-avatar--1",
             "bio": "Ik zet liever morgen iets live waar een klant mee kan werken, dan weken praten over wat er allemaal mogelijk is. Ik bouw de tools en zorg dat ze stabiel draaien."
           },
           {
             "name": "Shaquil Reyes",
             "role": "Klant & commercie",
-            "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
+            "initials": "SR",
+            "avatarClass": "team-avatar--2",
             "bio": "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last. Dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert en zorg dat die ook echt gebruikt wordt."
           },
           {
             "name": "Gianni Geurtjens",
             "role": "Inhoud & ervaring",
-            "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
+            "initials": "GG",
+            "avatarClass": "team-avatar--3",
             "bio": "Tools falen zelden door de techniek. Meestal door onduidelijke vragen of teksten. Ik zorg dat flows logisch aanvoelen: helder, menselijk, zonder poespas."
           }
         ],
         "values": [
-          {
-            "icon": "ti-bolt",
-            "title": "Snel live",
-            "desc": "We mikken op een eerste werkende versie, niet op een lang voortraject."
-          },
-          {
-            "icon": "ti-tool",
-            "title": "Direct bruikbaar",
-            "desc": "De tool moet werk uit handen nemen of klanten sneller antwoord geven."
-          },
-          {
-            "icon": "ti-chart-bar",
-            "title": "Door te ontwikkelen",
-            "desc": "Wat werkt, bouwen we verder uit op basis van echte vragen en gedrag."
-          }
+          { "icon": "ti-bolt", "title": "Snel live", "desc": "Van idee naar werkende tool in 2–3 weken." },
+          { "icon": "ti-tool", "title": "Vaste prijs", "desc": "Geen offerte-traject. Prijs op de site = prijs op de factuur." },
+          { "icon": "ti-chart-bar", "title": "Door te bouwen", "desc": "Begin met één tool. Daarna verder op basis van echte data." }
         ]
       }
     },
@@ -106,18 +90,9 @@
         "ctaSecondary": "Lees onze inzichten",
         "ctaSecondaryLink": "/blog",
         "stats": [
-          {
-            "value": "3",
-            "label": "Oprichters"
-          },
-          {
-            "value": "MKB",
-            "label": "Onze focus"
-          },
-          {
-            "value": "MVP",
-            "label": "Klein beginnen"
-          }
+          { "value": "3", "label": "Oprichters" },
+          { "value": "MKB", "label": "Onze focus" },
+          { "value": "MVP", "label": "Klein beginnen" }
         ]
       }
     }

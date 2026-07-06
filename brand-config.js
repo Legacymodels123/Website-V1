@@ -7,7 +7,7 @@ const BRAND = {
   footerDesc: "De tool voor jouw meest gestelde vraag. Vaste prijzen, live in 2–3 weken.",
   footerTag: "Gebouwd voor het Nederlandse MKB",
   siteUrl: "https://loopwerkonline.nl",
-  ogImage: "https://loopwerkonline.nl/og-image.png",
+  ogImage: "https://loopwerkonline.nl/og-image.svg",
   themeColor: "#1E3B2E"
 };
 

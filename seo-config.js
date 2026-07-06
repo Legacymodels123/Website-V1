@@ -5,7 +5,7 @@ const SEO = {
   siteUrl: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://loopwerkonline.nl",
   title: (typeof BRAND !== "undefined" ? BRAND.name : "Loopwerk") + " | De tool voor jouw meest gestelde vraag",
   description: typeof BRAND !== "undefined" ? BRAND.description : "Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen.",
-  ogImage: typeof BRAND !== "undefined" ? BRAND.ogImage : "https://loopwerkonline.nl/og-image.png",
+  ogImage: typeof BRAND !== "undefined" ? BRAND.ogImage : "https://loopwerkonline.nl/og-image.svg",
   twitterHandle: "",
   canonical: typeof BRAND !== "undefined" ? BRAND.siteUrl : "https://loopwerkonline.nl",
   robots: "index, follow",

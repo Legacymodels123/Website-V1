@@ -50,8 +50,8 @@
   }
 
   .content-card.ix-card:hover {
-    border-color: rgba(20, 184, 166, 0.45);
-    box-shadow: 0 20px 48px rgba(20, 184, 166, 0.1);
+    border-color: rgba(217, 127, 99, 0.45);
+    box-shadow: 0 20px 48px rgba(217, 127, 99, 0.1);
   }
 
   /* Geen hover-beweging op informatieve blokken — wel op knoppen */
@@ -61,7 +61,7 @@
   .content-card.ix-reveal:hover {
     transform: none !important;
     box-shadow: none !important;
-    border-color: #E2E8F0 !important;
+    border-color: var(--lw-border, #D9D3C4) !important;
     opacity: 1 !important;
     filter: none !important;
   }
@@ -71,12 +71,12 @@
   }
 
   .hero-atmosphere .hero-float--case:hover {
-    border-color: rgba(20, 184, 166, 0.55);
+    border-color: rgba(217, 127, 99, 0.55);
     transform: translateY(-2px);
   }
 
   .page-intro-link:hover {
-    color: #0F766E;
+    color: var(--lw-terra-dark, #c46a4f);
   }
 
   .team-card.ix-card {
@@ -86,17 +86,17 @@
     transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .team-card.ix-card:hover {
-    border-color: rgba(20, 184, 166, 0.5);
+    border-color: rgba(217, 127, 99, 0.5);
   }
   .team-card.ix-card:hover .team-photo img {
     transform: scale(1.07);
   }
   .team-card.ix-card:hover .team-role {
-    color: #0D9488;
+    color: var(--lw-terra-dark, #c46a4f);
   }
 
   .case-card.ix-card:hover {
-    border-color: #14B8A6;
+    border-color: var(--lw-terra, #D97F63);
     transform: translateY(-8px) scale(1.01);
   }
   .case-card.ix-card:hover .case-card-link {
@@ -108,14 +108,14 @@
 
   .article-card.ix-card:hover {
     transform: translateY(-8px);
-    border-color: #14B8A6;
+    border-color: var(--lw-terra, #D97F63);
     box-shadow: 0 20px 44px rgba(15, 23, 42, 0.1);
   }
   .article-card.ix-card.is-soon:hover {
-    border-color: rgba(20, 184, 166, 0.35);
+    border-color: rgba(217, 127, 99, 0.35);
   }
   .article-card.ix-card:hover .article-type {
-    background: #99F6E4;
+    background: var(--lw-terra-tint, #FAECE6);
   }
 
   .price-card.ix-card {
@@ -125,7 +125,7 @@
   }
   /* Geen permanente gloed — alleen de kaart onder de cursor */
   .pricing-grid .price-card.featured {
-    border-color: var(--border, #E2E8F0);
+    border-color: var(--border, var(--lw-border, #D9D3C4));
     box-shadow: none;
   }
   .pricing-grid .price-card::before {
@@ -134,8 +134,8 @@
     inset: 0;
     border-radius: inherit;
     background:
-      radial-gradient(ellipse 90% 70% at 50% -10%, rgba(20, 184, 166, 0.22), transparent 58%),
-      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(20, 184, 166, 0.08), transparent 55%);
+      radial-gradient(ellipse 90% 70% at 50% -10%, rgba(217, 127, 99, 0.22), transparent 58%),
+      radial-gradient(ellipse 60% 50% at 100% 100%, rgba(217, 127, 99, 0.08), transparent 55%);
     opacity: 0;
     transition: opacity 0.35s ease;
     pointer-events: none;
@@ -146,11 +146,11 @@
     z-index: 1;
   }
   .pricing-grid .price-card.ix-card:hover {
-    border-color: #14B8A6;
+    border-color: var(--lw-terra, #D97F63);
     box-shadow:
-      0 0 0 1px rgba(20, 184, 166, 0.45),
-      0 22px 52px rgba(20, 184, 166, 0.22),
-      0 0 48px rgba(20, 184, 166, 0.1);
+      0 0 0 1px rgba(217, 127, 99, 0.45),
+      0 22px 52px rgba(217, 127, 99, 0.22),
+      0 0 48px rgba(217, 127, 99, 0.1);
     --ix-ty: -10px;
   }
   .pricing-grid .price-card.ix-card:hover::before {
@@ -163,18 +163,18 @@
     --ix-ry: 0deg;
     --ix-rx: 0deg;
     box-shadow: none;
-    border-color: var(--border, #E2E8F0);
+    border-color: var(--border, var(--lw-border, #D9D3C4));
   }
   .pricing-grid:has(.price-card:hover) .price-card.featured:not(:hover) {
-    border-color: var(--border, #E2E8F0);
+    border-color: var(--border, var(--lw-border, #D9D3C4));
     box-shadow: none;
   }
 
   .p-card.ix-card:hover {
-    border-color: rgba(20, 184, 166, 0.35);
+    border-color: rgba(217, 127, 99, 0.35);
   }
   .p-card.ix-card:hover .p-num {
-    color: #0D9488;
+    color: var(--lw-terra-dark, #c46a4f);
     transform: scale(1.08);
   }
 
@@ -183,7 +183,7 @@
     transform: translateY(-4px);
   }
   .build-tile.ix-card:hover .build-icon {
-    background: rgba(20, 184, 166, 0.22);
+    background: rgba(217, 127, 99, 0.22);
     transform: scale(1.1) rotate(-4deg);
   }
 
@@ -202,7 +202,7 @@
     z-index: 1;
     background: radial-gradient(
       420px circle at var(--ix-spot-x, 50%) var(--ix-spot-y, 50%),
-      rgba(20, 184, 166, 0.32) 0%,
+      rgba(217, 127, 99, 0.32) 0%,
       transparent 52%
     );
     opacity: 0;
@@ -224,12 +224,12 @@
   }
   .branch-plus:hover {
     transform: translateY(-4px) scale(1.02);
-    border-color: rgba(20, 184, 166, 0.55);
-    background: rgba(20, 184, 166, 0.08);
+    border-color: rgba(217, 127, 99, 0.55);
+    background: rgba(217, 127, 99, 0.08);
   }
   .branch-plus:hover .branch-plus-icon {
     transform: rotate(90deg) scale(1.08);
-    background: rgba(20, 184, 166, 0.2);
+    background: rgba(217, 127, 99, 0.2);
   }
   .branch-plus-icon {
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s;
@@ -247,19 +247,19 @@
     transform: translateY(-6px);
   }
   .p-step:hover .p-step-circle {
-    background: #14B8A6;
-    border-color: #14B8A6;
-    box-shadow: 0 0 0 1px #14B8A6, 0 0 0 6px rgba(20, 184, 166, 0.14), 0 0 28px rgba(20, 184, 166, 0.35);
+    background: var(--lw-terra, #D97F63);
+    border-color: var(--lw-terra, #D97F63);
+    box-shadow: 0 0 0 1px var(--lw-terra, #D97F63), 0 0 0 6px rgba(217, 127, 99, 0.14), 0 0 28px rgba(217, 127, 99, 0.35);
   }
   .p-step-circle {
     transition: background 0.3s ease, border-color 0.25s ease, box-shadow 0.35s ease, transform 0.35s ease;
   }
   .p-step:hover .p-step-title {
-    color: #0D9488;
+    color: var(--lw-terra-dark, #c46a4f);
   }
   .p-step:hover .p-step-tag {
-    background: #CCFBF1;
-    color: #0F766E;
+    background: var(--lw-terra-tint, #FAECE6);
+    color: var(--lw-terra-dark, #c46a4f);
   }
   .p-step-title,
   .p-step-tag {
@@ -282,11 +282,11 @@
   .img-text.ix-card:hover .img-text-img {
     transform: scale(1.02);
     box-shadow:
-      0 0 0 2px rgba(20, 184, 166, 0.45),
-      0 24px 50px rgba(20, 184, 166, 0.16);
+      0 0 0 2px rgba(217, 127, 99, 0.45),
+      0 24px 50px rgba(217, 127, 99, 0.16);
   }
   .img-text.ix-card:hover h2 {
-    color: #0D9488;
+    color: var(--lw-terra-dark, #c46a4f);
   }
   .img-text.ix-card h2 {
     transition: color 0.25s ease;
@@ -296,14 +296,14 @@
     transition: transform 0.15s ease-out, box-shadow 0.25s ease;
   }
   .btn.ix-magnetic:hover {
-    box-shadow: 0 14px 32px rgba(20, 184, 166, 0.28);
+    box-shadow: 0 14px 32px rgba(217, 127, 99, 0.28);
   }
 
   .case-quote {
     transition: border-color 0.3s ease, transform 0.35s ease;
   }
   .case-section:hover .case-quote {
-    border-color: rgba(20, 184, 166, 0.45);
+    border-color: rgba(217, 127, 99, 0.45);
     transform: translateX(4px);
   }
 
@@ -318,15 +318,15 @@
     box-shadow: none;
   }
   .av.ix-card:hover .av-icon {
-    background: rgba(20, 184, 166, 0.14);
-    border-color: rgba(20, 184, 166, 0.35);
+    background: rgba(217, 127, 99, 0.14);
+    border-color: rgba(217, 127, 99, 0.35);
     transform: scale(1.08);
   }
 
   .cs-stat.ix-card:hover,
   .cs-stat2.ix-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(20, 184, 166, 0.35);
+    border-color: rgba(217, 127, 99, 0.35);
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
   }
 
@@ -352,9 +352,9 @@
   .pricing-grid .price-card.ix-tilt.ix-card:hover {
     --ix-ty: -10px;
     box-shadow:
-      0 0 0 1px rgba(20, 184, 166, 0.45),
-      0 22px 52px rgba(20, 184, 166, 0.22),
-      0 0 48px rgba(20, 184, 166, 0.1);
+      0 0 0 1px rgba(217, 127, 99, 0.45),
+      0 22px 52px rgba(217, 127, 99, 0.22),
+      0 0 48px rgba(217, 127, 99, 0.1);
   }
   .pricing-grid .price-card.ix-tilt.ix-card:not(:hover) {
     box-shadow: none;
@@ -393,7 +393,7 @@
   display: none;
   width: 44px;
   height: 44px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid var(--lw-border, #D9D3C4);
   border-radius: 10px;
   background: #fff;
   cursor: pointer;
@@ -409,7 +409,7 @@
   display: block;
   width: 18px;
   height: 2px;
-  background: #0F172A;
+  background: var(--lw-forest, #1E3B2E);
   border-radius: 2px;
   transition: transform 0.25s ease, opacity 0.2s ease;
 }
@@ -443,7 +443,7 @@
     display: block;
     margin-top: 8px;
     padding: 14px 16px !important;
-    background: #0F172A;
+    background: var(--lw-terra, #D97F63);
     color: #fff !important;
     border-radius: 12px;
     text-align: center;
@@ -509,11 +509,11 @@
 /* ── Touch: tap = hover-gloed (prijzen, werkwijze, stappen) ─────── */
 @media (hover: none) {
   .pricing-grid .price-card.ix-focus {
-    border-color: #14B8A6;
+    border-color: var(--lw-terra, #D97F63);
     box-shadow:
-      0 0 0 1px rgba(20, 184, 166, 0.45),
-      0 22px 52px rgba(20, 184, 166, 0.22),
-      0 0 48px rgba(20, 184, 166, 0.1);
+      0 0 0 1px rgba(217, 127, 99, 0.45),
+      0 22px 52px rgba(217, 127, 99, 0.22),
+      0 0 48px rgba(217, 127, 99, 0.1);
     --ix-ty: -6px;
   }
 
@@ -531,18 +531,18 @@
   }
 
   .p-step.ix-focus .p-step-circle {
-    background: #14B8A6;
-    border-color: #14B8A6;
-    box-shadow: 0 0 0 1px #14B8A6, 0 0 0 6px rgba(20, 184, 166, 0.14), 0 0 28px rgba(20, 184, 166, 0.35);
+    background: var(--lw-terra, #D97F63);
+    border-color: var(--lw-terra, #D97F63);
+    box-shadow: 0 0 0 1px var(--lw-terra, #D97F63), 0 0 0 6px rgba(217, 127, 99, 0.14), 0 0 28px rgba(217, 127, 99, 0.35);
   }
 
   .p-step.ix-focus .p-step-title {
-    color: #0D9488;
+    color: var(--lw-terra-dark, #c46a4f);
   }
 
   .p-step.ix-focus .p-step-tag {
-    background: #CCFBF1;
-    color: #0F766E;
+    background: var(--lw-terra-tint, #FAECE6);
+    color: var(--lw-terra-dark, #c46a4f);
   }
 
   .process-steps:has(.p-step.ix-focus) .p-step:not(.ix-focus) {
@@ -553,12 +553,12 @@
   .img-text.ix-card.ix-focus .img-text-img {
     transform: scale(1.02);
     box-shadow:
-      0 0 0 2px rgba(20, 184, 166, 0.45),
-      0 24px 50px rgba(20, 184, 166, 0.16);
+      0 0 0 2px rgba(217, 127, 99, 0.45),
+      0 24px 50px rgba(217, 127, 99, 0.16);
   }
 
   .img-text.ix-card.ix-focus h2 {
-    color: #0D9488;
+    color: var(--lw-terra-dark, #c46a4f);
   }
 
   body:has(.img-text.ix-card.ix-focus) .img-text.ix-card:not(.ix-focus) {

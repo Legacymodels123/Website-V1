@@ -1,0 +1,27 @@
+/* Loopwerk design tokens — enige bron voor kleuren */
+html.loopwerk {
+  --lw-forest: #1E3B2E;
+  --lw-forest-hover: #2a4f3f;
+  --lw-moss: #6B7F4A;
+  --lw-moss-light: #8a9d6a;
+  --lw-cream: #F6F2E8;
+  --lw-cream-muted: #EDE8DC;
+  --lw-cream-dark: #E3DDD0;
+  --lw-terra: #D97F63;
+  --lw-terra-dark: #c46a4f;
+  --lw-terra-tint: #FAECE6;
+  --lw-ink: #11120F;
+  --lw-muted: #5a5f56;
+  --lw-border: #D9D3C4;
+  --lw-success: #4a7c55;
+  --lw-white: #ffffff;
+
+  /* legacy aliases (subpagina's) */
+  --navy: var(--lw-forest);
+  --teal: var(--lw-terra);
+  --teal-d: var(--lw-terra-dark);
+  --bg: var(--lw-cream);
+  --border: var(--lw-border);
+  --text: var(--lw-ink);
+  --muted: var(--lw-muted);
+}

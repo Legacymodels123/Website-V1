@@ -9,7 +9,7 @@ const CONTENT = {
     ctaPrimary: "Bekijk demo",
     ctaSecondary: "Bekijk pakketten",
     ctaSecondaryLink: "/prijzen",
-    proofText: "Sun Sauna & Poolworld gebruikt Loopwerk voor snellere prijsaanvragen",
+    proofText: "<strong>Sun Sauna & Poolworld</strong> gebruikt Loopwerk voor snellere prijsaanvragen",
     atmosphere: {
       loop: {
         questions: [
@@ -21,7 +21,7 @@ const CONTENT = {
           "Nog op voorraad?"
         ],
         weekLabel: "3",
-        stamp: "elke week weer"
+        stamp: "Geen AI-praat.<br>Wel werkende tools."
       },
       floats: [
         { type: "tag", icon: "ti-bolt", text: "2–3 wkn richting live" },
@@ -46,19 +46,22 @@ const CONTENT = {
       {
         name: "Levi Kempen",
         role: "Bouw & product",
-        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=85",
+        initials: "LK",
+        avatarClass: "team-avatar--1",
         bio: "Ik zet liever morgen iets live waar een klant mee kan werken, dan weken praten over wat er allemaal mogelijk is."
       },
       {
         name: "Shaquil Reyes",
         role: "Klant & commercie",
-        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=85",
+        initials: "SR",
+        avatarClass: "team-avatar--2",
         bio: "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last. Dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert."
       },
       {
         name: "Gianni Geurtjens",
         role: "Inhoud & ervaring",
-        photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=85",
+        initials: "GG",
+        avatarClass: "team-avatar--3",
         bio: "Tools falen zelden door de techniek. Meestal door onduidelijke vragen. Ik zorg dat flows logisch aanvoelen: helder en menselijk."
       }
     ],
@@ -122,10 +125,10 @@ const CONTENT = {
   },
 
   branches: [
-    { name: "Zwembad & Buitenleven", count: "Demo live", img: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80", live: true, link: "https://sspw-offerte-calc.vercel.app/" },
-    { name: "Installatie & Bouw", count: "Demo in voorbereiding", img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
-    { name: "Beauty & Wellness", count: "Demo in voorbereiding", img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80", live: false, link: "" },
-    { name: "Zakelijke Dienstverlening", count: "Op aanvraag", img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80", live: false, link: "" }
+    { name: "Zwembad & Buitenleven", count: "Demo live", icon: "ti-pool", live: true, link: "https://sspw-offerte-calc.vercel.app/" },
+    { name: "Installatie & Bouw", count: "Demo in voorbereiding", icon: "ti-tool", live: false, link: "" },
+    { name: "Beauty & Wellness", count: "Demo in voorbereiding", icon: "ti-scissors", live: false, link: "" },
+    { name: "Zakelijke Dienstverlening", count: "Op aanvraag", icon: "ti-briefcase", live: false, link: "" }
   ],
 
   cta: {
@@ -238,7 +241,11 @@ const CONTENT = {
       cta2.textContent = h.ctaSecondary || cta2.textContent;
       if (h.ctaSecondaryLink) cta2.setAttribute('href', h.ctaSecondaryLink);
     }
-    setText('cc-hero-proof', h.proofText);
+    if (h.proofText) setText('cc-hero-proof', h.proofText, /<[a-z][\s\S]*>/i.test(String(h.proofText)));
+    var stampEl = document.getElementById('cc-hero-stamp');
+    if (stampEl && h.atmosphere && h.atmosphere.loop && h.atmosphere.loop.stamp) {
+      stampEl.innerHTML = String(h.atmosphere.loop.stamp).replace(/\\n/g, '<br>');
+    }
     if (h.atmosphere) initAtmosphere(h.atmosphere);
     else initAtmosphere({});
   }
@@ -256,13 +263,15 @@ const CONTENT = {
     var grid = document.getElementById('cc-team-grid');
     if (grid && t.members) {
       grid.innerHTML = t.members.map(function(m) {
+        var avatar = m.initials
+          ? '<div class="team-avatar ' + (m.avatarClass || '') + '">' + m.initials + '</div>'
+          : (m.photo ? '<div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div>' : '');
         return '<div class="team-card ix-card ix-tilt">' +
-          '<div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div>' +
-          '<div class="team-body">' +
+          avatar +
           '<div class="team-name">' + m.name + '</div>' +
           '<div class="team-role">' + m.role + '</div>' +
           '<div class="team-bio">' + m.bio + '</div>' +
-          '</div></div>';
+          '</div>';
       }).join('');
     }
     var vals = document.getElementById('cc-team-values');
@@ -300,13 +309,14 @@ const CONTENT = {
   var grid2 = document.getElementById('cc-branches-grid');
   if (grid2 && CONTENT.branches) {
     var branchHtml = CONTENT.branches.map(function(b) {
-      var onclick = b.link ? ' onclick="window.open(\'' + b.link + '\',\'_blank\')" style="cursor:pointer"' : '';
-      return '<div class="branch-card ix-card"' + onclick + '>' +
+      var tag = b.link ? 'a' : 'div';
+      var attrs = b.link ? ' href="' + b.link + '" target="_blank" rel="noopener"' : '';
+      return '<' + tag + ' class="branch-card ix-card"' + attrs + '>' +
         (b.live ? '<div class="branch-live">Live</div>' : '') +
-        '<img src="' + b.img + '" alt="' + b.name + '" loading="lazy">' +
-        '<div class="branch-overlay"></div>' +
-        '<div class="branch-content"><div class="branch-name">' + b.name + '</div><div class="branch-count">' + b.count + '</div></div>' +
-        '</div>';
+        '<div class="branch-card__icon"><i class="ti ' + (b.icon || 'ti-apps') + '"></i></div>' +
+        '<div class="branch-name">' + b.name + '</div>' +
+        '<div class="branch-count">' + b.count + '</div>' +
+        '</' + tag + '>';
     }).join('');
     branchHtml += '<div class="branch-plus" onclick="openModal(\'idee\')">' +
       '<div class="branch-plus-icon"><i class="ti ti-plus"></i></div>' +

@@ -5,6 +5,7 @@
 .hero--living {
   --ll-cream: #F6F2E8;
   --ll-night: #1E3B2E;
+  --ll-forest: #1E3B2E;
   --ll-sage: #6B7F4A;
   --ll-moss: #1E3B2E;
   --ll-terra: #D97F63;
@@ -147,9 +148,9 @@ html.lw-preview .hero--living {
 
 .living-route__point span {
   display: block;
-  font-family: var(--lw-hand, 'Kalam', cursive);
-  font-size: 13px;
-  font-weight: 700;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: none;
   color: var(--ll-sage);
@@ -265,81 +266,61 @@ html.lw-preview .hero--living {
   background: var(--ll-terra);
 }
 
-.hero--living h1 {
-  font-family: 'Sora', 'Inter', sans-serif !important;
-  font-size: clamp(2.75rem, 7.5vw, 5.5rem) !important;
-  font-weight: 700 !important;
-  line-height: 0.98 !important;
-  letter-spacing: -0.04em !important;
-  color: var(--ll-night) !important;
-  margin: 0 0 clamp(20px, 3vh, 28px) !important;
-  max-width: 11ch;
+.living-hero__frame h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(2rem, 5vw, 3.75rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.02em !important;
+  color: #fff !important;
+  margin: 0 0 clamp(16px, 3vh, 24px) !important;
+  max-width: 18ch;
 }
 
-.hero--living h1 em {
-  font-style: normal !important;
-  color: var(--ll-sage) !important;
-  text-decoration: none !important;
-  display: inline-block;
-  position: relative;
+.living-hero__frame h1 em {
+  font-style: italic !important;
+  color: var(--ll-terra) !important;
 }
 
-.hero--living h1 em::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0.06em;
-  height: 0.12em;
-  background: rgba(196, 112, 75, 0.35);
-  border-radius: 2px;
-  z-index: -1;
-}
-
-.hero--living .hero-sub {
-  font-size: clamp(1rem, 1.5vw, 1.125rem) !important;
+.living-hero__frame .hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.1rem) !important;
   line-height: 1.65 !important;
-  color: #5c6b73 !important;
+  color: rgba(255, 255, 255, 0.72) !important;
   max-width: 38ch !important;
-  margin-bottom: clamp(28px, 4vh, 40px) !important;
+  margin-bottom: clamp(24px, 4vh, 36px) !important;
 }
 
-.hero--living .hero-btns {
-  margin-bottom: clamp(28px, 4vh, 36px);
+.living-hero__frame .btn-teal {
+  background: var(--ll-terra) !important;
+  border-radius: 8px !important;
 }
 
-.hero--living .btn-teal {
-  background: var(--ll-moss) !important;
-  border-radius: 100px !important;
-  padding: 14px 28px !important;
+.living-hero__frame .btn-teal:hover {
+  background: #c46a4f !important;
 }
 
-.hero--living .btn-teal:hover {
-  background: var(--ll-sage) !important;
+.living-hero__frame .btn-ghost-white {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 8px !important;
 }
 
-.hero--living .btn-ghost-white {
-  background: transparent !important;
-  border: 1.5px solid rgba(16, 24, 32, 0.15) !important;
-  color: var(--ll-night) !important;
-  border-radius: 100px !important;
+.living-hero__frame .btn-ghost-white:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
 }
 
-.hero--living .btn-ghost-white:hover {
-  border-color: var(--ll-sage) !important;
-  background: rgba(255, 255, 255, 0.5) !important;
+.living-hero__frame .proof-text {
+  color: rgba(255, 255, 255, 0.45) !important;
 }
 
-.hero--living .hero-proof {
-  opacity: 0.85;
+.living-hero__frame .proof-text strong {
+  color: rgba(255, 255, 255, 0.82) !important;
 }
 
-.hero--living .proof-text {
-  color: #5c6b73 !important;
-}
-
-.hero--living .proof-text strong {
-  color: var(--ll-night) !important;
+/* Legacy selector — alleen buiten frame */
+.hero--living h1:not(.living-hero__frame h1) {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
 
 /* Stempel */
@@ -347,15 +328,16 @@ html.lw-preview .hero--living {
   position: absolute;
   right: 32px;
   bottom: clamp(40px, 6vh, 72px);
-  font-family: var(--lw-hand, 'Kalam', cursive);
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 13px;
-  font-weight: 700;
-  color: var(--ll-moss);
-  border: 2px solid rgba(74, 124, 111, 0.35);
+  font-weight: 600;
+  color: var(--ll-forest, var(--ll-night));
+  background: var(--ll-cream);
+  border: 1px solid rgba(30, 59, 46, 0.15);
   border-radius: 4px;
   padding: 8px 14px;
-  transform: rotate(-4deg);
-  opacity: 0.8;
+  transform: rotate(-3deg);
+  opacity: 0.95;
   pointer-events: none;
 }
 

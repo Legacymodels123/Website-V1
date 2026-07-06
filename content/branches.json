@@ -3,9 +3,9 @@
   "slug": "branches",
   "title": "Branches",
   "seo": {
-    "title": "AI-tools per branche — Loopwerk",
+    "title": "Tools per branche — Loopwerk",
     "description": "Bekijk voorbeelden van calculators, intakeflows en leadtools per branche voor het Nederlandse MKB.",
-    "ogImage": "https://loopwerkonline.nl/og-image.png",
+    "ogImage": "https://loopwerkonline.nl/og-image.svg",
     "canonical": "https://loopwerkonline.nl/branches"
   },
   "headScripts": "",
@@ -17,17 +17,10 @@
         "label": "Branches",
         "h1": "Praktische tools\\nper branche",
         "sub": "Niet elk bedrijf heeft dezelfde tool nodig. We kijken eerst naar het soort vraag, intake of offerteproces dat bij jouw sector past.",
-        "relatedLink": {
-          "text": "Bekijk cases",
-          "url": "/cases"
-        },
+        "relatedLink": { "text": "Bekijk cases", "url": "/cases" },
         "chips": [
-          {
-            "text": "Praktisch voor MKB"
-          },
-          {
-            "text": "Voorbeelden per sector"
-          }
+          { "text": "Praktisch voor MKB" },
+          { "text": "Demo per sector" }
         ]
       }
     },
@@ -45,47 +38,33 @@
       "type": "branches",
       "data": {
         "title": "Voor welke sector werk jij?",
-        "sub": "Klik door voor voorbeelden of gebruik dit als startpunt voor een nieuw idee.",
+        "sub": "We bouwen per branche een werkende demo — zodat je ziet hoe het er voor jouw zaak uitziet, vóór je tekent.",
         "items": [
           {
             "name": "Zwembad & Buitenleven",
-            "count": "Prijsindicatie, configuratie en leadkwalificatie",
-            "img": "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?auto=format&fit=crop&w=500&q=80",
+            "count": "Demo live",
+            "icon": "ti-pool",
             "live": true,
             "link": "https://sspw-offerte-calc.vercel.app/"
           },
           {
-            "name": "Automotive",
-            "count": "Leasecalculator, inruilscan en voorraadintake",
-            "img": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=500&q=80",
-            "live": false,
-            "link": "#contact"
-          },
-          {
             "name": "Installatie & Bouw",
-            "count": "Offertevoorbereider en projectintake",
-            "img": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80",
-            "live": false,
-            "link": "#contact"
-          },
-          {
-            "name": "Retail",
-            "count": "Productkeuzehulp en cadeauvinder",
-            "img": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80",
+            "count": "Demo in voorbereiding",
+            "icon": "ti-tool",
             "live": false,
             "link": "#contact"
           },
           {
             "name": "Beauty & Wellness",
-            "count": "Intake, adviesflow en behandelkeuze",
-            "img": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=500&q=80",
+            "count": "Demo in voorbereiding",
+            "icon": "ti-scissors",
             "live": false,
             "link": "#contact"
           },
           {
             "name": "Zakelijke Dienstverlening",
-            "count": "Quick scan, leadkwalificatie en intake-assistent",
-            "img": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80",
+            "count": "Op aanvraag",
+            "icon": "ti-briefcase",
             "live": false,
             "link": "#contact"
           }
@@ -98,8 +77,8 @@
       "data": {
         "h2": "Nog geen branchematch?",
         "content": "Dat is geen probleem. Vaak begint een goede tool niet bij de branche, maar bij een terugkerende vraag van klanten.\\n\\nAls jij vaak dezelfde intake, prijsinschatting of voorselectie doet, kunnen we daar meestal iets slims voor bouwen.",
-        "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
-        "imageAlt": "Samenwerken aan een digitale intakeflow",
+        "visualIcon": "message-circle",
+        "visualLabel": "Jouw vraag telt",
         "imagePosition": "left",
         "ctaText": "Plan een kort gesprek",
         "ctaLink": "#contact"
@@ -116,18 +95,9 @@
         "ctaSecondary": "Bekijk cases",
         "ctaSecondaryLink": "/cases",
         "stats": [
-          {
-            "value": "1 probleem",
-            "label": "Startpunt per branche"
-          },
-          {
-            "value": "Snel",
-            "label": "Van idee naar eerste richting"
-          },
-          {
-            "value": "MKB",
-            "label": "Gebouwd voor echte praktijk"
-          }
+          { "value": "1 probleem", "label": "Startpunt per branche" },
+          { "value": "2–3 wkn", "label": "Richting live" },
+          { "value": "MKB", "label": "Gebouwd voor praktijk" }
         ]
       }
     }

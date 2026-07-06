@@ -92,6 +92,10 @@
       questions = QUESTIONS.slice();
     }
     renderLabels(questions.slice(0, 6));
+    var stampEl = document.getElementById('cc-hero-stamp');
+    if (stampEl && loop.stamp) {
+      stampEl.innerHTML = String(loop.stamp).replace(/\\n/g, '<br>');
+    }
     bindParallax();
     bindScrollParallax();
   }
