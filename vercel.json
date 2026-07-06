@@ -1,9 +1,36 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.loopwerkonline.nl" }],
+      "destination": "https://loopwerkonline.nl/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/cases",     "destination": "/page.html?p=cases"     },
     { "source": "/blog",      "destination": "/page.html?p=blog"      },
     { "source": "/over-ons",  "destination": "/page.html?p=over-ons"  },
-    { "source": "/werkwijze", "destination": "/page.html?p=werkwijze"  },
+    { "source": "/werkwijze", "destination": "/page.html?p=werkwijze" },
     { "source": "/branches",  "destination": "/page.html?p=branches"  },
     { "source": "/prijzen",   "destination": "/page.html?p=prijzen"   }
   ]

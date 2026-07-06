@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<link rel="canonical" href="https://loopwerkonline.nl">
+<meta property="og:url" content="https://loopwerkonline.nl">
 <title>Loopwerk</title>
 <meta name="description" content="">
 <meta name="robots" content="index, follow">
@@ -535,10 +538,11 @@ async function loadPage() {
   }
   if (data.seo?.title) document.querySelector('meta[property="og:title"]').content = data.seo.title;
   if (data.seo?.ogImage) document.querySelector('meta[property="og:image"]').content = data.seo.ogImage;
-  if (data.seo?.canonical) {
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.href = data.seo.canonical;
-  }
+  const canonicalUrl = data.seo?.canonical || ('https://loopwerkonline.nl' + (slug && slug !== 'home' ? '/' + slug : ''));
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = canonicalUrl;
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.content = canonicalUrl;
 
   // Head scripts
   if (data.headScripts) {
