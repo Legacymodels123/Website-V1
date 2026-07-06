@@ -1,0 +1,500 @@
+/* ═══════════════════════════════════════════════════════════════
+   Loopwerk — productie huisstijl
+   Forest · Moss · Cream · Terracotta · Near-black
+   ═══════════════════════════════════════════════════════════════ */
+
+html.loopwerk {
+  --lw-forest: #1E3B2E;
+  --lw-forest-hover: #2a4f3f;
+  --lw-moss: #6B7F4A;
+  --lw-moss-light: #8a9d6a;
+  --lw-cream: #F6F2E8;
+  --lw-cream-muted: #EDE8DC;
+  --lw-cream-dark: #E3DDD0;
+  --lw-terra: #D97F63;
+  --lw-terra-dark: #c46a4f;
+  --lw-terra-tint: #FAECE6;
+  --lw-ink: #11120F;
+  --lw-muted: #5a5f56;
+  --lw-border: #D9D3C4;
+  --lw-success: #4a7c55;
+
+  /* aliases used by subpagina's */
+  --navy: var(--lw-forest);
+  --teal: var(--lw-terra);
+  --teal-d: var(--lw-terra-dark);
+  --bg: var(--lw-cream);
+  --border: var(--lw-border);
+  --text: var(--lw-ink);
+  --muted: var(--lw-muted);
+
+  --lw-accent: var(--lw-moss);
+  --lw-accent-dark: #556b3a;
+  --lw-accent-light: var(--lw-moss-light);
+  --lw-accent-tint: #EEF2E6;
+  --lw-accent-rgb: 107, 127, 74;
+  --lw-night: var(--lw-forest);
+  --lw-night-hover: var(--lw-forest-hover);
+  --lw-orange: var(--lw-terra);
+  --lw-orange-dark: var(--lw-terra-dark);
+  --lw-on-dark: #E8DFD0;
+  --lw-hand: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* ── Typografie ─────────────────────────────────────────────── */
+html.loopwerk body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background: var(--lw-cream) !important;
+  color: var(--lw-ink) !important;
+  padding-top: 0 !important;
+}
+
+html.loopwerk h1,
+html.loopwerk h2,
+html.loopwerk h3,
+html.loopwerk .section-h2,
+html.loopwerk .impact-title,
+html.loopwerk .nav-name,
+html.loopwerk .footer-ln,
+html.loopwerk .modal-title,
+html.loopwerk .price-title,
+html.loopwerk .page-hero h1,
+html.loopwerk .living-hero__eyebrow,
+html.loopwerk .cta-section h2 {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+}
+
+html.loopwerk .section-label,
+html.loopwerk .modal-label,
+html.loopwerk .page-hero-label,
+html.loopwerk .footer-col-title,
+html.loopwerk .living-output__title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--lw-moss) !important;
+}
+
+html.loopwerk .nav-tagline {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lw-muted);
+  margin-top: 1px;
+}
+
+/* ── Header / navigatie ─────────────────────────────────────── */
+html.loopwerk .nav {
+  background: rgba(246, 242, 232, 0.94) !important;
+  border-bottom: 1px solid var(--lw-border) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+html.loopwerk .nav-name {
+  font-size: 22px !important;
+  color: var(--lw-forest) !important;
+  line-height: 1.05 !important;
+}
+
+html.loopwerk .nav-name-hand {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 600 !important;
+  color: var(--lw-forest) !important;
+}
+
+html.loopwerk .nav-link {
+  color: var(--lw-muted) !important;
+  font-size: 14px !important;
+}
+
+html.loopwerk .nav-link:hover,
+html.loopwerk .nav-link.active {
+  color: var(--lw-forest) !important;
+}
+
+html.loopwerk .nav-logomark {
+  width: 40px !important;
+  height: 40px !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+html.loopwerk .nav-logomark svg,
+html.loopwerk .footer-lm svg {
+  width: 100% !important;
+  height: 100% !important;
+  stroke: none !important;
+  fill: none !important;
+}
+
+html.loopwerk .nav-cta {
+  background: var(--lw-terra) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+}
+
+html.loopwerk .nav-cta:hover {
+  background: var(--lw-terra-dark) !important;
+}
+
+/* ── Knoppen ────────────────────────────────────────────────── */
+html.loopwerk .btn-teal,
+html.loopwerk .form-submit,
+html.loopwerk .price-btn.btn-teal {
+  background: var(--lw-terra) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+html.loopwerk .btn-teal:hover,
+html.loopwerk .form-submit:hover,
+html.loopwerk .price-btn.btn-teal:hover {
+  background: var(--lw-terra-dark) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(217, 127, 99, 0.28) !important;
+}
+
+html.loopwerk .btn-outline {
+  background: #fff !important;
+  color: var(--lw-forest) !important;
+  border: 1.5px solid var(--lw-border) !important;
+  border-radius: 8px !important;
+}
+
+html.loopwerk .btn-outline:hover {
+  border-color: var(--lw-moss) !important;
+  color: var(--lw-forest) !important;
+}
+
+html.loopwerk .btn-ghost-white {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 8px !important;
+}
+
+html.loopwerk .btn-ghost-white:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+/* ── Hero (levende loop) ────────────────────────────────────── */
+html.loopwerk .hero--living {
+  background: var(--lw-cream) !important;
+  min-height: calc(100vh - 70px) !important;
+  min-height: calc(100dvh - 70px) !important;
+}
+
+html.loopwerk .living-hero__frame {
+  background: linear-gradient(165deg, var(--lw-forest) 0%, #162e24 55%, #11120f 100%) !important;
+}
+
+html.loopwerk .hero--living h1,
+html.loopwerk .living-hero__frame h1 {
+  color: #fff !important;
+  font-size: clamp(2.4rem, 5vw, 4rem) !important;
+  line-height: 1.08 !important;
+}
+
+html.loopwerk .hero--living h1 em,
+html.loopwerk .living-hero__frame h1 em {
+  color: var(--lw-terra) !important;
+  font-style: italic !important;
+}
+
+html.loopwerk .hero--living .hero-sub,
+html.loopwerk .living-hero__frame .hero-sub {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-size: 1.05rem !important;
+  max-width: 32rem !important;
+}
+
+html.loopwerk .living-hero__eyebrow {
+  color: var(--lw-on-dark) !important;
+  background: rgba(107, 127, 74, 0.22) !important;
+  border: 1px solid rgba(107, 127, 74, 0.35) !important;
+  border-radius: 999px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+html.loopwerk .living-stamp {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  color: var(--lw-forest) !important;
+  background: var(--lw-cream) !important;
+  border: 1px solid var(--lw-border) !important;
+}
+
+html.loopwerk .living-output {
+  background: rgba(30, 59, 46, 0.92) !important;
+  border-color: rgba(107, 127, 74, 0.35) !important;
+}
+
+html.loopwerk .living-path-main { stroke: var(--lw-moss) !important; }
+html.loopwerk .living-path-accent { stroke: var(--lw-terra) !important; }
+html.loopwerk .living-path-bg { stroke: rgba(30, 59, 46, 0.12) !important; }
+html.loopwerk .living-path-glow { stroke: rgba(107, 127, 74, 0.2) !important; }
+
+html.loopwerk .living-route__point {
+  background: var(--lw-cream) !important;
+  border-color: var(--lw-border) !important;
+  color: var(--lw-forest) !important;
+}
+
+html.loopwerk .hero--living .proof-text { color: rgba(255,255,255,0.45) !important; }
+html.loopwerk .hero--living .proof-text strong { color: rgba(255,255,255,0.8) !important; }
+
+/* ── Secties & vlakken ──────────────────────────────────────── */
+html.loopwerk .problem,
+html.loopwerk .branches-section,
+html.loopwerk .section-alt,
+html.loopwerk .pricing-section {
+  background: var(--lw-cream) !important;
+}
+
+html.loopwerk .logos,
+html.loopwerk .process-section,
+html.loopwerk .case-section,
+html.loopwerk .about-section {
+  background: #fff !important;
+  border-color: var(--lw-border) !important;
+}
+
+html.loopwerk .build-section,
+html.loopwerk .cta-section,
+html.loopwerk .impact-section {
+  background: var(--lw-forest) !important;
+}
+
+html.loopwerk .build-tile { background: var(--lw-forest) !important; }
+html.loopwerk .build-tile:hover { background: var(--lw-forest-hover) !important; }
+html.loopwerk .build-icon {
+  background: rgba(107, 127, 74, 0.18) !important;
+  border-color: rgba(107, 127, 74, 0.3) !important;
+  color: var(--lw-moss-light) !important;
+}
+
+html.loopwerk .section-h2,
+html.loopwerk .p-title,
+html.loopwerk .team-name,
+html.loopwerk .price-amount {
+  color: var(--lw-ink) !important;
+}
+
+html.loopwerk .section-sub,
+html.loopwerk .p-desc,
+html.loopwerk .team-bio,
+html.loopwerk .price-desc {
+  color: var(--lw-muted) !important;
+}
+
+html.loopwerk .p-num,
+html.loopwerk .pf-check,
+html.loopwerk .team-role,
+html.loopwerk .cs-val,
+html.loopwerk .about-more a:hover {
+  color: var(--lw-moss) !important;
+}
+
+html.loopwerk .p-card,
+html.loopwerk .team-card,
+html.loopwerk .price-card,
+html.loopwerk .cs-stat,
+html.loopwerk .case-quote,
+html.loopwerk .content-card,
+html.loopwerk .modal-box {
+  background: #fff !important;
+  border-color: var(--lw-border) !important;
+  border-radius: 16px !important;
+}
+
+html.loopwerk .price-card.featured {
+  border-color: var(--lw-moss) !important;
+  box-shadow: 0 10px 36px rgba(30, 59, 46, 0.08) !important;
+}
+
+html.loopwerk .price-badge {
+  background: var(--lw-terra-tint) !important;
+  color: var(--lw-terra-dark) !important;
+}
+
+html.loopwerk .launch-offer {
+  background: var(--lw-cream-muted) !important;
+  border-color: var(--lw-border) !important;
+  border-left-color: var(--lw-terra) !important;
+}
+
+html.loopwerk .branch-live {
+  background: var(--lw-success) !important;
+  color: #fff !important;
+}
+
+html.loopwerk .branch-overlay {
+  background: linear-gradient(to top, rgba(17, 18, 15, 0.88) 0%, rgba(30, 59, 46, 0.35) 55%, transparent 100%) !important;
+}
+
+html.loopwerk .branch-plus {
+  background: var(--lw-cream) !important;
+  border-color: var(--lw-border) !important;
+}
+
+html.loopwerk .branch-plus:hover { border-color: var(--lw-moss) !important; }
+
+html.loopwerk .p-step-circle {
+  background: var(--lw-forest) !important;
+  border-color: #fff !important;
+  box-shadow: 0 0 0 1px var(--lw-border) !important;
+}
+
+html.loopwerk .p-step-tag,
+html.loopwerk .av-icon {
+  background: var(--lw-cream-muted) !important;
+  color: var(--lw-muted) !important;
+}
+
+html.loopwerk .case-quote {
+  border-left-color: var(--lw-terra) !important;
+  background: var(--lw-cream) !important;
+}
+
+html.loopwerk .impact-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.loopwerk .impact-val { color: var(--lw-terra) !important; }
+
+/* ── Subpagina hero ─────────────────────────────────────────── */
+html.loopwerk .page-hero {
+  background: var(--lw-forest) !important;
+  padding: 88px 0 76px !important;
+}
+
+html.loopwerk .page-hero-scrim {
+  background: linear-gradient(135deg, rgba(30, 59, 46, 0.96) 0%, rgba(17, 18, 15, 0.88) 100%) !important;
+}
+
+html.loopwerk .page-hero-vibe,
+html.loopwerk .page-hero-glow { display: none !important; }
+
+html.loopwerk .page-hero h1 { color: #fff !important; }
+html.loopwerk .page-hero p { color: rgba(255, 255, 255, 0.68) !important; }
+
+html.loopwerk .page-hero-label {
+  background: rgba(107, 127, 74, 0.2) !important;
+  border-color: rgba(107, 127, 74, 0.35) !important;
+  color: var(--lw-on-dark) !important;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+html.loopwerk footer {
+  background: var(--lw-forest) !important;
+  padding: 64px 0 36px !important;
+}
+
+html.loopwerk .footer-lm {
+  background: transparent !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+html.loopwerk .footer-ln { color: #fff !important; }
+html.loopwerk .footer-desc { color: rgba(255, 255, 255, 0.62) !important; }
+html.loopwerk .footer-col-title { color: rgba(255, 255, 255, 0.42) !important; }
+html.loopwerk .footer-link { color: rgba(255, 255, 255, 0.55) !important; }
+html.loopwerk .footer-link:hover { color: #fff !important; }
+html.loopwerk .footer-bottom { border-top-color: rgba(255, 255, 255, 0.1) !important; }
+html.loopwerk .footer-copy,
+html.loopwerk .footer-tag { color: rgba(255, 255, 255, 0.35) !important; }
+
+/* ── Modal ──────────────────────────────────────────────────── */
+html.loopwerk .modal h2 { color: var(--lw-ink) !important; }
+html.loopwerk .form-input:focus,
+html.loopwerk .form-select:focus,
+html.loopwerk .form-textarea:focus {
+  border-color: var(--lw-moss) !important;
+  box-shadow: 0 0 0 3px rgba(107, 127, 74, 0.15) !important;
+}
+
+html.loopwerk .nav-logo {
+  gap: 12px !important;
+  align-items: center !important;
+}
+
+html.loopwerk .nav-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+html.loopwerk .cta-section .section-label {
+  color: var(--lw-terra) !important;
+}
+
+html.loopwerk .cta-section p {
+  color: rgba(255, 255, 255, 0.62) !important;
+}
+
+html.loopwerk .logos {
+  background: #fff !important;
+  border-bottom: 1px solid var(--lw-border) !important;
+}
+
+html.loopwerk .logos-label { color: var(--lw-muted) !important; }
+html.loopwerk .logo-entry-name { color: var(--lw-ink) !important; }
+html.loopwerk .logo-entry-icon {
+  background: var(--lw-cream) !important;
+  border: 1px solid var(--lw-border) !important;
+  color: var(--lw-moss) !important;
+}
+
+html.loopwerk .impact-section .section-label,
+html.loopwerk .impact-sub {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+html.loopwerk .impact-title { color: #fff !important; }
+
+html.loopwerk .article-card:hover,
+html.loopwerk .case-card:hover {
+  border-color: var(--lw-moss) !important;
+}
+
+html.loopwerk .impact-bg {
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 20%, rgba(107, 127, 74, 0.14), transparent 55%),
+    radial-gradient(ellipse 50% 45% at 85% 75%, rgba(217, 127, 99, 0.08), transparent 50%),
+    linear-gradient(180deg, #1E3B2E 0%, #162e24 50%, #1E3B2E 100%) !important;
+}
+
+html.loopwerk .impact-section {
+  background: var(--lw-forest) !important;
+}
+
+html.loopwerk .case-card-link { color: var(--lw-terra) !important; }
+
+/* ── Verberg preview-balk (productie) ───────────────────────── */
+html.loopwerk:not(.lw-dev) .lw-preview-bar,
+html.loopwerk:not(.lw-dev) .lw-preview-restore {
+  display: none !important;
+}
+
+html.loopwerk:not(.lw-dev) body {
+  padding-top: 0 !important;
+}

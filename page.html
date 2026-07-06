@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" class="lw-preview lw-preview-v6">
+<html lang="nl" class="loopwerk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
 <meta property="og:description" content="">
 <meta property="og:image" content="https://loopwerkonline.nl/og-image.png">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/loopwerk-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
 <script src="/brand-config.js"></script>
 <link rel="stylesheet" href="/interactions.css">
@@ -263,34 +263,21 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
   .content-card{padding:24px}
 }
 </style>
-<link rel="stylesheet" href="/brand-loopwerk-preview.css">
+<link rel="stylesheet" href="/loopwerk-theme.css">
 </head>
 <body>
-
-<div class="lw-preview-bar" id="lwPreviewBar">
-  <div class="lw-preview-bar-inner">
-    <span class="lw-preview-title"><strong>Loopwerk</strong> · kleurrichtingen voor overleg</span>
-    <div class="lw-preview-variants">
-      <button type="button" class="lw-preview-variant" data-variant="v1">1 · Groen</button>
-      <button type="button" class="lw-preview-variant" data-variant="v2">2 · Mos</button>
-      <button type="button" class="lw-preview-variant" data-variant="v3">3 · Salie</button>
-      <button type="button" class="lw-preview-variant" data-variant="v4">4 · Terracotta</button>
-      <button type="button" class="lw-preview-variant" data-variant="v5">5 · Design B</button>
-      <button type="button" class="lw-preview-variant is-active" data-variant="v6">6 · Hand ★</button>
-    </div>
-    <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Kleuren uit</button>
-  </div>
-  <p class="lw-preview-hint" id="lwPreviewHint">★ Variant 6: salie-kleuren + handgeschreven, laagdrempelige toon.</p>
-</div>
 
 <nav class="nav">
   <div class="container">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
         <div class="nav-logomark">
-          <svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+          <img src="/loopwerk-logo.svg" alt="" width="40" height="40">
         </div>
-        <span class="nav-name">Loopwerk</span>
+        <span class="nav-brand-text">
+          <span class="nav-name">Loopwerk</span>
+          <span class="nav-tagline">Vragen beantwoord. Werk door.</span>
+        </span>
       </a>
       <div class="nav-links" id="navLinks">
         <a href="/branches" class="nav-link" data-navkey="branches">Branches</a>
@@ -327,7 +314,7 @@ footer{background:var(--navy);color:rgba(255,255,255,.65);padding:56px 0 0}
     <div class="footer-top">
       <div>
         <div class="footer-logo">
-          <div class="footer-lm"><svg viewBox="0 0 20 20"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg></div>
+          <div class="footer-lm"><img src="/loopwerk-logo.svg" alt="" width="32" height="32"></div>
           <span class="footer-ln">Loopwerk</span>
         </div>
         <p class="footer-desc">De tool voor jouw meest gestelde vraag. Vaste prijzen, live in 2–3 weken.</p>
@@ -837,6 +824,5 @@ loadPage();
 </script>
 <script src="/contact-forms.js"></script>
 <script src="/interactions.js"></script>
-<script src="/brand-loopwerk-preview.js"></script>
 </body>
 </html>

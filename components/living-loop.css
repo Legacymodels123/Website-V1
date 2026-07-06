@@ -3,11 +3,11 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .hero--living {
-  --ll-cream: #F7F4ED;
-  --ll-night: #101820;
-  --ll-sage: #4A7C6F;
-  --ll-moss: #1F4D3A;
-  --ll-terra: #C4704B;
+  --ll-cream: #F6F2E8;
+  --ll-night: #1E3B2E;
+  --ll-sage: #6B7F4A;
+  --ll-moss: #1E3B2E;
+  --ll-terra: #D97F63;
   --ll-sage-soft: rgba(74, 124, 111, 0.14);
   --ll-path: path("M -40 420 C 120 120, 380 60, 580 200 S 920 380, 1100 320 S 1280 180, 1180 80 S 720 40, 520 160 S 180 280, 80 400 S -20 520, -40 420");
 

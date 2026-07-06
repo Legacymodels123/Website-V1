@@ -8,7 +8,7 @@ const BRAND = {
   footerTag: "Gebouwd voor het Nederlandse MKB",
   siteUrl: "https://loopwerkonline.nl",
   ogImage: "https://loopwerkonline.nl/og-image.png",
-  themeColor: "#1E2A26"
+  themeColor: "#1E3B2E"
 };
 
 (function () {

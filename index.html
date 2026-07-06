@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl" class="loopwerk lw-preview lw-preview-v6 lw-hero-loop">
+<html lang="nl" class="loopwerk lw-hero-loop">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
   <title>Loopwerk | De tool voor jouw meest gestelde vraag</title>
   <meta name="description" content="Loopwerk bouwt de tool die jouw meest gestelde vraag beantwoordt — zodat jij dat niet meer hoeft te doen. Vaste prijzen, live in 2–3 weken.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#1E2A26">
+  <meta name="theme-color" content="#1E3B2E">
   <link rel="canonical" href="https://loopwerkonline.nl">
 
   <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
@@ -27,8 +27,8 @@
   <meta name="twitter:image" content="https://loopwerkonline.nl/og-image.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F172A'/><rect x='7' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6'/><rect x='18' y='7' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='7' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6' opacity='.55'/><rect x='18' y='18' width='7' height='7' rx='1.5' fill='%2314B8A6'/></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230F172A'/><rect x='38' y='38' width='42' height='42' rx='8' fill='%2314B8A6'/><rect x='100' y='38' width='42' height='42' rx='8' fill='%2314B8A6' opacity='.55'/><rect x='38' y='100' width='42' height='42' rx='8' fill='%2314B8A6' opacity='.55'/><rect x='100' y='100' width='42' height='42' rx='8' fill='%2314B8A6'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="/loopwerk-logo.svg">
+  <link rel="apple-touch-icon" href="/loopwerk-logo.svg">
 
   <!-- SEO config — overschrijft bovenstaande waarden als je ze aanpast via /admin -->
   <script src="brand-config.js"></script>
@@ -38,7 +38,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="/interactions.css">
   <link rel="stylesheet" href="/hero-headers.css">
@@ -559,50 +559,27 @@
     }
 
   </style>
+  <link rel="stylesheet" href="/loopwerk-theme.css">
   <link rel="stylesheet" href="/loopwerk-brand.css">
-  <link rel="stylesheet" href="/brand-loopwerk-preview.css">
   <link rel="stylesheet" href="/hero-tool-showcase.css">
   <link rel="stylesheet" href="/components/living-loop.css">
   <link rel="stylesheet" href="/hero-variants.css">
 </head>
 <body>
 
-<div class="lw-preview-bar" id="lwPreviewBar">
-  <div class="lw-preview-bar-inner">
-    <span class="lw-preview-title"><strong>Loopwerk</strong> · voorlegging</span>
-    <div class="lw-preview-variants">
-      <button type="button" class="lw-preview-variant" data-variant="v1">1 · Groen</button>
-      <button type="button" class="lw-preview-variant" data-variant="v2">2 · Mos</button>
-      <button type="button" class="lw-preview-variant" data-variant="v3">3 · Salie</button>
-      <button type="button" class="lw-preview-variant" data-variant="v4">4 · Terracotta</button>
-      <button type="button" class="lw-preview-variant" data-variant="v5">5 · Design B</button>
-      <button type="button" class="lw-preview-variant is-active" data-variant="v6">6 · Hand ★</button>
-    </div>
-    <button type="button" class="lw-preview-toggle" id="lwPreviewOff">Voorlegging uit</button>
-  </div>
-  <div class="lw-preview-bar-inner lw-preview-bar-inner--hero">
-    <span class="lw-preview-subtitle">Hero</span>
-    <button type="button" class="lw-preview-hero is-active" data-hero="loop">Levende loop ★</button>
-    <button type="button" class="lw-preview-hero" data-hero="portal">Portal</button>
-  </div>
-  <p class="lw-preview-hint" id="lwPreviewHint">★ De levende loop — fullscreen typografie + bewegende baan. · Hand ★ kleuren.</p>
-</div>
-
 <!-- NAV -->
 <nav class="nav">
   <div class="container">
     <div class="nav-inner">
-      <div class="nav-logo">
+      <a href="/" class="nav-logo">
         <div class="nav-logomark">
-          <svg viewBox="0 0 20 20">
-            <rect x="2" y="2" width="7" height="7" rx="1.5"/>
-            <rect x="11" y="2" width="7" height="7" rx="1.5"/>
-            <rect x="2" y="11" width="7" height="7" rx="1.5"/>
-            <rect x="11" y="11" width="7" height="7" rx="1.5"/>
-          </svg>
+          <img src="/loopwerk-logo.svg" alt="" width="40" height="40">
         </div>
-        <span class="nav-name">Loop<span class="nav-name-hand">werk</span></span>
-      </div>
+        <span class="nav-brand-text">
+          <span class="nav-name">Loopwerk</span>
+          <span class="nav-tagline">Vragen beantwoord. Werk door.</span>
+        </span>
+      </a>
       <div class="nav-links" id="navLinks">
         <a href="/branches" class="nav-link">Branches</a>
         <a href="/werkwijze" class="nav-link">Werkwijze</a>
@@ -956,7 +933,7 @@
   <div class="cta-bg-grad"></div>
   <div class="container">
     <div class="cta-inner">
-      <div class="section-label" style="color:#5EEAD4;margin-bottom:18px;">Klaar om te starten?</div>
+      <div class="section-label" style="margin-bottom:18px;">Klaar om te starten?</div>
       <h2 id="cc-cta-h2">Welke vraag komt bij jou<br>het vaakst terug?</h2>
       <p id="cc-cta-sub">In 30 minuten bespreken we of er een tool voor is — en welk pakket past. Vaste prijs, geen verplichtingen.</p>
       <div class="cta-btns">
@@ -1002,12 +979,7 @@
       <div>
         <div class="footer-logo">
           <div class="footer-lm">
-            <svg viewBox="0 0 20 20" fill="none" stroke="#14B8A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="7" height="7" rx="1.5"/>
-              <rect x="11" y="2" width="7" height="7" rx="1.5"/>
-              <rect x="2" y="11" width="7" height="7" rx="1.5"/>
-              <rect x="11" y="11" width="7" height="7" rx="1.5"/>
-            </svg>
+            <img src="/loopwerk-logo.svg" alt="" width="36" height="36">
           </div>
           <span class="footer-ln">Loopwerk</span>
         </div>
@@ -1049,6 +1021,5 @@
 <script src="/interactions.js"></script>
 <script src="/components/living-loop.js"></script>
 <script src="/hero-variants.js"></script>
-<script src="/brand-loopwerk-preview.js"></script>
 </body>
 </html>

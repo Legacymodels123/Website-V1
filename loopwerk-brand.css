@@ -1,45 +1,41 @@
-/* Loopwerk — productie-brand overrides voor levende hero */
+/* Loopwerk — aanvullende productie-overrides (hero-integratie) */
 
-html.loopwerk body {
-  padding-top: 0 !important;
+html.loopwerk .living-hero__frame {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-html.loopwerk.lw-preview body {
-  padding-top: 108px !important;
+html.loopwerk .hero-float--tag {
+  background: rgba(246, 242, 232, 0.95) !important;
+  border-color: var(--lw-border) !important;
+  color: var(--lw-forest) !important;
+  font-family: 'Inter', sans-serif !important;
 }
 
-html.loopwerk .nav-name-hand {
-  font-family: var(--lw-hand);
-  font-weight: 700;
-  color: var(--lw-accent);
+html.loopwerk .hero-float--case {
+  background: #fff !important;
+  border-color: var(--lw-border) !important;
+  color: var(--lw-ink) !important;
 }
 
-/* Levende loop wint van donkere preview-defaults op .hero */
-html.loopwerk .hero--living {
-  background: #F6F4EF !important;
+html.loopwerk .living-label {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--lw-muted) !important;
+  border-color: var(--lw-border) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
 }
 
-html.loopwerk.lw-hero-portal .hero--living {
-  background: #1E2A26 !important;
+html.loopwerk .living-label.is-active {
+  color: var(--lw-forest) !important;
+  border-color: var(--lw-moss) !important;
+  background: #fff !important;
 }
 
-html.loopwerk .hero--living h1 {
-  color: #1E2A26 !important;
+html.loopwerk .process-steps::before {
+  background: var(--lw-border) !important;
 }
 
-html.loopwerk .hero--living .hero-sub,
-html.loopwerk .hero--living .proof-text {
-  color: #5c6b63 !important;
-}
-
-html.loopwerk .hero--living .proof-text strong {
-  color: #1E2A26 !important;
-}
-
-html.loopwerk .hero--living .living-hero__eyebrow {
-  color: #5F7161 !important;
-}
-
-html.loopwerk .hero--living h1 em {
-  color: #5F7161 !important;
+@media (max-width: 768px) {
+  html.loopwerk .nav-tagline {
+    display: none;
+  }
 }
