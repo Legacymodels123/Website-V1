@@ -1,6 +1,6 @@
 /* BRIQO — contextafhankelijke aanvraagformulieren */
 (function () {
-  var FORMSPREE = 'https://formspree.io/f/xgejwvoe';
+  // Lead-opslag via Supabase — config in supabase-config.js (window.LOOPWERK_SUPABASE)
 
   var BRANCHE_OPTIONS = [
     { value: '', label: 'Selecteer jouw branche...' },
@@ -141,6 +141,14 @@
     blog: 'gesprek'
   };
 
+  var CONSENT_HTML =
+    '<input type="text" name="website_url" tabindex="-1" autocomplete="off" aria-hidden="true" class="cf-hp">' +
+    '<div class="form-consent" id="cf-consent-wrap">' +
+      '<label class="consent-label"><input type="checkbox" id="cf-consent" name="consent" required> ' +
+      '<span>Ik ga akkoord dat Loopwerk mijn gegevens gebruikt om contact met mij op te nemen naar aanleiding van deze aanvraag.</span></label>' +
+    '</div>' +
+    '<div class="form-error" id="cf-error" style="display:none">Er ging iets mis bij het versturen. Probeer het opnieuw of mail naar kempenlevi@gmail.com.</div>';
+
   function esc(s) {
     return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
@@ -206,7 +214,7 @@
     if (titleEl) titleEl.textContent = variant.title;
     if (subEl) subEl.textContent = variant.sub;
     if (noteEl) noteEl.textContent = variant.note;
-    if (fieldsEl) fieldsEl.innerHTML = renderFields(variant.fields);
+    if (fieldsEl) fieldsEl.innerHTML = renderFields(variant.fields) + CONSENT_HTML;
     if (typeEl) typeEl.value = type;
     if (bronEl) bronEl.value = meta && meta.source ? meta.source : (location.pathname || '/');
     if (btn) {
@@ -239,7 +247,6 @@
     var form = document.getElementById('contactForm');
     if (!modal || !form || form.dataset.bound) return;
     form.dataset.bound = '1';
-    form.setAttribute('action', FORMSPREE);
     applyVariant('demo', { source: location.pathname || '/' });
 
     modal.addEventListener('click', function (e) {
@@ -253,24 +260,61 @@
       e.preventDefault();
       var btn = document.getElementById('submitBtn');
       if (!btn) return;
+
+      // Honeypot: alleen bots vullen dit verborgen veld
+      var trap = form.querySelector('[name="website_url"]');
+      if (trap && trap.value) { return; }
+
+      // AVG-toestemming verplicht
+      var consent = document.getElementById('cf-consent');
+      var wrap = document.getElementById('cf-consent-wrap');
+      if (consent && !consent.checked) {
+        if (wrap) wrap.classList.add('consent-error');
+        consent.focus();
+        return;
+      }
+      if (wrap) wrap.classList.remove('consent-error');
+      var errEl = document.getElementById('cf-error');
+      if (errEl) errEl.style.display = 'none';
+
+      var fd = new FormData(form);
+      var core = {
+        aanvraag_type: fd.get('aanvraag_type') || 'demo',
+        pagina_bron: fd.get('pagina_bron') || (location.pathname || '/'),
+        naam: fd.get('naam') || null,
+        bedrijf: fd.get('bedrijf') || null,
+        email: fd.get('email') || null,
+        tool_interesse: fd.get('tool_interesse') || fd.get('tool_type') || null,
+        bericht: fd.get('demo_vraag') || fd.get('gesprek_onderwerp') || fd.get('idee_beschrijving') || fd.get('versie_een') || fd.get('context') || null
+      };
+      var skip = ['aanvraag_type','pagina_bron','naam','bedrijf','email','tool_interesse','tool_type','demo_vraag','gesprek_onderwerp','idee_beschrijving','versie_een','context','website_url','consent'];
+      var extra = {};
+      fd.forEach(function (v, k) { if (skip.indexOf(k) === -1 && v) extra[k] = v; });
+      core.extra = extra;
+
       btn.disabled = true;
       btn.textContent = 'Versturen...';
+
+      var cfg = window.LOOPWERK_SUPABASE || {};
       try {
-        var res = await fetch(form.action, {
+        if (!cfg.url || !cfg.key) throw new Error('Supabase niet geconfigureerd');
+        var res = await fetch(cfg.url.replace(/\/$/, '') + '/rest/v1/website_leads', {
           method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
+          headers: {
+            'apikey': cfg.key,
+            'Authorization': 'Bearer ' + cfg.key,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(core)
         });
-        if (res.ok) {
-          document.getElementById('modalForm').style.display = 'none';
-          document.getElementById('modalSuccess').style.display = 'block';
-        } else {
-          btn.disabled = false;
-          btn.innerHTML = (window.__briqoSubmitLabel || 'Verstuur aanvraag') + ' <i class="ti ti-arrow-right"></i>';
-        }
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        document.getElementById('modalForm').style.display = 'none';
+        document.getElementById('modalSuccess').style.display = 'block';
       } catch (err) {
         btn.disabled = false;
         btn.innerHTML = (window.__briqoSubmitLabel || 'Verstuur aanvraag') + ' <i class="ti ti-arrow-right"></i>';
+        if (errEl) errEl.style.display = 'block';
       }
     });
   }

@@ -363,3 +363,12 @@ footer { background: var(--lw-forest); padding: 56px 0 32px; color: #fff; }
   border-radius: 4px; padding: 8px 14px; transform: rotate(-3deg);
 }
 .cta-section .section-label { color: var(--lw-terra); }
+
+/* ── Lead-formulier: toestemming, honeypot & foutmelding ── */
+.cf-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+.form-consent{margin:14px 0 4px}
+.consent-label{display:flex;align-items:flex-start;gap:10px;font-size:.82rem;line-height:1.45;color:var(--lw-ink-soft,#4a5a50);cursor:pointer;font-weight:400}
+.consent-label input[type=checkbox]{margin-top:2px;width:16px;height:16px;flex:0 0 auto;accent-color:var(--lw-green,#3F5A46);cursor:pointer}
+.form-consent.consent-error .consent-label{color:#b4432f}
+.form-consent.consent-error input[type=checkbox]{outline:2px solid #b4432f;outline-offset:2px}
+.form-error{margin-top:10px;font-size:.85rem;color:#b4432f;background:#fbeae6;border:1px solid #f0c9c0;border-radius:8px;padding:8px 12px}
