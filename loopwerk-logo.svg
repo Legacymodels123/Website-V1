@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-  <!-- Verweven X — vier afgeronde banden (brand guide) -->
-  <!-- Achterlaag -->
-  <path d="M44 44 L76 76" stroke="#6B7F4A" stroke-width="13" stroke-linecap="round"/>
-  <path d="M56 44 L24 76" stroke="#D97F63" stroke-width="13" stroke-linecap="round"/>
-  <!-- Voorlaag -->
-  <path d="M76 24 L44 56" stroke="#1E3B2E" stroke-width="13" stroke-linecap="round"/>
-  <path d="M24 24 L56 56" stroke="#6B7F4A" stroke-width="13" stroke-linecap="round"/>
+  <!-- Brand guide: verweven X uit vier afgeronde banden -->
+  <!-- Band 1 (\) onder in het midden -->
+  <path d="M46 46 L78 78" stroke="#6B7F4A" stroke-width="12" stroke-linecap="round"/>
+  <!-- Band 2 (/) onder in het midden -->
+  <path d="M54 46 L22 78" stroke="#D97F63" stroke-width="12" stroke-linecap="round"/>
+  <!-- Band 3 (\) boven in het midden -->
+  <path d="M22 22 L54 54" stroke="#1E3B2E" stroke-width="12" stroke-linecap="round"/>
+  <!-- Band 4 (/) boven in het midden -->
+  <path d="M78 22 L46 54" stroke="#6B7F4A" stroke-width="12" stroke-linecap="round"/>
 </svg>
