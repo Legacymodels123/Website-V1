@@ -46,6 +46,7 @@
             "role": "Bouw & product",
             "initials": "LK",
             "avatarClass": "team-avatar--1",
+            "photo": "/assets/team/levi-kempen.svg",
             "bio": "Ik zet liever morgen iets live waar een klant mee kan werken, dan weken praten over wat er allemaal mogelijk is. Ik bouw de tools en zorg dat ze stabiel draaien."
           },
           {
@@ -53,6 +54,7 @@
             "role": "Klant & commercie",
             "initials": "SR",
             "avatarClass": "team-avatar--2",
+            "photo": "/assets/team/shaquil-reyes.svg",
             "bio": "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last. Dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert en zorg dat die ook echt gebruikt wordt."
           },
           {
@@ -60,6 +62,7 @@
             "role": "Inhoud & ervaring",
             "initials": "GG",
             "avatarClass": "team-avatar--3",
+            "photo": "/assets/team/gianni-geurtjens.svg",
             "bio": "Tools falen zelden door de techniek. Meestal door onduidelijke vragen of teksten. Ik zorg dat flows logisch aanvoelen: helder, menselijk, zonder poespas."
           }
         ],

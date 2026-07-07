@@ -446,11 +446,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="toast" id="toast"></div>
 
 <script>
-// ── CONFIG ────────────────────────────────────────────────────────
+// ── CONFIG ────────────────────────────────────────────
 const STORAGE_KEY    = 'briqo_cms_config';
 const CONTENT_PATH   = 'content';
 
-// ── STATE ─────────────────────────────────────────────────────────
+// ── STATE ───────────────────────────────────────────────
 let cmsConfig = loadStoredConfig();
 let shas = {};
 let pagesRegistry = { pages: [] };
@@ -461,7 +461,7 @@ let isDirty = false;
 let deployTimer = null;
 let heroMediaData = {};
 
-// ── BLOCK TYPE DEFINITIONS ────────────────────────────────────────
+// ── BLOCK TYPE DEFINITIONS ─────────────────────────────────────
 const BLOCK_TYPES = [
   { type: 'hero',         label: 'Hero',            icon: 'ti-layout-navbar',    desc: 'Grote openingssectie' },
   { type: 'hero_simple',  label: 'Koptekst',        icon: 'ti-heading',          desc: 'Simpele paginakop' },
@@ -496,7 +496,7 @@ const BLOCK_DEFAULTS = {
   spacer:      { height: 60 },
 };
 
-// ── AUTH ──────────────────────────────────────────────────────────
+// ── AUTH ────────────────────────────────────────────
 function loadStoredConfig() {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
@@ -539,7 +539,7 @@ async function connectCMS() {
 }
 function logout() { localStorage.removeItem(STORAGE_KEY); location.reload(); }
 
-// ── GITHUB API ────────────────────────────────────────────────────
+// ── GITHUB API ─────────────────────────────────────────
 async function ghFetch(path, opts) {
   const url = 'https://api.github.com/repos/' + cmsConfig.owner + '/' + cmsConfig.repo + '/' + path;
   const r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + cmsConfig.token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, ...opts });
@@ -576,7 +576,7 @@ async function ghFileExists(filePath) {
   try { await ghFetch('contents/' + filePath); return true; } catch { return false; }
 }
 
-// ── INIT ──────────────────────────────────────────────────────────
+// ── INIT ───────────────────────────────────────────────
 async function initCMS() {
   document.getElementById('dashUrl').textContent = siteBaseUrl() || 'Niet ingesteld';
   document.getElementById('dashRepo').textContent = cmsConfig.owner + '/' + cmsConfig.repo;
@@ -615,7 +615,7 @@ async function loadDashCommits() {
   } catch {}
 }
 
-// ── VIEWS ─────────────────────────────────────────────────────────
+// ── VIEWS ───────────────────────────────────────────────
 function showView(name) {
   ['dashboard','pages','editor','global','history','pricing','seo','hero-media'].forEach(v => {
     const el = document.getElementById('view-' + v);
@@ -633,7 +633,7 @@ function showView(name) {
   if (name === 'hero-media') loadHeroMediaView();
 }
 
-// ── PAGES LIST ────────────────────────────────────────────────────
+// ── PAGES LIST ───────────────────────────────────────────────
 function renderPagesList() {
   const list = document.getElementById('pageList');
   list.innerHTML = pagesRegistry.pages.map(p => `
@@ -678,7 +678,7 @@ async function openPageEditor(slug) {
   document.getElementById('saveBar').classList.remove('visible');
 }
 
-// ── BLOCK LIST ────────────────────────────────────────────────────
+// ── BLOCK LIST ───────────────────────────────────────────────
 function renderBlocksList() {
   const list = document.getElementById('blockList');
   if (!currentPage || !currentPage.blocks.length) {
@@ -743,7 +743,7 @@ function toggleSeoCard() {
   chev.style.marginLeft = 'auto'; chev.style.fontSize = '14px'; chev.style.color = 'var(--muted)';
 }
 
-// ── BLOCK EDITOR HTML ─────────────────────────────────────────────
+// ── BLOCK EDITOR HTML ─────────────────────────────────────────
 function getBlockEditorHTML(block) {
   const id = block.id;
   const d = block.data;
@@ -895,7 +895,7 @@ function getBlockEditorHTML(block) {
   }
 }
 
-// ── BLOCK DATA HELPERS ────────────────────────────────────────────
+// ── BLOCK DATA HELPERS ─────────────────────────────────────────
 function bd(blockId, key, val) { // update block data field
   const b = currentPage.blocks.find(b => b.id === blockId);
   if (b) { b.data[key] = val; markDirty(); updateBlockPreview(blockId); }
@@ -946,7 +946,7 @@ function updateBlockPreview(blockId) {
   if (previewEl) previewEl.textContent = getBlockPreview(b);
 }
 
-// ── BLOCK MANAGEMENT ──────────────────────────────────────────────
+// ── BLOCK MANAGEMENT ────────────────────────────────────────────
 function openAddBlockModal() {
   const grid = document.getElementById('blockTypeGrid');
   grid.innerHTML = BLOCK_TYPES.map(t =>
@@ -997,7 +997,7 @@ function moveBlock(blockId, dir) {
   renderBlocksList();
 }
 
-// ── HERO MEDIA + HOMEPAGE SYNC ────────────────────────────────────
+// ── HERO MEDIA + HOMEPAGE SYNC ──────────────────────────────────
 const HERO_MEDIA_LABELS = {
   'home': 'Homepage',
   'over-ons': 'Over ons',
@@ -1127,7 +1127,10 @@ const CONTENT_CONFIG_APPLY = `(function applyContent() {
     var grid = document.getElementById('cc-team-grid');
     if (grid && t.members) {
       grid.innerHTML = t.members.map(function(m) {
-        return '<div class="team-card"><div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div><div class="team-body"><div class="team-name">' + m.name + '</div><div class="team-role">' + m.role + '</div><div class="team-bio">' + m.bio + '</div></div></div>';
+        var avatar = m.photo
+          ? '<div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div>'
+          : (m.initials ? '<div class="team-avatar ' + (m.avatarClass || '') + '">' + m.initials + '</div>' : '');
+        return '<div class="team-card">' + avatar + '<div class="team-body"><div class="team-name">' + m.name + '</div><div class="team-role">' + m.role + '</div><div class="team-bio">' + m.bio + '</div></div></div>';
       }).join('');
     }
     var vals = document.getElementById('cc-team-values');
@@ -1179,7 +1182,7 @@ async function syncContentConfigFromHome(homeData) {
   await ghWriteRaw('content-config.js', js, 'CMS: homepage content-config gesynchroniseerd');
 }
 
-// ── SAVE ──────────────────────────────────────────────────────────
+// ── SAVE ───────────────────────────────────────────────
 function markDirty() {
   isDirty = true;
   document.getElementById('saveBar').classList.add('visible');
@@ -1224,7 +1227,7 @@ function discardChanges() {
   if (currentSlug !== null) openPageEditor(currentSlug);
 }
 
-// ── PAGE CREATION ─────────────────────────────────────────────────
+// ── PAGE CREATION ──────────────────────────────────────────────
 function openNewPageModal() { document.getElementById('newPageModal').classList.add('open'); }
 function closeNewPageModal() { document.getElementById('newPageModal').classList.remove('open'); document.getElementById('newPageTitle').value=''; document.getElementById('newPageSlug').value=''; }
 
@@ -1292,7 +1295,7 @@ async function confirmDeletePage(slug) {
   } catch(e) { showToast('Fout: ' + e.message, 'err'); pagesRegistry.pages.push(page); }
 }
 
-// ── GLOBAL SETTINGS ───────────────────────────────────────────────
+// ── GLOBAL SETTINGS ──────────────────────────────────────────
 function renderGlobal() {
   document.getElementById('globalHeadScripts').value = globalData.headScripts || '';
   document.getElementById('footerCopy').value = globalData.footer?.copy || '';
@@ -1316,7 +1319,7 @@ async function saveGlobal() {
   } catch(e) { showToast('Fout: ' + e.message, 'err'); }
 }
 
-// ── HISTORY ───────────────────────────────────────────────────────
+// ── HISTORY ───────────────────────────────────────────────
 async function loadHistory() {
   const container = document.getElementById('historyList');
   container.innerHTML = '<div style="color:var(--muted);padding:20px">Laden...</div>';
@@ -1329,7 +1332,7 @@ async function loadHistory() {
   } catch(e) { container.innerHTML = '<div style="color:var(--red);padding:20px">Fout: ' + esc(e.message) + '</div>'; }
 }
 
-// ── DEPLOY ────────────────────────────────────────────────────────
+// ── DEPLOY ───────────────────────────────────────────────
 function startDeploy() {
   let s = 40;
   const pill = document.getElementById('deployPill');
@@ -1343,7 +1346,7 @@ function startDeploy() {
   }, 1000);
 }
 
-// ── TOAST ─────────────────────────────────────────────────────────
+// ── TOAST ───────────────────────────────────────────────
 function showToast(msg, type) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -1351,12 +1354,12 @@ function showToast(msg, type) {
   setTimeout(() => t.className = 'toast', 3500);
 }
 
-// ── UTILS ─────────────────────────────────────────────────────────
+// ── UTILS ───────────────────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 
 
-// ── PREVIEW ───────────────────────────────────────────────────────
+// ── PREVIEW ───────────────────────────────────────────────
 let previewOpen = false;
 let previewTimer = null;
 
@@ -1412,7 +1415,7 @@ function startPreviewDeploy() {
   }, 1000);
 }
 
-// ── PRICING VIEW ──────────────────────────────────────────────────
+// ── PRICING VIEW ───────────────────────────────────────────────
 let pricingHomeData = null;
 
 async function loadPricingView() {
@@ -1490,7 +1493,7 @@ async function savePricing() {
   } catch(e) { showToast('Fout: ' + e.message, 'err'); }
 }
 
-// ── SEO VIEW ───────────────────────────────────────────────────────
+// ── SEO VIEW ────────────────────────────────────────────
 let seoPageCache = {};
 
 async function loadSeoView() {
@@ -1567,7 +1570,7 @@ async function saveSeoAll() {
   showToast('Alle SEO instellingen opgeslagen!', 'ok');
 }
 
-// ── BOOT ─────────────────────────────────────────────────────────
+// ── BOOT ───────────────────────────────────────────
 document.getElementById('tokenInput').addEventListener('keydown', e => { if (e.key==='Enter') connectCMS(); });
 document.getElementById('repoInput').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('tokenInput').focus(); });
 document.getElementById('ownerInput').value = cmsConfig.owner || '';

@@ -140,7 +140,7 @@
 <script>
 const LIVE_URL = 'https://loopwerkonline.nl';
 
-// ── ROUTING ────────────────────────────────────────────────────────
+// ── ROUTING ────────────────────────────────────────────
 const slug = new URLSearchParams(location.search).get('p') || location.pathname.replace(/^\//, '') || 'home';
 
 // Mark active nav link
@@ -148,7 +148,7 @@ document.querySelectorAll('[data-navkey]').forEach(a => {
   if (a.dataset.navkey === slug) a.classList.add('active');
 });
 
-// ── BLOCK RENDERERS ────────────────────────────────────────────────
+// ── BLOCK RENDERERS ─────────────────────────────────────────
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function unescapeText(s) { return String(s || '').replace(/\\n/g, '\n'); }
 function formatHeading(s) { return unescapeText(s).split('\n').map(line => esc(line)).join('<br>'); }
@@ -426,9 +426,9 @@ const renderers = {
           ${members.map((m, i) => {
             const initials = m.initials || m.name.split(' ').map(n => n[0]).join('').slice(0, 2);
             const avCls = m.avatarClass || avatarClass[i % 3];
-            const avatar = m.initials || !m.photo
-              ? `<div class="team-avatar ${avCls}">${esc(initials)}</div>`
-              : `<div class="team-photo"><img src="${esc(m.photo)}" alt="${esc(m.name)}"></div>`;
+            const avatar = m.photo
+              ? `<div class="team-photo"><img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy"></div>`
+              : `<div class="team-avatar ${avCls}">${esc(initials)}</div>`;
             return `<div class="team-card ix-card ix-tilt ix-reveal ix-stagger-${(i % 5) + 1}">
               ${avatar}
               <div class="team-name">${esc(m.name)}</div>
@@ -508,7 +508,7 @@ const renderers = {
   }
 };
 
-// ── LOAD + RENDER ──────────────────────────────────────────────────
+// ── LOAD + RENDER ───────────────────────────────────────────────────────────
 async function loadPage() {
   let data;
   try {

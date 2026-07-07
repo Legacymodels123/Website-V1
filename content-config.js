@@ -48,6 +48,7 @@ const CONTENT = {
         role: "Bouw & product",
         initials: "LK",
         avatarClass: "team-avatar--1",
+        photo: "/assets/team/levi-kempen.svg",
         bio: "Ik zet liever morgen iets live waar een klant mee kan werken, dan weken praten over wat er allemaal mogelijk is."
       },
       {
@@ -55,6 +56,7 @@ const CONTENT = {
         role: "Klant & commercie",
         initials: "SR",
         avatarClass: "team-avatar--2",
+        photo: "/assets/team/shaquil-reyes.svg",
         bio: "Krijg je dezelfde vraag voor de vijfde keer? Dat is geen last. Dat is een signaal. Ik help scherp krijgen welke tool het meeste oplevert."
       },
       {
@@ -62,6 +64,7 @@ const CONTENT = {
         role: "Inhoud & ervaring",
         initials: "GG",
         avatarClass: "team-avatar--3",
+        photo: "/assets/team/gianni-geurtjens.svg",
         bio: "Tools falen zelden door de techniek. Meestal door onduidelijke vragen. Ik zorg dat flows logisch aanvoelen: helder en menselijk."
       }
     ],
@@ -263,9 +266,9 @@ const CONTENT = {
     var grid = document.getElementById('cc-team-grid');
     if (grid && t.members) {
       grid.innerHTML = t.members.map(function(m) {
-        var avatar = m.initials
-          ? '<div class="team-avatar ' + (m.avatarClass || '') + '">' + m.initials + '</div>'
-          : (m.photo ? '<div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div>' : '');
+        var avatar = m.photo
+          ? '<div class="team-photo"><img src="' + m.photo + '" alt="' + m.name + '" loading="lazy"></div>'
+          : (m.initials ? '<div class="team-avatar ' + (m.avatarClass || '') + '">' + m.initials + '</div>' : '');
         return '<div class="team-card ix-card ix-tilt">' +
           avatar +
           '<div class="team-name">' + m.name + '</div>' +
